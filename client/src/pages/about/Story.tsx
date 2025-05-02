@@ -29,20 +29,37 @@ const Story = () => {
                   className="w-full h-auto object-cover"
                 />
               </div>
+              <h3 className="text-2xl font-semibold mb-4 text-gray-800">함께였기에, 시작할 수 있었습니다</h3>
               <p className="text-lg text-gray-700 mb-6">
-                2006년, 통신 인프라의 중요성이 점차 높아지던 시기에 브이원정보통신은 설립되었습니다. 
-                단순한 통신장비 판매를 넘어 고객의 실질적인 필요를 충족시키는 맞춤형 솔루션을 제공하겠다는 
-                비전으로 창업자 김철수는 첫 발을 내딛었습니다.
+                어느 날 문득,<br/>
+                스스로 결정하고, 스스로 책임지는 회사를 만들고 싶다는 마음이 들었습니다.<br/>
+                그 시작점엔 나의 열망이 있었지만,<br/>
+                곧 깨달았죠.<br/>
+                사람이 전부라는 걸.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                초기에는 소규모 사무실에서 5명의 직원으로 시작했지만, 고객 중심의 서비스와 
-                전문성을 바탕으로 빠르게 성장하였습니다. 특히 중소기업의 네트워크 인프라 구축에 
-                특화된 서비스를 제공하며 시장에서 입지를 다졌습니다.
+                20년 동안 통신업계에 몸담아 온 나,<br/>
+                그리고 15년을 함께 걸어온 또 한 사람.<br/>
+                우리는 오랜 시간 쌓은 경험보다<br/>
+                서로에 대한 신뢰를 바탕으로<br/>
+                동업이라는 길을 택했습니다.
+              </p>
+              <p className="text-lg text-gray-700 mb-6">
+                사람들은 말했습니다.<br/>
+                "너희라면 잘할 거야."<br/>
+                그리고 덧붙였죠.<br/>
+                "근데… 동업은 쉽지 않아."
+              </p>
+              <p className="text-lg text-gray-700 mb-6">
+                맞습니다.<br/>
+                쉬운 길은 아니었지만,<br/>
+                그만큼 우리는 더 자주 대화했고,<br/>
+                더 깊이 믿었습니다.
               </p>
             </div>
             
             <div className="mb-12">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900">도전과 성장</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">성수동에서의 시작</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="rounded-lg overflow-hidden shadow-md">
                   <img 
@@ -60,19 +77,24 @@ const Story = () => {
                 </div>
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                2010년, 스마트폰의 대중화와 함께 무선 네트워크 수요가 급증하면서 브이원정보통신은 
-                무선통신 분야로 사업 영역을 확장했습니다. 이는 큰 도전이었지만, 기술적 전문성을 
-                바탕으로 성공적으로 영역을 넓혀갔습니다.
+                우리가 처음 자리를 잡은 곳은 성수동이었습니다.<br/>
+                지금은 수많은 브랜드가 모이는 핫플레이스지만,<br/>
+                그 시절엔 아직 덜 여문 가능성으로 가득한 동네였죠.<br/>
+                조용하지만 강한 기운,<br/>
+                무언가 시작되기 직전의 숨 고르기 같은 느낌.<br/>
+                어쩌면, 그때의 우리와 닮아 있었는지도 모르겠습니다.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                2014년에는 국내 주요 통신사들과 파트너십을 체결하며 대형 프로젝트를 수행할 수 
-                있는 역량을 갖추게 되었습니다. 이 시기부터 제조업, 물류업, 유통업 등 다양한 
-                산업 분야의 고객들과 함께하게 되었습니다.
+                처음에는 무엇이든 맡았습니다.<br/>
+                수익이 나지 않아도, 일이 작아도,<br/>
+                우리에게 맡겨진 일이라면<br/>
+                끝까지 해내는 것,<br/>
+                그게 우리의 방식이었습니다.
               </p>
             </div>
             
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-gray-900">현재와 미래</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">우리의 시작</h2>
               <div className="mb-8 rounded-lg overflow-hidden shadow-md">
                 <img 
                   src="https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=600&q=80" 
@@ -81,14 +103,16 @@ const Story = () => {
                 />
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                현재 브이원정보통신은 50명 이상의 전문 인력과 함께 전국적인 서비스 네트워크를 
-                구축하고 있습니다. 특히 IoT 및 차량관제 시스템과 같은 최신 기술을 접목한 
-                솔루션을 개발하며 디지털 혁신을 선도하고 있습니다.
+                브이원은 그렇게 시작됐습니다.<br/>
+                거창하지 않았지만,<br/>
+                진심이 있었고, 책임이 있었습니다.<br/>
+                그리고 가장 중요한, 사람과 사람 사이의 신뢰가 있었습니다.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                브이원정보통신은 앞으로도 고객의 성공을 위한 든든한 파트너로서, 끊임없는 
-                기술 혁신과 서비스 품질 향상을 추구할 것입니다. 변화하는 기술 환경 속에서도 
-                고객의 니즈를 정확히 파악하고 최적의 솔루션을 제공하는 것이 우리의 변함없는 약속입니다.
+                지금의 내가,<br/>
+                그때의 나에게 한마디를 건넨다면 이렇게 말할 겁니다.<br/>
+                <br/>
+                <span className="font-semibold text-xl text-primary">"너를 믿어."</span>
               </p>
             </div>
           </div>
