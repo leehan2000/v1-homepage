@@ -12,7 +12,7 @@ const Partnership = () => {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">동업 이야기</h1>
           <p className="text-lg md:text-xl text-center max-w-3xl mx-auto text-gray-700">
-            동업이란, 사람의 그릿에 대한 이야기입니다
+            동업이란, 사람의 그릇에 대한 이야기입니다
           </p>
         </div>
       </div>
@@ -21,7 +21,7 @@ const Partnership = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="mb-12">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900">– 브이원의 동업 천학 –</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">– 브이원의 동업 철학 –</h2>
               <div className="mb-8 rounded-lg overflow-hidden shadow-md">
                 <img 
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=600&q=80" 
@@ -31,7 +31,7 @@ const Partnership = () => {
               </div>
               <p className="text-lg text-gray-700 mb-6">
                 동업은 기술의 문제가 아닙니다.<br/>
-                사람의 그릿에 관한 문제라고 우리는 믿습니다.
+                사람의 그릇에 관한 문제라고 우리는 믿습니다.
               </p>
               <p className="text-lg text-gray-700 mb-6">
                 누가 더 잘나고 못나고는 중요하지 않았습니다.<br/>
