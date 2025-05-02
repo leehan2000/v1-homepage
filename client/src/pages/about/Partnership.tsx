@@ -37,14 +37,14 @@ const Partnership = () => {
                 누가 더 잘나고 못나고는 중요하지 않았습니다.<br/>
                 중요한 건,<br/>
                 같이 나누고, 함께 결정하고,<br/>
-                끝까지 함께 책임질 수 있는 그릿이 되었는가였습니다.<br/>
+                끝까지 함께 책임질 수 있는 그릇이 되었는가였습니다.<br/>
                 그 질문에 “그렇다”고 말할 수 있다면,<br/>
                 동업은 충분히 가능합니다.
               </p>
             </div>
             
             <div className="mb-12">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900">함께 성장하는 파트너십</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">명확한 역할 분담</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="rounded-lg overflow-hidden shadow-md">
                   <img 
