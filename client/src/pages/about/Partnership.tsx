@@ -12,7 +12,7 @@ const Partnership = () => {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">동업 이야기</h1>
           <p className="text-lg md:text-xl text-center max-w-3xl mx-auto text-gray-700">
-            함께 성장하고 발전하는 브이원정보통신의 파트너십 이야기를 소개합니다.
+            동업이란, 사람의 그릿에 대한 이야기입니다
           </p>
         </div>
       </div>
@@ -21,7 +21,7 @@ const Partnership = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="mb-12">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900">파트너십의 시작</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">– 브이원의 동업 천학 –</h2>
               <div className="mb-8 rounded-lg overflow-hidden shadow-md">
                 <img 
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=600&q=80" 
@@ -30,14 +30,16 @@ const Partnership = () => {
                 />
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                2006년, 통신 분야에서 각자 다른 경험을 가진 김철수와 박영희는 우연한 기회에 만나게 되었습니다. 
-                무선 네트워크 전문가였던 김철수와 유선 통신 시스템 전문가였던 박영희는 각자의 강점을 결합하면 
-                더 포괄적인 통신 솔루션을 제공할 수 있다는 비전을 공유했습니다.
+                동업은 기술의 문제가 아닙니다.<br/>
+                사람의 그릿에 관한 문제라고 우리는 믿습니다.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                처음에는 작은 사무실에서 두 사람이 시작한 브이원정보통신은 서로의 전문성을 존중하고 
-                보완하는 파트너십 문화를 바탕으로 성장했습니다. 이러한 협력 문화는 회사가 확장됨에 따라 
-                직원들에게도 자연스럽게 전해져 브이원정보통신만의 독특한 기업 문화로 자리잡았습니다.
+                누가 더 잘나고 못나고는 중요하지 않았습니다.<br/>
+                중요한 건,<br/>
+                같이 나누고, 함께 결정하고,<br/>
+                끝까지 함께 책임질 수 있는 그릿이 되었는가였습니다.<br/>
+                그 질문에 “그렇다”고 말할 수 있다면,<br/>
+                동업은 충분히 가능합니다.
               </p>
             </div>
             

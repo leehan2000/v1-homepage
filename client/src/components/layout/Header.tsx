@@ -53,8 +53,7 @@ const Header = () => {
           {/* Logo */}
           <Link href="/">
             <a className="flex items-center">
-              <span className="text-primary font-bold text-2xl">V1</span>
-              <span className="ml-2 text-lg font-medium">브이원정보통신</span>
+              <img src="/images/v1_logo.svg" alt="V1 Information & Communication" className="h-10" />
             </a>
           </Link>
 
