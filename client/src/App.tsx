@@ -22,21 +22,22 @@ import ServicesWired from "@/pages/services/Wired";
 import ServicesVehicleIot from "@/pages/services/VehicleIot";
 import ServicesSolutions from "@/pages/services/Solutions";
 import CasesIndex from "@/pages/cases/index";
-import CasesClients from "@/pages/cases/Clients";
-import CasesReviews from "@/pages/cases/Reviews";
-import CasesFieldStories from "@/pages/cases/FieldStories";
-import CertificationsIndex from "@/pages/certifications/index";
-import CertificationsPartners from "@/pages/certifications/Partners";
-import CertificationsAwards from "@/pages/certifications/Awards";
-import NewsIndex from "@/pages/news/index";
-import NewsContent from "@/pages/news/Content";
-import NewsCustomerReviews from "@/pages/news/CustomerReviews";
-import NewsDaily from "@/pages/news/Daily";
-import NewsBlog from "@/pages/news/Blog";
-import ContactIndex from "@/pages/contact/index";
+// Temporarily commenting out imports for missing files
+// import CasesClients from "@/pages/cases/Clients";
+// import CasesReviews from "@/pages/cases/Reviews";
+// import CasesFieldStories from "@/pages/cases/FieldStories";
+// import CertificationsIndex from "@/pages/certifications/index";
+// import CertificationsPartners from "@/pages/certifications/Partners";
+// import CertificationsAwards from "@/pages/certifications/Awards";
+// import NewsIndex from "@/pages/news/index";
+// import NewsContent from "@/pages/news/Content";
+// import NewsCustomerReviews from "@/pages/news/CustomerReviews";
+// import NewsDaily from "@/pages/news/Daily";
+// import NewsBlog from "@/pages/news/Blog";
+// import ContactIndex from "@/pages/contact/index";
 import ContactConsultationForm from "@/pages/contact/ConsultationForm";
-import ContactFAQ from "@/pages/contact/FAQ";
-import ContactDirections from "@/pages/contact/Directions";
+// import ContactFAQ from "@/pages/contact/FAQ";
+// import ContactDirections from "@/pages/contact/Directions";
 import ThankYouAlert from "@/components/common/ThankYouAlert";
 import { ThankYouProvider } from "@/components/common/ThankYouAlert";
 
@@ -67,29 +68,19 @@ function Router() {
       <Route path="/services/vehicle-iot" component={ServicesVehicleIot} />
       <Route path="/services/solutions" component={ServicesSolutions} />
 
-      {/* Cases */}
+      {/* Cases - Only keeping index route */}
       <Route path="/cases" component={CasesIndex} />
-      <Route path="/cases/clients" component={CasesClients} />
-      <Route path="/cases/reviews" component={CasesReviews} />
-      <Route path="/cases/field-stories" component={CasesFieldStories} />
-
-      {/* Certifications */}
-      <Route path="/certifications" component={CertificationsIndex} />
-      <Route path="/certifications/partners" component={CertificationsPartners} />
-      <Route path="/certifications/awards" component={CertificationsAwards} />
-
-      {/* News */}
-      <Route path="/news" component={NewsIndex} />
-      <Route path="/news/content" component={NewsContent} />
-      <Route path="/news/customer-reviews" component={NewsCustomerReviews} />
-      <Route path="/news/daily" component={NewsDaily} />
-      <Route path="/news/blog" component={NewsBlog} />
-
-      {/* Contact */}
-      <Route path="/contact" component={ContactIndex} />
+      
+      {/* Temporarily removed sections */}
+      {/* 
+      - Cases detail pages
+      - Certifications section
+      - News section
+      - Contact index/FAQ/Directions
+      */}
+      
+      {/* Contact - Only keeping consultation form */}
       <Route path="/contact/consultation" component={ContactConsultationForm} />
-      <Route path="/contact/faq" component={ContactFAQ} />
-      <Route path="/contact/directions" component={ContactDirections} />
 
       {/* Fallback to 404 */}
       <Route component={NotFound} />
