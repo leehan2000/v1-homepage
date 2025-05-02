@@ -7,7 +7,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
-              <img src="/images/v1_logo.svg" alt="V1 Information & Communication" className="h-10 bg-white rounded p-1" />
+              <span className="text-primary-400 font-bold text-2xl">V1</span>
+              <span className="ml-2 text-base font-medium text-gray-300">INFORMATION &amp; COMMUNICATION</span>
             </div>
             <p className="text-gray-400 mb-4">
               고객의 신뢰를 바탕으로 한 통신 솔루션 전문기업입니다.
