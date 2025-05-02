@@ -45,27 +45,22 @@ const Partnership = () => {
             
             <div className="mb-12">
               <h2 className="text-3xl font-bold mb-6 text-gray-900">명확한 역할 분담</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="rounded-lg overflow-hidden shadow-md">
-                  <img 
-                    src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80" 
-                    alt="브이원정보통신 팀워크" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="rounded-lg overflow-hidden shadow-md">
-                  <img 
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&h=400&q=80" 
-                    alt="브이원정보통신 협업" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+              <div className="mb-8 rounded-lg overflow-hidden shadow-md">
+                <img 
+                  src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=600&q=80" 
+                  alt="브이원정보통신 역할 분담" 
+                  className="w-full h-auto object-cover"
+                />
               </div>
               <p className="text-lg text-gray-700 mb-6">
-                회사가 성장함에 따라 더 많은 전문가들이 브이원정보통신에 합류하게 되었습니다. 
-                2010년에는 IoT 전문가인 이진수가 합류하여 사업 영역을 확장하였고, 
-                2013년에는 차량관제 시스템 전문가인 최미라가 팀에 합류하면서 
-                브이원정보통신은 더욱 다양한 솔루션을 제공할 수 있게 되었습니다.
+                또 하나,<br/>
+                우리는 전문 분야를 명확히 나누는 구조를 만들었습니다.<br/>
+                나는 무선을 책임지고,<br/>
+                동료는 유선을 맼습니다.<br/>
+                각자의 분야에서 최종 결정권을 존중하고,<br/>
+                서로의 판단을 믿습니다.<br/>
+                이 원칙은 책임과 권한의 균형,<br/>
+                그리고 불필요한 충돌을 줄이는 힘이 되어주었습니다.
               </p>
               <p className="text-lg text-gray-700 mb-6">
                 각 분야의 전문가들이 모여 만들어낸 시너지는 브이원정보통신이 빠르게 성장할 수 있었던 
@@ -75,7 +70,7 @@ const Partnership = () => {
             </div>
             
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-gray-900">파트너십의 가치</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">단순한 약속</h2>
               <div className="mb-8 rounded-lg overflow-hidden shadow-md">
                 <img 
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=600&q=80" 
