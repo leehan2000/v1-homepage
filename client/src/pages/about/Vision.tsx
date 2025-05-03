@@ -159,10 +159,26 @@ const Vision = () => {
             
             {/* 미션 섹션 */}
             <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 flex items-center">
-                <span className="text-4xl text-primary mr-3">🛠</span> 
-                우리의 미션
-              </h2>
+              <div className="mb-8 relative overflow-hidden">
+                <div className="absolute -left-16 top-0 opacity-5">
+                  <span className="text-9xl font-black text-primary">미션</span>
+                </div>
+                <div className="flex justify-end mb-2">
+                  <div className="w-16 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
+                </div>
+                <h2 className="text-3xl font-bold mb-2 text-gray-900 flex items-center justify-between relative z-10">
+                  <div className="flex items-center">
+                    <span className="text-4xl text-primary mr-3">🛠</span> 
+                    <span className="relative inline-block pb-1">
+                      우리의 미션
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-300"></span>
+                    </span>
+                  </div>
+                </h2>
+                <div className="ml-12 pl-2 border-l-2 border-primary-100 text-sm text-primary-600 italic">
+                  작지만 강한 현장 중심의 통신 파트너
+                </div>
+              </div>
               <div className="my-8 rounded-lg overflow-hidden shadow-xl">
                 <div className="h-64 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-800 flex justify-center items-center">
                   <p className="text-3xl text-white font-bold text-center px-6 py-3 rounded-lg bg-primary-900 bg-opacity-40">
@@ -197,10 +213,24 @@ const Vision = () => {
             
             {/* 태도 섹션 */}
             <div>
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 flex items-center">
-                <span className="text-4xl text-primary mr-3">🌱</span> 
-                우리의 태도
-              </h2>
+              <div className="mb-8 relative overflow-hidden">
+                <div className="absolute -right-10 opacity-5">
+                  <span className="text-9xl font-black text-primary">태도</span>
+                </div>
+                <div className="flex justify-start mb-2">
+                  <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                </div>
+                <h2 className="text-3xl font-bold mb-2 text-gray-900 flex items-center relative z-10">
+                  <span className="text-4xl text-primary mr-3">🌱</span> 
+                  <span className="relative inline-block pb-1">
+                    우리의 태도
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-300"></span>
+                  </span>
+                </h2>
+                <div className="ml-12 pl-2 border-l-2 border-primary-100 text-sm text-primary-600 italic">
+                  마음가짐을 새기는 세 가지 약속
+                </div>
+              </div>
               
               <div className="space-y-6 mb-10">
                 <div className="flex items-center bg-primary-50 p-4 rounded-lg">
@@ -237,14 +267,24 @@ const Vision = () => {
                   누군가의 출발선 옆에서,<br/>
                   작지만 단단한 신호가 되어 있습니다.
                 </p>
-                <p className="text-xl text-primary-700 font-semibold pt-6">
-                  지금은 V1의 순간입니다.<br/>
-                  이제 더는 멈출 수 없습니다.<br/>
-                  함께 도약할 시간입니다.
-                </p>
-                <p className="text-2xl font-bold text-gray-900 pt-2">
+                <div className="relative mt-10 mb-4">
+                  <div className="absolute -right-4 -top-8 opacity-5">
+                    <span className="text-9xl font-black text-primary">V1</span>
+                  </div>
+                  <p className="text-xl text-primary-700 font-semibold pt-6 relative z-10">
+                    <span className="relative inline-block">
+                      지금은 <span className="font-bold">V1</span>의 순간입니다.<br/>
+                      이제 더는 멈출 수 없습니다.<br/>
+                      함께 도약할 시간입니다.
+                    </span>
+                  </p>
+                </div>
+                <div className="flex justify-center my-6">
+                  <div className="w-20 h-1 bg-gradient-to-r from-transparent via-primary-300 to-transparent"></div>
+                </div>
+                <p className="text-2xl font-bold text-gray-900 pt-2 text-center">
                   브이원정보통신.<br/>
-                  신뢰 위에서, 연결 너머로.
+                  <span className="text-primary-600">신뢰 위에서, 연결 너머로.</span>
                 </p>
               </div>
             </div>
