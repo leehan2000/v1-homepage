@@ -11,9 +11,7 @@ const CEO = () => {
       <div className="bg-gradient-to-br from-primary-50 to-primary-100 py-20">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">대표 인사말</h1>
-          <p className="text-lg md:text-xl text-center max-w-3xl mx-auto text-gray-700">
-            브이원정보통신이 걸어온 길과 나아갈 방향에 대한 대표이사의 메시지입니다.
-          </p>
+
         </div>
       </div>
       
