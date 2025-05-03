@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import logoImage from "../../assets/logo.png";
 
 const AboutPreview = () => {
   return (
@@ -42,35 +43,35 @@ const AboutPreview = () => {
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white">
+            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
               <img 
-                src="https://i.ibb.co/3vHKnPj/teamwork.jpg" 
+                src={logoImage} 
                 alt="브이원 팀워크" 
-                className="w-full h-full object-cover aspect-4/3"
+                className="w-full h-full object-contain aspect-4/3"
                 loading="lazy"
               />
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white">
+            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
               <img 
-                src="https://i.ibb.co/g9GWsxN/equipment-installation.jpg" 
+                src={logoImage} 
                 alt="통신 장비 설치" 
-                className="w-full h-full object-cover aspect-4/3"
+                className="w-full h-full object-contain aspect-4/3"
                 loading="lazy"
               />
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white">
+            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
               <img 
-                src="https://i.ibb.co/8XccXWH/network-management.jpg" 
+                src={logoImage} 
                 alt="네트워크 관리" 
-                className="w-full h-full object-cover aspect-4/3"
+                className="w-full h-full object-contain aspect-4/3"
                 loading="lazy"
               />
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white">
+            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
               <img 
-                src="https://i.ibb.co/FBL9HWF/communication-solution.jpg" 
+                src={logoImage} 
                 alt="통신 솔루션" 
-                className="w-full h-full object-cover aspect-4/3"
+                className="w-full h-full object-contain aspect-4/3"
                 loading="lazy"
               />
             </div>

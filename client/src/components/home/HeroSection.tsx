@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { scrollToElement } from "@/lib/utils";
+import networkSolutionImage from "../../assets/logo.png"; // 임시로 로고 이미지를 사용합니다
 
 const HeroSection = () => {
   return (
@@ -41,9 +42,9 @@ const HeroSection = () => {
           </div>
           <div className="rounded-lg overflow-hidden shadow-xl border-t-4 border-lgred bg-white">
             <img 
-              src="https://i.ibb.co/DQZPhHg/network-solution.jpg" 
+              src={networkSolutionImage} 
               alt="통신 솔루션 서비스" 
-              className="hero-image w-full h-full object-cover max-h-[400px]"
+              className="hero-image w-full h-full object-contain max-h-[400px] p-4"
               loading="eager"
             />
           </div>
