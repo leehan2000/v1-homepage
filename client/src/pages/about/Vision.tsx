@@ -9,12 +9,31 @@ const Vision = () => {
         <meta name="description" content="브이원정보통신이 추구하는 비전과 미션을 소개합니다. 신뢰를 연결하는 통신회사, 브이원의 가치와 목표를 확인하세요." />
       </Helmet>
       
-      <div className="bg-gradient-to-br from-primary-50 to-primary-100 py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">우리는 왜 '브이원'이 되었는가</h1>
-          <p className="text-lg md:text-xl text-center max-w-3xl mx-auto text-gray-700">
-            존재의 이유, 그리고 이름에 담긴 약속
+      <div className="bg-gradient-to-br from-primary-50 to-primary-100 py-24 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-5">
+          <div className="absolute top-1/4 left-1/4 transform -rotate-12">
+            <span className="text-[200px] font-black text-primary">V1</span>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex justify-center mb-2">
+            <div className="w-20 h-1 bg-primary mb-4"></div>
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 relative">
+            <span className="relative inline-block">
+              우리는 왜 '브이원'이 되었는가
+              <span className="absolute -bottom-2 left-0 right-0 h-1 bg-primary"></span>
+            </span>
+          </h1>
+          <p className="text-lg md:text-2xl text-center max-w-3xl mx-auto text-gray-700 font-light">
+            <span className="relative inline-block px-2">
+              존재의 이유, 그리고 이름에 담긴 약속
+              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary-200"></span>
+            </span>
           </p>
+          <div className="flex justify-center mt-10">
+            <div className="w-2 h-12 bg-gradient-to-b from-primary-500 to-transparent"></div>
+          </div>
         </div>
       </div>
       
@@ -53,10 +72,23 @@ const Vision = () => {
             
             {/* 브이원 이름 의미 */}
             <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 flex items-center">
-                <span className="text-4xl text-primary mr-3">✈️</span> 
-                브이원(V1), 도약을 택한 이름
-              </h2>
+              <div className="mb-8 relative">
+                <div className="absolute -left-20 opacity-10 transform -rotate-12">
+                  <span className="text-9xl font-black text-primary">V1</span>
+                </div>
+                <div className="text-right mb-2">
+                  <div className="inline-block w-24 h-0.5 bg-primary mb-1"></div>
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 flex items-center justify-between relative z-10">
+                  <div className="flex items-center">
+                    <span className="text-4xl text-primary mr-3">✈️</span> 
+                    <span className="relative">
+                      브이원(V1), 도약을 택한 이름
+                      <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"></span>
+                    </span>
+                  </div>
+                </h2>
+              </div>
               <div className="rounded-lg overflow-hidden shadow-xl mb-8">
                 <div className="h-64 bg-gradient-to-br from-sky-400 via-blue-500 to-primary-600 flex justify-center items-center">
                   <span className="text-3xl font-bold text-white px-6 py-3 rounded-lg bg-primary-900 bg-opacity-40">V1 - 비행기의 이륙 순간</span>
@@ -87,10 +119,24 @@ const Vision = () => {
             
             {/* 비전 섹션 */}
             <div className="mb-16">
-              <h2 className="text-3xl font-bold mb-8 text-gray-900 flex items-center">
-                <span className="text-4xl text-primary mr-3">🎯</span> 
-                우리의 비전
-              </h2>
+              <div className="mb-8 relative overflow-hidden">
+                <div className="absolute -right-10 top-0 opacity-5">
+                  <span className="text-9xl font-black text-primary">비전</span>
+                </div>
+                <div className="flex justify-start mb-2">
+                  <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
+                </div>
+                <h2 className="text-3xl font-bold mb-2 text-gray-900 flex items-center relative z-10">
+                  <span className="text-4xl text-primary mr-3">🎯</span> 
+                  <span className="relative inline-block pb-1">
+                    우리의 비전
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-300"></span>
+                  </span>
+                </h2>
+                <div className="ml-12 pl-2 border-l-2 border-primary-100 text-sm text-primary-600 italic">
+                  신뢰를 연결하는 통신회사의 꾸준한 여정
+                </div>
+              </div>
               <div className="my-8 rounded-lg overflow-hidden shadow-xl">
                 <div className="h-64 bg-gradient-to-br from-primary-300 via-primary-500 to-primary-700 flex justify-center items-center">
                   <p className="text-3xl text-white font-bold text-center px-6 py-3 rounded-lg bg-primary-900 bg-opacity-40">
