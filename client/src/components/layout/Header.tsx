@@ -22,7 +22,7 @@ const Header = () => {
   // 메뉴와 서브메뉴 스타일 정의
   const menuTriggerStyle = { fontSize: '1.05rem' };
   const subMenuUlStyle = "flex flex-row space-x-3 p-2 min-w-[520px]";
-  const subMenuLinkStyle = "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm";
+  const subMenuLinkStyle = "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-primary hover:shadow-sm hover:translate-y-[-1px] focus:bg-accent focus:text-accent-foreground text-sm";
   
   // 모든 서브메뉴 링크에 스타일 적용 함수
   const applySubMenuStyle = (path: string, isActive: boolean) => {
@@ -58,10 +58,10 @@ const Header = () => {
 
   return (
     <header className={cn(
-      "w-full bg-white z-50 fixed top-0 transition-shadow duration-300",
-      scrolled ? "shadow-md" : ""
+      "w-full bg-white z-50 fixed top-0 transition-all duration-300",
+      scrolled ? "shadow-md py-3 md:py-4" : "py-5 md:py-6"
     )}>
-      <div className="container mx-auto px-4 py-5 md:py-6">
+      <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
