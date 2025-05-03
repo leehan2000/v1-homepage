@@ -67,27 +67,7 @@ const HeroSection = () => {
                 />
               </div>
               
-              {/* LGU+ 인증 패널 */}
-              <div className="bg-gradient-to-br from-white/90 to-gray-100/95 backdrop-blur-md p-6 rounded-lg shadow-2xl transform -rotate-6 border-t-4 border-lgred">
-                <div className="text-xl font-bold text-lgtext mb-4">
-                  LG U<sup>+</sup> 공식 파트너사
-                </div>
-                <div className="h-0.5 w-16 bg-lgred mb-4"></div>
-                <p className="text-lgtext_light">
-                  기업고객 공식 인증 파트너로서<br/>
-                  최고의 서비스를 제공합니다.
-                </p>
-                <div className="flex justify-between items-center mt-6">
-                  <div className="w-24 h-24 rounded-md overflow-hidden border border-gray-200 shadow-md">
-                    <img 
-                      src="/images/v1_office.jpg" 
-                      alt="사무실 전경" 
-                      className="w-full h-full object-cover brightness-105 contrast-105"
-                    />
-                  </div>
-                  <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-lgred">V1</div>
-                </div>
-              </div>
+              {/* V1 로고만 표시 */}
             </div>
           </div>
         </div>
