@@ -321,9 +321,11 @@ html, body {
 }
 
 @keyframes wave {
-  0% { transform: translateX(0) translateZ(0) scaleY(1); }
-  50% { transform: translateX(-25%) translateZ(0) scaleY(0.9); }
-  100% { transform: translateX(-50%) translateZ(0) scaleY(1); }
+  0% { transform: translateX(0) translateZ(0) scaleY(1.05); filter: brightness(1.1); }
+  25% { transform: translateX(-15%) translateZ(0) scaleY(0.95); filter: brightness(0.9); }
+  50% { transform: translateX(-25%) translateZ(0) scaleY(1.1); filter: brightness(1.2); }
+  75% { transform: translateX(-35%) translateZ(0) scaleY(0.95); filter: brightness(0.9); }
+  100% { transform: translateX(-50%) translateZ(0) scaleY(1.05); filter: brightness(1.1); }
 }
 
 @keyframes shine {
