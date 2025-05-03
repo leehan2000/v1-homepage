@@ -20,8 +20,8 @@ const Header = () => {
   
   // 메뉴와 서브메뉴 스타일 정의
   const menuTriggerStyle = { fontSize: '1.05rem' };
-  const subMenuUlStyle = "flex flex-row space-x-4 p-3 min-w-[580px]";
-  const subMenuLinkStyle = "block select-none rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm";
+  const subMenuUlStyle = "flex flex-row space-x-3 p-2 min-w-[520px]";
+  const subMenuLinkStyle = "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm";
   
   // 모든 서브메뉴 링크에 스타일 적용 함수
   const applySubMenuStyle = (path: string, isActive: boolean) => {
@@ -81,7 +81,7 @@ const Header = () => {
                     브이원의 이야기
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="flex flex-row space-x-6 p-4 min-w-[600px]">
+                    <ul className="flex flex-row space-x-3 p-2 min-w-[520px]">
                       <li>
                         <NavigationMenuLink
                           asChild
@@ -147,7 +147,7 @@ const Header = () => {
                         <NavigationMenuLink
                           asChild
                           className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm",
                             isActive("/people/employees") && "bg-accent/50"
                           )}
                         >
@@ -160,7 +160,7 @@ const Header = () => {
                         <NavigationMenuLink
                           asChild
                           className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm",
                             isActive("/people/philosophy") && "bg-accent/50"
                           )}
                         >
@@ -173,7 +173,7 @@ const Header = () => {
                         <NavigationMenuLink
                           asChild
                           className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm",
                             isActive("/people/stories") && "bg-accent/50"
                           )}
                         >
