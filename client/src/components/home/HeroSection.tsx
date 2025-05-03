@@ -22,7 +22,7 @@ const HeroSection = () => {
       
       {/* 콘텐츠 */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 gap-12 items-center">
           <div className="animate-fadeIn">
             <div className="bg-gradient-to-br from-gray-900/70 to-black/60 backdrop-blur-sm p-8 rounded-lg border-l-4 border-lgred shadow-2xl">
               <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
@@ -55,21 +55,7 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="hidden md:block">
-            <div className="relative animate-float">
-              {/* V1 로고 패널 */}
-              <div className="absolute -bottom-20 -right-10 w-56 h-56 bg-gradient-to-br from-blue-900 to-black rounded-lg overflow-hidden shadow-2xl shadow-lgred/30 border-2 border-blue-400/50 transform rotate-12 z-10">
-                <div className="absolute inset-0 bg-blue-500/10 z-0"></div>
-                <img 
-                  src="/images/v1_logo.png" 
-                  alt="V1 로고" 
-                  className="w-full h-full object-contain p-2 relative z-10 drop-shadow-lg"
-                />
-              </div>
-              
-              {/* V1 로고만 표시 */}
-            </div>
-          </div>
+          {/* 오른쪽 콘텐츠 영역 - 삭제됨 */}
         </div>
       </div>
       
