@@ -22,6 +22,14 @@ const Header = () => {
   const menuTriggerStyle = { fontSize: '1.05rem' };
   const subMenuUlStyle = "flex flex-row space-x-4 p-3 min-w-[580px]";
   const subMenuLinkStyle = "block select-none rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm";
+  
+  // 모든 서브메뉴 링크에 스타일 적용 함수
+  const applySubMenuStyle = (path: string, isActive: boolean) => {
+    return cn(
+      subMenuLinkStyle,
+      isActive && "bg-accent/50"
+    );
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,10 +85,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/about/story") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/about/story", isActive("/about/story"))}
                         >
                           <Link href="/about/story">
                             시작 이야기
@@ -90,10 +95,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/about/partnership") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/about/partnership", isActive("/about/partnership"))}
                         >
                           <Link href="/about/partnership">
                             동업 이야기
@@ -103,10 +105,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/about/vision") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/about/vision", isActive("/about/vision"))}
                         >
                           <Link href="/about/vision">
                             비전 & 미션
@@ -116,10 +115,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/about/ceo") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/about/ceo", isActive("/about/ceo"))}
                         >
                           <Link href="/about/ceo">
                             대표 인사말
@@ -129,10 +125,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/about/history") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/about/history", isActive("/about/history"))}
                         >
                           <Link href="/about/history">
                             연혁 (History)
@@ -199,14 +192,11 @@ const Header = () => {
                     사업분야
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="flex flex-row space-x-6 p-4 min-w-[600px]">
+                    <ul className={subMenuUlStyle}>
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/services/wireless") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/services/wireless", isActive("/services/wireless"))}
                         >
                           <Link href="/services/wireless">
                             무선통신
@@ -216,10 +206,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/services/wired") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/services/wired", isActive("/services/wired"))}
                         >
                           <Link href="/services/wired">
                             유선통신
@@ -229,10 +216,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/services/vehicle-iot") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/services/vehicle-iot", isActive("/services/vehicle-iot"))}
                         >
                           <Link href="/services/vehicle-iot">
                             차량관제 / IoT
