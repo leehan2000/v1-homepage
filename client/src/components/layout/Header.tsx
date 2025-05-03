@@ -81,7 +81,7 @@ const Header = () => {
                   <NavigationMenuTrigger className={isActive("/about") ? "bg-accent/50" : ""}>
                     브이원의 이야기
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  <NavigationMenuContent className="absolute" align="center">
                     <ul className="grid w-[200px] gap-1 p-2">
                       <li>
                         <Link href="/about/story">
@@ -142,7 +142,7 @@ const Header = () => {
                   <NavigationMenuTrigger className={isActive("/people") ? "bg-accent/50" : ""}>
                     사람들
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
+                  <NavigationMenuContent className="absolute" align="center">
                     <ul className="grid w-[200px] gap-1 p-2">
                       <li>
                         <Link href="/people/employees">
