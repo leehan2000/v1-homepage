@@ -147,10 +147,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm",
-                            isActive("/people/employees") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/people/employees", isActive("/people/employees"))}
                         >
                           <Link href="/people/employees">
                             직원 소개
@@ -160,10 +157,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm",
-                            isActive("/people/philosophy") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/people/philosophy", isActive("/people/philosophy"))}
                         >
                           <Link href="/people/philosophy">
                             일하는 철학
@@ -173,10 +167,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm",
-                            isActive("/people/stories") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/people/stories", isActive("/people/stories"))}
                         >
                           <Link href="/people/stories">
                             현장 이야기
@@ -366,7 +357,7 @@ const Header = () => {
                   <NavigationMenuLink asChild className={cn(
                     navigationMenuTriggerStyle,
                     isActive("/contact") && "bg-accent/50",
-                    "bg-primary text-white hover:bg-primary-600 hover:text-white"
+                    "bg-primary text-white hover:bg-primary-600 hover:text-white hover:shadow-md transition-all duration-300 hover:translate-y-[-2px]"
                   )}>
                     <Link href="/contact">
                       상담신청
