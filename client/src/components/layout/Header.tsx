@@ -150,7 +150,7 @@ const Header = () => {
                           className={applySubMenuStyle("/people/employees", isActive("/people/employees"))}
                         >
                           <Link href="/people/employees">
-                            직원 소개
+                            People
                           </Link>
                         </NavigationMenuLink>
                       </li>

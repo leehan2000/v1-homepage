@@ -55,8 +55,8 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             </AccordionTrigger>
             <AccordionContent>
               <div className="pl-4 space-y-1">
-                <Link href="/people/employees" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={handleLinkClick}>직원 소개</Link>
+                <Link href="/people/employees" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:translate-x-2 hover:shadow-sm" 
+                     onClick={handleLinkClick}>People</Link>
                 <Link href="/people/philosophy" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
                      onClick={handleLinkClick}>일하는 철학</Link>
                 <Link href="/people/stories" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
@@ -137,7 +137,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
         </Accordion>
         
         <Link href="/contact/consultation" asChild>
-          <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleLinkClick}>
+          <Button className="w-full bg-primary hover:bg-primary/90 hover:shadow-md transition-all duration-300 hover:translate-y-[-2px] relative overflow-hidden before:absolute before:w-12 before:h-full before:top-0 before:-left-10 before:transform before:skew-x-[30deg] before:bg-white/10 hover:before:animate-shine" onClick={handleLinkClick}>
             상담 / 문의하기
           </Button>
         </Link>
