@@ -28,7 +28,7 @@ const History = () => {
             {/* 이미지로 표시 */}
             <div className="relative">
               <img 
-                src="/images/history-timeline.jpg" 
+                src="/images/history-timeline.png" 
                 alt="브이원정보통신 연혁 타임라인 (2003-2025)" 
                 className="w-full rounded-lg shadow-lg border border-gray-200"
               />
