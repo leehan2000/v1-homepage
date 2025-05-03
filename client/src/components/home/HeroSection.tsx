@@ -21,9 +21,9 @@ const HeroSection = () => {
       </div>
       
       {/* 콘텐츠 */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-20">
+      <div className="container mx-auto px-4 py-20 md:py-32 relative z-20">
         <div className="flex flex-col md:flex-row items-start justify-between">
-          <div className="animate-fadeIn w-full md:max-w-lg lg:max-w-xl md:mt-10 md:ml-0">
+          <div className="animate-fadeIn w-full md:max-w-lg lg:max-w-xl md:mt-10 md:ml-8 lg:ml-16">
             <div className="bg-gradient-to-br from-gray-900/70 to-black/60 backdrop-blur-sm p-8 rounded-lg border-l-4 border-lgred shadow-2xl">
               <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
                 <span className="text-lgred">신뢰</span>와 <span className="text-lgred">전문성</span>을 <br />바탕으로 하는<br />
