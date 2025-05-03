@@ -42,7 +42,7 @@ const NavigationMenuTrigger = React.forwardRef<
   <NavigationMenuPrimitive.Trigger
     ref={ref}
     className={cn(navigationMenuTriggerStyle(), "group", className)}
-    style={{ ...props.style, '--radix-navigation-menu-trigger-width': 'max-content' }}
+    style={{ ...props.style }}
     {...props}
   >
     {children}{" "}

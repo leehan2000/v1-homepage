@@ -22,7 +22,7 @@ const Header = () => {
   // 메뉴와 서브메뉴 스타일 정의
   const menuTriggerStyle = { fontSize: '1.05rem' };
   const subMenuUlStyle = "flex flex-row space-x-3 p-2 mx-auto justify-center w-full";
-  const menuContentStyle = "flex justify-center w-[var(--radix-navigation-menu-trigger-width)] mx-auto relative min-w-[200px]";
+  const menuContentStyle = "flex justify-center w-full mx-auto relative";
   const subMenuLinkStyle = "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent/20 hover:text-primary hover:shadow-md hover:translate-y-[-2px] focus:bg-accent focus:text-accent-foreground text-sm relative overflow-hidden before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-primary before:transition-all before:duration-300 hover:before:w-full before:opacity-0 hover:before:opacity-100 border border-transparent hover:border-primary/10";
   
   // 모든 서브메뉴 링크에 스타일 적용 함수
