@@ -111,7 +111,8 @@ const Partnership = () => {
               <p className="text-xl text-primary-700 font-semibold mb-6 text-center">
                 "그릇이 되자.<br/>
                 그리고, 잘 듣자.<br/>
-                문제가 생기면 내 안의 그릇을 먼저 돌아보자."
+                문제가 생긴다면 듣는 나를 먼저 되돌아보자.<br/>
+                끝까지 함께 하자."
               </p>
               <p className="text-lg text-gray-700">
                 그 단순한 약속 하나가<br/>
