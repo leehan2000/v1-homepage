@@ -64,7 +64,7 @@ const HeroSection = () => {
       <div className="absolute top-1/3 left-10 w-32 h-32 bg-lgred/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-1/3 right-10 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl animate-pulse opacity-70"></div>
       
-      {/* 물결형 하단 처리 - 더 크게 수정 */}
+      {/* 물결형 하단 처리 - 기본 검은색 */}
       <div className="absolute bottom-0 left-0 w-full h-32 z-20" style={{ overflow: 'hidden' }}>
         <svg
           className="absolute bottom-0 w-full h-full animate-wave"
@@ -81,7 +81,7 @@ const HeroSection = () => {
         </svg>
       </div>
       
-      {/* 빨간색 물결 레이어 - 더 화려하게 */}
+      {/* 물결 레이어 1 - 열정적인 빨간색 */}
       <div className="absolute bottom-0 left-0 w-full h-24 z-20" style={{ overflow: 'hidden' }}>
         <svg
           className="absolute bottom-0 w-full h-full animate-wave"
@@ -97,7 +97,7 @@ const HeroSection = () => {
         </svg>
       </div>
       
-      {/* 파란색 물결 레이어 - 새 패턴 추가 */}
+      {/* 물결 레이어 2 - 파란색 */}
       <div className="absolute bottom-0 left-0 w-full h-28 z-20" style={{ overflow: 'hidden' }}>
         <svg
           className="absolute bottom-0 w-full h-full animate-wave"
@@ -113,8 +113,8 @@ const HeroSection = () => {
         </svg>
       </div>
       
-      {/* 반짝이는 물결 효과 레이어 */}
-      <div className="absolute bottom-0 left-0 w-full h-16 z-20" style={{ overflow: 'hidden' }}>
+      {/* 물결 레이어 3 - 반짝임 효과 */}
+      <div className="absolute bottom-0 left-0 w-full h-20 z-20" style={{ overflow: 'hidden' }}>
         <svg
           className="absolute bottom-0 w-full h-full animate-wave"
           xmlns="http://www.w3.org/2000/svg"
@@ -125,6 +125,54 @@ const HeroSection = () => {
           <path 
             fill="rgba(255, 255, 255, 0.1)" 
             d="M0,96L48,122.7C96,149,192,203,288,213.3C384,224,480,192,576,197.3C672,203,768,245,864,234.7C960,224,1056,160,1152,154.7C1248,149,1344,203,1392,229.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+          </path>
+        </svg>
+      </div>
+
+      {/* 물결 레이어 4 - 초록색 */}
+      <div className="absolute bottom-0 left-0 w-full h-22 z-20" style={{ overflow: 'hidden' }}>
+        <svg
+          className="absolute bottom-0 w-full h-full animate-wave"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          style={{ animationDuration: '17s', animationIterationCount: 'infinite', transform: 'scale(1.15)' }}
+        >
+          <path 
+            fill="rgba(5, 150, 105, 0.1)" 
+            d="M0,224L40,218.7C80,213,160,203,240,170.7C320,139,400,85,480,90.7C560,96,640,160,720,165.3C800,171,880,117,960,101.3C1040,85,1120,107,1200,122.7C1280,139,1360,149,1400,154.7L1440,160L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z">
+          </path>
+        </svg>
+      </div>
+
+      {/* 물결 레이어 5 - 보라색 */}
+      <div className="absolute bottom-0 left-0 w-full h-18 z-20" style={{ overflow: 'hidden' }}>
+        <svg
+          className="absolute bottom-0 w-full h-full animate-wave"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          style={{ animationDuration: '22s', animationIterationCount: 'infinite', animationDirection: 'reverse', transform: 'scale(1.25)' }}
+        >
+          <path 
+            fill="rgba(124, 58, 237, 0.08)" 
+            d="M0,64L48,85.3C96,107,192,149,288,149.3C384,149,480,107,576,112C672,117,768,171,864,197.3C960,224,1056,224,1152,202.7C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+          </path>
+        </svg>
+      </div>
+
+      {/* 물결 레이어 6 - 타퀘이즈 */}
+      <div className="absolute bottom-0 left-0 w-full h-16 z-20" style={{ overflow: 'hidden' }}>
+        <svg
+          className="absolute bottom-0 w-full h-full animate-wave"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          style={{ animationDuration: '25s', animationIterationCount: 'infinite', transform: 'scale(1.2)' }}
+        >
+          <path 
+            fill="rgba(14, 165, 233, 0.07)" 
+            d="M0,256L30,218.7C60,181,120,107,180,96C240,85,300,139,360,176C420,213,480,235,540,224C600,213,660,171,720,149.3C780,128,840,128,900,149.3C960,171,1020,213,1080,208C1140,203,1200,149,1260,138.7C1320,128,1380,160,1410,176L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
           </path>
         </svg>
       </div>
