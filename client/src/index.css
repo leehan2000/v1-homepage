@@ -328,6 +328,14 @@ html, body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* 히어로 섹션 파일 경로 */
+.hero-bg-image {
+  background-image: url('/images/v1-office.jpg');
+  background-size: cover;
+  background-position: center center;
+  filter: brightness(1.1) contrast(1.05);
+}
+
 /* 히어로 섹션 애니메이션 */
 @keyframes float {
   0% {

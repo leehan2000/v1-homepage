@@ -9,13 +9,8 @@ const HeroSection = () => {
       className="relative h-[90vh] overflow-hidden border-b-4 border-lgred"
     >
       {/* 배경 이미지 */}
-      <div className="absolute inset-0 w-full h-full">
-        <img 
-          src="/images/v1-office.jpg" 
-          alt="V1 브이원정보통신 사무실" 
-          className="w-full h-full object-cover filter brightness-110 contrast-105"
-          loading="eager"
-        />
+      <div className="absolute inset-0 w-full h-full hero-bg-image">
+        {/* 배경 이미지는 CSS로 설정 */}
         {/* 오버레이 그라데이션 - 최소한의 투명도만 유지 */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/5 to-black/10"></div>
       </div>
@@ -58,11 +53,11 @@ const HeroSection = () => {
           <div className="hidden md:block">
             <div className="relative">
               {/* 로고 이미지 사이드에 표시 */}
-              <div className="absolute -right-8 -top-8 w-28 h-28 bg-white rounded-full shadow-2xl flex items-center justify-center p-3 hero-pulse z-20">
+              <div className="absolute -right-8 -top-8 w-32 h-32 bg-white rounded-full shadow-2xl flex items-center justify-center p-2 hero-pulse z-20">
                 <img 
                   src="/v1-logo.png" 
                   alt="V1 로고" 
-                  className="w-20 h-20 object-contain" 
+                  className="w-24 h-24 object-contain" 
                 />
               </div>
               {/* 메인 카드 */}
