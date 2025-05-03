@@ -17,6 +17,11 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
+  
+  // 메뉴와 서브메뉴 스타일 정의
+  const menuTriggerStyle = { fontSize: '1.05rem' };
+  const subMenuUlStyle = "flex flex-row space-x-4 p-3 min-w-[580px]";
+  const subMenuLinkStyle = "block select-none rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,7 +69,7 @@ const Header = () => {
               <NavigationMenuList>
                 {/* 브이원의 이야기 */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/about") ? "bg-accent/50" : ""}>
+                  <NavigationMenuTrigger className={isActive("/about") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
                     브이원의 이야기
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -140,11 +145,11 @@ const Header = () => {
 
                 {/* 사람들 */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/people") ? "bg-accent/50" : ""}>
+                  <NavigationMenuTrigger className={isActive("/people") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
                     사람들
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="flex flex-row space-x-6 p-4 min-w-[500px]">
+                    <ul className={subMenuUlStyle}>
                       <li>
                         <NavigationMenuLink
                           asChild
@@ -190,7 +195,7 @@ const Header = () => {
 
                 {/* 사업분야 */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/services") ? "bg-accent/50" : ""}>
+                  <NavigationMenuTrigger className={isActive("/services") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
                     사업분야
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -253,7 +258,7 @@ const Header = () => {
 
                 {/* 진행 사례 */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/cases") ? "bg-accent/50" : ""}>
+                  <NavigationMenuTrigger className={isActive("/cases") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
                     진행 사례
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -303,7 +308,7 @@ const Header = () => {
 
                 {/* 공식 인증 / 수상 */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/certifications") ? "bg-accent/50" : ""}>
+                  <NavigationMenuTrigger className={isActive("/certifications") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
                     공식 인증 / 수상
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -340,11 +345,11 @@ const Header = () => {
 
                 {/* 소식 & 블로그 */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/news") ? "bg-accent/50" : ""}>
+                  <NavigationMenuTrigger className={isActive("/news") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
                     소식 & 블로그
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="flex flex-row space-x-6 p-4 min-w-[650px]">
+                    <ul className={subMenuUlStyle}>
                       <li>
                         <NavigationMenuLink
                           asChild
