@@ -13,26 +13,26 @@ const HeroSection = () => {
         <img 
           src="/images/v1-office.jpg" 
           alt="V1 브이원정보통신 사무실" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover filter brightness-115 contrast-110"
           loading="eager"
         />
-        {/* 오버레이 그라데이션 */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70"></div>
+        {/* 오버레이 그라데이션 - 투명도 더 낮춤 */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/15 to-black/20"></div>
       </div>
       
       {/* 콘텐츠 */}
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="animate-fadeIn">
-            <div className="inline-block mb-6 px-4 py-1 bg-lgred/20 backdrop-blur-sm rounded-lg border border-lgred/30">
+            <div className="inline-block mb-6 px-4 py-1 bg-lgred/10 backdrop-blur-sm rounded-lg border border-lgred/20">
               <p className="text-white text-sm md:text-base font-medium">LG U+ 키움존 공식 인증 파트너</p>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-              <span className="text-lgred">신뢰</span>와 <span className="text-lgred">전문성</span>을 <br />바탕으로 하는<br />
+            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6 drop-shadow-md">
+              <span className="text-lgred font-extrabold">신뢰</span>와 <span className="text-lgred font-extrabold">전문성</span>을 <br />바탕으로 하는<br />
               통신 솔루션 전문기업
               <div className="h-1 w-1/2 bg-lgred mt-3"></div>
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-xl">
+            <p className="text-lg md:text-xl text-white mb-8 leading-relaxed max-w-xl drop-shadow-md">
               브이원정보통신은 고객의 환경에 최적화된 맞춤형 통신 인프라 구축을 통해
               업무 효율성과 안정성을 제공합니다.
             </p>
@@ -66,28 +66,28 @@ const HeroSection = () => {
                 />
               </div>
               {/* 메인 카드 */}
-              <div className="rounded-lg overflow-hidden shadow-2xl shadow-lgred/20 border-t-4 border-lgred bg-white/10 backdrop-blur-md p-4 hero-float">
+              <div className="rounded-lg overflow-hidden shadow-2xl shadow-lgred/20 border-t-4 border-lgred bg-white/5 backdrop-blur-sm p-4 hero-float">
                 <div className="flex items-center space-x-4 mb-4">
                   <div className="w-3 h-3 rounded-full bg-lgred"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 p-4">
-                  <div className="bg-white/20 backdrop-blur-md p-4 rounded-lg border border-white/30 shadow-lg">
-                    <h3 className="text-xl font-bold text-white mb-2">유선통신</h3>
-                    <p className="text-gray-200 text-sm">안정적인 네트워크 인프라 구축</p>
+                  <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300">
+                    <h3 className="text-xl font-bold text-white mb-2 drop-shadow-sm">유선통신</h3>
+                    <p className="text-white text-sm drop-shadow-sm">안정적인 네트워크 인프라 구축</p>
                   </div>
-                  <div className="bg-white/20 backdrop-blur-md p-4 rounded-lg border border-white/30 shadow-lg">
-                    <h3 className="text-xl font-bold text-white mb-2">무선통신</h3>
-                    <p className="text-gray-200 text-sm">유연한 비즈니스 환경 제공</p>
+                  <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300">
+                    <h3 className="text-xl font-bold text-white mb-2 drop-shadow-sm">무선통신</h3>
+                    <p className="text-white text-sm drop-shadow-sm">유연한 비즈니스 환경 제공</p>
                   </div>
-                  <div className="bg-white/20 backdrop-blur-md p-4 rounded-lg border border-white/30 shadow-lg">
-                    <h3 className="text-xl font-bold text-white mb-2">IoT 솔루션</h3>
-                    <p className="text-gray-200 text-sm">스마트 비즈니스 환경 구축</p>
+                  <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300">
+                    <h3 className="text-xl font-bold text-white mb-2 drop-shadow-sm">IoT 솔루션</h3>
+                    <p className="text-white text-sm drop-shadow-sm">스마트 비즈니스 환경 구축</p>
                   </div>
-                  <div className="bg-white/20 backdrop-blur-md p-4 rounded-lg border border-white/30 shadow-lg">
-                    <h3 className="text-xl font-bold text-white mb-2">차량관제</h3>
-                    <p className="text-gray-200 text-sm">효율적인 운영 시스템</p>
+                  <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300">
+                    <h3 className="text-xl font-bold text-white mb-2 drop-shadow-sm">차량관제</h3>
+                    <p className="text-white text-sm drop-shadow-sm">효율적인 운영 시스템</p>
                   </div>
                 </div>
               </div>
