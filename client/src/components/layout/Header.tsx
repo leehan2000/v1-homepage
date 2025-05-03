@@ -8,7 +8,8 @@ import {
   NavigationMenuItem, 
   NavigationMenuLink, 
   NavigationMenuList, 
-  NavigationMenuTrigger 
+  NavigationMenuTrigger,
+  NavigationMenuViewport
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 
@@ -64,6 +65,7 @@ const Header = () => {
           <nav className="hidden md:block">
             <NavigationMenu>
               <NavigationMenuList>
+                <NavigationMenuViewport />
                 {/* HOME */}
                 <NavigationMenuItem>
                   <Link href="/">
