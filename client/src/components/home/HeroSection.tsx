@@ -58,11 +58,11 @@ const HeroSection = () => {
           <div className="hidden md:block">
             <div className="relative">
               {/* 로고 이미지 사이드에 표시 */}
-              <div className="absolute -right-8 -top-8 w-28 h-28 bg-white rounded-full shadow-2xl flex items-center justify-center p-5 hero-pulse z-20">
+              <div className="absolute -right-8 -top-8 w-28 h-28 bg-white rounded-full shadow-2xl flex items-center justify-center p-3 hero-pulse z-20">
                 <img 
-                  src="/logo.png" 
+                  src="/v1-logo.png" 
                   alt="V1 로고" 
-                  className="w-16 h-16 object-contain" 
+                  className="w-20 h-20 object-contain" 
                 />
               </div>
               {/* 메인 카드 */}
