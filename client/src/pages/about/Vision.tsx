@@ -25,7 +25,7 @@ const Vision = () => {
             <div className="mb-16">
               <div className="rounded-lg overflow-hidden shadow-xl mb-8">
                 <img 
-                  src="/images/vision/communication.jpg" 
+                  src="/assets/images/network.jpg" 
                   alt="통신의 본질" 
                   className="w-full h-auto object-cover"
                 />
@@ -61,7 +61,7 @@ const Vision = () => {
               </h2>
               <div className="rounded-lg overflow-hidden shadow-xl mb-8">
                 <img 
-                  src="/images/vision/airplane.jpg" 
+                  src="/assets/images/airplane.jpg" 
                   alt="V1 - 비행기의 이륙 순간" 
                   className="w-full h-auto object-cover"
                 />
@@ -98,7 +98,7 @@ const Vision = () => {
               <div className="my-8 rounded-lg overflow-hidden shadow-xl">
                 <div className="relative">
                   <img 
-                    src="/images/vision/teamwork.jpg" 
+                    src="/assets/images/teamwork.jpg" 
                     alt="신뢰를 연결하는 통신회사" 
                     className="w-full h-auto object-cover"
                   />
@@ -131,7 +131,7 @@ const Vision = () => {
               <div className="my-8 rounded-lg overflow-hidden shadow-xl">
                 <div className="relative">
                   <img 
-                    src="/images/vision/service.jpg" 
+                    src="/assets/images/service.jpg" 
                     alt="현장 중심의 통신 파트너" 
                     className="w-full h-auto object-cover"
                   />
