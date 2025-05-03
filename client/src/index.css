@@ -191,3 +191,92 @@
   transform: translateX(8px);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
+
+/* 타임라인 애니메이션 */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.timeline-item {
+  opacity: 0;
+}
+
+.timeline-item.visible {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.timeline-dot {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-dot.visible {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.timeline-year {
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-year::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--background);
+  border-left: 2px solid var(--primary);
+  animation: typing 1s steps(20, end) forwards;
+}
+
+.timeline-year.visible::after {
+  width: 0;
+}
+
+.timeline-runway {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.05), transparent 20%, transparent 80%, rgba(0, 0, 0, 0.05));
+  position: relative;
+}
+
+.timeline-runway::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  top: 50%;
+  background: linear-gradient(to right, transparent, var(--primary) 20%, var(--primary) 80%, transparent);
+  box-shadow: 0 0 8px var(--primary-light);
+}
+
+.timeline-plane {
+  transition: transform 0.6s ease;
+}
+
+.timeline-plane:hover {
+  transform: translateY(-5px) scale(1.05);
+}
