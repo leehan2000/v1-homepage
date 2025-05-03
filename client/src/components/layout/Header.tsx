@@ -85,24 +85,30 @@ const Header = () => {
                   <NavigationMenuContent>
                     <ul className="grid w-[200px] gap-1 p-2">
                       <li>
-                        <Link href="/about/story">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-black",
+                        <NavigationMenuLink 
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-black",
                             isActive("/about/story") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/about/story">
                             시작 이야기
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/about/partnership">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink 
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-black",
                             isActive("/about/partnership") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/about/partnership">
                             동업 이야기
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
                         <Link href="/about/vision">
