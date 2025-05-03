@@ -23,11 +23,11 @@ const Vision = () => {
           <div className="max-w-5xl mx-auto">
             {/* 존재 이유 섹션 */}
             <div className="mb-16">
-              <div className="rounded-lg overflow-hidden shadow-xl mb-8">
+              <div className="rounded-lg overflow-hidden shadow-xl mb-8 bg-white p-10 flex justify-center items-center">
                 <img 
-                  src="https://images.unsplash.com/photo-1586880244406-8b78be2c2b59?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=500&q=80" 
-                  alt="브이원정보통신 존재 이유" 
-                  className="w-full h-auto object-cover"
+                  src="/images/vision/v1_logo.jpg" 
+                  alt="브이원정보통신 로고" 
+                  className="max-w-xs h-auto"
                 />
               </div>
               <div className="space-y-6 text-lg text-gray-700">
@@ -59,12 +59,17 @@ const Vision = () => {
                 <span className="text-4xl text-primary mr-3">✈️</span> 
                 브이원(V1), 도약을 택한 이름
               </h2>
-              <div className="rounded-lg overflow-hidden shadow-xl mb-8">
-                <img 
-                  src="https://images.unsplash.com/photo-1559060013-da2eb2a784d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=500&q=80" 
-                  alt="V1 도약을 택한 이름" 
-                  className="w-full h-auto object-cover"
-                />
+              <div className="rounded-lg overflow-hidden shadow-xl mb-8 bg-white p-10 flex justify-center items-center">
+                <div className="flex flex-col items-center">
+                  <img 
+                    src="/images/v1_airplane.jpg" 
+                    alt="V1 로고 - 비행기 이륙 순간" 
+                    className="max-w-xs h-auto mb-4"
+                  />
+                  <div className="text-2xl font-bold text-primary mt-4">
+                    V1 - 비행기의 이륙 순간
+                  </div>
+                </div>
               </div>
               <div className="space-y-6 text-lg text-gray-700">
                 <p>
@@ -95,10 +100,21 @@ const Vision = () => {
                 <span className="text-4xl text-primary mr-3">🎯</span> 
                 우리의 비전
               </h2>
-              <div className="my-8 p-8 rounded-lg bg-primary-50 text-center">
-                <p className="text-3xl text-primary font-bold">
-                  "신뢰를 연결하는 통신회사, 브이원"
-                </p>
+              <div className="my-8 rounded-lg overflow-hidden shadow-xl bg-white">
+                <div className="flex flex-col md:flex-row">
+                  <div className="md:w-1/3 p-8 flex justify-center items-center bg-primary-50">
+                    <img 
+                      src="/images/v1_vision.jpg" 
+                      alt="브이원정보통신 비전" 
+                      className="max-w-[150px] h-auto"
+                    />
+                  </div>
+                  <div className="md:w-2/3 p-8 flex justify-center items-center">
+                    <p className="text-3xl text-primary font-bold text-center">
+                      "신뢰를 연결하는 통신회사, 브이원"
+                    </p>
+                  </div>
+                </div>
               </div>
               <div className="space-y-6 text-lg text-gray-700">
                 <p>
@@ -119,10 +135,21 @@ const Vision = () => {
                 <span className="text-4xl text-primary mr-3">🛠</span> 
                 우리의 미션
               </h2>
-              <div className="my-8 p-8 rounded-lg bg-primary-50 text-center">
-                <p className="text-3xl text-primary font-bold">
-                  "작지만 강한, 현장 중심의 통신 파트너"
-                </p>
+              <div className="my-8 rounded-lg overflow-hidden shadow-xl bg-white">
+                <div className="flex flex-col md:flex-row">
+                  <div className="md:w-1/3 p-8 flex justify-center items-center bg-primary-50">
+                    <img 
+                      src="/images/v1_mission.jpg" 
+                      alt="브이원정보통신 미션" 
+                      className="max-w-[150px] h-auto"
+                    />
+                  </div>
+                  <div className="md:w-2/3 p-8 flex justify-center items-center">
+                    <p className="text-3xl text-primary font-bold text-center">
+                      "작지만 강한, 현장 중심의 통신 파트너"
+                    </p>
+                  </div>
+                </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <Card className="hover:shadow-lg transition-shadow duration-300">
