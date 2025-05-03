@@ -12,7 +12,20 @@ const HeroSection = () => {
       <div className="absolute inset-0 w-full h-full hero-bg-image">
         {/* 배경 이미지는 CSS로 설정 */}
         {/* 오버레이 그라데이션 - 최소한의 투명도만 유지 */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-black/5 to-black/10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(226,35,26,0.1),transparent_70%)]">
+          <div className="grid grid-cols-12 h-full">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="border-r border-white/5 h-full"></div>
+            ))}
+          </div>
+          <div className="grid grid-rows-12 h-full absolute inset-0">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="border-b border-white/5 w-full"></div>
+            ))}
+          </div>
+        </div>
       </div>
       
       {/* 콘텐츠 */}
@@ -54,11 +67,10 @@ const HeroSection = () => {
             <div className="relative">
               {/* 로고 이미지 사이드에 표시 */}
               <div className="absolute -right-8 -top-8 w-32 h-32 bg-white rounded-full shadow-2xl flex items-center justify-center p-2 hero-pulse z-20">
-                <img 
-                  src="/v1-logo.png" 
-                  alt="V1 로고" 
-                  className="w-24 h-24 object-contain" 
-                />
+                <div className="flex flex-col items-center justify-center w-24 h-24">
+                  <div className="text-lgred font-bold text-3xl">V1</div>
+                  <div className="text-gray-700 text-xs text-center leading-tight">INFORMATION &<br/>COMMUNICATION</div>
+                </div>
               </div>
               {/* 메인 카드 */}
               <div className="rounded-lg overflow-hidden shadow-2xl shadow-lgred/20 border-t-4 border-lgred bg-white/5 backdrop-blur-sm p-4 hero-float">

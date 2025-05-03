@@ -328,12 +328,38 @@ html, body {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* 히어로 섹션 파일 경로 */
+/* 히어로 섹션 배경 그라데이션 - LG U+ 스타일 */
 .hero-bg-image {
-  background-image: url('/images/v1-office.jpg');
-  background-size: cover;
-  background-position: center center;
-  filter: brightness(1.1) contrast(1.05);
+  background: linear-gradient(135deg, #1A1A1A 0%, #333333 40%, #444444 70%, #555555 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-image::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  z-index: 0;
+  background: radial-gradient(ellipse at center, rgba(226, 35, 26, 0.15) 0%, rgba(226, 35, 26, 0) 70%);
+  animation: pulse-bg 15s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-bg {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
 }
 
 /* 히어로 섹션 애니메이션 */
