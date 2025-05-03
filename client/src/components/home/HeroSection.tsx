@@ -65,7 +65,7 @@ const HeroSection = () => {
       <div className="absolute bottom-1/3 right-10 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl animate-pulse opacity-70"></div>
       
       {/* 물결형 하단 처리 - 기본 검은색 */}
-      <div className="absolute bottom-0 left-0 w-full h-32 z-20" style={{ overflow: 'hidden' }}>
+      <div className="absolute bottom-0 left-0 w-full h-32 z-20" style={{ overflow: 'hidden', transform: 'translateY(1px)' }}>
         <svg
           className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +82,7 @@ const HeroSection = () => {
       </div>
       
       {/* 물결 레이어 1 - 열정적인 빨간색 */}
-      <div className="absolute bottom-0 left-0 w-full h-24 z-20" style={{ overflow: 'hidden' }}>
+      <div className="absolute bottom-0 left-0 w-full h-24 z-20" style={{ overflow: 'hidden', transform: 'translateY(2px)' }}>
         <svg
           className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
@@ -91,14 +91,14 @@ const HeroSection = () => {
           style={{ width: '300%', animation: 'wave 8s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite alternate', transform: 'scale(1.1)' }}
         >
           <path 
-            fill="rgba(226, 35, 26, 0.25)" 
+            fill="rgba(226, 35, 26, 0.2)" 
             d="M0,160L34.3,181.3C68.6,203,137,245,206,261.3C274.3,277,343,267,411,234.7C480,203,549,149,617,149.3C685.7,149,754,203,823,208C891.4,213,960,171,1029,138.7C1097.1,107,1166,85,1234,106.7C1302.9,128,1371,192,1406,224L1440,256L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
           </path>
         </svg>
       </div>
       
       {/* 물결 레이어 2 - 파란색 */}
-      <div className="absolute bottom-0 left-0 w-full h-28 z-20" style={{ overflow: 'hidden' }}>
+      <div className="absolute bottom-0 left-0 w-full h-28 z-20" style={{ overflow: 'hidden', transform: 'translateY(3px)' }}>
         <svg
           className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ const HeroSection = () => {
       </div>
       
       {/* 물결 레이어 3 - 반짝임 효과 */}
-      <div className="absolute bottom-0 left-0 w-full h-20 z-20" style={{ overflow: 'hidden' }}>
+      <div className="absolute bottom-0 left-0 w-full h-20 z-20" style={{ overflow: 'hidden', transform: 'translateY(4px)' }}>
         <svg
           className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
@@ -130,7 +130,7 @@ const HeroSection = () => {
       </div>
 
       {/* 물결 레이어 4 - 초록색 */}
-      <div className="absolute bottom-0 left-0 w-full h-22 z-20" style={{ overflow: 'hidden' }}>
+      <div className="absolute bottom-0 left-0 w-full h-22 z-20" style={{ overflow: 'hidden', transform: 'translateY(5px)' }}>
         <svg
           className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +146,7 @@ const HeroSection = () => {
       </div>
 
       {/* 물결 레이어 5 - 보라색 */}
-      <div className="absolute bottom-0 left-0 w-full h-18 z-20" style={{ overflow: 'hidden' }}>
+      <div className="absolute bottom-0 left-0 w-full h-18 z-20" style={{ overflow: 'hidden', transform: 'translateY(6px)' }}>
         <svg
           className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +162,7 @@ const HeroSection = () => {
       </div>
 
       {/* 물결 레이어 6 - 타퀘이즈 */}
-      <div className="absolute bottom-0 left-0 w-full h-16 z-20" style={{ overflow: 'hidden' }}>
+      <div className="absolute bottom-0 left-0 w-full h-16 z-20" style={{ overflow: 'hidden', transform: 'translateY(7px)' }}>
         <svg
           className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"

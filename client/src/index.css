@@ -166,7 +166,7 @@ html, body {
   .animate-wave {
     animation: wave 25s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
     transform-origin: 0% 50%;
-    width: 200%;
+    width: 300%;
   }
   
   .logo-wrapper {
@@ -322,10 +322,10 @@ html, body {
 
 @keyframes wave {
   0% { transform: translateX(0) translateZ(0) scaleY(1.05); filter: brightness(1.1); }
-  25% { transform: translateX(-15%) translateZ(0) scaleY(0.95); filter: brightness(0.9); }
-  50% { transform: translateX(-25%) translateZ(0) scaleY(1.1); filter: brightness(1.2); }
-  75% { transform: translateX(-35%) translateZ(0) scaleY(0.95); filter: brightness(0.9); }
-  100% { transform: translateX(-50%) translateZ(0) scaleY(1.05); filter: brightness(1.1); }
+  25% { transform: translateX(-10%) translateZ(0) scaleY(0.95); filter: brightness(0.9); }
+  50% { transform: translateX(-20%) translateZ(0) scaleY(1.1); filter: brightness(1.2); }
+  75% { transform: translateX(-30%) translateZ(0) scaleY(0.95); filter: brightness(0.9); }
+  100% { transform: translateX(-33.33%) translateZ(0) scaleY(1.05); filter: brightness(1.1); }
 }
 
 @keyframes shine {
