@@ -11,9 +11,9 @@ const HeroSection = () => {
       {/* 배경 이미지 */}
       <div className="absolute inset-0 w-full h-full">
         <img 
-          src="/images/v1-office.jpg" 
+          src="/v1-office.jpg" 
           alt="V1 브이원정보통신 사무실" 
-          className="w-full h-full object-cover filter brightness-125 contrast-115 saturate-110"
+          className="w-full h-full object-cover filter brightness-110 contrast-105"
           loading="eager"
         />
         {/* 오버레이 그라데이션 - 최소한의 투명도만 유지 */}
