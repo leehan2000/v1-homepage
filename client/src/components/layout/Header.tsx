@@ -226,10 +226,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/services/solutions") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/services/solutions", isActive("/services/solutions"))}
                         >
                           <Link href="/services/solutions">
                             업종별 제안
@@ -246,14 +243,11 @@ const Header = () => {
                     진행 사례
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="flex flex-row space-x-6 p-4 min-w-[550px]">
+                    <ul className={subMenuUlStyle}>
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/cases/clients") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/cases/clients", isActive("/cases/clients"))}
                         >
                           <Link href="/cases/clients">
                             고객사 / 도입사례
@@ -263,10 +257,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/cases/reviews") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/cases/reviews", isActive("/cases/reviews"))}
                         >
                           <Link href="/cases/reviews">
                             설치 후기
@@ -276,10 +267,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/cases/field-stories") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/cases/field-stories", isActive("/cases/field-stories"))}
                         >
                           <Link href="/cases/field-stories">
                             현장 이야기
@@ -296,14 +284,11 @@ const Header = () => {
                     공식 인증 / 수상
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="flex flex-row space-x-6 p-4 min-w-[550px]">
+                    <ul className={subMenuUlStyle}>
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/certifications/partners") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/certifications/partners", isActive("/certifications/partners"))}
                         >
                           <Link href="/certifications/partners">
                             파트너 인증
@@ -313,10 +298,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/certifications/awards") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/certifications/awards", isActive("/certifications/awards"))}
                         >
                           <Link href="/certifications/awards">
                             계약서 / 상장 / 감사패 이미지
@@ -337,10 +319,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/news/content") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/news/content", isActive("/news/content"))}
                         >
                           <Link href="/news/content">
                             정보 콘텐츠
@@ -350,10 +329,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/news/customer-reviews") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/news/customer-reviews", isActive("/news/customer-reviews"))}
                         >
                           <Link href="/news/customer-reviews">
                             고객 후기
@@ -363,10 +339,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/news/daily") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/news/daily", isActive("/news/daily"))}
                         >
                           <Link href="/news/daily">
                             브이원 일상
@@ -376,10 +349,7 @@ const Header = () => {
                       <li>
                         <NavigationMenuLink
                           asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                            isActive("/news/blog") && "bg-accent/50"
-                          )}
+                          className={applySubMenuStyle("/news/blog", isActive("/news/blog"))}
                         >
                           <Link href="/news/blog">
                             블로그 바로가기

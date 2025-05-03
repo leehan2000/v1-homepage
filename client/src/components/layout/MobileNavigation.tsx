@@ -18,10 +18,8 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
     style={{ top: '4rem' }}
     >
       <div className="px-2 pt-2 pb-3 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
-        <Link href="/">
-          <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-             onClick={onClose}>HOME</a>
-        </Link>
+        <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+             onClick={onClose}>HOME</Link>
         
         <Accordion type="single" collapsible>
           {/* 브이원의 이야기 */}
@@ -31,10 +29,8 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             </AccordionTrigger>
             <AccordionContent>
               <div className="pl-4 space-y-1">
-                <Link href="/about/story">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>시작 이야기</a>
-                </Link>
+                <Link href="/about/story" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>시작 이야기</Link>
                 <Link href="/about/partnership">
                   <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
                      onClick={onClose}>동업 이야기</a>
