@@ -50,31 +50,18 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/">
-            <a className="flex items-center">
-              <div className="flex items-center">
-                <span className="text-primary font-bold text-2xl">V1</span>
-                <span className="ml-2 text-base font-medium">INFORMATION &amp; COMMUNICATION</span>
-              </div>
-            </a>
+          <Link href="/" className="flex-shrink-0">
+            <img 
+              src="/logo.png" 
+              alt="V1 Information Communications" 
+              className="h-10 md:h-11 w-auto" 
+            />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:block">
+          {/* Navigation */}
+          <nav className="hidden md:flex items-center space-x-1">
             <NavigationMenu>
               <NavigationMenuList>
-                {/* HOME */}
-                <NavigationMenuItem>
-                  <Link href="/">
-                    <a className={cn(
-                      "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none",
-                      isActive("/") && "bg-accent/50"
-                    )}>
-                      HOME
-                    </a>
-                  </Link>
-                </NavigationMenuItem>
-
                 {/* 브이원의 이야기 */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className={isActive("/about") ? "bg-accent/50" : ""}>
@@ -83,54 +70,69 @@ const Header = () => {
                   <NavigationMenuContent>
                     <ul className="flex flex-row space-x-6 p-4 min-w-[600px]">
                       <li>
-                        <Link href="/about/story">
-                          <NavigationMenuLink className={cn(
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
                             "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/story") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/about/story">
                             시작 이야기
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/about/partnership">
-                          <NavigationMenuLink className={cn(
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
                             "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/partnership") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/about/partnership">
                             동업 이야기
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/about/vision">
-                          <NavigationMenuLink className={cn(
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
                             "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/vision") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/about/vision">
                             비전 & 미션
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/about/ceo">
-                          <NavigationMenuLink className={cn(
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
                             "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/ceo") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/about/ceo">
                             대표 인사말
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/about/history">
-                          <NavigationMenuLink className={cn(
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
                             "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/history") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/about/history">
                             연혁 (History)
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                     </ul>
                   </NavigationMenuContent>
@@ -142,36 +144,45 @@ const Header = () => {
                     사람들
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-1 p-2">
+                    <ul className="flex flex-row space-x-6 p-4 min-w-[500px]">
                       <li>
-                        <Link href="/people/employees">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/people/employees") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/people/employees">
                             직원 소개
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/people/philosophy">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/people/philosophy") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/people/philosophy">
                             일하는 철학
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/people/stories">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/people/stories") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/people/stories">
                             현장 이야기
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                     </ul>
                   </NavigationMenuContent>
@@ -183,46 +194,58 @@ const Header = () => {
                     사업분야
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-1 p-2">
+                    <ul className="flex flex-row space-x-6 p-4 min-w-[600px]">
                       <li>
-                        <Link href="/services/wireless">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/services/wireless") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/services/wireless">
                             무선통신
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/services/wired">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/services/wired") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/services/wired">
                             유선통신
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/services/vehicle-iot">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/services/vehicle-iot") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/services/vehicle-iot">
                             차량관제 / IoT
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/services/solutions">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/services/solutions") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/services/solutions">
                             업종별 제안
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                     </ul>
                   </NavigationMenuContent>
@@ -234,36 +257,45 @@ const Header = () => {
                     진행 사례
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-1 p-2">
+                    <ul className="flex flex-row space-x-6 p-4 min-w-[550px]">
                       <li>
-                        <Link href="/cases/clients">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/cases/clients") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/cases/clients">
                             고객사 / 도입사례
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/cases/reviews">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/cases/reviews") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/cases/reviews">
                             설치 후기
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/cases/field-stories">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/cases/field-stories") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/cases/field-stories">
                             현장 이야기
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                     </ul>
                   </NavigationMenuContent>
@@ -275,26 +307,32 @@ const Header = () => {
                     공식 인증 / 수상
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="flex flex-row space-x-4 p-4 min-w-[400px]">
+                    <ul className="flex flex-row space-x-6 p-4 min-w-[550px]">
                       <li>
-                        <Link href="/certifications/partners">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/certifications/partners") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/certifications/partners">
                             파트너 인증
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/certifications/awards">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/certifications/awards") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/certifications/awards">
                             계약서 / 상장 / 감사패 이미지
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                     </ul>
                   </NavigationMenuContent>
@@ -306,46 +344,58 @@ const Header = () => {
                     소식 & 블로그
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-1 p-2">
+                    <ul className="flex flex-row space-x-6 p-4 min-w-[650px]">
                       <li>
-                        <Link href="/news/content">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/news/content") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/news/content">
                             정보 콘텐츠
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/news/customer-reviews">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/news/customer-reviews") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/news/customer-reviews">
                             고객 후기
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/news/daily">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/news/daily") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/news/daily">
                             브이원 일상
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                       <li>
-                        <Link href="/news/blog">
-                          <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                        <NavigationMenuLink
+                          asChild
+                          className={cn(
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/news/blog") && "bg-accent/50"
-                          )}>
+                          )}
+                        >
+                          <Link href="/news/blog">
                             블로그 바로가기
-                          </NavigationMenuLink>
-                        </Link>
+                          </Link>
+                        </NavigationMenuLink>
                       </li>
                     </ul>
                   </NavigationMenuContent>
@@ -353,15 +403,15 @@ const Header = () => {
 
                 {/* 상담신청 */}
                 <NavigationMenuItem>
-                  <Link href="/contact">
-                    <NavigationMenuLink className={cn(
-                      navigationMenuTriggerStyle,
-                      isActive("/contact") && "bg-accent/50",
-                      "bg-primary text-white hover:bg-primary-600 hover:text-white"
-                    )}>
+                  <NavigationMenuLink asChild className={cn(
+                    navigationMenuTriggerStyle,
+                    isActive("/contact") && "bg-accent/50",
+                    "bg-primary text-white hover:bg-primary-600 hover:text-white"
+                  )}>
+                    <Link href="/contact">
                       상담신청
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
