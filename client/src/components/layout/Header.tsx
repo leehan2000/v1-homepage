@@ -67,7 +67,7 @@ const Header = () => {
             <img 
               src="/logo.png" 
               alt="V1 Information Communications" 
-              className="h-10 md:h-11 w-auto" 
+              className="h-10 md:h-12 w-auto" 
             />
           </Link>
 
