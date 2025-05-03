@@ -11,7 +11,7 @@ const HeroSection = () => {
       {/* 배경 이미지 */}
       <div className="absolute inset-0 w-full h-full">
         <img 
-          src="/v1-office.jpg" 
+          src="/images/v1-office.jpg" 
           alt="V1 브이원정보통신 사무실" 
           className="w-full h-full object-cover filter brightness-110 contrast-105"
           loading="eager"
@@ -60,7 +60,7 @@ const HeroSection = () => {
               {/* 로고 이미지 사이드에 표시 */}
               <div className="absolute -right-8 -top-8 w-28 h-28 bg-white rounded-full shadow-2xl flex items-center justify-center p-5 hero-pulse z-20">
                 <img 
-                  src="/favicon.png" 
+                  src="/logo.png" 
                   alt="V1 로고" 
                   className="w-16 h-16 object-contain" 
                 />
