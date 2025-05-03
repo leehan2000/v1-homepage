@@ -24,11 +24,9 @@ const Vision = () => {
             {/* 존재 이유 섹션 */}
             <div className="mb-16">
               <div className="rounded-lg overflow-hidden shadow-xl mb-8">
-                <img 
-                  src="/assets/images/network.jpg" 
-                  alt="통신의 본질" 
-                  className="w-full h-auto object-cover"
-                />
+                <div className="h-64 bg-gradient-to-r from-blue-100 to-blue-300 flex items-center justify-center">
+                  <span className="text-3xl font-bold text-primary">통신의 본질</span>
+                </div>
               </div>
               <div className="space-y-6 text-lg text-gray-700">
                 <p>
@@ -60,11 +58,9 @@ const Vision = () => {
                 브이원(V1), 도약을 택한 이름
               </h2>
               <div className="rounded-lg overflow-hidden shadow-xl mb-8">
-                <img 
-                  src="/assets/images/airplane.jpg" 
-                  alt="V1 - 비행기의 이륙 순간" 
-                  className="w-full h-auto object-cover"
-                />
+                <div className="h-64 bg-gradient-to-r from-blue-200 to-blue-400 flex items-center justify-center">
+                  <span className="text-3xl font-bold text-white">V1 - 비행기의 이륙 순간</span>
+                </div>
               </div>
               <div className="space-y-6 text-lg text-gray-700">
                 <p>
@@ -96,17 +92,10 @@ const Vision = () => {
                 우리의 비전
               </h2>
               <div className="my-8 rounded-lg overflow-hidden shadow-xl">
-                <div className="relative">
-                  <img 
-                    src="/assets/images/teamwork.jpg" 
-                    alt="신뢰를 연결하는 통신회사" 
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-primary-900 bg-opacity-50 flex justify-center items-center">
-                    <p className="text-3xl text-white font-bold text-center px-4 py-2 rounded-lg">
-                      "신뢰를 연결하는 통신회사, 브이원"
-                    </p>
-                  </div>
+                <div className="h-64 bg-gradient-to-r from-primary-100 to-primary-500 flex items-center justify-center">
+                  <p className="text-3xl text-white font-bold text-center px-4 py-2 rounded-lg">
+                    "신뢰를 연결하는 통신회사, 브이원"
+                  </p>
                 </div>
               </div>
               <div className="space-y-6 text-lg text-gray-700">
@@ -129,17 +118,10 @@ const Vision = () => {
                 우리의 미션
               </h2>
               <div className="my-8 rounded-lg overflow-hidden shadow-xl">
-                <div className="relative">
-                  <img 
-                    src="/assets/images/service.jpg" 
-                    alt="현장 중심의 통신 파트너" 
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute inset-0 bg-primary-900 bg-opacity-50 flex justify-center items-center">
-                    <p className="text-3xl text-white font-bold text-center px-4 py-2 rounded-lg">
-                      "작지만 강한, 현장 중심의 통신 파트너"
-                    </p>
-                  </div>
+                <div className="h-64 bg-gradient-to-r from-blue-400 to-primary-500 flex items-center justify-center">
+                  <p className="text-3xl text-white font-bold text-center px-4 py-2 rounded-lg">
+                    "작지만 강한, 현장 중심의 통신 파트너"
+                  </p>
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
