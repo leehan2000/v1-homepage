@@ -67,11 +67,11 @@ const HeroSection = () => {
       {/* 물결형 하단 처리 - 기본 검은색 */}
       <div className="absolute bottom-0 left-0 w-full h-32 z-20" style={{ overflow: 'hidden' }}>
         <svg
-          className="absolute bottom-0 w-full h-full animate-wave"
+          className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          style={{ animationDuration: '12s', animationIterationCount: 'infinite', transform: 'scale(1.2)' }}
+          style={{ animationDuration: '12s', animationIterationCount: 'infinite', transform: 'scale(1.2)', width: '300%', animation: 'wave 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite' }}
         >
           <path 
             fill="#1A1A1A" 
@@ -84,11 +84,11 @@ const HeroSection = () => {
       {/* 물결 레이어 1 - 열정적인 빨간색 */}
       <div className="absolute bottom-0 left-0 w-full h-24 z-20" style={{ overflow: 'hidden' }}>
         <svg
-          className="absolute bottom-0 w-full h-full animate-wave"
+          className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          style={{ animationDuration: '8s', animationIterationCount: 'infinite', animationDirection: 'alternate', transform: 'scale(1.1)' }}
+          style={{ width: '300%', animation: 'wave 8s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite alternate', transform: 'scale(1.1)' }}
         >
           <path 
             fill="rgba(226, 35, 26, 0.25)" 
@@ -100,11 +100,11 @@ const HeroSection = () => {
       {/* 물결 레이어 2 - 파란색 */}
       <div className="absolute bottom-0 left-0 w-full h-28 z-20" style={{ overflow: 'hidden' }}>
         <svg
-          className="absolute bottom-0 w-full h-full animate-wave"
+          className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          style={{ animationDuration: '15s', animationIterationCount: 'infinite', transform: 'scale(1.3)' }}
+          style={{ width: '300%', animation: 'wave 15s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite', transform: 'scale(1.3)' }}
         >
           <path 
             fill="rgba(33, 150, 243, 0.15)" 
@@ -116,11 +116,11 @@ const HeroSection = () => {
       {/* 물결 레이어 3 - 반짝임 효과 */}
       <div className="absolute bottom-0 left-0 w-full h-20 z-20" style={{ overflow: 'hidden' }}>
         <svg
-          className="absolute bottom-0 w-full h-full animate-wave"
+          className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          style={{ animationDuration: '20s', animationIterationCount: 'infinite', animationDirection: 'reverse' }}
+          style={{ width: '300%', animation: 'wave 20s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite reverse' }}
         >
           <path 
             fill="rgba(255, 255, 255, 0.1)" 
@@ -132,11 +132,11 @@ const HeroSection = () => {
       {/* 물결 레이어 4 - 초록색 */}
       <div className="absolute bottom-0 left-0 w-full h-22 z-20" style={{ overflow: 'hidden' }}>
         <svg
-          className="absolute bottom-0 w-full h-full animate-wave"
+          className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          style={{ animationDuration: '17s', animationIterationCount: 'infinite', transform: 'scale(1.15)' }}
+          style={{ width: '300%', animation: 'wave 17s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite', transform: 'scale(1.15)' }}
         >
           <path 
             fill="rgba(5, 150, 105, 0.1)" 
@@ -148,11 +148,11 @@ const HeroSection = () => {
       {/* 물결 레이어 5 - 보라색 */}
       <div className="absolute bottom-0 left-0 w-full h-18 z-20" style={{ overflow: 'hidden' }}>
         <svg
-          className="absolute bottom-0 w-full h-full animate-wave"
+          className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          style={{ animationDuration: '22s', animationIterationCount: 'infinite', animationDirection: 'reverse', transform: 'scale(1.25)' }}
+          style={{ width: '300%', animation: 'wave 22s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite reverse', transform: 'scale(1.25)' }}
         >
           <path 
             fill="rgba(124, 58, 237, 0.08)" 
@@ -164,11 +164,11 @@ const HeroSection = () => {
       {/* 물결 레이어 6 - 타퀘이즈 */}
       <div className="absolute bottom-0 left-0 w-full h-16 z-20" style={{ overflow: 'hidden' }}>
         <svg
-          className="absolute bottom-0 w-full h-full animate-wave"
+          className="absolute bottom-0 w-full h-full"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          style={{ animationDuration: '25s', animationIterationCount: 'infinite', transform: 'scale(1.2)' }}
+          style={{ width: '300%', animation: 'wave 25s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite', transform: 'scale(1.2)' }}
         >
           <path 
             fill="rgba(14, 165, 233, 0.07)" 
