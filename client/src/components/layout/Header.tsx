@@ -8,8 +8,7 @@ import {
   NavigationMenuItem, 
   NavigationMenuLink, 
   NavigationMenuList, 
-  NavigationMenuTrigger,
-  NavigationMenuViewport
+  NavigationMenuTrigger 
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 
@@ -85,30 +84,24 @@ const Header = () => {
                   <NavigationMenuContent>
                     <ul className="grid w-[200px] gap-1 p-2">
                       <li>
-                        <NavigationMenuLink 
-                          asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-black",
+                        <Link href="/about/story">
+                          <NavigationMenuLink className={cn(
+                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/story") && "bg-accent/50"
-                          )}
-                        >
-                          <Link href="/about/story">
+                          )}>
                             시작 이야기
-                          </Link>
-                        </NavigationMenuLink>
+                          </NavigationMenuLink>
+                        </Link>
                       </li>
                       <li>
-                        <NavigationMenuLink 
-                          asChild
-                          className={cn(
-                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-black",
+                        <Link href="/about/partnership">
+                          <NavigationMenuLink className={cn(
+                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/partnership") && "bg-accent/50"
-                          )}
-                        >
-                          <Link href="/about/partnership">
+                          )}>
                             동업 이야기
-                          </Link>
-                        </NavigationMenuLink>
+                          </NavigationMenuLink>
+                        </Link>
                       </li>
                       <li>
                         <Link href="/about/vision">
