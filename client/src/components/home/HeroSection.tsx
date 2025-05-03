@@ -37,7 +37,7 @@ const HeroSection = () => {
               <div className="flex flex-wrap gap-4">
                 <Button 
                   size="lg" 
-                  className="bg-lgred hover:bg-lgred_dark text-white font-medium rounded-md px-6 py-3 transition-all duration-300 shadow-lg shadow-lgred/30"
+                  className="bg-lgred hover:bg-lgred_dark text-white font-bold rounded-md px-6 py-3 transition-all duration-300 shadow-lg shadow-lgred/30"
                   onClick={() => scrollToElement("services")}
                 >
                   서비스 알아보기
@@ -46,7 +46,7 @@ const HeroSection = () => {
                   <Button 
                     size="lg" 
                     variant="outline" 
-                    className="border-lgred text-white hover:bg-lgred/20 font-medium rounded-md px-6 py-3 transition-all duration-300 shadow-lg"
+                    className="border-2 border-lgred text-white bg-black/50 hover:bg-lgred/20 font-bold rounded-md px-6 py-3 transition-all duration-300 shadow-lg"
                   >
                     상담 문의하기
                   </Button>
