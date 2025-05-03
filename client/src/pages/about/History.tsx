@@ -189,12 +189,22 @@ const History = () => {
         <meta name="description" content="2003년부터 현재까지 브이원정보통신의 성장과 발전 과정을 확인하세요. 끊임없는 혁신과 도전으로 통신 솔루션 분야를 선도해 온 브이원정보통신의 발자취입니다." />
       </Helmet>
       
-      <div className="bg-gradient-to-br from-blue-50 to-blue-100 py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">연혁 <span className="text-3xl md:text-4xl opacity-60">(History)</span></h1>
-          <p className="text-lg md:text-xl text-center max-w-3xl mx-auto text-gray-700 tracking-wide">
+      <div className="bg-gradient-to-b from-blue-50 via-blue-100/70 to-blue-50/30 py-20 relative">
+        <div className="absolute inset-0 opacity-10 bg-grid-pattern pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent pointer-events-none"></div>
+        
+        <div className="container mx-auto px-4 relative">
+          <div className="relative inline-block mx-auto">
+            <span className="absolute -left-3 -top-3 text-6xl text-primary/10 font-bold">V1</span>
+            <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 relative">연혁 <span className="text-3xl md:text-4xl text-primary/70">(History)</span></h1>
+          </div>
+          
+          <p className="text-lg md:text-xl text-center max-w-3xl mx-auto text-gray-700 tracking-wide leading-relaxed">
             2003년부터 이어온 브이원정보통신의 발자취와<br/>
-            <span className="text-primary font-semibold">"이륙 직전의 순간"</span>을 향한 도전의 여정
+            <span className="text-primary font-semibold relative inline-block">
+              "이륙 직전의 순간"
+              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/30"></span>
+            </span>을 향한 도전의 여정
           </p>
         </div>
       </div>
@@ -202,21 +212,28 @@ const History = () => {
       {/* 활주로 메타포 - 이륙 직전의 순간 */}
       <div className="py-8 bg-gradient-to-b from-blue-50 to-transparent">
         <div className="container mx-auto px-4">
-          <div className="relative h-14 timeline-runway flex items-center justify-center mb-16">
+          <div className="relative h-16 timeline-runway flex items-center justify-center mb-16 rounded-full overflow-hidden shadow-sm">
+            <div className="absolute left-0 w-full h-full bg-gradient-to-r from-blue-100/30 via-transparent to-blue-100/30"></div>
+            <div className="absolute w-full h-full bg-[length:20px_20px] opacity-10"
+                 style={{ backgroundImage: 'repeating-linear-gradient(0deg, #0071e3, #0071e3 1px, transparent 1px, transparent 10px)' }}></div>
             <div className="absolute right-0 transform -translate-y-1/2 timeline-plane">
-              <Plane className="h-12 w-12 text-primary rotate-45" />
+              <Plane className="h-12 w-12 text-primary rotate-45 drop-shadow-md" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="py-16">
-        <div className="container mx-auto px-4">
+      <div className="py-16 relative">
+        {/* 배경 효과 */}
+        <div className="absolute inset-0 opacity-5 bg-grid-pattern pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/50 to-transparent pointer-events-none"></div>
+
+        <div className="container mx-auto px-4 relative">
           <div className="max-w-5xl mx-auto">
             {/* 수직 타임라인 */}
             <div className="relative">
               {/* 중앙 선 */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-blue-100 via-blue-400 to-primary"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-blue-100 via-blue-400 to-primary shadow-lg"></div>
               
               {timelineEvents.map((event, index) => (
                 <div 
@@ -228,7 +245,7 @@ const History = () => {
                 >
                   {/* 모바일 뷰 */}
                   <div className="md:hidden">
-                    <Card className={`${event.highlight ? 'shadow-md hover:shadow-lg border-l-4 border-primary' : 'hover:shadow-md'} transition-all duration-500`}>
+                    <Card className={`${event.highlight ? 'shadow-md border-l-4 border-primary' : ''} card-hover-effect rounded-lg overflow-hidden backdrop-blur-sm bg-white/95`}>
                       <CardContent className="p-6">
                         <div className="flex items-center mb-4">
                           <div className={`${getThemeColor(event.theme)} text-white font-medium py-1 px-3 rounded-r-md rounded-tl-md timeline-year ${visibleItems.includes(index) ? 'visible' : ''}`}>
@@ -249,8 +266,8 @@ const History = () => {
                       <div className={`w-5/12 ${index % 2 === 1 && 'order-1'}`}>
                         <Card 
                           className={`
-                            ${event.highlight ? 'shadow-md hover:shadow-lg border-l-4 border-primary' : 'hover:shadow-md'}
-                            transition-all duration-500
+                            ${event.highlight ? 'shadow-md border-l-4 border-primary' : ''}
+                            card-hover-effect rounded-lg overflow-hidden backdrop-blur-sm bg-white/95
                           `}
                         >
                           <CardContent className="p-6">
@@ -275,18 +292,36 @@ const History = () => {
               ))}
             </div>
             
-            <div className="mt-20 text-center px-4 py-10 bg-gradient-to-br from-blue-50 to-transparent rounded-xl">
-              <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4">
-                신뢰 위에서, 연결 너머로
-              </h3>
-              <p className="text-lg text-gray-700 mt-4 tracking-wide leading-relaxed">
-                브이원정보통신은 <span className="font-semibold">신뢰</span>와 <span className="font-semibold">사람</span>, <span className="font-semibold">연결</span>을 바탕으로<br className="hidden md:block"/>
-                더 높은 <span className="font-semibold">도약</span>을 향해 나아가겠습니다.
-              </p>
-              <div className="mt-8 inline-block">
-                <div className="relative overflow-hidden group">
-                  <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-primary to-transparent group-hover:animate-pulse"></div>
-                  <Plane className="h-8 w-8 text-primary mx-auto mt-4 transform rotate-[35deg] group-hover:translate-y-[-4px] transition-transform duration-500"/>
+            <div className="mt-20 text-center px-8 py-16 bg-white/40 backdrop-blur-sm border border-blue-100/50 rounded-2xl shadow-lg relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-white/50 to-blue-50/50 pointer-events-none"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-primary/5 blur-xl pointer-events-none"></div>
+              <div className="absolute -bottom-8 -left-8 w-28 h-28 rounded-full bg-primary/5 blur-xl pointer-events-none"></div>
+              
+              <div className="relative">
+                <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6 tracking-wide">
+                  <span className="inline-block relative">
+                    신뢰 위에서, 연결 너머로
+                    <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"></span>
+                  </span>
+                </h3>
+                
+                <p className="text-lg text-gray-700 mt-6 tracking-wide leading-relaxed">
+                  브이원정보통신은 
+                  <span className="font-semibold text-primary/90 mx-1">신뢰</span>와 
+                  <span className="font-semibold text-primary/90 mx-1">사람</span>, 
+                  <span className="font-semibold text-primary/90 mx-1">연결</span>을 바탕으로<br className="hidden md:block"/>
+                  더 높은 <span className="font-semibold text-primary/90 mx-1">도약</span>을 향해 나아가겠습니다.
+                </p>
+                
+                <div className="mt-10 inline-block">
+                  <div className="relative overflow-hidden group">
+                    <div className="h-0.5 w-[150px] mx-auto bg-gradient-to-r from-transparent via-primary to-transparent group-hover:animate-pulse"></div>
+                    <div className="relative">
+                      <Plane className="h-8 w-8 text-primary mx-auto mt-4 transform rotate-[35deg] group-hover:translate-y-[-8px] transition-transform duration-700"/>
+                      <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-primary/5 blur-lg group-hover:opacity-100 opacity-0 transition-opacity duration-700"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

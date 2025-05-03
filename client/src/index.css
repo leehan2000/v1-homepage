@@ -220,20 +220,37 @@
 
 .timeline-item {
   opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .timeline-item.visible {
-  animation: fadeUp 0.8s ease forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .timeline-dot {
   opacity: 0;
   transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: scale(0);
 }
 
 .timeline-dot.visible {
   opacity: 1;
   transform: scale(1.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 113, 227, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(0, 113, 227, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 113, 227, 0);
+  }
 }
 
 .timeline-year {
@@ -279,4 +296,20 @@
 
 .timeline-plane:hover {
   transform: translateY(-5px) scale(1.05);
+}
+
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(0, 113, 227, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 113, 227, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.card-hover-effect {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
 }
