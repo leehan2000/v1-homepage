@@ -65,7 +65,6 @@ const Header = () => {
           <nav className="hidden md:block">
             <NavigationMenu>
               <NavigationMenuList>
-                <NavigationMenuViewport />
                 {/* HOME */}
                 <NavigationMenuItem>
                   <Link href="/">
