@@ -9,14 +9,26 @@ const HeroSection = () => {
       id="hero" 
       className="relative bg-black min-h-[600px] flex items-center border-b-4 border-lgred overflow-hidden"
     >
-      {/* 배경 이미지 */}
+      {/* 배경 이미지 - 햇살에 빛나는 효과 */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/60 via-black/30 to-lgred/40 z-10"></div>
-        <div className="absolute inset-0 mix-blend-color-dodge bg-gradient-to-b from-blue-500/10 to-transparent z-5"></div>
+        {/* 그라데이션 오버레이 */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 via-transparent to-transparent z-10"></div>
+        
+        {/* 햇살 빛 효과 - 중앙 */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.4),transparent_60%)] z-20"></div>
+        
+        {/* 햇살 빛 효과 - 오른쪽 */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_85%_40%,rgba(255,220,150,0.3),transparent_50%)] z-20"></div>
+        
+        {/* 전체 색조 효과 */}
+        <div className="absolute inset-0 mix-blend-soft-light bg-gradient-to-b from-yellow-400/20 via-transparent to-blue-500/10 z-15"></div>
+        
+        {/* 빛 반사 효과 */}
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.05)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.05)_50%,rgba(255,255,255,0.05)_75%,transparent_75%)] bg-[length:100px_100px] mix-blend-overlay opacity-40 z-10"></div>
         <img 
           src="/images/v1_office.jpg" 
           alt="V1 사무실 전경" 
-          className="w-full h-full object-cover contrast-125 saturate-[1.2] brightness-110"
+          className="w-full h-full object-cover contrast-[1.35] saturate-[1.4] brightness-[1.35] hue-rotate-[0deg]"
         />
       </div>
       
