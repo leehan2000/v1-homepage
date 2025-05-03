@@ -95,7 +95,7 @@ function App() {
         <div className="flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow">
-            <div className="pt-16 md:pt-20"> {/* Spacer for fixed header */}
+            <div className="pt-24 md:pt-32 lg:pt-36"> {/* Spacer for fixed header */}
               <Router />
             </div>
           </main>

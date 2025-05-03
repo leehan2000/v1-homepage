@@ -15,9 +15,9 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
       "mobile-menu fixed left-0 w-full bg-white shadow-md md:hidden z-40 transform transition-transform",
       isOpen ? "translate-y-0" : "-translate-y-full"
     )}
-    style={{ top: '4rem' }}
+    style={{ top: '5.5rem' }}
     >
-      <div className="px-2 pt-2 pb-3 space-y-1 max-h-[calc(100vh-4rem)] overflow-y-auto">
+      <div className="px-2 pt-2 pb-3 space-y-1 max-h-[calc(100vh-5.5rem)] overflow-y-auto">
         <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
              onClick={onClose}>HOME</Link>
         

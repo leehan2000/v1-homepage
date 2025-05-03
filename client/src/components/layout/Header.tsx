@@ -61,14 +61,14 @@ const Header = () => {
       "w-full bg-white z-50 fixed top-0 transition-shadow duration-300",
       scrolled ? "shadow-md" : ""
     )}>
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-5 md:py-6">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <img 
               src={logoImage} 
               alt="V1 Information Communications" 
-              className="h-10 md:h-12 w-auto" 
+              className="h-14 md:h-16 lg:h-20 w-auto" 
             />
           </Link>
 
