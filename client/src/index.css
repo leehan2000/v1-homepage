@@ -321,11 +321,11 @@ html, body {
 }
 
 @keyframes wave {
-  0% { transform: translateX(0) translateZ(0) scaleY(1.05); filter: brightness(1.1); }
-  25% { transform: translateX(-10%) translateZ(0) scaleY(0.95); filter: brightness(0.9); }
-  50% { transform: translateX(-20%) translateZ(0) scaleY(1.1); filter: brightness(1.2); }
-  75% { transform: translateX(-30%) translateZ(0) scaleY(0.95); filter: brightness(0.9); }
-  100% { transform: translateX(-33.33%) translateZ(0) scaleY(1.05); filter: brightness(1.1); }
+  0% { transform: translateX(0) translateZ(0) scaleY(1.25); filter: brightness(1.1); }
+  25% { transform: translateX(-10%) translateZ(0) scaleY(0.8); filter: brightness(0.9); }
+  50% { transform: translateX(-20%) translateZ(0) scaleY(1.35); filter: brightness(1.2); }
+  75% { transform: translateX(-30%) translateZ(0) scaleY(0.75); filter: brightness(0.9); }
+  100% { transform: translateX(-33.33%) translateZ(0) scaleY(1.2); filter: brightness(1.1); }
 }
 
 @keyframes shine {
