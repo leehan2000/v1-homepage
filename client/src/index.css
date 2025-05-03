@@ -159,6 +159,10 @@ html, body {
     animation: rotateIn 1s ease-out;
   }
   
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
   .logo-wrapper {
     position: relative;
     overflow: hidden;
@@ -302,6 +306,12 @@ html, body {
   0% { opacity: 0; }
   50% { opacity: 0.7; }
   100% { opacity: 0; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(-6deg); }
+  50% { transform: translateY(-15px) rotate(-4deg); }
+  100% { transform: translateY(0px) rotate(-6deg); }
 }
 
 @keyframes shine {
