@@ -10,24 +10,24 @@ type ServiceCardProps = {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, link }) => {
   return (
-    <Card className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-      <div className="h-48 bg-primary-100 flex items-center justify-center">
-        <div className="text-6xl text-primary">
+    <Card className="bg-white rounded-lg shadow-md overflow-hidden border-t-4 border-lgred transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+      <div className="h-48 bg-lggray flex items-center justify-center">
+        <div className="text-6xl text-lgred">
           <i className={`fas fa-${icon}`}></i>
         </div>
       </div>
       <CardContent className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">
+        <h3 className="text-xl font-bold text-lgtext mb-2">{title}</h3>
+        <p className="text-lgtext_light mb-4">
           {description}
         </p>
         <Link href={link}>
-          <a className="text-primary hover:text-primary/80 font-medium flex items-center">
+          <div className="text-lgred hover:text-lgred_dark font-medium flex items-center cursor-pointer">
             자세히 보기 
             <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
             </svg>
-          </a>
+          </div>
         </Link>
       </CardContent>
     </Card>

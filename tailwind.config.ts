@@ -11,6 +11,16 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        // LG유플러스 색상 팔레트
+        lgred: '#E2231A', // LG유플러스 메인 빨간색
+        lgred_dark: '#C61E17', // 어두운 빨간색
+        lgred_light: '#FF4A42', // 밝은 빨간색
+        lgtext: '#1A1A1A', // 주요 텍스트 색상
+        lgtext_light: '#555555', // 보조 텍스트 색상
+        lggray: '#F7F7F7', // 배경 회색
+        lgborder: '#E0E0E0', // 경계선 색상
+
+        // 기존 Shadcn 컬러 유지
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -22,8 +32,8 @@ export default {
           foreground: "hsl(var(--popover-foreground))",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#E2231A", // LG유플러스 메인 색상으로 변경
+          foreground: "#FFFFFF",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -43,9 +53,9 @@ export default {
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        ring: "#E2231A", // 링 색상도 LG유플러스 빨간색으로 변경
         chart: {
-          "1": "hsl(var(--chart-1))",
+          "1": "#E2231A", // 차트 색상 변경
           "2": "hsl(var(--chart-2))",
           "3": "hsl(var(--chart-3))",
           "4": "hsl(var(--chart-4))",
@@ -54,12 +64,12 @@ export default {
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          primary: "#E2231A", // 사이드바 프라이머리 색상 변경
+          "primary-foreground": "#FFFFFF",
           accent: "hsl(var(--sidebar-accent))",
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+          ring: "#E2231A",
         },
       },
       keyframes: {

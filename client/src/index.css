@@ -14,6 +14,16 @@
   --background-light: #F7F7F7;
   --background-white: #FFFFFF;
   --border-light: #E0E0E0;
+  
+  /* LG유플러스 스타일을 위한 새로운 변수들 */
+  --lg-red: #E2231A;
+  --lg-red-dark: #C61E17;
+  --lg-red-light: #FF4A42;
+  --lg-text: #1A1A1A;
+  --lg-text-light: #555555;
+  --lg-gray: #F7F7F7;
+  --lg-border: #E0E0E0;
+  --lg-white: #FFFFFF;
 }
 
 html, body {
@@ -116,6 +126,7 @@ html, body {
 }
 
 @layer components {
+  /* 기존 컴포넌트 스타일 */
   .mobile-menu {
     transition: transform 0.3s ease-in-out;
   }
@@ -155,6 +166,63 @@ html, body {
   
   .thank-you-alert.show {
     transform: translateY(0);
+  }
+  
+  /* LG유플러스 스타일 컴포넌트 */
+  .lg-header {
+    @apply bg-lggray border-b-4 border-lgred py-16 relative;
+  }
+  
+  .lg-title {
+    @apply text-4xl md:text-5xl font-bold mb-6 relative inline-block;
+  }
+  
+  .lg-title-underline {
+    @apply h-1 w-full bg-lgred mt-2;
+  }
+  
+  .lg-subtitle {
+    @apply text-lg text-lgtext_light max-w-2xl mx-auto mt-5 leading-relaxed;
+  }
+  
+  .lg-accent {
+    @apply text-lgred font-semibold;
+  }
+  
+  .lg-card {
+    @apply p-6 rounded-lg shadow-md bg-white border-t-4 border-lgred;
+  }
+  
+  .lg-section {
+    @apply py-16 bg-white;
+  }
+  
+  .lg-section-alt {
+    @apply py-16 bg-lggray;
+  }
+  
+  .lg-container {
+    @apply container mx-auto px-4;
+  }
+  
+  .lg-btn {
+    @apply px-6 py-3 bg-lgred text-white font-medium rounded-md hover:bg-lgred_dark transition-all duration-300;
+  }
+  
+  .lg-btn-outline {
+    @apply px-6 py-3 bg-white text-lgred font-medium rounded-md border border-lgred hover:bg-lgred/5 transition-all duration-300;
+  }
+  
+  .lg-circle-icon {
+    @apply w-16 h-16 rounded-full bg-lgred flex-shrink-0 flex items-center justify-center text-white font-bold;
+  }
+  
+  .lg-item {
+    @apply flex items-start border-b border-lgborder pb-8;
+  }
+  
+  .lg-message-box {
+    @apply px-12 py-8 border-t-4 border-lgred bg-lggray shadow-md;
   }
 }
 
