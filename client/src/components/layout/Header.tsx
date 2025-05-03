@@ -81,11 +81,11 @@ const Header = () => {
                     브이원의 이야기
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-1 p-2">
+                    <ul className="flex flex-row space-x-6 p-4 min-w-[600px]">
                       <li>
                         <Link href="/about/story">
                           <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/story") && "bg-accent/50"
                           )}>
                             시작 이야기
@@ -95,7 +95,7 @@ const Header = () => {
                       <li>
                         <Link href="/about/partnership">
                           <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/partnership") && "bg-accent/50"
                           )}>
                             동업 이야기
@@ -105,7 +105,7 @@ const Header = () => {
                       <li>
                         <Link href="/about/vision">
                           <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/vision") && "bg-accent/50"
                           )}>
                             비전 & 미션
@@ -115,7 +115,7 @@ const Header = () => {
                       <li>
                         <Link href="/about/ceo">
                           <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/ceo") && "bg-accent/50"
                           )}>
                             대표 인사말
@@ -125,7 +125,7 @@ const Header = () => {
                       <li>
                         <Link href="/about/history">
                           <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            "block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
                             isActive("/about/history") && "bg-accent/50"
                           )}>
                             연혁 (History)
@@ -275,7 +275,7 @@ const Header = () => {
                     공식 인증 / 수상
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[250px] gap-1 p-2">
+                    <ul className="flex flex-row space-x-4 p-4 min-w-[400px]">
                       <li>
                         <Link href="/certifications/partners">
                           <NavigationMenuLink className={cn(
