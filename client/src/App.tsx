@@ -1,10 +1,12 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
+import { useEffect } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { scrollToTop } from "@/lib/utils";
 import HomePage from "@/pages/HomePage";
 import AboutIndex from "@/pages/about/index";
 import AboutStory from "@/pages/about/Story";
@@ -42,6 +44,13 @@ import ThankYouAlert from "@/components/common/ThankYouAlert";
 import { ThankYouProvider } from "@/components/common/ThankYouAlert";
 
 function Router() {
+  const [location] = useLocation();
+  
+  // 페이지 이동 시 상단으로 스크롤
+  useEffect(() => {
+    scrollToTop(0);
+  }, [location]);
+  
   return (
     <Switch>
       {/* Home */}

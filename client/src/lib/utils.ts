@@ -48,3 +48,10 @@ export function validatePhoneNumber(phone: string): boolean {
   const re = /^[0-9]{2,3}-?[0-9]{3,4}-?[0-9]{4}$/;
   return re.test(phone);
 }
+
+export function scrollToTop(offset: number = 0): void {
+  window.scrollTo({
+    top: offset,
+    behavior: 'instant'
+  });
+}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn, scrollToTop } from "@/lib/utils";
 
 interface MobileNavigationProps {
   isOpen: boolean;
@@ -10,6 +10,11 @@ interface MobileNavigationProps {
 }
 
 const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) => {
+  // 페이지 이동과 메뉴 닫기를 동시에 처리하는 함수
+  const handleLinkClick = () => {
+    onClose();
+    scrollToTop(0);
+  };
   return (
     <div className={cn(
       "mobile-menu fixed left-0 w-full bg-white shadow-md md:hidden z-40 transform transition-transform",
@@ -19,7 +24,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
     >
       <div className="px-2 pt-2 pb-3 space-y-1 max-h-[calc(100vh-5.5rem)] overflow-y-auto animate-fadeIn">
         <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-             onClick={onClose}>HOME</Link>
+             onClick={handleLinkClick}>HOME</Link>
         
         <Accordion type="single" collapsible>
           {/* 브이원의 이야기 */}
@@ -131,8 +136,8 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
           </AccordionItem>
         </Accordion>
         
-        <Link href="/contact" asChild>
-          <Button className="w-full bg-primary hover:bg-primary/90" onClick={onClose}>
+        <Link href="/contact/consultation" asChild>
+          <Button className="w-full bg-primary hover:bg-primary/90" onClick={handleLinkClick}>
             상담 / 문의하기
           </Button>
         </Link>
