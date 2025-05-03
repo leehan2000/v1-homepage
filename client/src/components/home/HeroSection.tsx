@@ -98,12 +98,61 @@ const HeroSection = () => {
       <div className="absolute top-1/3 left-10 w-32 h-32 bg-lgred/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-1/3 right-10 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl animate-pulse opacity-70"></div>
       
+      {/* 물결형 하단 처리 */}
+      <div className="absolute bottom-0 left-0 w-full h-20 z-20" style={{ overflow: 'hidden' }}>
+        <svg
+          className="absolute bottom-0 w-full h-full animate-wave"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          style={{ animationDuration: '15s', animationIterationCount: 'infinite' }}
+        >
+          <path 
+            fill="#1A1A1A" 
+            fillOpacity="1" 
+            d="M0,192L48,197.3C96,203,192,213,288,197.3C384,181,480,139,576,144C672,149,768,203,864,208C960,213,1056,171,1152,149.3C1248,128,1344,128,1392,128L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+          </path>
+        </svg>
+      </div>
+      
+      {/* 물결형 보조 레이어 */}
+      <div className="absolute bottom-0 left-0 w-full h-10 z-20" style={{ overflow: 'hidden' }}>
+        <svg
+          className="absolute bottom-0 w-full h-full animate-wave"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          style={{ animationDuration: '10s', animationIterationCount: 'infinite', animationDirection: 'reverse' }}
+        >
+          <path 
+            fill="rgba(226, 35, 26, 0.15)" 
+            d="M0,160L34.3,181.3C68.6,203,137,245,206,261.3C274.3,277,343,267,411,234.7C480,203,549,149,617,149.3C685.7,149,754,203,823,208C891.4,213,960,171,1029,138.7C1097.1,107,1166,85,1234,106.7C1302.9,128,1371,192,1406,224L1440,256L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
+          </path>
+        </svg>
+      </div>
+      
+      {/* 추가 물결 레이어 */}
+      <div className="absolute bottom-0 left-0 w-full h-16 z-20" style={{ overflow: 'hidden' }}>
+        <svg
+          className="absolute bottom-0 w-full h-full animate-wave"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          preserveAspectRatio="none"
+          style={{ animationDuration: '20s', animationIterationCount: 'infinite' }}
+        >
+          <path 
+            fill="rgba(33, 150, 243, 0.1)" 
+            d="M0,288L30,266.7C60,245,120,203,180,197.3C240,192,300,224,360,218.7C420,213,480,171,540,170.7C600,171,660,213,720,229.3C780,245,840,235,900,202.7C960,171,1020,117,1080,122.7C1140,128,1200,192,1260,197.3C1320,203,1380,149,1410,122.7L1440,96L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
+          </path>
+        </svg>
+      </div>
+      
       {/* 장식 선 요소 */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-lgred/50 to-transparent z-10"></div>
       
       {/* 문자 장식 */}
-      <div className="absolute bottom-6 left-0 w-full text-center text-white/40 text-sm font-light z-10">
-        <span className="tracking-widest">신뢰 위에서, 연결 너머로</span>
+      <div className="absolute bottom-20 left-0 w-full text-center text-white/90 text-sm font-light z-30">
+        <span className="tracking-widest px-6 py-1.5 rounded-full bg-gradient-to-r from-blue-800/40 to-lgred/30 backdrop-blur-sm border border-white/10 shadow-lg">신뢰 위에서, 연결 너머로</span>
       </div>
       
       {/* 이동하는 배경 효과 */}
