@@ -64,24 +64,16 @@ const Footer = () => {
             <h3 className="text-lg font-medium text-white mb-4">회사 소개</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/about">
-                  <a className="text-gray-400 hover:text-white transition-colors duration-300">브이원의 이야기</a>
-                </Link>
+                <Link href="/about" className="text-gray-400 hover:text-white transition-colors duration-300">브이원의 이야기</Link>
               </li>
               <li>
-                <Link href="/people">
-                  <a className="text-gray-400 hover:text-white transition-colors duration-300">사람들</a>
-                </Link>
+                <Link href="/people" className="text-gray-400 hover:text-white transition-colors duration-300">사람들</Link>
               </li>
               <li>
-                <Link href="/cases">
-                  <a className="text-gray-400 hover:text-white transition-colors duration-300">진행 사례</a>
-                </Link>
+                <Link href="/cases" className="text-gray-400 hover:text-white transition-colors duration-300">진행 사례</Link>
               </li>
               <li>
-                <Link href="/certifications">
-                  <a className="text-gray-400 hover:text-white transition-colors duration-300">공식 인증 / 수상</a>
-                </Link>
+                <Link href="/certifications" className="text-gray-400 hover:text-white transition-colors duration-300">공식 인증 / 수상</Link>
               </li>
             </ul>
           </div>
