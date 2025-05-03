@@ -12,6 +12,7 @@ import {
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
+import logoImage from "../../assets/logo.png";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -65,7 +66,7 @@ const Header = () => {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <img 
-              src="/logo.png" 
+              src={logoImage} 
               alt="V1 Information Communications" 
               className="h-10 md:h-12 w-auto" 
             />
