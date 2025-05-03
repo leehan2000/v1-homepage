@@ -68,12 +68,12 @@ const Header = () => {
             <img 
               src={logoImage} 
               alt="V1 Information Communications" 
-              className="h-14 md:h-16 lg:h-20 w-auto" 
+              className="h-14 md:h-16 lg:h-20 w-auto logo-reveal" 
             />
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-1 animate-slideInTop" style={{ animationDelay: '0.3s' }}>
             <NavigationMenu>
               <NavigationMenuList>
                 {/* 브이원의 이야기 */}
@@ -378,7 +378,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden animate-fadeIn" style={{ animationDelay: '0.4s' }}>
             <Button 
               variant="ghost" 
               size="icon" 
