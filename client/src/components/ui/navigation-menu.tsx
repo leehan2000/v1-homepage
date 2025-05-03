@@ -5,7 +5,7 @@ import { ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:shadow-sm focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-4/5"
+  "group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-accent/20 hover:text-primary hover:shadow-sm focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/30 data-[state=open]:text-primary relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-4/5 after:opacity-0 hover:after:opacity-100 hover:-translate-y-[1px] border border-transparent hover:border-primary/10"
 )
 
 const NavigationMenu = React.forwardRef<
@@ -46,7 +46,7 @@ const NavigationMenuTrigger = React.forwardRef<
   >
     {children}{" "}
     <ChevronDown
-      className="relative top-[1px] ml-1 h-3 w-3 transition-transform duration-300 ease-in-out group-hover:translate-y-0.5 group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary"
+      className="relative top-[1px] ml-1 h-3 w-3 transition-all duration-300 ease-in-out group-hover:translate-y-0.5 group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary group-hover:text-primary scale-100 group-hover:scale-110"
       aria-hidden="true"
     />
   </NavigationMenuPrimitive.Trigger>
@@ -59,7 +59,7 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={cn(
-      "absolute left-1/2 transform -translate-x-1/2 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto bg-white shadow-xl rounded-md p-2 border-t-2 border-primary/20 transition-all duration-300 ease-in-out data-[state=open]:scale-100 data-[state=closed]:scale-95 data-[state=open]:opacity-100 data-[state=closed]:opacity-0",
+      "absolute left-1/2 transform -translate-x-1/2 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto bg-white shadow-xl rounded-md p-2 border-t-2 border-primary/20 transition-all duration-300 ease-in-out data-[state=open]:scale-100 data-[state=closed]:scale-95 data-[state=open]:opacity-100 data-[state=closed]:opacity-0 backdrop-blur-sm bg-white/95 data-[state=open]:translate-y-0 data-[state=closed]:translate-y-1",
       className
     )}
     {...props}

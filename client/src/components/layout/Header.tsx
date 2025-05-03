@@ -22,7 +22,7 @@ const Header = () => {
   // 메뉴와 서브메뉴 스타일 정의
   const menuTriggerStyle = { fontSize: '1.05rem' };
   const subMenuUlStyle = "flex flex-row space-x-3 p-2 min-w-[520px]";
-  const subMenuLinkStyle = "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-all duration-200 hover:bg-accent hover:text-primary hover:shadow-sm hover:translate-y-[-1px] focus:bg-accent focus:text-accent-foreground text-sm";
+  const subMenuLinkStyle = "block select-none rounded-md p-1.5 leading-none no-underline outline-none transition-all duration-300 hover:bg-accent/20 hover:text-primary hover:shadow-md hover:translate-y-[-2px] focus:bg-accent focus:text-accent-foreground text-sm relative overflow-hidden before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-primary before:transition-all before:duration-300 hover:before:w-full before:opacity-0 hover:before:opacity-100 border border-transparent hover:border-primary/10";
   
   // 모든 서브메뉴 링크에 스타일 적용 함수
   const applySubMenuStyle = (path: string, isActive: boolean) => {
@@ -58,8 +58,8 @@ const Header = () => {
 
   return (
     <header className={cn(
-      "w-full bg-white z-50 fixed top-0 transition-all duration-300",
-      scrolled ? "shadow-md py-3 md:py-4" : "py-5 md:py-6"
+      "w-full bg-white/95 backdrop-blur-sm z-50 fixed top-0 transition-all duration-300",
+      scrolled ? "shadow-lg py-2 md:py-3 border-b border-primary/10" : "py-5 md:py-6"
     )}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
@@ -357,7 +357,7 @@ const Header = () => {
                   <NavigationMenuLink asChild className={cn(
                     navigationMenuTriggerStyle,
                     isActive("/contact") && "bg-accent/50",
-                    "bg-primary text-white hover:bg-primary-600 hover:text-white hover:shadow-md transition-all duration-300 hover:translate-y-[-2px]"
+                    "bg-primary text-white hover:bg-primary-600 hover:text-white hover:shadow-md transition-all duration-300 hover:translate-y-[-2px] relative overflow-hidden before:absolute before:w-12 before:h-full before:top-0 before:-left-10 before:transform before:skew-x-[30deg] before:bg-white/10 hover:before:animate-shine"
                   )}>
                     <Link href="/contact">
                       상담신청
