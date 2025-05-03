@@ -139,6 +139,10 @@ html, body {
     aspect-ratio: 16 / 9;
   }
   
+  .aspect-4\/3 {
+    aspect-ratio: 4 / 3;
+  }
+  
   .animate-fadeIn {
     animation: fadeIn 0.5s ease-out;
   }

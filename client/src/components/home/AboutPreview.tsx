@@ -42,32 +42,36 @@ const AboutPreview = () => {
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred">
+            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white">
               <img 
-                src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=300&q=80" 
+                src="https://i.ibb.co/3vHKnPj/teamwork.jpg" 
                 alt="브이원 팀워크" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover aspect-4/3"
+                loading="lazy"
               />
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred">
+            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white">
               <img 
-                src="https://images.unsplash.com/photo-1560264280-88b68371db39?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=300&q=80" 
+                src="https://i.ibb.co/g9GWsxN/equipment-installation.jpg" 
                 alt="통신 장비 설치" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover aspect-4/3"
+                loading="lazy"
               />
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred">
+            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white">
               <img 
-                src="https://images.unsplash.com/photo-1573164713988-8665321e3e26?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=300&q=80" 
+                src="https://i.ibb.co/8XccXWH/network-management.jpg" 
                 alt="네트워크 관리" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover aspect-4/3"
+                loading="lazy"
               />
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred">
+            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white">
               <img 
-                src="https://images.unsplash.com/photo-1581092921461-7d25c8257bdd?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=300&q=80" 
+                src="https://i.ibb.co/FBL9HWF/communication-solution.jpg" 
                 alt="통신 솔루션" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover aspect-4/3"
+                loading="lazy"
               />
             </div>
           </div>

@@ -39,11 +39,12 @@ const HeroSection = () => {
               </Link>
             </div>
           </div>
-          <div className="rounded-lg overflow-hidden shadow-xl border-t-4 border-lgred">
+          <div className="rounded-lg overflow-hidden shadow-xl border-t-4 border-lgred bg-white">
             <img 
-              src="https://images.unsplash.com/photo-1563770660941-10a63397b4bd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80" 
+              src="https://i.ibb.co/DQZPhHg/network-solution.jpg" 
               alt="통신 솔루션 서비스" 
-              className="hero-image w-full h-auto object-cover"
+              className="hero-image w-full h-full object-cover max-h-[400px]"
+              loading="eager"
             />
           </div>
         </div>
