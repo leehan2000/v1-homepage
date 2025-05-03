@@ -1,9 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --primary: #E2231A; /* LG U+ 빨간색 */
+  --primary-dark: #C61E17;
+  --primary-light: #FF4A42;
+  --text-dark: #1A1A1A;
+  --text-light: #555555;
+  --background-light: #F7F7F7;
+  --background-white: #FFFFFF;
+  --border-light: #E0E0E0;
+}
+
+html, body {
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--text-dark);
+}
 
 @layer base {
   :root {
