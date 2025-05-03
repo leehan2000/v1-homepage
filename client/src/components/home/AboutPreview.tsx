@@ -63,7 +63,7 @@ const AboutPreview = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="rounded-lg overflow-hidden shadow-md">
+            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred">
               <img 
                 src="https://images.unsplash.com/photo-1581092921461-7d25c8257bdd?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&h=300&q=80" 
                 alt="통신 솔루션" 

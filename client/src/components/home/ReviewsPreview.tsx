@@ -14,7 +14,7 @@ type CustomerReviewProps = {
 
 const CustomerReview: React.FC<CustomerReviewProps> = ({ rating, review, customer }) => {
   return (
-    <Card className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300">
+    <Card className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300 border-t-4 border-lgred hover:-translate-y-1">
       <CardContent className="p-0">
         <div className="flex items-center mb-4">
           <div className="text-yellow-400 flex">
@@ -38,16 +38,16 @@ const CustomerReview: React.FC<CustomerReviewProps> = ({ rating, review, custome
           </div>
           <span className="ml-2 text-gray-600">{rating.toFixed(1)}</span>
         </div>
-        <p className="text-gray-600 mb-6">
+        <p className="text-lgtext_light mb-6 leading-relaxed">
           "{review}"
         </p>
         <div className="flex items-center">
-          <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mr-4">
-            <span className="font-bold text-gray-700">{customer.initial}</span>
+          <div className="w-12 h-12 rounded-full bg-lgred/10 flex items-center justify-center mr-4">
+            <span className="font-bold text-lgred">{customer.initial}</span>
           </div>
           <div>
-            <h4 className="font-bold text-gray-900">{customer.name}</h4>
-            <p className="text-sm text-gray-500">{customer.company}</p>
+            <h4 className="font-bold text-lgtext">{customer.name}</h4>
+            <p className="text-sm text-lgtext_light">{customer.company}</p>
           </div>
         </div>
       </CardContent>
@@ -87,11 +87,14 @@ const ReviewsPreview = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">고객 후기</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-lgtext mb-6 relative inline-block">
+            고객 후기
+            <div className="h-1 w-1/2 bg-lgred mt-3 mx-auto"></div>
+          </h2>
+          <p className="text-lg text-lgtext_light max-w-3xl mx-auto leading-relaxed">
             브이원정보통신과 함께한 고객들의 생생한 후기를 확인하세요.
           </p>
         </div>
@@ -109,7 +112,7 @@ const ReviewsPreview = () => {
         
         <div className="text-center mt-10">
           <Link href="/cases/reviews">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary/10">
+            <Button variant="outline" className="border-lgred text-lgred hover:bg-lgred/5 font-medium rounded-md px-6 py-3 transition-all duration-300">
               모든 후기 보기
             </Button>
           </Link>
