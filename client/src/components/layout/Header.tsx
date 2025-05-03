@@ -87,7 +87,7 @@ const Header = () => {
                       <li>
                         <Link href="/about/story">
                           <NavigationMenuLink className={cn(
-                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+                            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-black",
                             isActive("/about/story") && "bg-accent/50"
                           )}>
                             시작 이야기
