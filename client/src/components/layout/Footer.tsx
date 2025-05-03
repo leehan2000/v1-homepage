@@ -46,24 +46,16 @@ const Footer = () => {
             <h3 className="text-lg font-medium text-white mb-4">서비스</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/services/wireless">
-                  <a className="text-gray-400 hover:text-white transition-colors duration-300">무선통신</a>
-                </Link>
+                <Link href="/services/wireless" className="text-gray-400 hover:text-white transition-colors duration-300">무선통신</Link>
               </li>
               <li>
-                <Link href="/services/wired">
-                  <a className="text-gray-400 hover:text-white transition-colors duration-300">유선통신</a>
-                </Link>
+                <Link href="/services/wired" className="text-gray-400 hover:text-white transition-colors duration-300">유선통신</Link>
               </li>
               <li>
-                <Link href="/services/vehicle-iot">
-                  <a className="text-gray-400 hover:text-white transition-colors duration-300">차량관제 / IoT</a>
-                </Link>
+                <Link href="/services/vehicle-iot" className="text-gray-400 hover:text-white transition-colors duration-300">차량관제 / IoT</Link>
               </li>
               <li>
-                <Link href="/services/solutions">
-                  <a className="text-gray-400 hover:text-white transition-colors duration-300">업종별 제안</a>
-                </Link>
+                <Link href="/services/solutions" className="text-gray-400 hover:text-white transition-colors duration-300">업종별 제안</Link>
               </li>
             </ul>
           </div>

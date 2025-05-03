@@ -31,22 +31,14 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
               <div className="pl-4 space-y-1">
                 <Link href="/about/story" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
                      onClick={onClose}>시작 이야기</Link>
-                <Link href="/about/partnership">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>동업 이야기</a>
-                </Link>
-                <Link href="/about/vision">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>비전 & 미션</a>
-                </Link>
-                <Link href="/about/ceo">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>대표 인사말</a>
-                </Link>
-                <Link href="/about/history">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>연혁 (History)</a>
-                </Link>
+                <Link href="/about/partnership" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>동업 이야기</Link>
+                <Link href="/about/vision" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>비전 & 미션</Link>
+                <Link href="/about/ceo" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>대표 인사말</Link>
+                <Link href="/about/history" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>연혁 (History)</Link>
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -58,18 +50,12 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             </AccordionTrigger>
             <AccordionContent>
               <div className="pl-4 space-y-1">
-                <Link href="/people/employees">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>직원 소개</a>
-                </Link>
-                <Link href="/people/philosophy">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>일하는 철학</a>
-                </Link>
-                <Link href="/people/stories">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>현장 이야기</a>
-                </Link>
+                <Link href="/people/employees" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>직원 소개</Link>
+                <Link href="/people/philosophy" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>일하는 철학</Link>
+                <Link href="/people/stories" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>현장 이야기</Link>
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -81,22 +67,14 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             </AccordionTrigger>
             <AccordionContent>
               <div className="pl-4 space-y-1">
-                <Link href="/services/wireless">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>무선통신</a>
-                </Link>
-                <Link href="/services/wired">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>유선통신</a>
-                </Link>
-                <Link href="/services/vehicle-iot">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>차량관제 / IoT</a>
-                </Link>
-                <Link href="/services/solutions">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>업종별 제안</a>
-                </Link>
+                <Link href="/services/wireless" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>무선통신</Link>
+                <Link href="/services/wired" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>유선통신</Link>
+                <Link href="/services/vehicle-iot" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>차량관제 / IoT</Link>
+                <Link href="/services/solutions" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>업종별 제안</Link>
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -108,18 +86,12 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             </AccordionTrigger>
             <AccordionContent>
               <div className="pl-4 space-y-1">
-                <Link href="/cases/clients">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>고객사 / 도입사례</a>
-                </Link>
-                <Link href="/cases/reviews">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>설치 후기</a>
-                </Link>
-                <Link href="/cases/field-stories">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>현장 이야기</a>
-                </Link>
+                <Link href="/cases/clients" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>고객사 / 도입사례</Link>
+                <Link href="/cases/reviews" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>설치 후기</Link>
+                <Link href="/cases/field-stories" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>현장 이야기</Link>
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -131,14 +103,10 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             </AccordionTrigger>
             <AccordionContent>
               <div className="pl-4 space-y-1">
-                <Link href="/certifications/partners">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>파트너 인증</a>
-                </Link>
-                <Link href="/certifications/awards">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>계약서 / 상장 / 감사패 이미지</a>
-                </Link>
+                <Link href="/certifications/partners" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>파트너 인증</Link>
+                <Link href="/certifications/awards" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>계약서 / 상장 / 감사패 이미지</Link>
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -150,28 +118,20 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             </AccordionTrigger>
             <AccordionContent>
               <div className="pl-4 space-y-1">
-                <Link href="/news/content">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>정보 콘텐츠</a>
-                </Link>
-                <Link href="/news/customer-reviews">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>고객 후기</a>
-                </Link>
-                <Link href="/news/daily">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>브이원 일상</a>
-                </Link>
-                <Link href="/news/blog">
-                  <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={onClose}>블로그 바로가기</a>
-                </Link>
+                <Link href="/news/content" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>정보 콘텐츠</Link>
+                <Link href="/news/customer-reviews" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>고객 후기</Link>
+                <Link href="/news/daily" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>브이원 일상</Link>
+                <Link href="/news/blog" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={onClose}>블로그 바로가기</Link>
               </div>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
         
-        <Link href="/contact">
+        <Link href="/contact" asChild>
           <Button className="w-full bg-primary hover:bg-primary/90" onClick={onClose}>
             상담 / 문의하기
           </Button>
