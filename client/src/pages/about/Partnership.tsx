@@ -21,7 +21,7 @@ const Partnership = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="mb-12">
-              <h2 className="text-3xl font-bold mb-6 text-gray-900">– 브이원의 동업 철학 –</h2>
+              <h2 className="text-3xl font-bold mb-6 text-gray-900">브이원에게 동업이란</h2>
               <div className="mb-8 rounded-lg overflow-hidden shadow-md">
                 <img 
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=600&q=80" 
