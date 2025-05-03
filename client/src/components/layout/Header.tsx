@@ -64,12 +64,17 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <img 
-              src={logoImage} 
-              alt="V1 Information Communications" 
-              className="h-14 md:h-16 lg:h-20 w-auto logo-reveal" 
-            />
+          <Link href="/" className="flex-shrink-0 group">
+            <div className="logo-wrapper transition-all duration-300 group-hover:shadow-lg group-hover:shadow-lgred/20 group-active:scale-95">
+              <img 
+                src={logoImage} 
+                alt="V1 Information Communications" 
+                className="h-14 md:h-16 lg:h-20 w-auto logo-reveal group-hover:filter group-hover:brightness-110" 
+              />
+              <div className="logo-shine"></div>
+              <div className="logo-glow"></div>
+              <div className="absolute inset-0 bg-lgred/0 group-hover:bg-lgred/5 transition-all duration-300 rounded-md"></div>
+            </div>
           </Link>
 
           {/* Navigation */}

@@ -159,8 +159,42 @@ html, body {
     animation: rotateIn 1s ease-out;
   }
   
+  .logo-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 6px;
+  }
+  
   .logo-reveal {
-    animation: logoReveal 1.2s ease-out forwards;
+    animation: logoReveal 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    filter: drop-shadow(0 0 3px rgba(226, 35, 26, 0.2));
+    position: relative;
+    z-index: 2;
+  }
+  
+  .logo-shine {
+    position: absolute;
+    top: 0;
+    left: -150px;
+    width: 80px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    animation: lgShine 3s infinite cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 3;
+  }
+  
+  .logo-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(226, 35, 26, 0.4) 0%, rgba(226, 35, 26, 0) 70%);
+    opacity: 0;
+    animation: lgGlow 3s infinite alternate cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1;
   }
   
   .thank-you-alert {
@@ -251,9 +285,23 @@ html, body {
 }
 
 @keyframes logoReveal {
-  0% { transform: translateY(-5px) scale(0.95); opacity: 0; }
-  30% { transform: translateY(-2px) scale(0.98); opacity: 0.5; }
-  100% { transform: translateY(0) scale(1); opacity: 1; }
+  0% { transform: translateY(-10px) scale(0.9) rotate(-2deg); opacity: 0; filter: brightness(0.8); }
+  30% { transform: translateY(-5px) scale(0.95) rotate(-1deg); opacity: 0.7; filter: brightness(0.9); }
+  70% { transform: translateY(-2px) scale(0.98) rotate(0deg); opacity: 0.9; filter: brightness(0.95); }
+  100% { transform: translateY(0) scale(1) rotate(0); opacity: 1; filter: brightness(1); }
+}
+
+@keyframes lgShine {
+  0% { left: -150px; opacity: 0; }
+  10% { opacity: 1; }
+  30% { left: 120%; opacity: 0; }
+  100% { left: 120%; opacity: 0; }
+}
+
+@keyframes lgGlow {
+  0% { opacity: 0; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0; }
 }
 
 @keyframes shine {
