@@ -95,8 +95,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
                      onClick={handleLinkClick}>고객사 / 도입사례</Link>
                 <Link href="/cases/reviews" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
                      onClick={handleLinkClick}>설치 후기</Link>
-                <Link href="/cases/field-stories" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={handleLinkClick}>현장 이야기</Link>
+
               </div>
             </AccordionContent>
           </AccordionItem>

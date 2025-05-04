@@ -261,16 +261,7 @@ const Header = () => {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      <li>
-                        <NavigationMenuLink
-                          asChild
-                          className={applySubMenuStyle("/cases/field-stories", isActive("/cases/field-stories"))}
-                        >
-                          <Link href="/cases/field-stories">
-                            현장 이야기
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
+
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
