@@ -24,9 +24,8 @@ import ServicesWired from "@/pages/services/Wired";
 import ServicesVehicleIot from "@/pages/services/VehicleIot";
 import ServicesSolutions from "@/pages/services/Solutions";
 import CasesIndex from "@/pages/cases/index";
-// Temporarily commenting out imports for missing files
-// import CasesClients from "@/pages/cases/Clients";
-// import CasesReviews from "@/pages/cases/Reviews";
+import CasesClients from "@/pages/cases/clients";
+import CasesReviews from "@/pages/cases/reviews";
 // import CasesFieldStories from "@/pages/cases/FieldStories";
 // import CertificationsIndex from "@/pages/certifications/index";
 // import CertificationsPartners from "@/pages/certifications/Partners";
@@ -77,12 +76,13 @@ function Router() {
       <Route path="/services/vehicle-iot" component={ServicesVehicleIot} />
       <Route path="/services/solutions" component={ServicesSolutions} />
 
-      {/* Cases - Only keeping index route */}
+      {/* Cases */}
       <Route path="/cases" component={CasesIndex} />
+      <Route path="/cases/clients" component={CasesClients} />
+      <Route path="/cases/reviews" component={CasesReviews} />
       
       {/* Temporarily removed sections */}
       {/* 
-      - Cases detail pages
       - Certifications section
       - News section
       - Contact index/FAQ/Directions

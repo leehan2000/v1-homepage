@@ -16,12 +16,6 @@ const CasesIndex = () => {
       description: "고객들이 직접 작성한 솔루션 도입 후 성과와 만족도에 대한 후기입니다.",
       link: "/cases/reviews",
       image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80"
-    },
-    {
-      title: "현장 이야기",
-      description: "브이원정보통신 전문가들이 전하는 솔루션 구축 현장의 생생한 이야기입니다.",
-      link: "/cases/field-stories",
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=500&q=80"
     }
   ];
 
@@ -29,7 +23,7 @@ const CasesIndex = () => {
     <>
       <Helmet>
         <title>진행 사례 | 브이원정보통신</title>
-        <meta name="description" content="브이원정보통신의 다양한 진행 사례를 소개합니다. 고객사 도입 사례, 설치 후기, 현장 이야기를 통해 브이원정보통신의 전문성과 신뢰성을 확인하세요." />
+        <meta name="description" content="브이원정보통신의 다양한 진행 사례를 소개합니다. 고객사 도입 사례와 설치 후기를 통해 브이원정보통신의 전문성과 신뢰성을 확인하세요." />
       </Helmet>
       
       <div className="bg-gradient-to-br from-primary-50 to-primary-100 py-20">
@@ -44,7 +38,7 @@ const CasesIndex = () => {
       
       <div className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-8">
             {sections.map((section, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <div className="h-56 overflow-hidden">
