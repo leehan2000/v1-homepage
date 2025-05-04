@@ -12,7 +12,7 @@ const Story = () => {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-8">시작 이야기</h1>
           <p className="text-lg md:text-xl text-center max-w-3xl mx-auto text-gray-700">
-            브이원정보통신이 걸어온 길과 시작을 소개합니다.
+            우리의 시작이야기 입니다.
           </p>
         </div>
       </div>
@@ -33,12 +33,12 @@ const Story = () => {
               <p className="text-lg text-gray-700 mb-6">
                 어느 날 문득,<br/>
                 스스로 결정하고, 스스로 책임지는 회사를 만들고 싶다는 마음이 들었습니다.<br/>
-                그 시작점엔 나의 열망이 있었지만,<br/>
+                그 시작점엔 열망이 있었지만,<br/>
                 곧 깨달았죠.<br/>
                 사람이 전부라는 걸.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                20년 동안 통신업계에 몸담아 온 나,<br/>
+                20년 동안 통신업계에 몸담아 온 한사람,<br/>
                 그리고 15년을 함께 걸어온 또 한 사람.<br/>
                 우리는 오랜 시간 쌓은 경험보다<br/>
                 서로에 대한 신뢰를 바탕으로<br/>
@@ -86,7 +86,7 @@ const Story = () => {
               </p>
               <p className="text-lg text-gray-700 mb-6">
                 처음에는 무엇이든 맡았습니다.<br/>
-                수익이 나지 않아도, 일이 작아도,<br/>
+                이익이 나지 않아도, 일이 작아도,<br/>
                 우리에게 맡겨진 일이라면<br/>
                 끝까지 해내는 것,<br/>
                 그게 우리의 방식이었습니다.
@@ -109,10 +109,10 @@ const Story = () => {
                 그리고 가장 중요한, 사람과 사람 사이의 신뢰가 있었습니다.
               </p>
               <p className="text-lg text-gray-700 mb-6">
-                지금의 내가,<br/>
-                그때의 나에게 한마디를 건넨다면 이렇게 말할 겁니다.<br/>
+                지금의 우리가,<br/>
+                그때의 우리에게 한마디를 건넨다면 이렇게 말할 겁니다.<br/>
                 <br/>
-                <span className="font-semibold text-xl text-primary">"너를 믿어."</span>
+                <span className="font-semibold text-xl text-primary">"스스로를  믿고 힘차게 내딪자."</span>
               </p>
             </div>
           </div>

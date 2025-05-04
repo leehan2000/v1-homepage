@@ -53,7 +53,7 @@ const Partnership = () => {
                 어떤 순간엔 의견이 다를 수도 있고,<br/>
                 상황을 받아들이는 온도가 다를 수도 있습니다.<br/>
                 그렇기에 우리는 처음부터<br/>
-                <span className="font-bold">'말을 잘하는 법'이 아니라,<br/>
+                <span className="font-bold text-primary">'말을 잘하는 법'이 아니라,<br/>
                 '잘 듣는 태도'</span>를 중심에 두기로 했습니다.
               </p>
               <p className="text-lg text-gray-700 mb-6">

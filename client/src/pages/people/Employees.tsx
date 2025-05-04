@@ -15,8 +15,8 @@ const Employees = () => {
   const employees: Employee[] = [
     {
       id: 1,
-      name: "김철수",
-      position: "대표이사",
+      name: "이학열",
+      position: "공동대표",
       department: "경영팀",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80",
       bio: "15년 이상의 통신 업계 경력을 갖춘 브이원정보통신의 창립자입니다. 고객 중심의 서비스 철학을 바탕으로 회사를 이끌고 있습니다.",
