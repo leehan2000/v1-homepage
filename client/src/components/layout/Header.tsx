@@ -187,7 +187,7 @@ const Header = () => {
                     <ul className={subMenuUlStyle}>
                       <li>
                         <NavigationMenuLink asChild className={applySubMenuStyle("/certifications/awards", isActive("/certifications/awards"))}>
-                          <Link href="/certifications/awards">계약서 / 상장 / 감사패</Link>
+                          <Link href="/certifications/awards">상장 / 감사패</Link>
                         </NavigationMenuLink>
                       </li>
                     </ul>
@@ -208,7 +208,7 @@ const Header = () => {
                       </li>
                       <li>
                         <NavigationMenuLink asChild className={applySubMenuStyle("/news/blog", isActive("/news/blog"))}>
-                          <Link href="/news/blog">블로그 바로가기</Link>
+                          <Link href="/news/blog">블로그</Link>
                         </NavigationMenuLink>
                       </li>
                     </ul>

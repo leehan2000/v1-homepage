@@ -29,12 +29,12 @@ import CasesReviews from "@/pages/cases/reviews";
 // import CasesFieldStories from "@/pages/cases/FieldStories";
 // import CertificationsIndex from "@/pages/certifications/index";
 // import CertificationsPartners from "@/pages/certifications/Partners";
-// import CertificationsAwards from "@/pages/certifications/Awards";
+import CertificationsAwards from "@/pages/certifications/awards";
 // import NewsIndex from "@/pages/news/index";
 // import NewsContent from "@/pages/news/Content";
 // import NewsCustomerReviews from "@/pages/news/CustomerReviews";
-// import NewsDaily from "@/pages/news/Daily";
-// import NewsBlog from "@/pages/news/Blog";
+import NewsDaily from "@/pages/news/daily";
+import NewsBlog from "@/pages/news/blog";
 // import ContactIndex from "@/pages/contact/index";
 import ContactConsultationForm from "@/pages/contact/ConsultationForm";
 // import ContactFAQ from "@/pages/contact/FAQ";
@@ -81,15 +81,16 @@ function Router() {
       <Route path="/cases/clients" component={CasesClients} />
       <Route path="/cases/reviews" component={CasesReviews} />
       
-      {/* Temporarily removed sections */}
-      {/* 
-      - Certifications section
-      - News section
-      - Contact index/FAQ/Directions
-      */}
+      {/* Certifications */}
+      <Route path="/certifications/awards" component={CertificationsAwards} />
       
-      {/* Contact - Only keeping consultation form */}
+      {/* News & Blog */}
+      <Route path="/news/daily" component={NewsDaily} />
+      <Route path="/news/blog" component={NewsBlog} />
+      
+      {/* Contact */}
       <Route path="/contact/consultation" component={ContactConsultationForm} />
+      <Route path="/contact" component={ContactConsultationForm} />
 
       {/* Fallback to 404 */}
       <Route component={NotFound} />
