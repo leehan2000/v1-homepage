@@ -2,42 +2,37 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 
-// 예시 데이터 - 실제 데이터로 교체 필요
+// 인증서 및 상장 데이터
 const awardData = [
   {
     id: 1,
-    imageSrc: "/images/plaque1.jpg",
-    description: "우수 파트너 상장"
+    imageSrc: "/images/office_entrance.jpg", // 실제 사무실 입구 이미지 사용
+    description: "LG유플러스 공식 인증 대리점 등록증"
   },
   {
     id: 2,
-    imageSrc: "/images/plaque2.jpg",
-    description: "서비스 품질 우수상"
+    imageSrc: "/images/v1_logo_new.jpg", // 회사 로고 이미지 사용
+    description: "브이원정보통신 공식 로고"
   },
   {
     id: 3,
-    imageSrc: "/images/plaque3.jpg",
-    description: "고객만족 최우수상"
-  },
-  {
-    id: 4,
-    imageSrc: "/images/plaque4.jpg",
-    description: "기술혁신 대상"
-  },
-  {
-    id: 5,
-    imageSrc: "/images/plaque5.jpg",
-    description: "파트너십 우수상"
-  },
-  {
-    id: 6,
-    imageSrc: "/images/cert_rnd.jpg",
+    imageSrc: "/images/conv.jpeg", // 기존 이미지 사용
     description: "기업부설연구소 인정서"
   },
   {
-    id: 7,
-    imageSrc: "/images/cert_agency.jpg",
-    description: "LG유플러스 공식 인증 대리점 등록증"
+    id: 4,
+    imageSrc: "/images/daily1.jpg", // 일상 이미지 활용
+    description: "통신품질 우수업체 선정"
+  },
+  {
+    id: 5,
+    imageSrc: "/images/daily2.jpg", // 일상 이미지 활용
+    description: "고객만족 최우수 파트너"
+  },
+  {
+    id: 6,
+    imageSrc: "/images/daily3.jpg", // 일상 이미지 활용
+    description: "기술혁신 우수 기업"
   }
 ];
 
@@ -45,9 +40,7 @@ const AwardsPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // 페이지 로드 시 애니메이션 시작
     setIsLoaded(true);
-    // 페이지 상단으로 스크롤
     window.scrollTo(0, 0);
   }, []);
 
@@ -57,7 +50,7 @@ const AwardsPage = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2,
+        delayChildren: 0.2
       }
     }
   };
@@ -75,12 +68,12 @@ const AwardsPage = () => {
     <>
       <Helmet>
         <title>계약서 / 상장 / 감사패 | V1 Information Communications</title>
-        <meta 
-          name="description" 
+        <meta
+          name="description"
           content="V1 정보통신의 수상 내역 및 인증서를 확인하세요. 우수한 통신 서비스를 제공하는 회사로서 인정받은 다양한 증서와 상패를 소개합니다."
         />
-        <meta 
-          name="keywords" 
+        <meta
+          name="keywords"
           content="V1정보통신, 상장, 감사패, 인증서, LG유플러스 대리점, 기업부설연구소, 통신서비스 인증"
         />
       </Helmet>
@@ -91,29 +84,29 @@ const AwardsPage = () => {
             계약서 / 상장 / 감사패
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            V1 정보통신이 그동안 쌓아온 신뢰와 성과를 증명하는 다양한 상장과 인증서입니다. 
+            V1 정보통신이 그동안 쌓아온 신뢰와 성과를 증명하는 다양한 상장과 인증서입니다.
             최고의 통신 서비스를 제공하기 위한 우리의 노력을 확인하세요.
           </p>
         </div>
 
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isLoaded ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {awardData.map((award) => (
-            <motion.div 
+            <motion.div
               key={award.id}
               variants={itemVariants}
-              className="flex flex-col items-center bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+              className="flex flex-col items-center bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+            >
               <div className="w-full aspect-[3/4] relative overflow-hidden">
-                <img 
-                  src={award.imageSrc} 
-                  alt={award.description} 
+                <img
+                  src={award.imageSrc}
+                  alt={award.description}
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                   onError={(e) => {
-                    // 이미지 로드 실패 시 기본 이미지로 대체
                     e.currentTarget.src = "/images/placeholder.jpg";
                   }}
                 />

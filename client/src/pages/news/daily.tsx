@@ -2,43 +2,49 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 
-// 예시 데이터 - 추후 실제 데이터로 업데이트 필요
+// 회사 일상 데이터
 const dailyImages = [
   {
     id: 1,
     imageSrc: "/images/daily1.jpg",
-    description: "서울 본사 회의 현장",
-    date: "2024.04.18"
+    description: "LG U+ 협력사 회의 진행",
+    date: "2025.04.18"
   },
   {
     id: 2,
     imageSrc: "/images/daily2.jpg",
-    description: "무선 네트워크 설치 작업 중",
-    date: "2024.04.10"
+    description: "네트워크 설치 기술 교육",
+    date: "2025.04.10"
   },
   {
     id: 3,
     imageSrc: "/images/daily3.jpg",
-    description: "팀 빌딩 워크샵 현장",
-    date: "2024.03.27"
+    description: "제주도 팀 워크샵 현장",
+    date: "2025.03.27"
   },
   {
     id: 4,
     imageSrc: "/images/daily4.jpg",
-    description: "기술 세미나 진행 모습",
-    date: "2024.03.15"
+    description: "분기별 성과 평가 미팅",
+    date: "2025.03.15"
   },
   {
     id: 5,
     imageSrc: "/images/daily5.jpg",
-    description: "사무실 내부 환경",
-    date: "2024.02.22"
+    description: "신규 통신장비 테스트",
+    date: "2025.02.22"
   },
   {
     id: 6,
     imageSrc: "/images/daily6.jpg",
-    description: "신규 프로젝트 킥오프 미팅",
-    date: "2024.02.08"
+    description: "엔지니어 팀 현장 방문",
+    date: "2025.02.08"
+  },
+  {
+    id: 7,
+    imageSrc: "/images/office_entrance.jpg",
+    description: "본사 사무실 입구",
+    date: "2025.01.15"
   }
 ];
 
