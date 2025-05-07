@@ -202,6 +202,16 @@ const Header = () => {
                   <NavigationMenuContent>
                     <ul className={subMenuUlStyle}>
                       <li>
+                        <NavigationMenuLink asChild className={applySubMenuStyle("/news/content", isActive("/news/content"))}>
+                          <Link href="/news/content">정보 콘텐츠</Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild className={applySubMenuStyle("/news/customer-reviews", isActive("/news/customer-reviews"))}>
+                          <Link href="/news/customer-reviews">고객 후기</Link>
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
                         <NavigationMenuLink asChild className={applySubMenuStyle("/news/daily", isActive("/news/daily"))}>
                           <Link href="/news/daily">브이원 일상</Link>
                         </NavigationMenuLink>
