@@ -289,7 +289,7 @@ const Header = () => {
                           className={applySubMenuStyle("/certifications/awards", isActive("/certifications/awards"))}
                         >
                           <Link href="/certifications/awards">
-                            계약서 / 상장 / 감사패 이미지
+                            계약서 / 상장 / 감사패
                           </Link>
                         </NavigationMenuLink>
                       </li>
