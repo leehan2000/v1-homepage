@@ -122,10 +122,6 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
             </AccordionTrigger>
             <AccordionContent>
               <div className="pl-4 space-y-1">
-                <Link href="/news/content" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={handleLinkClick}>정보 콘텐츠</Link>
-                <Link href="/news/customer-reviews" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
-                     onClick={handleLinkClick}>고객 후기</Link>
                 <Link href="/news/daily" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
                      onClick={handleLinkClick}>브이원 일상</Link>
                 <Link href="/news/blog" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 

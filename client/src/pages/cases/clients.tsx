@@ -1,8 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import ClientCard from '@/components/cases/ClientCard';
 
-// 고객사 샘플 데이터
 const clientsData = [
   {
     id: 1,
@@ -74,7 +72,7 @@ const clientsData = [
     industry: '소매/상가',
     location: '서울 영등포',
     service: '무선통신',
-    description: '대형 쇼핑몰 전체 영역 무선 인터넷 서비스 구층 및 유동인구 분석 시스템 연동'
+    description: '대형 쇼핑몰 전체 영역 무선 인터넷 서비스 구축 및 유동인구 분석 시스템 연동'
   },
   {
     id: 9,
@@ -108,15 +106,22 @@ const ClientsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
             {clientsData.map((client) => (
-              <ClientCard
+              <div
                 key={client.id}
-                logo={client.logo}
-                companyName={client.companyName}
-                industry={client.industry}
-                location={client.location}
-                service={client.service}
-                description={client.description}
-              />
+                className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-xl"
+              >
+                <img
+                  src={client.logo}
+                  alt={client.companyName}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-semibold mb-1">{client.companyName}</h3>
+                  <p className="text-sm text-gray-600 mb-1">{client.industry} | {client.location}</p>
+                  <p className="text-sm text-gray-500 mb-1">제공 서비스: {client.service}</p>
+                  <p className="text-sm text-gray-700">{client.description}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
