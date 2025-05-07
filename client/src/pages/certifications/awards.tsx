@@ -5,17 +5,17 @@ import { motion } from "framer-motion";
 const awardData = [
   {
     id: 1,
-    imageSrc: "/images/plaque1.jpeg",
+    imageSrc: "/images/plaque1.jpg",
     description: "우수 파트너 상장"
   },
   {
     id: 2,
-    imageSrc: "/images/plaque2.jpeg",
+    imageSrc: "/images/plaque2.jpg",
     description: "서비스 품질 우수상"
   },
   {
     id: 3,
-    imageSrc: "/images/plaque3.jpeg",
+    imageSrc: "/images/plaque3.jpg",
     description: "고객만족 최우수상"
   },
   {
