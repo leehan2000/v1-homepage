@@ -2,37 +2,41 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 
-// 인증서 및 상장 데이터
 const awardData = [
   {
     id: 1,
-    imageSrc: "/images/office_entrance.jpg", // 실제 사무실 입구 이미지 사용
-    description: "LG유플러스 공식 인증 대리점 등록증"
+    imageSrc: "/images/plaque1.jpeg",
+    description: "우수 파트너 상장"
   },
   {
     id: 2,
-    imageSrc: "/images/v1_logo_new.jpg", // 회사 로고 이미지 사용
-    description: "브이원정보통신 공식 로고"
+    imageSrc: "/images/plaque2.jpeg",
+    description: "서비스 품질 우수상"
   },
   {
     id: 3,
-    imageSrc: "/images/conv.jpeg", // 기존 이미지 사용
-    description: "기업부설연구소 인정서"
+    imageSrc: "/images/plaque3.jpeg",
+    description: "고객만족 최우수상"
   },
   {
     id: 4,
-    imageSrc: "/images/daily1.jpg", // 일상 이미지 활용
-    description: "통신품질 우수업체 선정"
+    imageSrc: "/images/plaque4.jpg",
+    description: "기술혁신 대상"
   },
   {
     id: 5,
-    imageSrc: "/images/daily2.jpg", // 일상 이미지 활용
-    description: "고객만족 최우수 파트너"
+    imageSrc: "/images/plaque5.jpg",
+    description: "파트너십 우수상"
   },
   {
     id: 6,
-    imageSrc: "/images/daily3.jpg", // 일상 이미지 활용
-    description: "기술혁신 우수 기업"
+    imageSrc: "/images/cert_rnd.jpg",
+    description: "기업부설연구소 인정서"
+  },
+  {
+    id: 7,
+    imageSrc: "/images/cert_agency.jpg",
+    description: "LG유플러스 공식 인증 대리점 등록증"
   }
 ];
 
@@ -107,7 +111,7 @@ const AwardsPage = () => {
                   alt={award.description}
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                   onError={(e) => {
-                    e.currentTarget.src = "/images/placeholder.jpg";
+                    e.currentTarget.src = "/images/office_entrance.jpg";
                   }}
                 />
               </div>

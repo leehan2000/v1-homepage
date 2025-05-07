@@ -99,7 +99,7 @@ const DailyPage = () => {
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                   onError={(e) => {
                     // 이미지 로드 실패 시 기본 이미지로 대체
-                    e.currentTarget.src = "/images/placeholder.jpg";
+                    e.currentTarget.src = "/images/office_entrance.jpg";
                   }}
                 />
                 <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm">
