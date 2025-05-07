@@ -3,36 +3,36 @@ import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 
 // 상장 및 인증서 데이터 
-// 파일이 존재하는 실제 이미지만 사용
+// 온라인에서 접근 가능한 이미지 사용
 const awardData = [
   {
     id: 1,
-    imageSrc: "/images/office_entrance.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1588421357574-87938a86fa28?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "LG유플러스 공식 인증 대리점 등록증"
   },
   {
     id: 2,
-    imageSrc: "/images/v1_logo_new.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1568205655753-99245fc2a0cf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "브이원정보통신 공식 인증"
   },
   {
     id: 3,
-    imageSrc: "/images/v1_airplane.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "우수 통신사업자 선정"
   },
   {
     id: 4,
-    imageSrc: "/images/v1_mission.jpg", 
+    imageSrc: "https://images.unsplash.com/photo-1471970471555-19d4b113e9ed?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
     description: "디지털 혁신 우수 기업"
   },
   {
     id: 5,
-    imageSrc: "/images/v1_vision.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "고객만족 서비스 대상"
   },
   {
     id: 6,
-    imageSrc: "/images/daily1.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "정보통신 품질 우수상"
   }
 ];
