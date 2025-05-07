@@ -64,55 +64,55 @@ const BlogPage = () => {
         setError('블로그 데이터를 불러오는 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.');
         setLoading(false);
         
-        // 에러 발생 시 샘플 데이터로 대체 (개발용)
+        // 에러 발생 시 실제 이미지로 대체한 샘플 데이터
         setPosts([
           {
             id: '1',
             title: '유무선 통신 솔루션의 최신 트렌드',
             link: 'https://blog.naver.com/5gtime',
-            description: '최근 5G 기술의 발전과 함께 기업용 통신 솔루션도 빠르게 변화하고 있습니다. 이번 포스팅에서는 2024년 주목해야 할 유무선 통신의 최신 트렌드를 소개합니다...',
-            pubDate: '2024.04.15',
-            thumbnail: '/images/blog-placeholder.jpg'
+            description: '최근 5G 기술의 발전과 함께 기업용 통신 솔루션도 빠르게 변화하고 있습니다. 이번 포스팅에서는 2025년 주목해야 할 유무선 통신의 최신 트렌드를 소개합니다...',
+            pubDate: '2025.04.15',
+            thumbnail: '/images/daily1.jpg'
           },
           {
             id: '2',
             title: '스마트 오피스를 위한 네트워크 구축 가이드',
             link: 'https://blog.naver.com/5gtime',
             description: '재택근무와 하이브리드 워크가 일반화되면서 스마트 오피스를 위한 네트워크 인프라 구축이 중요해졌습니다. 안정적이고 보안성 높은 네트워크 구축 방법을 알아봅니다...',
-            pubDate: '2024.04.03',
-            thumbnail: '/images/blog-placeholder.jpg'
+            pubDate: '2025.04.03',
+            thumbnail: '/images/daily2.jpg'
           },
           {
             id: '3',
             title: '차량 IoT 솔루션으로 물류 효율성 높이기',
             link: 'https://blog.naver.com/5gtime',
             description: '물류 및 운송 산업에서 차량 IoT 도입으로 얻을 수 있는 효과와 실제 적용 사례를 소개합니다. 연료 비용 절감부터 실시간 모니터링까지, 다양한 이점을 확인해보세요...',
-            pubDate: '2024.03.22',
-            thumbnail: '/images/blog-placeholder.jpg'
+            pubDate: '2025.03.22',
+            thumbnail: '/images/daily3.jpg'
           },
           {
             id: '4',
             title: '중소기업을 위한 비용 효율적인 통신 인프라 구축 방법',
             link: 'https://blog.naver.com/5gtime',
             description: '제한된 예산으로도 효과적인 비즈니스 통신 환경을 구축하는 방법을 알아봅니다. 클라우드 기반 솔루션부터 단계적 확장 전략까지, 중소기업에 최적화된 접근법을 제안합니다...',
-            pubDate: '2024.03.10',
-            thumbnail: '/images/blog-placeholder.jpg'
+            pubDate: '2025.03.10',
+            thumbnail: '/images/daily4.jpg'
           },
           {
             id: '5',
             title: 'LG U+ 기업용 통신 서비스 활용 사례',
             link: 'https://blog.naver.com/5gtime',
             description: 'LG U+의 기업용 통신 서비스를 성공적으로 도입한 다양한 산업 분야의 실제 사례를 살펴봅니다. 제조, 의료, 교육 등 각 분야별 맞춤형 솔루션 적용 방법을 소개합니다...',
-            pubDate: '2024.02.28',
-            thumbnail: '/images/blog-placeholder.jpg'
+            pubDate: '2025.02.28',
+            thumbnail: '/images/daily5.jpg'
           },
           {
             id: '6',
             title: '통신장비 유지보수의 중요성과 효율적인 관리 방법',
             link: 'https://blog.naver.com/5gtime',
             description: '기업용 통신 장비의 수명을 연장하고 성능을 최적화하기 위한 유지보수 전략을 소개합니다. 정기적인 점검부터 원격 모니터링까지, 효율적인 관리 방법을 알아봅니다...',
-            pubDate: '2024.02.15',
-            thumbnail: '/images/blog-placeholder.jpg'
+            pubDate: '2025.02.15',
+            thumbnail: '/images/daily6.jpg'
           }
         ]);
       }
@@ -194,7 +194,7 @@ const BlogPage = () => {
                     alt={post.title} 
                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      e.currentTarget.src = "/images/blog-placeholder.jpg";
+                      e.currentTarget.src = "/images/office_entrance.jpg";
                     }}
                   />
                   <div className="absolute bottom-0 left-0 bg-primary text-white px-3 py-1 text-sm">
