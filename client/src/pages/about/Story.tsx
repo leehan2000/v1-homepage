@@ -112,7 +112,7 @@ const Story = () => {
                 지금의 우리가,<br/>
                 그때의 우리에게 한마디를 건넨다면 이렇게 말할 겁니다.<br/>
                 <br/>
-                <span className="font-semibold text-xl text-primary">"스스로를  믿고 힘차게 내딪자."</span>
+                <span className="font-semibold text-xl text-primary">"스스로를  믿고 힘차게 내딛자."</span>
               </p>
             </div>
           </div>
