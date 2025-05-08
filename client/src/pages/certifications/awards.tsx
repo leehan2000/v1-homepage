@@ -7,17 +7,17 @@ import { motion } from "framer-motion";
 const awardData = [
   {
     id: 1,
-    imageSrc: "/images/plaque1.jpeg",
+    imageSrc: "https://images.unsplash.com/photo-1588421357574-87938a86fa28?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "LG유플러스 공식 인증 대리점 등록증"
   },
   {
     id: 2,
-    imageSrc: "/images/plaque2.jpeg",
+    imageSrc: "https://images.unsplash.com/photo-1568205655753-99245fc2a0cf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "브이원정보통신 공식 인증"
   },
   {
     id: 3,
-    imageSrc: "/images/plaque3.jpeg",
+    imageSrc: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "우수 통신사업자 선정"
   },
   {
@@ -27,12 +27,12 @@ const awardData = [
   },
   {
     id: 5,
-    imageSrc: "/images/cert_rnd.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "고객만족 서비스 대상"
   },
   {
     id: 6,
-    imageSrc: "/images/cert_agency.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     description: "정보통신 품질 우수상"
   }
 ];
@@ -68,7 +68,7 @@ const AwardsPage = () => {
   return (
     <>
       <Helmet>
-        <title> 상장 / 감사패 | V1 Information Communications</title>
+        <title>계약서 / 상장 / 감사패 | V1 Information Communications</title>
         <meta
           name="description"
           content="V1 정보통신의 수상 내역 및 인증서를 확인하세요. 우수한 통신 서비스를 제공하는 회사로서 인정받은 다양한 증서와 상패를 소개합니다."
@@ -83,7 +83,7 @@ const AwardsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-              상장 / 감사패
+              계약서 / 상장 / 감사패
             </h1>
             <div className="w-20 h-1 bg-primary mx-auto mb-6 rounded-full"></div>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
