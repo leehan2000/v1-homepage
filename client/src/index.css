@@ -474,18 +474,4 @@ html, body {
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
 }
 
-/* Ken Burns 효과를 위한 애니메이션 */
-@keyframes kenburns {
-  0% {
-    transform: scale(1.0);
-  }
-  100% {
-    transform: scale(1.2);
-  }
-}
 
-.kenburns-effect {
-  animation: kenburns 20s ease-in-out infinite alternate;
-  background-size: cover;
-  background-position: center;
-}

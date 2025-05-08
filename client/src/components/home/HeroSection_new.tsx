@@ -10,14 +10,16 @@ const HeroSection = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* 배경 이미지 */}
+      {/* 배경 이미지 - Ken Burns 효과 적용 */}
       <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 w-full h-full kenburns-effect"
         style={{
-          backgroundImage: 'url("/images/v1_office.jpg")'
+          backgroundImage: 'url("/images/v1_office.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
         }}
-      >
-      </div>
+      ></div>
       
       {/* 어두운 오버레이 */}
       <div className="absolute inset-0 bg-black/30"></div>
