@@ -473,3 +473,17 @@ html, body {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
 }
+/* === 추가된 Ken Burns 애니메이션 === */
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translateX(0);
+  }
+  100% {
+    transform: scale(1.18) translateX(-6%);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 20s ease-in-out infinite alternate;
+  transform-origin: center;
+}

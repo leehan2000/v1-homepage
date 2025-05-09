@@ -1,3 +1,4 @@
+// BlogFeed 컴포넌트는 별도로 구현 예정
 import { Switch, Route, useLocation } from "wouter";
 import { useEffect } from "react";
 import { queryClient } from "./lib/queryClient";
@@ -92,6 +93,8 @@ function Router() {
       <Route path="/contact/consultation" component={ContactConsultationForm} />
       <Route path="/contact" component={ContactConsultationForm} />
 
+      {/* 서비스 섹션 아래 - BlogFeed 컴포넌트 추후 구현 예정 */}
+      
       {/* Fallback to 404 */}
       <Route component={NotFound} />
     </Switch>
