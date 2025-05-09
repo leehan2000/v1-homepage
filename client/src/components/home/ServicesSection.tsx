@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import BlogFeed from "./BlogFeed";
 
 type ServiceCardProps = {
   icon: string;
@@ -79,32 +78,26 @@ const ServicesSection: React.FC = () => {
   ];
 
   return (
-    <>
-      {/* 핵심 서비스 섹션 */}
-      <section id="services" className="py-16 bg-white border-b border-lgborder">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-lgtext mb-6 relative inline-block">
-              핵심 서비스
-              <div className="h-1 w-1/2 bg-lgred mt-3 mx-auto"></div>
-            </h2>
-            <p className="text-lg text-lgtext_light max-w-3xl mx-auto leading-relaxed">
-              브이원정보통신은 다양한 통신 인프라 구축 및 유지보수 서비스를 제공합니다.
-              고객의 니즈에 맞춘 최적의 솔루션을 만나보세요.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, idx) => (
-              <ServiceCard key={idx} {...service} />
-            ))}
-          </div>
+    <section id="services" className="py-16 bg-white border-b border-lgborder">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-lgtext mb-6 relative inline-block">
+            핵심 서비스
+            <div className="h-1 w-1/2 bg-lgred mt-3 mx-auto"></div>
+          </h2>
+          <p className="text-lg text-lgtext_light max-w-3xl mx-auto leading-relaxed">
+            브이원정보통신은 다양한 통신 인프라 구축 및 유지보수 서비스를 제공합니다.
+            고객의 니즈에 맞춘 최적의 솔루션을 만나보세요.
+          </p>
         </div>
-      </section>
 
-      {/* 제품소개 카테고리 최신 6개 블로그 글 */}
-      <BlogFeed category="제품소개" limit={6} />
-    </>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, idx) => (
+            <ServiceCard key={idx} {...service} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
