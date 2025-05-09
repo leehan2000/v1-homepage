@@ -1,4 +1,4 @@
-import BlogFeed from "@/components/home/BlogFeed";
+// BlogFeed 컴포넌트는 별도로 구현 예정
 import { Switch, Route, useLocation } from "wouter";
 import { useEffect } from "react";
 import { queryClient } from "./lib/queryClient";
