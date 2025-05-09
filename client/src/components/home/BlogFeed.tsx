@@ -25,7 +25,7 @@ interface BlogFeedProps {
 }
 
 const BlogFeed = ({
-  category = "통신",
+  category = "무선인터넷",
   limit = 6,
   title = "최신 블로그 포스트",
   showViewAllButton = true
@@ -39,8 +39,22 @@ const BlogFeed = ({
     const fetchBlogFeed = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`/blog-feed?category=${encodeURIComponent(category)}&limit=${limit}`);
-        setPosts(response.data);
+        // 카테고리가 있으면 필터링, 없으면 모든 포스트 조회
+        const url = category 
+          ? `/blog-feed?category=${encodeURIComponent(category)}&limit=${limit}` 
+          : `/blog-feed?limit=${limit}`;
+        
+        const response = await axios.get(url);
+        
+        // 결과가 없으면 카테고리 필터 없이 다시 요청
+        if (response.data.length === 0 && category) {
+          console.log(`'${category}' 카테고리에 포스트가 없어 전체 포스트를 가져옵니다.`);
+          const fallbackResponse = await axios.get(`/blog-feed?limit=${limit}`);
+          setPosts(fallbackResponse.data);
+        } else {
+          setPosts(response.data);
+        }
+        
         setError(null);
       } catch (err) {
         console.error("블로그 포스트를 가져오는 중 오류 발생:", err);
@@ -114,12 +128,32 @@ const BlogFeed = ({
                       alt={post.title}
                       className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                       onError={(e) => {
-                        e.currentTarget.src = "https://via.placeholder.com/640x360?text=V1+정보통신";
+                        // 비공개 이미지나 로딩 실패 시 카테고리별 배경색 사용
+                        const element = e.currentTarget.parentElement;
+                        if (element) {
+                          if (post.category === "무선인터넷") {
+                            element.className = "w-full h-full flex items-center justify-center bg-blue-100";
+                          } else if (post.category === "컴퓨터") {
+                            element.className = "w-full h-full flex items-center justify-center bg-green-100";
+                          } else {
+                            element.className = "w-full h-full flex items-center justify-center bg-primary/10";
+                          }
+                          
+                          // 이미지 대신 텍스트 표시
+                          e.currentTarget.style.display = "none";
+                          const textEl = document.createElement("span");
+                          textEl.className = "text-primary font-medium text-lg";
+                          textEl.textContent = post.category || "V1 정보통신";
+                          element.appendChild(textEl);
+                        }
                       }}
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-primary/10">
-                      <span className="text-primary font-medium">V1 정보통신</span>
+                    <div className={`w-full h-full flex items-center justify-center ${
+                      post.category === "무선인터넷" ? "bg-blue-100" : 
+                      post.category === "컴퓨터" ? "bg-green-100" : "bg-primary/10"
+                    }`}>
+                      <span className="text-primary font-medium text-lg">{post.category || "V1 정보통신"}</span>
                     </div>
                   )}
                   <div className="absolute top-2 right-2 bg-primary/90 text-white text-xs px-2 py-1 rounded">

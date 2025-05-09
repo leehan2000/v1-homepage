@@ -19,7 +19,7 @@ const HomePage = () => {
       <AboutPreview />
       <CertificationsSection />
       <ReviewsPreview />
-      <BlogFeed category="통신" limit={6} title="최신 블로그 소식" />
+      <BlogFeed category="무선인터넷" limit={6} title="무선인터넷 최신 소식" />
       <ContactForm />
     </>
   );

@@ -103,7 +103,7 @@ const ServicesSection: React.FC = () => {
       </section>
 
       {/* 제품소개 카테고리 최신 6개 블로그 글 */}
-      <BlogFeed category="제품소개" limit={6} />
+      <BlogFeed category="통신" limit={6} />
     </>
   );
 };

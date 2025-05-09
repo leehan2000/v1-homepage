@@ -46,10 +46,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
         filteredPosts = items.filter((item: any) => {
           // 카테고리가 배열인 경우와 문자열인 경우 모두 처리
           if (Array.isArray(item.category)) {
-            return item.category.includes(categoryFilter);
+            return item.category.some(cat => cat === categoryFilter || cat.includes(categoryFilter));
           }
-          return item.category === categoryFilter;
+          
+          // 문자열인 경우 정확히 일치하거나 포함 관계 확인
+          return item.category === categoryFilter || 
+                 (typeof item.category === 'string' && item.category.includes(categoryFilter));
         });
+        
+        // 필터링된 결과가 없으면 빈 배열 대신 모든 항목 반환
+        if (filteredPosts.length === 0) {
+          console.log(`카테고리 '${categoryFilter}'에 맞는 포스트가 없어 전체 포스트를 반환합니다.`);
+          filteredPosts = items;
+        }
       }
       
       // 포스트 변환 및 정리
