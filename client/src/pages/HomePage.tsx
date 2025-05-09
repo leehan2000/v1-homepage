@@ -3,6 +3,7 @@ import ServicesSection from "@/components/home/ServicesSection";
 import AboutPreview from "@/components/home/AboutPreview";
 import CertificationsSection from "@/components/home/CertificationsSection";
 import ReviewsPreview from "@/components/home/ReviewsPreview";
+import BlogFeed from "@/components/home/BlogFeed";
 import ContactForm from "@/components/contact/ContactForm";
 import { Helmet } from "react-helmet";
 
@@ -18,6 +19,7 @@ const HomePage = () => {
       <AboutPreview />
       <CertificationsSection />
       <ReviewsPreview />
+      <BlogFeed category="통신" limit={6} title="최신 블로그 소식" />
       <ContactForm />
     </>
   );
