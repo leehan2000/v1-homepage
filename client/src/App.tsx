@@ -93,7 +93,7 @@ function Router() {
       <Route path="/contact/consultation" component={ContactConsultationForm} />
       <Route path="/contact" component={ContactConsultationForm} />
 
-      {/* 서비스 섹션 아래 - BlogFeed 컴포넌트 추후 구현 예정 */}
+      {/* 서비스 섹션 - 추후 업데이트 예정 */}
       
       {/* Fallback to 404 */}
       <Route component={NotFound} />

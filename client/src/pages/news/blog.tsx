@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
-import axios from "axios";
-import * as xml2js from "xml2js";
 import { Skeleton } from "@/components/ui/skeleton";
 
 interface BlogPost {
@@ -22,50 +20,14 @@ const BlogPage = () => {
     // 페이지 로드 시 상단으로 스크롤
     window.scrollTo(0, 0);
     
-    const fetchBlogPosts = async () => {
-      try {
-        setLoading(true);
-        
-        // CORS 문제를 해결하기 위한 프록시 서버를 통해 요청
-        // 참고: 실제 프로덕션에서는 서버 측에서 요청을 처리하는 것이 좋습니다
-        const proxyUrl = 'https://api.allorigins.win/raw?url=';
-        const blogRssUrl = 'https://rss.blog.naver.com/5gtime.xml';
-        
-        const response = await axios.get(`${proxyUrl}${encodeURIComponent(blogRssUrl)}`);
-        
-        // XML을 JSON으로 변환
-        const parser = new xml2js.Parser({ explicitArray: false });
-        const result = await parser.parseStringPromise(response.data);
-        
-        // 블로그 포스트 데이터 추출 및 형식화
-        const items = result.rss.channel.item;
-        const formattedPosts = Array.isArray(items) ? items.slice(0, 6).map((item: any) => {
-          // 썸네일 이미지 URL 추출 (description에서 첫 번째 이미지)
-          let thumbnail = '';
-          const imgMatch = item.description && item.description.match(/<img[^>]+src="([^">]+)"/);
-          if (imgMatch && imgMatch[1]) {
-            thumbnail = imgMatch[1];
-          }
-          
-          return {
-            id: item.guid || item.link,
-            title: item.title,
-            link: item.link,
-            description: item.description?.replace(/<[^>]*>/g, '').substring(0, 120) + '...',
-            pubDate: new Date(item.pubDate).toLocaleDateString('ko-KR'),
-            thumbnail: thumbnail || '/images/blog-placeholder.jpg'
-          };
-        }) : [];
-        
-        setPosts(formattedPosts);
-        setLoading(false);
-      } catch (err) {
-        console.error('블로그 포스트를 가져오는 중 오류 발생:', err);
-        setError('블로그 데이터를 불러오는 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-        setLoading(false);
-        
-        // 에러 발생 시 실제 이미지로 대체한 샘플 데이터
-        setPosts([
+    // 블로그 데이터 로드 함수
+    const loadBlogData = () => {
+      setLoading(true);
+      
+      // 1초 후에 샘플 데이터 로드 (로딩 상태를 보여주기 위함)
+      setTimeout(() => {
+        // 샘플 데이터
+        const sampleData: BlogPost[] = [
           {
             id: '1',
             title: '유무선 통신 솔루션의 최신 트렌드',
@@ -114,11 +76,16 @@ const BlogPage = () => {
             pubDate: '2025.02.15',
             thumbnail: '/images/daily6.jpg'
           }
-        ]);
-      }
+        ];
+        
+        setPosts(sampleData);
+        setLoading(false);
+        setError(null);
+      }, 1000);
     };
-
-    fetchBlogPosts();
+    
+    // 데이터 로드 함수 호출
+    loadBlogData();
   }, []);
 
   // 스켈레톤 로딩 컴포넌트
