@@ -129,6 +129,8 @@ const BlogPage = () => {
                     onError={(e) => {
                       e.currentTarget.src = "/images/office_entrance.jpg";
                     }}
+                    referrerPolicy="no-referrer"
+                    crossOrigin="anonymous"
                   />
                   <div className="absolute bottom-0 left-0 bg-primary text-white px-3 py-1 text-sm">
                     {post.pubDate}

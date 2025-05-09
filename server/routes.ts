@@ -37,9 +37,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
         
         // 썸네일 추출 시도 (HTML에서 첫 번째 이미지 URL 찾기)
         let thumbnail = "";
+        
+        // 네이버 블로그에서는 보통 postlist에 썸네일 이미지가 있음
         const imgMatch = item.description?.match(/<img[^>]+src="([^">]+)"/);
+        
         if (imgMatch && imgMatch.length > 1) {
+          // 썸네일 이미지 URL이 있으면 사용
           thumbnail = imgMatch[1];
+          
+          // 네이버 블로그 썸네일 URL 처리
+          // 네이버 블로그 이미지는 ?type=s3 등의 쿼리 파라미터를 가지고 있어서
+          // 직접 사용하면 CORS 오류가 발생할 수 있음
+          if (thumbnail.includes('blogthumb.pstatic.net') || thumbnail.includes('postfiles.pstatic.net')) {
+            // 쿼리 파라미터 제거
+            thumbnail = thumbnail.split('?')[0];
+          }
         } else {
           // 기본 이미지 사용
           thumbnail = `/images/daily${(index % 6) + 1}.jpg`;
