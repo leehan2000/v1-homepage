@@ -10,6 +10,7 @@ interface BlogPost {
   pubDate: string;
   thumbnail: string;
   author?: string;
+  originalDescription?: string;
 }
 
 const BlogPage = () => {
@@ -17,8 +18,8 @@ const BlogPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  // 썸네일 이미지 배열 - 네이버 블로그 이미지 대신 사용할 고정 이미지들
-  const thumbnailImages = [
+  // 폴백용 썸네일 이미지 배열
+  const fallbackImages = [
     '/images/daily1.jpg',
     '/images/daily2.jpg',
     '/images/daily3.jpg',
@@ -46,12 +47,8 @@ const BlogPage = () => {
         const data = await response.json();
         
         if (Array.isArray(data)) {
-          // 각 포스트에 썸네일 이미지 할당
-          const postsWithImages = data.map((post, index) => ({
-            ...post,
-            thumbnail: thumbnailImages[index % thumbnailImages.length]
-          }));
-          setPosts(postsWithImages);
+          // 백엔드에서 가져온 데이터 그대로 사용 (썸네일 URL 포함)
+          setPosts(data);
         } else if (data.error) {
           setError(data.error);
         } else {
@@ -142,8 +139,10 @@ const BlogPage = () => {
                     alt={post.title} 
                     className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                     onError={(e) => {
-                      e.currentTarget.src = "/images/office_entrance.jpg";
+                      // 기본 이미지로 폴백
+                      e.currentTarget.src = `/images/daily${parseInt(post.id) % 6 + 1}.jpg`;
                     }}
+                    referrerPolicy="no-referrer"
                   />
                   <div className="absolute bottom-0 left-0 bg-primary text-white px-3 py-1 text-sm">
                     {post.pubDate}
