@@ -17,6 +17,16 @@ const BlogPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  // 썸네일 이미지 배열 - 네이버 블로그 이미지 대신 사용할 고정 이미지들
+  const thumbnailImages = [
+    '/images/daily1.jpg',
+    '/images/daily2.jpg',
+    '/images/daily3.jpg',
+    '/images/daily4.jpg',
+    '/images/daily5.jpg',
+    '/images/daily6.jpg'
+  ];
+
   useEffect(() => {
     // 페이지 로드 시 상단으로 스크롤
     window.scrollTo(0, 0);
@@ -36,7 +46,12 @@ const BlogPage = () => {
         const data = await response.json();
         
         if (Array.isArray(data)) {
-          setPosts(data);
+          // 각 포스트에 썸네일 이미지 할당
+          const postsWithImages = data.map((post, index) => ({
+            ...post,
+            thumbnail: thumbnailImages[index % thumbnailImages.length]
+          }));
+          setPosts(postsWithImages);
         } else if (data.error) {
           setError(data.error);
         } else {
