@@ -23,12 +23,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).send('Image URL is required');
       }
       
-      // 네이버 블로그 이미지 가져오기
+      // 네이버 블로그 이미지 가져오기 (Referer 헤더 필수)
       const response = await axios.get(imageUrl, {
         responseType: 'arraybuffer',
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-          'Referer': 'https://blog.naver.com/'
+          'Referer': 'https://blog.naver.com/',
         }
       });
       
@@ -75,8 +75,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         let thumbnail = "";
         const imgMatch = originalDescription.match(/<img[^>]+src="([^">]+)"/);
         if (imgMatch && imgMatch.length > 1) {
-          // 썸네일 이미지 URL
-          thumbnail = imgMatch[1];
+          // 썸네일 이미지 URL을 프록시 API를 통해 제공
+          const originalImageUrl = imgMatch[1];
+          thumbnail = `/api/blog-thumbnail?url=${encodeURIComponent(originalImageUrl)}`;
         } else {
           // 기본 이미지 사용
           thumbnail = `/images/daily${(index % 6) + 1}.jpg`;

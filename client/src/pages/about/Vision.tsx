@@ -1,298 +1,169 @@
-import { Helmet } from "react-helmet";
-import { Card, CardContent } from "@/components/ui/card";
+import { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
 
-const Vision = () => {
+// Pexels 무료 이미지 적용
+const freeImages = {
+  essence: 'https://images.pexels.com/photos/6804586/pexels-photo-6804586.jpeg?auto=compress&cs=tinysrgb&h=900&w=1600', // 서버룸에서 네트워크 케이블 다루는 모습
+  nameMeaning: 'https://images.pexels.com/photos/374710/pexels-photo-374710.jpeg?auto=compress&cs=tinysrgb&h=900&w=1600', // 활주로 위 비행기 윙뷰
+  vision: 'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&h=900&w=1600', // 미래적 기술 콘셉트
+  mission: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&h=900&w=1600', // 다양성 있는 팀 브레인스토밍 장면
+  attitude: 'https://images.pexels.com/photos/9169913/pexels-photo-9169913.jpeg?auto=compress&cs=tinysrgb&h=900&w=1600' // 'Never Give Up' 레터보드 이미지
+};
+
+const sectionTransition = { duration: 0.8, ease: 'easeInOut' };
+
+const VisionPage: React.FC = () => {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+
   return (
     <>
       <Helmet>
         <title>비전 & 미션 | 브이원정보통신</title>
-        <meta name="description" content="브이원정보통신이 추구하는 비전과 미션을 소개합니다. 신뢰를 연결하는 통신회사, 브이원의 가치와 목표를 확인하세요." />
+        <meta
+          name="description"
+          content="브이원정보통신이 추구하는 비전과 미션을 소개합니다. 신뢰를 연결하는 통신회사, 브이원의 가치와 목표를 확인하세요."
+        />
       </Helmet>
-      
-      <div className="bg-gradient-to-br from-primary-50 to-primary-100 py-24 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-5">
-          <div className="absolute top-1/4 left-1/4 transform -rotate-12">
-            <span className="text-[200px] font-black text-primary">V1</span>
-          </div>
+
+      {/* Hero Section */}
+      <motion.section
+        className="relative h-screen overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={sectionTransition}
+      >
+        <div className="absolute inset-0">
+          <img
+            src={freeImages.essence}
+            alt="통신의 본질"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-40" />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="flex justify-center mb-2">
-            <div className="w-20 h-1 bg-primary mb-4"></div>
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 relative">
-            <span className="relative inline-block">
-              우리는 왜 '브이원'이 되었는가
-              <span className="absolute -bottom-2 left-0 right-0 h-1 bg-primary"></span>
-            </span>
-          </h1>
-          <p className="text-lg md:text-2xl text-center max-w-3xl mx-auto text-gray-700 font-light">
-            <span className="relative inline-block px-2">
-              존재의 이유, 그리고 이름에 담긴 약속
-              <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary-200"></span>
-            </span>
-          </p>
-          <div className="flex justify-center mt-10">
-            <div className="w-2 h-12 bg-gradient-to-b from-primary-500 to-transparent"></div>
-          </div>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
+          <motion.h1
+            className="text-5xl md:text-7xl font-extrabold mb-4"
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ ...sectionTransition, delay: 0.3 }}
+          >
+            우리는 왜 '브이원'이 되었는가
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-2xl max-w-2xl"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ ...sectionTransition, delay: 0.6 }}
+          >
+            존재의 이유, 그리고 이름에 담긴 약속
+          </motion.p>
         </div>
-      </div>
-      
-      <div className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            {/* 존재 이유 섹션 */}
-            <div className="mb-16">
-              <div className="rounded-lg overflow-hidden shadow-xl mb-8">
-                <div className="h-64 bg-gradient-to-br from-blue-300 via-blue-400 to-blue-600 flex justify-center items-center">
-                  <span className="text-3xl font-bold text-white px-6 py-3 rounded-lg bg-primary-900 bg-opacity-40">통신의 본질</span>
-                </div>
-              </div>
-              <div className="space-y-6 text-lg text-gray-700">
-                <p>
-                  통신이라는 말은 흔히 기술을 떠올리게 합니다.<br/>
-                  하지만 우리가 이 일을 시작하며 느낀 건,<br/>
-                  그 너머에 있는 본질이었습니다.<br/>
-                  사람과 사람을 잇는 것.<br/>
-                  이해와 신뢰를 전하는 일.
-                </p>
-                <p>
-                  우리는 언제나 현장에서 답을 찾았습니다.<br/>
-                  인터넷 하나, 전화선 하나를 연결하는 일조차<br/>
-                  고객의 하루, 고객의 생업, 고객의 기대와 연결되어 있다는 사실을<br/>
-                  우리는 수없이 마주했고,<br/>
-                  그만큼 무겁게 받아들였습니다.
-                </p>
-                <p>
-                  우리가 바라는 일은,<br/>
-                  단순한 연결이 아닙니다.<br/>
-                  신뢰를 매개로 한 지속적인 동행입니다.
-                </p>
-              </div>
-            </div>
-            
-            {/* 브이원 이름 의미 */}
-            <div className="mb-16">
-              <div className="mb-8 relative">
-                <div className="absolute -left-20 opacity-10 transform -rotate-12">
-                  <span className="text-9xl font-black text-primary">V1</span>
-                </div>
-                <div className="text-right mb-2">
-                  <div className="inline-block w-24 h-0.5 bg-primary mb-1"></div>
-                </div>
-                <h2 className="text-3xl font-bold text-gray-900 flex items-center justify-between relative z-10">
-                  <div className="flex items-center">
-                    <span className="text-4xl text-primary mr-3">✈️</span> 
-                    <span className="relative">
-                      브이원(V1), 도약을 택한 이름
-                      <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"></span>
-                    </span>
-                  </div>
-                </h2>
-              </div>
-              <div className="rounded-lg overflow-hidden shadow-xl mb-8">
-                <div className="h-64 bg-gradient-to-br from-sky-400 via-blue-500 to-primary-600 flex justify-center items-center">
-                  <span className="text-3xl font-bold text-white px-6 py-3 rounded-lg bg-primary-900 bg-opacity-40">V1 - 비행기의 이륙 순간</span>
-                </div>
-              </div>
-              <div className="space-y-6 text-lg text-gray-700">
-                <p>
-                  우리가 '브이원'이라 불리는 이유는,<br/>
-                  비행기의 이륙과 맞닿아 있습니다.
-                </p>
-                <p>
-                  항공용어로 V1의 의미는<br/>
-                  이륙하려 달리는 비행기가 더 이상 멈출 수 없는 순간을 의미합니다.<br/>
-                  속도를 붙여 달리던 활주로 위에서<br/>
-                  "속도가 붙어 뜰 수 밖에 없는 순간"이 찾아오는 시점.
-                </p>
-                <p>
-                  비행기는 이제 더는 멈출 수 없습니다.<br/>
-                  그대로, 반드시 날아야 합니다.
-                </p>
-                <p>
-                  우리는 그 단어에 마음을 실었습니다.<br/>
-                  망설임 없이 도약하겠다는 약속.<br/>
-                  브이원이 누군가의 시작과 함께 이륙하는 존재가 되겠다는 다짐.
-                </p>
-              </div>
-            </div>
-            
-            {/* 비전 섹션 */}
-            <div className="mb-16">
-              <div className="mb-8 relative overflow-hidden">
-                <div className="absolute -right-10 top-0 opacity-5">
-                  <span className="text-9xl font-black text-primary">비전</span>
-                </div>
-                <div className="flex justify-start mb-2">
-                  <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
-                </div>
-                <h2 className="text-3xl font-bold mb-2 text-gray-900 flex items-center relative z-10">
-                  <span className="text-4xl text-primary mr-3">🎯</span> 
-                  <span className="relative inline-block pb-1">
-                    우리의 비전
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-300"></span>
-                  </span>
-                </h2>
-                <div className="ml-12 pl-2 border-l-2 border-primary-100 text-sm text-primary-600 italic">
-                  신뢰를 연결하는 통신회사의 꾸준한 여정
-                </div>
-              </div>
-              <div className="my-8 rounded-lg overflow-hidden shadow-xl">
-                <div className="h-64 bg-gradient-to-br from-primary-300 via-primary-500 to-primary-700 flex justify-center items-center">
-                  <p className="text-3xl text-white font-bold text-center px-6 py-3 rounded-lg bg-primary-900 bg-opacity-40">
-                    "신뢰를 연결하는 통신회사, 브이원"
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-6 text-lg text-gray-700">
-                <p>
-                  우리는 기술을 팔지 않습니다.<br/>
-                  신뢰를 팔고, 연결을 돕습니다.<br/>
-                  그 작은 연결이<br/>
-                  누군가의 공간을 살리고,<br/>
-                  누군가의 하루를 바꾸고,<br/>
-                  어떤 이에게는 삶을 움직이게 한다는 걸<br/>
-                  우리는 현장에서 매일 확인하고 있습니다.
-                </p>
-              </div>
-            </div>
-            
-            {/* 미션 섹션 */}
-            <div className="mb-16">
-              <div className="mb-8 relative overflow-hidden">
-                <div className="absolute -left-16 top-0 opacity-5">
-                  <span className="text-9xl font-black text-primary">미션</span>
-                </div>
-                <div className="flex justify-end mb-2">
-                  <div className="w-16 h-0.5 bg-gradient-to-l from-primary to-transparent"></div>
-                </div>
-                <h2 className="text-3xl font-bold mb-2 text-gray-900 flex items-center justify-between relative z-10">
-                  <div className="flex items-center">
-                    <span className="text-4xl text-primary mr-3">🛠</span> 
-                    <span className="relative inline-block pb-1">
-                      우리의 미션
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-300"></span>
-                    </span>
-                  </div>
-                </h2>
-                <div className="ml-12 pl-2 border-l-2 border-primary-100 text-sm text-primary-600 italic">
-                  작지만 강한 현장 중심의 통신 파트너
-                </div>
-              </div>
-              <div className="my-8 rounded-lg overflow-hidden shadow-xl">
-                <div className="h-64 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-800 flex justify-center items-center">
-                  <p className="text-3xl text-white font-bold text-center px-6 py-3 rounded-lg bg-primary-900 bg-opacity-40">
-                    "작지만 강한, 현장 중심의 통신 파트너"
-                  </p>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6 text-center">
-                    <h3 className="text-xl font-bold mb-3 text-gray-900">고객의 언어로 설명하고</h3>
-                  </CardContent>
-                </Card>
-                
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6 text-center">
-                    <h3 className="text-xl font-bold mb-3 text-gray-900">불편을 먼저 발견하며</h3>
-                  </CardContent>
-                </Card>
-                
-                <Card className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6 text-center">
-                    <h3 className="text-xl font-bold mb-3 text-gray-900">수익보다 신뢰를 먼저 선택하는 것</h3>
-                  </CardContent>
-                </Card>
-              </div>
-              <p className="text-lg text-gray-700">
-                그것이 우리가 통신을 대하는 방식이고,<br/>
-                브이원만의 약속입니다.
-              </p>
-            </div>
-            
-            {/* 태도 섹션 */}
-            <div>
-              <div className="mb-8 relative overflow-hidden">
-                <div className="absolute -right-10 opacity-5">
-                  <span className="text-9xl font-black text-primary">태도</span>
-                </div>
-                <div className="flex justify-start mb-2">
-                  <div className="w-16 h-0.5 bg-gradient-to-r from-primary to-transparent"></div>
-                </div>
-                <h2 className="text-3xl font-bold mb-2 text-gray-900 flex items-center relative z-10">
-                  <span className="text-4xl text-primary mr-3">🌱</span> 
-                  <span className="relative inline-block pb-1">
-                    우리의 태도
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-300"></span>
-                  </span>
-                </h2>
-                <div className="ml-12 pl-2 border-l-2 border-primary-100 text-sm text-primary-600 italic">
-                  마음가짐을 새기는 세 가지 약속
-                </div>
-              </div>
-              
-              <div className="space-y-6 mb-10">
-                <div className="flex items-center bg-primary-50 p-4 rounded-lg">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary-200 flex items-center justify-center mr-4">
-                    <span className="text-xl font-bold text-primary">1</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">묻기보다, 먼저 듣겠습니다</h3>
-                  </div>
-                </div>
-                
-                <div className="flex items-center bg-primary-50 p-4 rounded-lg">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary-200 flex items-center justify-center mr-4">
-                    <span className="text-xl font-bold text-primary">2</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">빠르기보다, 정확하게 움직이겠습니다</h3>
-                  </div>
-                </div>
-                
-                <div className="flex items-center bg-primary-50 p-4 rounded-lg">
-                  <div className="flex-shrink-0 h-12 w-12 rounded-full bg-primary-200 flex items-center justify-center mr-4">
-                    <span className="text-xl font-bold text-primary">3</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">성과보다, 사람을 남기겠습니다</h3>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-6 text-lg text-gray-700">
-                <p>
-                  브이원은 그렇게 오늘도<br/>
-                  누군가의 출발선 옆에서,<br/>
-                  작지만 단단한 신호가 되어 있습니다.
-                </p>
-                <div className="relative mt-10 mb-4">
-                  <div className="absolute -right-4 -top-8 opacity-5">
-                    <span className="text-9xl font-black text-primary">V1</span>
-                  </div>
-                  <p className="text-xl text-primary-700 font-semibold pt-6 relative z-10">
-                    <span className="relative inline-block">
-                      지금은 <span className="font-bold">V1</span>의 순간입니다.<br/>
-                      이제 더는 멈출 수 없습니다.<br/>
-                      함께 도약할 시간입니다.
-                    </span>
-                  </p>
-                </div>
-                <div className="flex justify-center my-6">
-                  <div className="w-20 h-1 bg-gradient-to-r from-transparent via-primary-300 to-transparent"></div>
-                </div>
-                <p className="text-2xl font-bold text-gray-900 pt-2 text-center">
-                  브이원정보통신.<br/>
-                  <span className="text-primary-600">신뢰 위에서, 연결 너머로.</span>
-                </p>
-              </div>
-            </div>
+      </motion.section>
+
+      <div className="container mx-auto px-4 py-20 space-y-24">
+        {/* Essence Section */}
+        <motion.section
+          className="flex flex-col lg:flex-row items-center gap-12"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={sectionTransition}
+        >
+          <div className="lg:w-1/2">
+            <img
+              src={freeImages.essence}
+              alt="통신의 본질"
+              className="w-full h-64 lg:h-96 object-cover rounded-2xl shadow-xl"
+            />
           </div>
-        </div>
+          <div className="lg:w-1/2 space-y-6 text-gray-700 text-lg">
+            <h2 className="text-3xl font-bold">통신의 본질</h2>
+            <p>통신이라는 말은 흔히 기술을 떠올리게 합니다. 하지만 우리가 이 일을 시작하며 느낀 건, 그 너머에 있는 본질이었습니다. 사람과 사람을 잇는 것. 이해와 신뢰를 전하는 일.</p>
+            <p>우리는 언제나 현장에서 답을 찾았습니다. 인터넷 하나, 전화선 하나를 연결하는 일조차 고객의 하루, 고객의 생업, 고객의 기대와 연결되어 있다는 사실을 우리는 수없이 마주했고, 그만큼 무겁게 받아들였습니다.</p>
+            <p>우리가 바라는 일은, 단순한 연결이 아닙니다. 신뢰를 매개로 한 지속적인 동행입니다.</p>
+          </div>
+        </motion.section>
+
+        {/* Name Meaning Section */}
+        <motion.section
+          className="flex flex-col lg:flex-row-reverse items-center gap-12"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={sectionTransition}
+        >
+          <div className="lg:w-1/2">
+            <img
+              src={freeImages.nameMeaning}
+              alt="비행기 윙뷰"
+              className="w-full h-64 lg:h-96 object-cover rounded-2xl shadow-xl"
+            />
+          </div>
+          <div className="lg:w-1/2 space-y-6 text-gray-700 text-lg">
+            <h2 className="text-3xl font-bold flex items-center gap-3">✈️ 브이원(V1), 도약을 택한 이름</h2>
+            <p>항공용어로 V1의 의미는 이륙하려 달리는 비행기가 더 이상 멈출 수 없는 순간을 의미합니다. 속도를 붙여 달리던 활주로 위에서 '속도가 붙어 뜰 수 밖에 없는 순간'이 찾아오는 시점.</p>
+            <p>비행기는 이제 더는 멈출 수 없습니다. 그대로, 반드시 날아야 합니다.</p>
+            <p>우리는 그 단어에 마음을 실었습니다. 망설임 없이 도약하겠다는 약속. 브이원이 누군가의 시작과 함께 이륙하는 존재가 되겠다는 다짐.</p>
+          </div>
+        </motion.section>
+
+        {/* Vision Section */}
+        <motion.section
+          className="text-center space-y-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={sectionTransition}
+        >
+          <h2 className="text-4xl font-bold text-gray-900">🎯 우리의 비전</h2>
+          <img
+            src={freeImages.vision}
+            alt="미래 기술 콘셉트"
+            className="mx-auto w-full max-w-3xl h-64 object-cover rounded-2xl shadow-xl"
+          />
+          <p className="text-xl italic text-primary-600">신뢰를 연결하는 통신회사의 꾸준한 여정</p>
+          <p className="max-w-3xl mx-auto text-gray-700 text-lg">우리는 기술을 팔지 않습니다. 신뢰를 팔고, 연결을 돕습니다. 그 작은 연결이 누군가의 공간을 살리고, 누군가의 하루를 바꾸고, 어떤 이에게는 삶을 움직이게 한다는 걸 우리는 현장에서 매일 확인하고 있습니다.</p>
+        </motion.section>
+
+        {/* Mission Section */}
+        <motion.section
+          className="text-center space-y-8"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={sectionTransition}
+        >
+          <h2 className="text-4xl font-bold text-gray-900">🛠 우리의 미션</h2>
+          <img
+            src={freeImages.mission}
+            alt="팀 브레인스토밍"
+            className="mx-auto w-full max-w-3xl h-64 object-cover rounded-2xl shadow-xl"
+          />
+          <p className="max-w-3xl mx-auto text-gray-700 text-lg">우리는 고객의 언어로 소통하며, 불편을 먼저 발견하고, 수익보다 신뢰를 우선 선택합니다. 이러한 미션이 매일 현장에서 실현됩니다.</p>
+        </motion.section>
+
+        {/* Attitude Section */}
+        <motion.section
+          className="text-center space-y-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={sectionTransition}
+        >
+          <h2 className="text-4xl font-bold text-gray-900">🌱 우리의 태도</h2>
+          <img
+            src={freeImages.attitude}
+            alt="동기부여 칠판"
+            className="mx-auto w-full max-w-3xl h-64 object-cover rounded-2xl shadow-xl"
+          />
+          <p className="max-w-3xl mx-auto text-gray-700 text-lg">묻기보다 먼저 듣고, 빠르기보다 정확하게 움직이며, 성과보다 사람을 남깁니다. 이러한 태도가 브이원의 철학입니다.</p>
+        </motion.section>
       </div>
     </>
   );
 };
 
-export default Vision;
+export default VisionPage;
+

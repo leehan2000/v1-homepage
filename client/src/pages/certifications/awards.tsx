@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 
 // 상장 및 인증서 데이터
 const awardData = [
-  { id: 1, imageSrc: "/images/plaque1.png", description: "LG유플러스 공식 인증 대리점 등록증" },
-  { id: 2, imageSrc: "/images/plaque2.png", description: "브이원정보통신 공식 인증" },
-  { id: 3, imageSrc: "/images/plaque3.png", description: "우수 통신사업자 선정" },
-  { id: 4, imageSrc: "/images/plaque4.png", description: "디지털 혁신 우수 기업" },
-  { id: 5, imageSrc: "/images/plaque5.jpg", description: "고객만족 서비스 대상" },
-  { id: 6, imageSrc: "/images/plaque6.png", description: "정보통신 품질 우수상" }
+  { id: 1, imageSrc: "/images/plaque1.png", description: "19년 LG유플러스 기업부문 신인상" },
+  { id: 2, imageSrc: "/images/plaque2.png", description: "20년 LG유플러스 성장 우수상" },
+  { id: 3, imageSrc: "/images/plaque3.png", description: "20년 기업 M2M부문 우수상" },
+  { id: 4, imageSrc: "/images/plaque4.png", description: "21년 월 매출 2억달성" },
+  { id: 5, imageSrc: "/images/plaque5.jpg", description: "LG유플러스 공식 인증 대리점" },
+  { id: 6, imageSrc: "/images/plaque6.png", description: "22년 월 매출 3억달성" }
 ];
 
 const AwardsPage = () => {
