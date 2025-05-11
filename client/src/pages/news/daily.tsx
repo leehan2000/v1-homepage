@@ -6,47 +6,47 @@ import { motion } from "framer-motion";
 const dailyImages = [
   {
     id: 1,
-    imageSrc: "/images/daily1.jpg",
-    description: "LG U+ 협력사 회의 진행",
-    date: "2025.04.18"
+    imageSrc: "/images/skv1.jpg",
+    description: "성수역SKV1타워 브이원 근무지",
+    date: "SKV1타워"
   },
   {
     id: 2,
-    imageSrc: "/images/daily2.jpg",
-    description: "네트워크 설치 기술 교육",
-    date: "2025.04.10"
+    imageSrc: "/images/office_ent.jpg",
+    description: "브이원정보통신 사무실 입구",
+    date: "입구"
   },
   {
     id: 3,
-    imageSrc: "/images/daily3.jpg",
-    description: "제주도 팀 워크샵 현장",
-    date: "2025.03.27"
+    imageSrc: "/images/welcomewall.jpeg",
+    description: "브이원정보통신 웰컴 Wall",
+    date: "Welcome Wall"
   },
   {
     id: 4,
-    imageSrc: "/images/daily4.jpg",
-    description: "분기별 성과 평가 미팅",
-    date: "2025.03.15"
+    imageSrc: "/images/land.jpg",
+    description: "사무실에서 바라본 성수동 전경",
+    date: "풍경"
   },
   {
     id: 5,
-    imageSrc: "/images/daily5.jpg",
-    description: "신규 통신장비 테스트",
-    date: "2025.02.22"
+    imageSrc: "/images/office1.jpg",
+    description: "일상의 시작",
+    date: "사무실"
   },
   {
     id: 6,
-    imageSrc: "/images/daily6.jpg",
-    description: "엔지니어 팀 현장 방문",
-    date: "2025.02.08"
+    imageSrc: "/images/office2.jpg",
+    description: "분주한 모습",
+    date: "사무실"
   },
   {
     id: 7,
-    imageSrc: "/images/office_entrance.jpg",
-    description: "본사 사무실 입구",
-    date: "2025.01.15"
+    imageSrc: "/images/office3.jpg",
+    description: "화창한 날씨",
+    date: "사무실"
   }
-];
+  ];
 
 const DailyPage = () => {
   useEffect(() => {

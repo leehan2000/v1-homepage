@@ -1,28 +1,28 @@
 const CertificationsSection = () => {
   const partners = [
     {
-      name: "KT Corporation",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/KT_Corporation_logo.svg/1200px-KT_Corporation_logo.svg.png"
+      name: "LGU+",
+      logo: "/images/LG_U+_CI.svg.png"
     },
     {
-      name: "SK Telecom",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/SK_Telecom_Logo.svg/1200px-SK_Telecom_Logo.svg.png"
+      name: "에스원",
+      logo: "/images/s1.png"
     },
     {
-      name: "LG U+",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/LG_U%2B_logo.svg/1200px-LG_U%2B_logo.svg.png"
+      name: "메가커피",
+      logo: "/images/mega.png"
     },
     {
-      name: "Cisco",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Cisco_logo.svg/1200px-Cisco_logo.svg.png"
+      name: "한살림",
+      logo: "/images/hansalim.png"
     },
     {
-      name: "Ubiquiti",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/Ubiquiti_Inc_logo.svg"
+      name: "메뉴잇",
+      logo: "/images/menuit.png"    
     },
     {
-      name: "Samsung Electronics",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Samsung_Electronics_logo.svg/1280px-Samsung_Electronics_logo.svg.png"
+      name: "퍼니랜드",
+      logo: "/images/funni.png"
     }
   ];
 

@@ -1,6 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import logoImage from "../../assets/logo.png";
+import image1 from "../../assets/1111.png";
+import image2 from "../../assets/2222.png";
+import image3 from "../../assets/3333.png";
+import image4 from "../../assets/4444.png";
+
+
 
 const AboutPreview = () => {
   return (
@@ -13,7 +18,7 @@ const AboutPreview = () => {
               <div className="h-1 w-1/2 bg-lgred mt-3"></div>
             </h2>
             <p className="text-lg text-lgtext_light mb-8 leading-relaxed">
-              2006년 설립된 브이원정보통신은 고객의 신뢰를 바탕으로 끊임없는 혁신과 발전을 추구해오고 있습니다.
+              브이원정보통신은 고객의 신뢰를 바탕으로 끊임없는 혁신과 발전을 추구해오고 있습니다.
               저희는 단순한 통신 서비스 제공을 넘어 고객의 비즈니스 성장을 위한 파트너로서의 역할을 수행합니다.
             </p>
             <ul className="space-y-3 mb-8">
@@ -45,7 +50,7 @@ const AboutPreview = () => {
           <div className="grid grid-cols-2 gap-4">
             <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
               <img 
-                src={logoImage} 
+                src={image1} 
                 alt="브이원 팀워크" 
                 className="w-full h-full object-contain aspect-4/3"
                 loading="lazy"
@@ -53,7 +58,7 @@ const AboutPreview = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
               <img 
-                src={logoImage} 
+                src={image2} 
                 alt="통신 장비 설치" 
                 className="w-full h-full object-contain aspect-4/3"
                 loading="lazy"
@@ -61,7 +66,7 @@ const AboutPreview = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
               <img 
-                src={logoImage} 
+                src={image3} 
                 alt="네트워크 관리" 
                 className="w-full h-full object-contain aspect-4/3"
                 loading="lazy"
@@ -69,7 +74,7 @@ const AboutPreview = () => {
             </div>
             <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
               <img 
-                src={logoImage} 
+                src={image4} 
                 alt="통신 솔루션" 
                 className="w-full h-full object-contain aspect-4/3"
                 loading="lazy"

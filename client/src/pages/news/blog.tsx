@@ -86,7 +86,7 @@ const BlogPage = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            V1 정보통신의 네이버 블로그에서 최신 포스팅을 우아한 애니메이션과 함께 확인하세요.
+            V1 정보통신의 네이버 블로그에서 최신 정보를 확인하세요.
           </motion.p>
         </div>
 
