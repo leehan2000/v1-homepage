@@ -16,7 +16,7 @@ const History = () => {
               <div className="h-1 w-full bg-[#E2231A] mt-2"></div>
             </h1>
             <p className="text-lg text-[#555555] max-w-2xl mx-auto mt-5 leading-relaxed">
-              2003년부터 이어온 브이원정보통신의 발자취와 성장 과정을 소개합니다.<br/>
+              2018년부터 이어온 브이원정보통신의 발자취와 성장 과정을 소개합니다.<br/>
               <span className="text-[#E2231A] font-semibold">계속해서 새로운 도전과 혁신</span>을 이어가고 있습니다.
             </p>
           </div>
@@ -29,14 +29,14 @@ const History = () => {
             {/* 이미지로 표시 */}
             <div className="relative">
               <div className="w-full p-5 rounded-lg shadow-lg">
-                <h3 className="text-2xl font-bold text-[#E2231A] mb-6 text-center">브이원정보통신 회사 연혁 (2003~2025)</h3>
+                <h3 className="text-2xl font-bold text-[#E2231A] mb-6 text-center">브이원정보통신 회사 연혁 (2002~2025)</h3>
                 <div className="space-y-8">
                   {[
                     {
                       id: "01",
-                      year: "2003~2018",
+                      year: "2002~2018",
                       title: "통신업계 현장 실무 및 경영 경험 축적",
-                      details: ["이학열 대표: 무선통신 · 유통 분야 20년", "정지훈 대표: 유선통신 · 기술영업 분야 15년"]
+                      details: ["이학열 대표: 무선통신 · 유통 분야 20년", "정지훈 대표: 유선통신 · 기술 영업 분야 15년"]
                     },
                     {
                       id: "02",

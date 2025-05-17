@@ -5,8 +5,6 @@ import image2 from "../../assets/2222.png";
 import image3 from "../../assets/3333.png";
 import image4 from "../../assets/4444.png";
 
-
-
 const AboutPreview = () => {
   return (
     <section className="py-16 bg-lggray border-b border-lgborder">
@@ -24,19 +22,19 @@ const AboutPreview = () => {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
                 <svg className="w-6 h-6 text-lgred mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="text-lgtext_light">15년 이상의 통신 분야 전문성</span>
+                <span className="text-lgtext_light">20년 이상의 통신 분야 전문성</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-6 h-6 text-lgred mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="text-lgtext_light">500개 이상의 기업 고객 서비스 경험</span>
+                <span className="text-lgtext_light">3,000개 이상의 기업 고객 서비스 경험</span>
               </li>
               <li className="flex items-start">
                 <svg className="w-6 h-6 text-lgred mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <span className="text-lgtext_light">국내 주요 통신사와의 공식 파트너십</span>
               </li>
@@ -47,39 +45,21 @@ const AboutPreview = () => {
               </Button>
             </Link>
           </div>
+
           <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
-              <img 
-                src={image1} 
-                alt="브이원 팀워크" 
-                className="w-full h-full object-contain aspect-4/3"
-                loading="lazy"
-              />
-            </div>
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
-              <img 
-                src={image2} 
-                alt="통신 장비 설치" 
-                className="w-full h-full object-contain aspect-4/3"
-                loading="lazy"
-              />
-            </div>
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
-              <img 
-                src={image3} 
-                alt="네트워크 관리" 
-                className="w-full h-full object-contain aspect-4/3"
-                loading="lazy"
-              />
-            </div>
-            <div className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-4">
-              <img 
-                src={image4} 
-                alt="통신 솔루션" 
-                className="w-full h-full object-contain aspect-4/3"
-                loading="lazy"
-              />
-            </div>
+            {[image1, image2, image3, image4].map((img, index) => (
+              <div
+                key={index}
+                className="rounded-lg overflow-hidden shadow-md border-t-4 border-lgred bg-white p-0 h-48 hover:shadow-lg transition duration-500"
+              >
+                <img
+                  src={img}
+                  alt={`브이원 이미지 ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

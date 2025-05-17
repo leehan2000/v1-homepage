@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { motion } from "framer-motion";
 
-// 회사 일상 데이터
+// 회사 일상 데이터 (총 11개)
 const dailyImages = [
   {
     id: 1,
@@ -45,8 +45,32 @@ const dailyImages = [
     imageSrc: "/images/office3.jpg",
     description: "화창한 날씨",
     date: "사무실"
+  },
+  {
+    id: 8,
+    imageSrc: "/images/conf1.jpg",
+    description: "회의실",
+    date: "회의"
+  },
+  {
+    id: 9,
+    imageSrc: "/images/conf2.jpg",
+    description: "회의",
+    date: "회의"
+  },
+  {
+    id: 10,
+    imageSrc: "/images/jik1.png",
+    description: "임직원분들",
+    date: "야유회"
+  },
+  {
+    id: 11,
+    imageSrc: "/images/jik2.png",
+    description: "임직원분들",
+    date: "야유회"
   }
-  ];
+];
 
 const DailyPage = () => {
   useEffect(() => {
@@ -74,7 +98,7 @@ const DailyPage = () => {
             브이원 일상
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            V1 정보통신의 생생한 일상을 만나보세요. 현장에서의 열정적인 모습부터 사무실에서의 협업까지, 
+            V1 정보통신의 생생한 일상을 만나보세요. 현장에서의 열정적인 모습부터 사무실에서의 협업까지,
             우리의 다양한 일상을 통해 V1의 문화와 가치를 느껴보세요.
           </p>
         </div>

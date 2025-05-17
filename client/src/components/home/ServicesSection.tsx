@@ -1,24 +1,20 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 
-type ServiceCardProps = {
-  icon: string;
+// 이미지 기반 서비스 카드
+const ServiceCard = ({ image, title, description, link }: {
+  image: string;
   title: string;
   description: string;
   link: string;
-};
-
-const ServiceCard: React.FC<ServiceCardProps> = ({
-  icon,
-  title,
-  description,
-  link,
 }) => (
-  <Card className="bg-white rounded-lg shadow-md overflow-hidden border-t-4 border-lgred transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-    <div className="h-48 bg-lggray flex items-center justify-center">
-      <div className="text-6xl text-lgred">
-        <i className={`fas fa-${icon}`}></i>
-      </div>
+  <Card className="bg-white rounded-xl shadow-md overflow-hidden border-t-4 border-lgred transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+    <div className="h-56 bg-white flex items-center justify-center overflow-hidden">
+      <img
+        src={image}
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+      />
     </div>
     <CardContent className="p-6">
       <h3 className="text-xl font-bold text-lgtext mb-2">{title}</h3>
@@ -46,33 +42,29 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 );
 
 const ServicesSection: React.FC = () => {
-  const services: ServiceCardProps[] = [
+  const services = [
     {
-      icon: "wifi",
+      image: "/images/wireless.jpg",
       title: "무선통신",
-      description:
-        "안정적인 무선 네트워크 구축을 통해 시간과 장소에 구애받지 않는 업무 환경을 조성합니다.",
+      description: "안정적인 무선 네트워크 구축을 통해 시간과 장소에 구애받지 않는 업무 환경을 조성합니다.",
       link: "/services/wireless",
     },
     {
-      icon: "network-wired",
+      image: "/images/wire.jpg",
       title: "유선통신",
-      description:
-        "고속의 안정적인 유선 네트워크 구축을 통해 기업의 핵심 인프라를 지원합니다.",
+      description: "고속의 안정적인 유선 네트워크 구축을 통해 기업의 핵심 인프라를 지원합니다.",
       link: "/services/wired",
     },
     {
-      icon: "car",
+      image: "/images/car.jpg",
       title: "차량관제 / IoT",
-      description:
-        "실시간 차량관제 및 IoT 기술을 활용하여 효율적인 운영 환경을 구축합니다.",
+      description: "실시간 차량관제 및 IoT 기술을 활용하여 효율적인 운영 환경을 구축합니다.",
       link: "/services/vehicle-iot",
     },
     {
-      icon: "building",
+      image: "/images/solu.jpg",
       title: "업종별 제안",
-      description:
-        "각 산업별 특성에 맞춘 최적화된 통신 솔루션을 제안합니다.",
+      description: "각 산업별 특성에 맞춘 최적화된 통신 솔루션을 제안합니다.",
       link: "/services/solutions",
     },
   ];

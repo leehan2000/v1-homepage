@@ -29,4 +29,9 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
   },
+  server: {
+    hmr: {
+      overlay: false // 오버레이 비활성화
+    }
+  } 
 });
