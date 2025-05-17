@@ -33,7 +33,7 @@ const AwardsPage = () => {
   return (
     <>
       <Helmet>
-        <title>상장 / 감사패 | V1 Information Communications</title>
+        <title> 상장 / 감사패 | V1 Information Communications</title>
         <meta
           name="description"
           content="V1 정보통신의 수상 내역 및 인증서를 확인하세요. 더욱 노력하는 브이원이 되겠습니다."
