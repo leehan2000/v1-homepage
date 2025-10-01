@@ -16,12 +16,12 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "client", "dist"),
+    outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: true,
   },
   server: {
     hmr: {
-      overlay: false // 오버레이 비활성화
+      overlay: false
     }
   } 
 });
