@@ -52,9 +52,8 @@ export default async function handler(
       let thumbnail = "";
       const imgMatch = originalDescription.match(/<img[^>]+src="([^">]+)"/);
       if (imgMatch && imgMatch.length > 1) {
-        // 썸네일 이미지 URL을 프록시 API를 통해 제공
-        const originalImageUrl = imgMatch[1];
-        thumbnail = `/api/blog-thumbnail?url=${encodeURIComponent(originalImageUrl)}`;
+        // 직접 이미지 URL 사용 (프록시 없이)
+        thumbnail = imgMatch[1];
       } else {
         // 기본 이미지 사용
         thumbnail = `/images/daily${(index % 6) + 1}.jpg`;
