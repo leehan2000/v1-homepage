@@ -10,6 +10,7 @@ interface BlogPost {
   description: string;
   pubDate: string;
   thumbnail: string;
+  originalDescription?: string;
 }
 
 /**
@@ -28,6 +29,22 @@ const stripHtmlTags = (html: string): string => {
   const tmp = document.createElement('div');
   tmp.innerHTML = html;
   return tmp.textContent || tmp.innerText || '';
+};
+
+/**
+ * 포스트의 첫 번째 썸네일을 반환 (API 제공 썸네일 우선, 없으면 description 내 첫 이미지)
+ */
+const getFirstImageSrc = (post: BlogPost): string => {
+  if (post.thumbnail) return post.thumbnail;
+
+  if (post.originalDescription) {
+    const imgMatch = post.originalDescription.match(/<img[^>]+src="([^">]+)"/i);
+    if (imgMatch && imgMatch[1]) {
+      return imgMatch[1];
+    }
+  }
+
+  return '/images/car.jpg';
 };
 
 const BlogPage = () => {
@@ -146,15 +163,14 @@ const BlogPage = () => {
               >
                 <div className="h-48 overflow-hidden">
                   <img
-                    src={post.thumbnail || '/images/car.jpg'}
+                    src={getFirstImageSrc(post)}
                     alt={stripHtmlTags(post.title)}
                     className="w-full h-full object-cover object-top transform hover:scale-110 transition-transform duration-700"
                     onError={(e) => {
                       // 기본 이미지로 폴백 (ID 기반으로 다양한 이미지 사용)
                       const target = e.currentTarget;
                       if (target.src.includes('/images/car.jpg')) return; // 이미 폴백 이미지면 무한 루프 방지
-                      const fallbackIndex = (parseInt(post.id) || idx) % 6 + 1;
-                      target.src = `/images/car.jpg`;
+                      target.src = '/images/car.jpg';
                     }}
                   />
                 </div>

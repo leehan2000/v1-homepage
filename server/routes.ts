@@ -23,12 +23,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).send('Image URL is required');
       }
       
+      let referer = 'https://blog.naver.com/';
+      try {
+        const u = new URL(imageUrl);
+        referer = u.origin;
+      } catch {
+        // ignore parse error, keep default referer
+      }
+      
       // 네이버 블로그 이미지 가져오기 (Referer 헤더 필수)
       const response = await axios.get(imageUrl, {
         responseType: 'arraybuffer',
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-          'Referer': 'https://blog.naver.com/',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+          'Referer': referer,
+          'Accept': 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
+          'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
         }
       });
       
@@ -63,37 +73,118 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const channel = result.rss.channel;
       const items = Array.isArray(channel.item) ? channel.item : [channel.item];
       
-      // 포스트 데이터 가공
-      const posts: NaverBlogPost[] = items.slice(0, limit).map((item: any, index: number) => {
-        // 원본 HTML 설명 저장
-        const originalDescription = item.description || "";
-        
-        // HTML 태그 제거하고 설명에서 텍스트만 추출
-        const description = originalDescription.replace(/<\/?[^>]+(>|$)/g, "") || "";
-        
-        // 이미지 URL 추출
-        let thumbnail = "";
-        const imgMatch = originalDescription.match(/<img[^>]+src="([^">]+)"/);
-        if (imgMatch && imgMatch.length > 1) {
-          // 썸네일 이미지 URL을 프록시 API를 통해 제공
-          const originalImageUrl = imgMatch[1];
-          thumbnail = `/api/blog-thumbnail?url=${encodeURIComponent(originalImageUrl)}`;
-        } else {
-          // 기본 이미지 사용
-          thumbnail = `/images/daily${(index % 6) + 1}.jpg`;
+      // 포스트 데이터 가공 (썸네일은 최대한 원본 첫 이미지를 사용)
+      let posts: NaverBlogPost[] = await Promise.all(
+        items.slice(0, limit).map(async (item: any, index: number) => {
+          // 원본 HTML 설명 저장
+          const originalDescription = item.description || "";
+          
+          // HTML 태그 제거하고 설명에서 텍스트만 추출
+          const description = originalDescription.replace(/<\/?[^>]+(>|$)/g, "") || "";
+          
+          // 1) RSS description 내 첫 이미지 우선
+          let thumbnail = "";
+          const descImgMatch = originalDescription.match(/<img[^>]+src=["']([^"']+)["']/i);
+          if (descImgMatch && descImgMatch[1]) {
+            thumbnail = descImgMatch[1];
+          }
+          
+          // 2) 메타 OG 이미지 우선 시도 (실제 블로그 페이지)
+          const tryGetFirstImageFromPage = async () => {
+            // PC 링크를 모바일 링크로 변환 (iframe 회피)
+            let targetUrl = item.link;
+            const mobileUrl = targetUrl.replace("blog.naver.com/", "m.blog.naver.com/");
+            if (mobileUrl !== targetUrl) {
+              targetUrl = mobileUrl;
+            }
+            
+            const html = await axios.get<string>(targetUrl, {
+              headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+                "Referer": "https://blog.naver.com/",
+                "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+              },
+              timeout: 6000,
+              maxRedirects: 3,
+            }).then(res => res.data);
+            
+            // 2-1) OG:image
+            const ogMatch = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i);
+            if (ogMatch && ogMatch[1]) {
+              return ogMatch[1];
+            }
+            
+            // 2-2) data-src / src / data-lazy-src 순으로 img 찾기
+            const imgMatch = html.match(/<img[^>]+(?:data-src|data-lazy-src|src)=["']([^"']+)["']/i);
+            if (imgMatch && imgMatch[1]) {
+              return imgMatch[1];
+            }
+            
+            return "";
+          };
+          
+          if (!thumbnail) {
+            try {
+              const firstImg = await tryGetFirstImageFromPage();
+              if (firstImg) {
+                thumbnail = firstImg;
+              }
+            } catch (err) {
+              console.error(`블로그 페이지 이미지 추출 실패 (${item.link}):`, err);
+            }
+          }
+          
+          // 3) URL 정규화 및 프록시 적용 (직접 호스트 접근 시 403/HOTLINK 문제 방지)
+          const normalizeUrl = (url: string): string => {
+            if (!url) return "";
+            if (url.startsWith("//")) return "https:" + url;
+            if (url.startsWith("/")) return "https://blog.naver.com" + url;
+            if (!url.startsWith("http")) return "https://" + url;
+            return url;
+          };
+
+          let servedThumbnail = "";
+          if (thumbnail) {
+            const absUrl = normalizeUrl(thumbnail);
+            servedThumbnail = `/api/blog-thumbnail?url=${encodeURIComponent(absUrl)}`;
+          } else {
+            servedThumbnail = `/images/car.jpg`;
+          }
+          
+          return {
+            id: index.toString(),
+            title: item.title,
+            link: item.link,
+            description: description.slice(0, 150) + "...",
+            pubDate: new Date(item.pubDate).toLocaleDateString('ko-KR'),
+            author: item.author,
+            thumbnail: servedThumbnail,
+            originalDescription
+          };
+        })
+      );
+
+      // 썸네일이 기본값(`/images/car.jpg`)인 항목이 있으면 배포 서버 API로 보완 시도
+      const hasDefaultThumb = posts.some(p => p.thumbnail.includes('/images/car.jpg'));
+      if (hasDefaultThumb) {
+        try {
+          const remoteRes = await axios.get<NaverBlogPost[]>('https://v1-homepage.vercel.app/api/naver-blog?limit=' + limit);
+          const remote = remoteRes.data;
+          const remoteByLink = new Map<string, NaverBlogPost>();
+          remote.forEach(r => remoteByLink.set(r.link, r));
+
+          posts = posts.map(local => {
+            if (!local.thumbnail.includes('/images/car.jpg')) return local;
+            const matched = remoteByLink.get(local.link);
+            if (matched && matched.thumbnail && !matched.thumbnail.includes('/images/car.jpg')) {
+              return { ...local, thumbnail: matched.thumbnail };
+            }
+            return local;
+          });
+        } catch (e) {
+          console.error('원격 썸네일 보완 실패:', e);
         }
-        
-        return {
-          id: index.toString(),
-          title: item.title,
-          link: item.link,
-          description: description.slice(0, 150) + "...",
-          pubDate: new Date(item.pubDate).toLocaleDateString('ko-KR'),
-          author: item.author,
-          thumbnail,
-          originalDescription
-        };
-      });
+      }
       
       res.json(posts);
     } catch (error) {
