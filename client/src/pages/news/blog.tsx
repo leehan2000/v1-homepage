@@ -56,8 +56,10 @@ const BlogPage = () => {
     window.scrollTo(0, 0);
 
     const fetchNaverBlogPosts = async () => {
-      const localApi = '/api/naver-blog?limit=6';
+      // 배포 서버 API를 우선 사용해 Vercel과 동일한 방식으로 썸네일을 가져오고,
+      // 실패 시 로컬 서버 API로 폴백합니다.
       const remoteApi = 'https://v1-homepage.vercel.app/api/naver-blog?limit=6';
+      const localApi = '/api/naver-blog?limit=6';
 
       setLoading(true);
       setError(null);

@@ -2,6 +2,7 @@ import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import axios from "axios";
 import * as xml2js from "xml2js";
+import * as cheerio from "cheerio";
 
 interface NaverBlogPost {
   title: string;
@@ -14,6 +15,47 @@ interface NaverBlogPost {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // 네이버 블로그 포스트 메타데이터 추출 API (og:image 사용)
+  app.get('/api/blog-post-meta', async (req: Request, res: Response) => {
+    try {
+      const { blogId, logNo } = req.query;
+      
+      if (!blogId || !logNo) {
+        return res.status(400).json({ error: 'blogId and logNo are required' });
+      }
+      
+      // 네이버 블로그 모바일 페이지 URL
+      const mobileUrl = `https://m.blog.naver.com/PostView.naver?blogId=${blogId}&logNo=${logNo}`;
+      
+      const response = await axios.get(mobileUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        },
+        timeout: 10000
+      });
+      
+      const $ = cheerio.load(response.data);
+      
+      // og:image, og:title, og:description 추출
+      const ogImage = $('meta[property="og:image"]').attr('content') || '';
+      const ogTitle = $('meta[property="og:title"]').attr('content') || '';
+      const ogDescription = $('meta[property="og:description"]').attr('content') || '';
+      
+      res.json({
+        title: ogTitle,
+        description: ogDescription,
+        image: ogImage,
+        blogId,
+        logNo
+      });
+    } catch (error) {
+      console.error('블로그 포스트 메타데이터 추출 오류:', error);
+      res.status(500).json({ 
+        error: '블로그 포스트 메타데이터를 가져오는 중 오류가 발생했습니다.' 
+      });
+    }
+  });
+
   // 네이버 블로그 썸네일 이미지 직접 제공
   app.get('/api/blog-thumbnail', async (req: Request, res: Response) => {
     try {
@@ -89,48 +131,25 @@ export async function registerRoutes(app: Express): Promise<Server> {
             thumbnail = descImgMatch[1];
           }
           
-          // 2) 메타 OG 이미지 우선 시도 (실제 블로그 페이지)
-          const tryGetFirstImageFromPage = async () => {
-            // PC 링크를 모바일 링크로 변환 (iframe 회피)
-            let targetUrl = item.link;
-            const mobileUrl = targetUrl.replace("blog.naver.com/", "m.blog.naver.com/");
-            if (mobileUrl !== targetUrl) {
-              targetUrl = mobileUrl;
-            }
-            
-            const html = await axios.get<string>(targetUrl, {
-              headers: {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-                "Referer": "https://blog.naver.com/",
-                "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-              },
-              timeout: 6000,
-              maxRedirects: 3,
-            }).then(res => res.data);
-            
-            // 2-1) OG:image
-            const ogMatch = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i);
-            if (ogMatch && ogMatch[1]) {
-              return ogMatch[1];
-            }
-            
-            // 2-2) data-src / src / data-lazy-src 순으로 img 찾기
-            const imgMatch = html.match(/<img[^>]+(?:data-src|data-lazy-src|src)=["']([^"']+)["']/i);
-            if (imgMatch && imgMatch[1]) {
-              return imgMatch[1];
-            }
-            
-            return "";
-          };
-          
+          // 2) og:image 추출 (새로운 메타데이터 API 사용)
           if (!thumbnail) {
-            try {
-              const firstImg = await tryGetFirstImageFromPage();
-              if (firstImg) {
-                thumbnail = firstImg;
+            const linkMatch = item.link.match(/blog\.naver\.com\/([^/]+)\/(\d+)/);
+            if (linkMatch) {
+              const [, blogId, logNo] = linkMatch;
+              try {
+                // 메타데이터 API 호출
+                const metaResponse = await axios.get(`http://localhost:5000/api/blog-post-meta`, {
+                  params: { blogId, logNo },
+                  timeout: 5000
+                });
+                
+                const ogImage = metaResponse.data.image;
+                if (ogImage) {
+                  thumbnail = ogImage;
+                }
+              } catch (err) {
+                console.error(`og:image 추출 실패 (${item.link}):`, err);
               }
-            } catch (err) {
-              console.error(`블로그 페이지 이미지 추출 실패 (${item.link}):`, err);
             }
           }
           
