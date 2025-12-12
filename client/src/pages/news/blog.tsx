@@ -12,13 +12,22 @@ interface BlogPost {
   thumbnail: string;
 }
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" }
-  })
+/**
+ * HTML 엔티티를 디코딩하는 유틸리티 함수
+ */
+const decodeHtmlEntities = (text: string): string => {
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = text;
+  return textarea.value;
+};
+
+/**
+ * HTML 태그를 제거하는 유틸리티 함수
+ */
+const stripHtmlTags = (html: string): string => {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  return tmp.textContent || tmp.innerText || '';
 };
 
 const BlogPage = () => {
@@ -28,22 +37,41 @@ const BlogPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
     const fetchNaverBlogPosts = async () => {
+      const localApi = '/api/naver-blog?limit=6';
+      const remoteApi = 'https://v1-homepage.vercel.app/api/naver-blog?limit=6';
+
       setLoading(true);
       setError(null);
+
+      const tryFetch = async (url: string) => {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`블로그 데이터를 가져오는데 실패했습니다. (${res.status})`);
+        const data = await res.json();
+        if (!Array.isArray(data)) throw new Error(data.error || '데이터 형식이 올바르지 않습니다.');
+        return data;
+      };
+
       try {
-        const response = await fetch('/api/naver-blog?limit=6');
-        if (!response.ok) throw new Error('블로그 데이터를 가져오는데 실패했습니다.');
-        const data = await response.json();
-        if (Array.isArray(data)) setPosts(data);
-        else setError(data.error || '데이터 형식이 올바르지 않습니다.');
-      } catch (err) {
-        console.error('블로그 데이터 로딩 오류:', err);
-        setError('블로그 데이터를 가져오는 중 오류가 발생했습니다.');
+        // 1) 로컬 API 시도 (dev 서버에서 동작)
+        const data = await tryFetch(localApi);
+        setPosts(data);
+      } catch (localErr) {
+        console.error('로컬 블로그 데이터 로딩 실패, 원격 재시도:', localErr);
+        try {
+          // 2) 원격 배포 API로 폴백
+          const data = await tryFetch(remoteApi);
+          setPosts(data);
+        } catch (remoteErr) {
+          console.error('원격 블로그 데이터 로딩 실패:', remoteErr);
+          setError('블로그 데이터를 가져오는 중 오류가 발생했습니다.');
+        }
       } finally {
         setLoading(false);
       }
     };
+
     fetchNaverBlogPosts();
   }, []);
 
@@ -100,51 +128,61 @@ const BlogPage = () => {
           </motion.div>
         )}
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial="hidden"
-          animate="visible"
-        >
-          {loading
-            ? Array(6).fill(0).map((_, idx) => <BlogCardSkeleton key={idx} />)
-            : posts.map((post, idx) => (
-                <motion.div
-                  key={post.id}
-                  custom={idx}
-                  variants={cardVariants}
-                  className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col"
-                >
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src={post.thumbnail}
-                      alt={post.title}
-                      className="w-full h-full object-cover object-top transform hover:scale-110 transition-transform duration-700"
-                      onError={(e) => {
-                        // 기본 이미지로 폴백 (ID 기반으로 다양한 이미지 사용)
-                        e.currentTarget.src = `/images/daily${parseInt(post.id) % 6 + 1}.jpg`;
-                      }}
-                    />
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {loading ? (
+            Array(6).fill(0).map((_, idx) => <BlogCardSkeleton key={idx} />)
+          ) : posts.length > 0 ? (
+            posts.map((post, idx) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: idx * 0.1,
+                  ease: "easeOut" 
+                }}
+                className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 flex flex-col"
+              >
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={post.thumbnail || '/images/car.jpg'}
+                    alt={stripHtmlTags(post.title)}
+                    className="w-full h-full object-cover object-top transform hover:scale-110 transition-transform duration-700"
+                    onError={(e) => {
+                      // 기본 이미지로 폴백 (ID 기반으로 다양한 이미지 사용)
+                      const target = e.currentTarget;
+                      if (target.src.includes('/images/car.jpg')) return; // 이미 폴백 이미지면 무한 루프 방지
+                      const fallbackIndex = (parseInt(post.id) || idx) % 6 + 1;
+                      target.src = `/images/car.jpg`;
+                    }}
+                  />
+                </div>
 
-                  <div className="p-6 flex-grow flex flex-col">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-3 line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-600 mb-6 line-clamp-3 flex-grow">
-                      {post.description}
-                    </p>
-                    <a
-                      href={post.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-auto inline-block text-center py-3 px-6 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                      블로그에서 보기 →
-                    </a>
-                  </div>
-                </motion.div>
-              ))}
-        </motion.div>
+                <div className="p-6 flex-grow flex flex-col">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-3 line-clamp-2">
+                    {decodeHtmlEntities(stripHtmlTags(post.title))}
+                  </h3>
+                  <p className="text-gray-600 mb-6 line-clamp-3 flex-grow">
+                    {decodeHtmlEntities(stripHtmlTags(post.description))}
+                  </p>
+                  <a
+                    href={post.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-block text-center py-3 px-6 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    블로그에서 보기 →
+                  </a>
+                </div>
+              </motion.div>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-12">
+              <p className="text-gray-500 text-lg">블로그 포스트가 없습니다.</p>
+            </div>
+          )}
+        </div>
 
         <div className="text-center mt-16">
           <motion.a
