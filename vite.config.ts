@@ -20,6 +20,8 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
+    port: 5173,
+    open: true, // 자동으로 브라우저 열기
     hmr: {
       overlay: false
     }
