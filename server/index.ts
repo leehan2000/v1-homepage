@@ -60,11 +60,15 @@ app.use((req, res, next) => {
   // this serves both the API and the client.
   // It is the only port that is not firewalled.
   const port = 5000;
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
-    log(`serving on port ${port}`);
-  });
+  // Windows 환경에서는 `reusePort`가 지원되지 않아 ENOTSUP 에러가 발생할 수 있습니다.
+  // 따라서 플랫폼에 따라 listen 옵션을 분기합니다.
+  const isWindows = process.platform === "win32";
+  server.listen(
+    isWindows
+      ? { port, host: "127.0.0.1" }
+      : { port, host: "0.0.0.0", reusePort: true },
+    () => {
+      log(`serving on port ${port}`);
+    },
+  );
 })();
