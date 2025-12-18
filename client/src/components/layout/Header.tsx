@@ -217,7 +217,7 @@ const Header = () => {
 
                 {/* 통신상품 문의·신청 */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger 
+                  <NavigationMenuTrigger
                     className={cn(
                       isActive("/contact") ? "bg-accent/50" : "",
                       "bg-primary text-white hover:bg-primary-600 hover:text-white hover:shadow-md transition-all duration-300 hover:translate-y-[-2px] relative overflow-hidden before:absolute before:w-12 before:h-full before:top-0 before:-left-10 before:transform before:skew-x-[30deg] before:bg-white/10 hover:before:animate-shine"
@@ -239,9 +239,8 @@ const Header = () => {
                         </NavigationMenuLink>
                       </li>
                       <li>
-                        <NavigationMenuLink asChild className={applySubMenuStyle("#", false)}>
-                          <Link href="#">전국대표번호</Link>
-                          {/* TODO: 실제 라우트 연결 */}
+                        <NavigationMenuLink asChild className={applySubMenuStyle("/contact/national-number", isActive("/contact/national-number"))}>
+                          <Link href="/contact/national-number">전국대표번호</Link>
                         </NavigationMenuLink>
                       </li>
                       <li>
