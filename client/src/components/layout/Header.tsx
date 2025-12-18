@@ -215,18 +215,57 @@ const Header = () => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* 상담신청 */}
+                {/* 통신상품 문의·신청 */}
                 <NavigationMenuItem>
-                  <NavigationMenuLink
-                    asChild
+                  <NavigationMenuTrigger 
                     className={cn(
-                      navigationMenuTriggerStyle,
-                      isActive("/contact") && "bg-accent/50",
+                      isActive("/contact") ? "bg-accent/50" : "",
                       "bg-primary text-white hover:bg-primary-600 hover:text-white hover:shadow-md transition-all duration-300 hover:translate-y-[-2px] relative overflow-hidden before:absolute before:w-12 before:h-full before:top-0 before:-left-10 before:transform before:skew-x-[30deg] before:bg-white/10 hover:before:animate-shine"
                     )}
+                    style={menuTriggerStyle}
                   >
-                    <Link href="/contact">상담신청</Link>
-                  </NavigationMenuLink>
+                    통신상품 문의·신청
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className={subMenuUlStyle}>
+                      <li>
+                        <NavigationMenuLink asChild className={applySubMenuStyle("#", false)}>
+                          <Link href="#">기업전화</Link>
+                          {/* TODO: 실제 라우트 연결 */}
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild className={applySubMenuStyle("#", false)}>
+                          <Link href="#">기업인터넷</Link>
+                          {/* TODO: 실제 라우트 연결 */}
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild className={applySubMenuStyle("#", false)}>
+                          <Link href="#">전국대표번호</Link>
+                          {/* TODO: 실제 라우트 연결 */}
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild className={applySubMenuStyle("#", false)}>
+                          <Link href="#">차량관제</Link>
+                          {/* TODO: 실제 라우트 연결 */}
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild className={applySubMenuStyle("#", false)}>
+                          <Link href="#">소호인터넷</Link>
+                          {/* TODO: 실제 라우트 연결 */}
+                        </NavigationMenuLink>
+                      </li>
+                      <li>
+                        <NavigationMenuLink asChild className={applySubMenuStyle("#", false)}>
+                          <Link href="#">무선인터넷</Link>
+                          {/* TODO: 실제 라우트 연결 */}
+                        </NavigationMenuLink>
+                      </li>
+                    </ul>
+                  </NavigationMenuContent>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
