@@ -39,6 +39,7 @@ import NewsBlog from "@/pages/news/blog";
 // import ContactIndex from "@/pages/contact/index";
 import ContactConsultationForm from "@/pages/contact/ConsultationForm";
 import BusinessPhone from "@/pages/contact/BusinessPhone";
+import BusinessInternet from "@/pages/contact/BusinessInternet";
 // import ContactFAQ from "@/pages/contact/FAQ";
 // import ContactDirections from "@/pages/contact/Directions";
 import ThankYouAlert from "@/components/common/ThankYouAlert";
@@ -93,6 +94,7 @@ function Router() {
       {/* Contact */}
       <Route path="/contact/consultation" component={ContactConsultationForm} />
       <Route path="/contact/business-phone" component={BusinessPhone} />
+      <Route path="/contact/business-internet" component={BusinessInternet} />
       <Route path="/contact" component={ContactConsultationForm} />
 
       {/* 서비스 섹션 - 추후 업데이트 예정 */}

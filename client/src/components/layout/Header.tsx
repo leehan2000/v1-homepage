@@ -234,9 +234,8 @@ const Header = () => {
                         </NavigationMenuLink>
                       </li>
                       <li>
-                        <NavigationMenuLink asChild className={applySubMenuStyle("#", false)}>
-                          <Link href="#">기업인터넷</Link>
-                          {/* TODO: 실제 라우트 연결 */}
+                        <NavigationMenuLink asChild className={applySubMenuStyle("/contact/business-internet", isActive("/contact/business-internet"))}>
+                          <Link href="/contact/business-internet">기업인터넷</Link>
                         </NavigationMenuLink>
                       </li>
                       <li>
