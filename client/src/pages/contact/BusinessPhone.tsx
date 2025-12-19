@@ -36,6 +36,9 @@ const BusinessPhone = () => {
   // 이미지 로드 상태
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  
+  // 컴포넌트 마운트 확인용
+  console.log("BusinessPhone 컴포넌트 렌더링됨");
 
   // 타사 대비 비교 차트 데이터
   const comparisonChartData = [
@@ -222,14 +225,15 @@ const BusinessPhone = () => {
       {/* 히어로 섹션 - 이미지 기반 */}
       <div className="relative w-full overflow-hidden bg-gray-100">
         {/* 배경 이미지 컨테이너 */}
-        <div className="relative w-full h-[500px] sm:h-[600px] md:h-[700px] max-h-[90vh] flex items-center justify-center">
+        <div className="relative w-full h-[500px] sm:h-[600px] md:h-[700px] max-h-[90vh]">
           {/* 이미지 표시 - 최적화된 렌더링 */}
           <img
             src="/images/business-phone-hero.png"
             alt="LG U+ 기업전화 프로모션"
-            className="w-full h-full object-contain"
+            className={`w-full h-full object-contain transition-opacity duration-300 ${
+              imageLoaded ? "opacity-100" : "opacity-0"
+            }`}
             style={{ 
-              display: imageError ? "none" : "block",
               maxWidth: "100%",
               maxHeight: "100%",
               objectFit: "contain",
@@ -256,8 +260,8 @@ const BusinessPhone = () => {
               setImageError(true);
             }}
           />
-          {/* 이미지 로드 실패시 대체 UI */}
-          {imageError && (
+          {/* 이미지 로드 실패시 또는 로딩 중 대체 UI */}
+          {(!imageLoaded || imageError) && (
             <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-yellow-300 to-orange-300 flex z-10">
               {/* 왼쪽 프로모션 패널 */}
               <div className="w-1/3 flex flex-col justify-center px-8 py-12">
@@ -288,7 +292,7 @@ const BusinessPhone = () => {
                 </div>
 
                 {/* CTA 버튼 */}
-                <Link href="/contact/ConsultationForm" className="mt-8">
+                <Link href="/contact/consultation" className="mt-8">
                   <Button className="bg-pink-500 hover:bg-pink-600 text-white border-2 border-white px-6 py-3 text-lg font-semibold">
                     LG U+ 기업전화 더 알아보기 <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
