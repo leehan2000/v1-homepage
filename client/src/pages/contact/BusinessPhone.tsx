@@ -1,60 +1,113 @@
 import { Helmet } from "react-helmet";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+} from "@/components/ui/chart";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
+} from "recharts";
+import {
+  Phone,
+  PhoneCall,
+  Gift,
+  Wifi,
+  Shield,
+  CheckCircle2,
+  ArrowRight,
+  Zap,
+  Building2,
+  Users,
+  TrendingDown,
+} from "lucide-react";
 
 const BusinessPhone = () => {
-  // 히어로 섹션 주요 메시지
-  const heroMessages = [
+  // 이미지 로드 상태
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // 타사 대비 비교 차트 데이터
+  const comparisonChartData = [
     {
-      title: "최신 키폰 단말기, 고객사 맞춤 혜택",
-      subtitle: "LG U+ 기업전화 신청시 무료 지원!",
-      description: "고객사 환경 맞춤 최저가 설계",
-      highlight: "무료 지원"
+      name: "가입비",
+      타사: 275000,
+      "LG U+": 0,
     },
     {
-      title: "스트레스 받는 장애",
-      subtitle: "LG U+ 기업전화 신청시 24시간 장애 지원!",
-      description: "기업전담장애센터 365일 24시간 운영",
-      highlight: "24시간 지원"
+      name: "초기설치비",
+      타사: 5000000,
+      "LG U+": 0,
     },
     {
-      title: "늘어나는 사무실 경비",
-      subtitle: "LG U+ 기업전화로 통신비만큼은 가볍게!",
-      description: "가입비, 설치비, 초기비용 0원! 최신 키폰 무료!",
-      highlight: "초기비용 0원"
-    }
+      name: "통화요금(연간)",
+      타사: 1630000,
+      "LG U+": 890000,
+    },
+    {
+      name: "유지보수(연간)",
+      타사: 240000,
+      "LG U+": 0,
+    },
   ];
+
+  const chartConfig = {
+    타사: {
+      label: "타사 기업전화",
+      color: "#94a3b8", // diagrams.net 스타일의 부드러운 회색
+    },
+    "LG U+": {
+      label: "LG U+ 기업전화",
+      color: "#3b82f6", // diagrams.net 스타일의 부드러운 파란색
+    },
+  };
 
   // LG U+ 기업전화 주요 특징
   const mainFeatures = [
     {
       title: "통화 요금 최대 50% 절감!",
-      description: "일반 전화 대비, 최대 50% 저렴한 통화요금"
+      description: "일반 전화 대비, 최대 50% 저렴한 통화요금",
+      icon: TrendingDown,
     },
     {
       title: "초기 비용 부담없이 0원!",
-      description: "가입비, 설치비 초기비용 0원!"
+      description: "가입비, 설치비 초기비용 0원!",
+      icon: Gift,
     },
     {
       title: "최신 키폰 무료!",
-      description: "내선통화, 당겨받기 등 키폰 기능 무료!"
+      description: "내선통화, 당겨받기 등 키폰 기능 무료!",
+      icon: Phone,
     },
     {
       title: "사용하던 번호 그대로 사용!",
-      description: "자리 변경시에도 세팅없이 사용 가능!"
+      description: "자리 변경시에도 세팅없이 사용 가능!",
+      icon: CheckCircle2,
     },
     {
       title: "일반 시내번호 사용 가능!",
-      description: "070번호도, 02, 031 등 일반 번호도 가능"
+      description: "070번호도, 02, 031 등 일반 번호도 가능",
+      icon: Building2,
     },
     {
       title: "다양한 부가서비스가 무료!",
-      description: "ARS, 통화연결음, 착신 전환 등"
+      description: "ARS, 통화연결음, 착신 전환 등",
+      icon: Zap,
     },
     {
       title: "24시간 기업전담 장애센터",
-      description: "365일 24시간 신속한 장애 지원"
+      description: "365일 24시간 신속한 장애 지원",
+      icon: Shield,
     }
   ];
 
@@ -89,27 +142,32 @@ const BusinessPhone = () => {
     {
       number: "혜택01",
       title: "고품질 최신 키폰 단말기 무료 제공!",
-      description: "최신형 기가 모델, 임원용 키폰, 휴대용 단말기까지 0원!"
+      description: "최신형 기가 모델, 임원용 키폰, 휴대용 단말기까지 0원!",
+      icon: Phone,
     },
     {
       number: "혜택02",
       title: "고객사 맞춤 혜택 무료 지원!",
-      description: "기업전화 신청시, 고객사 맞춤 혜택 제공!"
+      description: "기업전화 신청시, 고객사 맞춤 혜택 제공!",
+      icon: Gift,
     },
     {
       number: "혜택03",
       title: "초기 비용 부담없이 0원!",
-      description: "가입비, 설치비 무료!"
+      description: "가입비, 설치비 무료!",
+      icon: Zap,
     },
     {
       number: "혜택04",
       title: "기가 와이파이 무료 제공!",
-      description: "기업전화 가입시, 기가 와이파이 무료!"
+      description: "기업전화 가입시, 기가 와이파이 무료!",
+      icon: Wifi,
     },
     {
       number: "혜택05",
       title: "기업전담장애센터 24시간 운영!",
-      description: "LG U+ 365일 24시간 신속한 장애 지원"
+      description: "LG U+ 365일 24시간 신속한 장애 지원",
+      icon: Shield,
     }
   ];
 
@@ -161,29 +219,94 @@ const BusinessPhone = () => {
         <meta name="description" content="LG U+ 기업전화 서비스를 통해 효율적인 기업 통신 환경을 구축하세요. 고품질 통화와 체계적인 통화 관리로 업무 효율성을 높입니다." />
       </Helmet>
       
-      {/* 히어로 섹션 */}
-      <div className="bg-gradient-to-br from-primary-50 to-primary-100 py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">LG U+ 기업전화</h1>
-          <p className="text-lg md:text-xl text-center max-w-3xl mx-auto text-gray-700 mb-12">
-            국내 최다 가입자 수! 230만 기업의 선택!
-            <br />
-            통화 요금 최대 50% 절감, 초기 비용 0원, 최신 키폰 무료 제공!
-          </p>
-          
-          {/* 주요 메시지 카드 */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {heroMessages.map((message, index) => (
-              <Card key={index} className="bg-white hover:shadow-lg transition-shadow duration-300 border-2 border-primary/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-sm font-semibold text-primary mb-2">{message.highlight}</div>
-                  <h2 className="text-xl font-bold mb-3 text-gray-900">{message.title}</h2>
-                  <p className="text-lg font-semibold text-primary mb-2">{message.subtitle}</p>
-                  <p className="text-gray-600">{message.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+      {/* 히어로 섹션 - 이미지 기반 */}
+      <div className="relative w-full overflow-hidden bg-gray-100">
+        {/* 배경 이미지 컨테이너 */}
+        <div className="relative w-full h-[500px] sm:h-[600px] md:h-[700px] max-h-[90vh] flex items-center justify-center">
+          {/* 이미지 표시 - 최적화된 렌더링 */}
+          <img
+            src="/images/business-phone-hero.png"
+            alt="LG U+ 기업전화 프로모션"
+            className="w-full h-full object-contain"
+            style={{ 
+              display: imageError ? "none" : "block",
+              maxWidth: "100%",
+              maxHeight: "100%",
+              objectFit: "contain",
+              imageRendering: "auto"
+            }}
+            loading="eager"
+            decoding="async"
+            onLoad={(e) => {
+              const img = e.currentTarget;
+              // 이미지 크기 제한
+              if (img.naturalWidth > 1920) {
+                img.style.maxWidth = "1920px";
+              }
+              if (img.naturalHeight > 1080) {
+                img.style.maxHeight = "1080px";
+              }
+              setImageLoaded(true);
+              setImageError(false);
+              console.log("이미지 로드 성공: /images/business-phone-hero.png");
+            }}
+            onError={(e) => {
+              console.error("이미지 로드 실패:", e);
+              console.error("시도한 경로: /images/business-phone-hero.png");
+              setImageError(true);
+            }}
+          />
+          {/* 이미지 로드 실패시 대체 UI */}
+          {imageError && (
+            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 via-yellow-300 to-orange-300 flex z-10">
+              {/* 왼쪽 프로모션 패널 */}
+              <div className="w-1/3 flex flex-col justify-center px-8 py-12">
+                <div className="text-white text-2xl font-bold mb-6">오직 LG U+에서</div>
+                <div className="text-white text-5xl font-bold mb-2">최신키폰</div>
+                <div className="text-blue-600 text-5xl font-bold mb-8">무료</div>
+                
+                {/* 혜택 원형 아이콘들 */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-white/20 border-2 border-pink-500 flex items-center justify-center">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-white font-semibold">키폰전화기 무료</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-white/20 border-2 border-pink-500 flex items-center justify-center">
+                      <Gift className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-white font-semibold">초기비용 0원</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-white/20 border-2 border-pink-500 flex items-center justify-center">
+                      <CheckCircle2 className="w-6 h-6 text-white" />
+                    </div>
+                    <span className="text-white font-semibold">기존번호 그대로</span>
+                  </div>
+                </div>
+
+                {/* CTA 버튼 */}
+                <Link href="/contact/ConsultationForm" className="mt-8">
+                  <Button className="bg-pink-500 hover:bg-pink-600 text-white border-2 border-white px-6 py-3 text-lg font-semibold">
+                    LG U+ 기업전화 더 알아보기 <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+              </div>
+
+              {/* 오른쪽 이미지 영역 */}
+              <div className="flex-1 relative bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center">
+                <div className="text-center">
+                  <h1 className="text-6xl md:text-7xl font-bold text-white mb-8">기업전화</h1>
+                  <div className="flex items-center justify-center gap-4">
+                    <PhoneCall className="w-16 h-16 text-white/80" />
+                    <Wifi className="w-16 h-16 text-white/80" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       
@@ -198,44 +321,127 @@ const BusinessPhone = () => {
               내선통화 되는 키폰 전화기 무료 지원, 통신 요금 절감, 맞춤 혜택 제공, 신속한 장애 처리까지!
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {mainFeatures.map((feature, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-bold mb-2 text-gray-900">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
+              {mainFeatures.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                            <Icon className="w-6 h-6 text-primary" />
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold mb-2 text-gray-900">{feature.title}</h3>
+                          <p className="text-gray-600">{feature.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
 
           {/* 타사 대비 비교 */}
-          <div className="mb-16 bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="bg-primary text-white p-6">
-              <h2 className="text-2xl font-bold text-center">타사 기업전화 10대 VS LG U+ 기업전화 10대</h2>
-            </div>
-            <div className="p-6">
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="bg-gray-100">
-                      <th className="border border-gray-300 p-4 text-left font-bold">구분</th>
-                      <th className="border border-gray-300 p-4 text-center font-bold">타사 기업전화</th>
-                      <th className="border border-gray-300 p-4 text-center font-bold bg-primary/10">LG U+ 기업전화</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {comparisonItems.map((item, index) => (
-                      <tr key={index} className="hover:bg-gray-50">
-                        <td className="border border-gray-300 p-4 font-semibold">{item.item}</td>
-                        <td className="border border-gray-300 p-4 text-center text-gray-600">{item.competitor}</td>
-                        <td className="border border-gray-300 p-4 text-center font-bold text-primary bg-primary/5">{item.uplus}</td>
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">타사 기업전화 10대 VS LG U+ 기업전화 10대</h2>
+            
+            {/* 비교 테이블 */}
+            <Card className="mb-8">
+              <CardContent className="p-6">
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-4 text-left font-bold">구분</th>
+                        <th className="border border-gray-300 p-4 text-center font-bold">타사 기업전화</th>
+                        <th className="border border-gray-300 p-4 text-center font-bold bg-primary/10">LG U+ 기업전화</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+                    </thead>
+                    <tbody>
+                      {comparisonItems.map((item, index) => (
+                        <tr key={index} className="hover:bg-gray-50">
+                          <td className="border border-gray-300 p-4 font-semibold">{item.item}</td>
+                          <td className="border border-gray-300 p-4 text-center text-gray-600">{item.competitor}</td>
+                          <td className="border border-gray-300 p-4 text-center font-bold text-primary bg-primary/5">{item.uplus}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* 비교 차트 - diagrams.net 스타일 */}
+            <Card className="bg-white border border-gray-200 shadow-sm">
+              <CardHeader className="pb-4">
+                <CardTitle className="text-center text-lg font-semibold text-gray-800">비용 비교 그래프</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <ChartContainer config={chartConfig} className="h-[400px] w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart 
+                      data={comparisonChartData}
+                      margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+                    >
+                      <CartesianGrid 
+                        strokeDasharray="3 3" 
+                        stroke="#e2e8f0" 
+                        strokeWidth={0.5}
+                        vertical={false}
+                      />
+                      <XAxis 
+                        dataKey="name" 
+                        tick={{ fill: '#64748b', fontSize: 12, fontWeight: 500 }}
+                        axisLine={{ stroke: '#cbd5e1', strokeWidth: 1 }}
+                        tickLine={{ stroke: '#cbd5e1', strokeWidth: 1 }}
+                        angle={-45}
+                        textAnchor="end"
+                        height={80}
+                      />
+                      <YAxis 
+                        tick={{ fill: '#64748b', fontSize: 12, fontWeight: 500 }}
+                        axisLine={{ stroke: '#cbd5e1', strokeWidth: 1 }}
+                        tickLine={{ stroke: '#cbd5e1', strokeWidth: 1 }}
+                        tickFormatter={(value) => {
+                          if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
+                          if (value >= 1000) return `${(value / 1000).toFixed(0)}k`;
+                          return value.toString();
+                        }}
+                      />
+                      <ChartTooltip 
+                        content={<ChartTooltipContent 
+                          className="bg-white border border-gray-200 shadow-lg rounded-lg"
+                          indicator="dot"
+                          formatter={(value: any) => `${value.toLocaleString()}원`}
+                        />} 
+                        cursor={{ fill: 'rgba(59, 130, 246, 0.05)' }}
+                      />
+                      <ChartLegend 
+                        content={<ChartLegendContent className="mt-4" />}
+                        wrapperStyle={{ paddingTop: '20px' }}
+                      />
+                      <Bar 
+                        dataKey="타사" 
+                        fill="#94a3b8" 
+                        radius={[2, 2, 0, 0]}
+                        stroke="#64748b"
+                        strokeWidth={1}
+                      />
+                      <Bar 
+                        dataKey="LG U+" 
+                        fill="#3b82f6" 
+                        radius={[2, 2, 0, 0]}
+                        stroke="#2563eb"
+                        strokeWidth={1}
+                      />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </ChartContainer>
+              </CardContent>
+            </Card>
           </div>
 
           {/* 이런 고객에게 필요한 서비스입니다 */}
@@ -257,15 +463,27 @@ const BusinessPhone = () => {
           <div className="mb-16 bg-gray-50 rounded-lg p-8">
             <h2 className="text-3xl font-bold mb-8 text-center">기업전화 가입 혜택</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {benefits.map((benefit, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="text-sm font-bold text-primary mb-2">{benefit.number}</div>
-                    <h3 className="text-lg font-bold mb-2 text-gray-900">{benefit.title}</h3>
-                    <p className="text-gray-600">{benefit.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
+                return (
+                  <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                            <Icon className="w-6 h-6 text-primary" />
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-sm font-bold text-primary mb-2">{benefit.number}</div>
+                          <h3 className="text-lg font-bold mb-2 text-gray-900">{benefit.title}</h3>
+                          <p className="text-gray-600">{benefit.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
 
@@ -276,9 +494,7 @@ const BusinessPhone = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {serviceItems.map((item, index) => (
                   <div key={index} className="flex items-start">
-                    <svg className="w-6 h-6 text-primary mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
+                    <CheckCircle2 className="w-6 h-6 text-primary mt-0.5 mr-2 flex-shrink-0" />
                     <span className="text-gray-700">{item}</span>
                   </div>
                 ))}
