@@ -222,30 +222,21 @@ const BusinessPhone = () => {
       {/* 히어로 섹션 - 이미지 기반 */}
       <div className="relative w-full overflow-hidden bg-gray-100">
         {/* 배경 이미지 컨테이너 */}
-        <div className="relative w-full h-[500px] sm:h-[600px] md:h-[700px] max-h-[90vh] flex items-center justify-center">
+        <div className="relative w-full h-[500px] sm:h-[600px] md:h-[700px] max-h-[90vh]">
           {/* 이미지 표시 - 최적화된 렌더링 */}
           <img
             src="/images/business-phone-hero.png"
             alt="LG U+ 기업전화 프로모션"
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
             style={{ 
               display: imageError ? "none" : "block",
-              maxWidth: "100%",
-              maxHeight: "100%",
-              objectFit: "contain",
+              objectFit: "cover",
+              objectPosition: "center",
               imageRendering: "auto"
             }}
             loading="eager"
             decoding="async"
             onLoad={(e) => {
-              const img = e.currentTarget;
-              // 이미지 크기 제한
-              if (img.naturalWidth > 1920) {
-                img.style.maxWidth = "1920px";
-              }
-              if (img.naturalHeight > 1080) {
-                img.style.maxHeight = "1080px";
-              }
               setImageLoaded(true);
               setImageError(false);
               console.log("이미지 로드 성공: /images/business-phone-hero.png");
