@@ -4,6 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
 import {
+  Dialog,
+  DialogContent,
+} from "@/components/ui/dialog";
+import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
@@ -36,6 +40,8 @@ const BusinessPhone = () => {
   // 이미지 로드 상태
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  // 이미지 미리보기 모달 상태
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   // 타사 대비 비교 차트 데이터
   const comparisonChartData = [
@@ -227,7 +233,7 @@ const BusinessPhone = () => {
           <img
             src="/images/business-phone-hero.png"
             alt="LG U+ 기업전화 프로모션"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity"
             style={{ 
               display: imageError ? "none" : "block",
               objectFit: "cover",
@@ -236,6 +242,7 @@ const BusinessPhone = () => {
             }}
             loading="eager"
             decoding="async"
+            onClick={() => setIsPreviewOpen(true)}
             onLoad={(e) => {
               setImageLoaded(true);
               setImageError(false);
@@ -300,6 +307,19 @@ const BusinessPhone = () => {
           )}
         </div>
       </div>
+
+      {/* 이미지 미리보기 모달 */}
+      <Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
+        <DialogContent className="max-w-7xl w-full p-0 bg-transparent border-none">
+          <div className="relative w-full h-full flex items-center justify-center">
+            <img
+              src="/images/business-phone-hero.png"
+              alt="LG U+ 기업전화 프로모션 (확대)"
+              className="max-w-full max-h-[90vh] object-contain rounded-lg"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
       
       <div className="py-16">
         <div className="container mx-auto px-4">
