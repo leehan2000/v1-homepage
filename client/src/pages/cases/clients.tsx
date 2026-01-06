@@ -5,11 +5,11 @@ const clientsData = [
   {
     id: 1,
     logo: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500&auto=format',
-    companyName: '메가텍 IT 솔루션',
-    industry: 'IT 서비스',
-    location: '서울 강남',
-    service: '무선통신',
-    description: '사옵층 건물 통신 인프라 구축, 저대역 문제 해결를 통한 안정적인 네트워크 환경 제공'
+    companyName: '메가커피 프렌차이즈',
+    industry: '커피 프렌차이즈',
+    location: '전국',
+    service: '유선통신(소호인터넷)',
+    description: '프렌차이즈 전체 가맹점에 안정적인 인터넷 제공, 독점 제휴'
   },
   {
     id: 2,
