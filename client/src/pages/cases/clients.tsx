@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 const clientsData = [
   {
     id: 1,
-    logo: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500&auto=format',
+    logo: '/images/magacoff.jpg',
     companyName: '메가커피 프렌차이즈',
     industry: '커피 프렌차이즈',
     location: '전국',
