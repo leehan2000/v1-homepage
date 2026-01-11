@@ -405,8 +405,7 @@ const NationalNumber = () => {
         </div>
       </section>
 
-      {/* Section: 이용요금 */}
-      {/* 이미지 비율: 이미지 없음 (표만) */}
+      {/* Section: 전국대표번호 이용요금 */}
       <section id="pricing" className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
@@ -425,33 +424,30 @@ const NationalNumber = () => {
                 <thead>
                   <tr className="bg-gray-100">
                     <th rowSpan={2} className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
-                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold">기본형</th>
-                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold">분리과금형</th>
+                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold">기본형, 분리과금형</th>
                     <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold">정액형</th>
                   </tr>
                   <tr className="bg-gray-50">
-                    {[...Array(3)].map((_, i) => (
-                      <Fragment key={i}>
-                        <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">등급</th>
-                      </Fragment>
-                    ))}
+                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">번호등급</th>
+                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">번호등급</th>
                   </tr>
                   <tr className="bg-gray-50">
-                    {[...Array(3)].map((_, i) => (
-                      <Fragment key={i}>
-                        {["0등급", "1등급", "2등급", "3등급", "4등급", "5등급"].map((grade) => (
-                          <th key={grade} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">
-                            {grade}
-                          </th>
-                        ))}
-                      </Fragment>
+                    {["0등급", "1등급", "2등급", "3등급", "4등급", "5등급"].map((grade) => (
+                      <th key={grade} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">
+                        {grade}
+                      </th>
+                    ))}
+                    {["0등급", "1등급", "2등급", "3등급", "4등급", "5등급"].map((grade) => (
+                      <th key={grade} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">
+                        {grade}
+                      </th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td className="border border-gray-300 p-2 md:p-3 font-semibold bg-pink-100">최소 가입 전화 개수</td>
-                    {[...Array(3)].map((_, i) => (
+                    {[...Array(2)].map((_, i) => (
                       <Fragment key={i}>
                         {[500, 30, 15, 10, 5, 2].map((count) => (
                           <td key={count} className="border border-gray-300 p-2 md:p-3 text-center">
@@ -462,52 +458,75 @@ const NationalNumber = () => {
                     ))}
                   </tr>
                   <tr>
-                    <td rowSpan={2} className="border border-gray-300 p-2 md:p-3 font-semibold align-middle">기본료 (월)</td>
-                    {/* 기본형 */}
-                    {[...Array(6)].map((_, j) => (
-                      <td key={j} className="border border-gray-300 p-2 md:p-3 text-center">
-                        전화 1개당 11,000원
-                      </td>
+                    <td rowSpan={2} className="border border-gray-300 p-2 md:p-3 font-semibold align-middle">기본료</td>
+                    {/* 기본형, 분리과금형 - 병합 셀 */}
+                    <td colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center">
+                      전화 1개당 11,000원
+                    </td>
+                    {/* 정액형 - 유선전화 리스트 */}
+                    <td colSpan={6} className="border border-gray-300 p-2 md:p-3">
+                      <div className="space-y-1 text-left">
+                        <div className="font-semibold mb-2">유선전화</div>
+                        <ul className="list-disc list-inside space-y-1 text-xs">
+                          <li>~119개: 전화 1개당 28,600원</li>
+                          <li>120~299개: 전화 1개당 27,500원</li>
+                          <li>300~499개: 전화 1개당 26,400원</li>
+                          <li>500~999개: 전화 1개당 25,300원</li>
+                          <li>1,000~1,999개: 전화 1개당 24,200원</li>
+                          <li>2,000~2,999개: 전화 1개당 23,100원</li>
+                          <li>3,000개: 전화 1개당 22,000원</li>
+                        </ul>
+                        <div className="mt-2 font-semibold">인터넷 전화</div>
+                        <div className="text-xs">1개당 11,000원</div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    {/* 기본형, 분리과금형 빈 셀 */}
+                    {[...Array(6)].map((_, i) => (
+                      <td key={i} className="border border-gray-300 p-2 md:p-3"></td>
                     ))}
-                    {/* 분리과금형 */}
-                    {[...Array(6)].map((_, j) => (
-                      <td key={j} className="border border-gray-300 p-2 md:p-3 text-center">
-                        전화 1개당 11,000원
-                      </td>
-                    ))}
-                    {/* 정액형 유선전화 */}
-                    {[55000, 33000, 22000, 16500, 11000, 5500].map((price) => (
-                      <td key={price} className="border border-gray-300 p-2 md:p-3 text-center">
-                        {price.toLocaleString()}원
-                      </td>
+                    {/* 정액형 빈 셀 */}
+                    {[...Array(6)].map((_, i) => (
+                      <td key={i} className="border border-gray-300 p-2 md:p-3"></td>
                     ))}
                   </tr>
                   <tr>
-                    {/* 정액형 인터넷전화 */}
-                    {[...Array(12)].map((_, i) => (
-                      <td key={i} className="border border-gray-300 p-2 md:p-3"></td>
-                    ))}
-                    {[33000, 22000, 16500, 11000, 5500, 3300].map((price) => (
-                      <td key={price} className="border border-gray-300 p-2 md:p-3 text-center">
-                        {price.toLocaleString()}원
-                      </td>
-                    ))}
+                    <td className="border border-gray-300 p-2 md:p-3 font-semibold">부가 이용료</td>
+                    <td colSpan={6} className="border border-gray-300 p-2 md:p-3">
+                      <div className="text-left">
+                        <div className="font-semibold mb-1">유선, 070 착신</div>
+                        <div className="text-xs">
+                          표준형ARS(11,000원/회선), 심플ARS(1,650원/회선), 플러스형ARS(33,000원/회선),
+                          비주얼링(3,300원/회선), SMS수신(27,500원/번호)
+                        </div>
+                      </div>
+                    </td>
+                    <td colSpan={6} className="border border-gray-300 p-2 md:p-3">
+                      <div className="text-left">
+                        <div className="font-semibold mb-1">유선, 070 착신</div>
+                        <div className="text-xs">
+                          표준형ARS(11,000원/회선), 심플ARS(1,650원/회선), 플러스형ARS(33,000원/회선),
+                          비주얼링(3,300원/회선), SMS수신(27,500원/번호)
+                        </div>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
               
-              <div className="mt-4 md:mt-6 p-3 md:p-4 bg-primary/5 rounded-lg">
-                <p className="text-xs md:text-sm text-gray-700 whitespace-pre-line leading-relaxed">
-                  대표번호는 발신자에게 통화료가 부과되는 유료서비스입니다.
-                  부가세 포함 금액입니다.
-                  기본형은 시외전화요금을 고객이 부담하는 요금제입니다. 고객이 전화를 걸면 "시외로 연결됩니다"라는 안내가 나옵니다.
-                  분리 과금형은 시외전화 요금을 기업이 부담하는 요금제 입니다.
-                  정액형은 시외전화 요금이 발생해도 추가요금이 발생하지 않는 요금제입니다.
-                  최소 가입 전화 개수보다 적게 가입하더라도 최소 가입 전화 개수만큼의 요금을 내야 합니다.
-                  약정 가입 시, 1년은 10%, 2년은 20%, 3년은 30%, 4년은 40% 요금 할인을 받을 수 있습니다.
-                  약정, 기간이 끝나기 전 해지하면 할인반환금이 발생합니다.
-                  클라우드 고객센터, 스마트컨택, 채팅상담솔루션, 클라우드레코딩, 모바일컨택, 비주얼컨택 이용 고객은 전국 대표번호 기본료를 50%를 할인받을 수 있습니다.
-                </p>
+              <div className="mt-4 md:mt-6 p-3 md:p-4 bg-pink-50 rounded-lg border border-pink-200">
+                <ul className="list-disc list-inside space-y-1 text-xs md:text-sm text-gray-700 leading-relaxed">
+                  <li>대표번호는 발신자에게 통화료가 부과되는 유료서비스입니다.</li>
+                  <li>부가세 포함 금액입니다.</li>
+                  <li>기본형은 시외전화요금을 고객이 부담하는 요금제입니다. 고객이 전화를 걸면 "시외로 연결됩니다"라는 안내가 나옵니다.</li>
+                  <li>분리 과금형은 시외전화 요금을 기업이 부담하는 요금제 입니다.</li>
+                  <li>정액형은 시외전화 요금이 발생해도 추가요금이 발생하지 않는 요금제입니다.</li>
+                  <li>최소 가입 전화 개수보다 적게 가입하더라도 최소 가입 전화 개수만큼의 요금을 내야 합니다.</li>
+                  <li>약정 가입 시, 1년은 10%, 2년은 20%, 3년은 30%, 4년은 40% 요금 할인을 받을 수 있습니다.</li>
+                  <li>약정, 기간이 끝나기 전 해지하면 할인반환금이 발생합니다.</li>
+                  <li>클라우드 고객센터, 스마트컨택, 채팅상담솔루션, 클라우드레코딩, 모바일컨택, 비주얼컨택 이용 고객은 전국 대표번호 기본료를 50%를 할인받을 수 있습니다.</li>
+                </ul>
               </div>
             </div>
           </div>
