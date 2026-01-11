@@ -19,26 +19,26 @@ const NationalNumber = () => {
   // 특장점 데이터
   const features = [
     {
-      icon: "/images/placeholders/icon-01.svg",
+      icon: "/images/icons/nationalnumber/feature-01.svg",
       title: "보유 전화번호 수 1위",
       description: "업계에서 가장 많은 53,000개의 전화번호 중 자유롭게 선택"
     },
     {
-      icon: "/images/placeholders/icon-02.svg",
+      icon: "/images/icons/nationalnumber/feature-02.svg",
       title: "대표번호 번호이동 가입자 수 1위"
     },
     {
-      icon: "/images/placeholders/icon-03.svg",
+      icon: "/images/icons/nationalnumber/feature-03.svg",
       title: "다양한 맞춤 부가서비스",
       description: "인사말 설정, 착신전환 등 다양한 부가서비스를 기업에 맞게 선택"
     },
     {
-      icon: "/images/placeholders/icon-04.svg",
+      icon: "/images/icons/nationalnumber/feature-04.svg",
       title: "완벽한 이중화 시스템",
       description: "모든 장비와 통신국사1) 를 이중화하여 장애가 발생해도 중단 없이 이용\n1) 국사 : 서비스 장비가 있는 장소"
     },
     {
-      icon: "/images/placeholders/icon-05.svg",
+      icon: "/images/icons/nationalnumber/feature-05.svg",
       title: "간편한 ARS 설정 가능 (*ARS부가서비스 가입시)",
       description: "TTS(Text to speech)기능 제공으로 성우녹음 없이도 인사말 설정 가능"
     }
@@ -47,18 +47,22 @@ const NationalNumber = () => {
   // 기대효과 데이터
   const expectedEffects = [
     {
+      icon: "/images/icons/nationalnumber/effect-01.svg",
       title: "쉬운 전화번호로 고객 인지도 향상",
       description: "기업명이나 판매 상품을 연상하게 하는 전화번호를 써서 고객이 쉽게 기억"
     },
     {
+      icon: "/images/icons/nationalnumber/effect-02.svg",
       title: "구축, 홍보 등 비용 절감",
       description: "별도 구축 없이 고객 상담 솔루션 이용\n수많은 지점을 번호 하나로 홍보"
     },
     {
+      icon: "/images/icons/nationalnumber/effect-03.svg",
       title: "맞춤형 서비스로 고객만족도 향상",
       description: "ARS(자동응답시스템), 신용카드 안전결제, 채팅상담 등 편의 기능 이용"
     },
     {
+      icon: "/images/icons/nationalnumber/effect-04.svg",
       title: "평생 동일한 번호",
       description: "사업장 변경, 통신사 변경시에도 전화번호 변경없이 동일한 번호를 평생 사용 가능"
     }
@@ -67,14 +71,17 @@ const NationalNumber = () => {
   // 추천 고객 데이터
   const recommendedCustomers = [
     {
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=400&fit=crop&auto=format",
       title: "금융/보험",
       description: "전국에 지점을 두고 있는 고객"
     },
     {
+      image: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=400&h=400&fit=crop&auto=format",
       title: "백화점/마트",
       description: "ARS(자동응답시스템)과 같은 다양한 부가서비스를 이용하고 싶은 고객"
     },
     {
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=400&fit=crop&auto=format",
       title: "공공/협회/복지",
       description: "하나의 번호를 사용하여 홍보 비용을 줄이고 싶은 고객"
     }
@@ -84,23 +91,23 @@ const NationalNumber = () => {
   const mainFeatures = [
     {
       name: "상담사 연결 설정",
-      image: "/images/placeholders/feature-01.jpg",
+      image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=600&fit=crop&auto=format",
       description: "전국대표번호의 상담사 연결 설정 화면\n지역별, 시간별, 비율별 등 걸려오는 전화 상황에 따라 상담사 연결 방법을 선택할 수 있습니다.\n\n발신지역별 설정: 걸려 온 전화의 지역번호를 구분하여 상담사를 연결\n시간별 설정: 걸려 온 시간에 따라 전화를 구분하여 상담사를 연결\n자동 분배: 걸려 온 전화를 미리 정한 비율에 따라 나눈 상담사를 연결\n자동 전환: 통화 중으로 전화를 받지 못할 때 전화를 받을 수 있는 상담사를 연결"
     },
     {
       name: "ARS(자동응답시스템)",
-      image: "/images/placeholders/feature-01.jpg",
-      description: "ARS(자동응답시스템) 기능 설명"
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&auto=format",
+      description: "고객이 원하는 업무, 영업시간/휴무일 등 상황에 맞춰 음성 안내를 하고, 상담사를 연결해 줍니다.\n\n심플형 ARS: 영업시간/휴무일 정보, 인사말 등을 통화연결음으로 안내\n표준형 ARS: 고객이 음성 안내에 따라 주제를 선택하면 상담사를 연결하고, 전화 통계를 확인하여 고객 관리 가능\n플러스형 ARS: 별도 구축 없이 우리 회사 맞춤 ARS 제작 가능"
     },
     {
       name: "위치기반 서비스",
-      image: "/images/placeholders/feature-01.jpg",
-      description: "위치기반 서비스 기능 설명"
+      image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=600&fit=crop&auto=format",
+      description: "전국에 지점이 여러 개 있으면, 고객 위치와 가까운 지점으로 전화를 연결해 줍니다.\n\n전화를 건 고객의 위치 정보를 조회해 가장 가까운 지점으로 전화 연결\n휴대폰, 인터넷전화, 일반전화 등 기기 종류 상관없이 위치 파악 가능"
     },
     {
       name: "비주얼링 서비스",
-      image: "/images/placeholders/feature-01.jpg",
-      description: "비주얼링 서비스 기능 설명"
+      image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&h=600&fit=crop&auto=format",
+      description: "전화를 건 고객 휴대폰 화면에 기업 로고나 원하는 사진을 영상으로 보여줄 수 있습니다.\n\n비주얼링 서비스 홈페이지에서 원하는 문구만 입력하면 이미지 제작 가능"
     }
   ];
 
@@ -227,6 +234,13 @@ const NationalNumber = () => {
             {expectedEffects.map((effect, index) => (
               <Card key={index} className="rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                 <CardContent className="p-5 md:p-6">
+                  <div className="mb-4">
+                    <img 
+                      src={effect.icon} 
+                      alt={effect.title}
+                      className="w-12 h-12 object-contain"
+                    />
+                  </div>
                   <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">
                     {effect.title}
                   </h3>
@@ -241,7 +255,7 @@ const NationalNumber = () => {
       </section>
 
       {/* Section: 추천 고객 */}
-      {/* 이미지 비율: 이미지 없음 (텍스트 카드만) */}
+      {/* 이미지 비율: 원형 이미지 (aspect-square, object-cover) - Unsplash 무료 이미지 사용 */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
@@ -254,6 +268,21 @@ const NationalNumber = () => {
             {recommendedCustomers.map((customer, index) => (
               <Card key={index} className="rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                 <CardContent className="p-5 md:p-6 text-center">
+                  {/* 원형 이미지 컨테이너 - 무료 이미지 사이트에서 직접 가져온 이미지 */}
+                  <div className="flex justify-center mb-4 md:mb-6">
+                    <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden bg-gray-100 border-2 border-gray-200 shadow-md">
+                      <img 
+                        src={customer.image} 
+                        alt={customer.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        onError={(e) => {
+                          // 이미지 로드 실패 시 기본 배경색만 표시
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    </div>
+                  </div>
                   <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">
                     {customer.title}
                   </h3>
