@@ -201,34 +201,70 @@ const BusinessInternet = () => {
       </Helmet>
 
       {/* 히어로 섹션 */}
-      <div className="bg-gradient-to-br from-primary-50 to-primary-100 py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">기업인터넷</h1>
-            <p className="text-2xl md:text-3xl font-bold text-primary mb-4">
-              PC방급 속도. 추가비용 0원, 광랜 독점, PC수 무제한
+      <section 
+        className="relative w-full min-h-[420px] md:min-h-[600px] lg:min-h-[700px] flex items-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/images/internet.png')`
+        }}
+      >
+        {/* 어두운 그라데이션 오버레이 */}
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.15))'
+          }}
+        ></div>
+        
+        {/* 텍스트 컨텐츠 */}
+        <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6 w-full py-12 md:py-16">
+          <div className="max-w-2xl text-center md:text-left">
+            {/* 상단 라벨 */}
+            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6 text-white">
+              기업 인터넷
+            </div>
+            
+            {/* 메인 헤드라인 */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight">
+              업무를 멈추지 않는 인터넷
+            </h1>
+            
+            {/* 서브 카피 */}
+            <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 text-white/90 leading-relaxed">
+              기업 전용 회선으로 안정적인 속도와 연결을 제공합니다.
             </p>
-            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-              PC방급 기업전용 광케이블을, 고객사 사무실까지 직접 구성하여
-              <br />
-              업계 최고의 속도와 안정적인 품질을 제공하는 기업전용 인터넷서비스
-            </p>
-          </div>
-
-          {/* 상담 섹션 */}
-          <Card className="max-w-2xl mx-auto bg-white shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-center text-2xl">기업전문 원스탑 상담센터</CardTitle>
-              <div className="text-center">
-                <p className="text-3xl font-bold text-primary mt-4">070.5023.0000</p>
-                <p className="text-sm text-gray-600 mt-2">
-                  상담시간: 평일 09시 ~ 18시 (점심시간: 평일 12시 ~ 13시)
-                </p>
+            
+            {/* 핵심 포인트 3개 */}
+            <div className="mb-8 md:mb-10 space-y-3 md:space-y-4">
+              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-sm px-4 py-3 md:px-5 md:py-3.5 rounded-lg border border-white/20">
+                <Network className="w-5 h-5 md:w-6 md:h-6 text-white flex-shrink-0" />
+                <span className="text-sm md:text-base font-semibold text-white">기업 전용 회선</span>
               </div>
-            </CardHeader>
-          </Card>
+              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-sm px-4 py-3 md:px-5 md:py-3.5 rounded-lg border border-white/20">
+                <Shield className="w-5 h-5 md:w-6 md:h-6 text-white flex-shrink-0" />
+                <span className="text-sm md:text-base font-semibold text-white">안정적인 네트워크</span>
+              </div>
+              <div className="flex items-center gap-3 bg-white/15 backdrop-blur-sm px-4 py-3 md:px-5 md:py-3.5 rounded-lg border border-white/20">
+                <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-white flex-shrink-0" />
+                <span className="text-sm md:text-base font-semibold text-white">24시간 장애 대응</span>
+              </div>
+            </div>
+            
+            {/* CTA 버튼 */}
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+              <Link href="/contact/ConsultationForm">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto">
+                  무료 상담 신청
+                </Button>
+              </Link>
+              <Link href="/services/business-internet">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto">
+                  상품 자세히 보기
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       <div className="py-16">
         <div className="container mx-auto px-4">
