@@ -138,48 +138,48 @@ const NationalNumber = () => {
       </Helmet>
       
       {/* Section: Hero */}
-      {/* 이미지 비율: aspect-[4/3] (히어로 이미지, 오버레이 적용) */}
-      <section className="bg-gradient-to-br from-primary-50 to-primary-100 py-16 md:py-24">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900">
-                전국대표번호
-              </h1>
-              <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-4 md:mb-6 leading-relaxed">
-                고객이 기억하기 쉬운 단 하나의 대표번호로 전국에 위치한 지점과
-                고객센터 전화번호를 통합할 수 있습니다.
-              </p>
-              <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-6 md:mb-8 whitespace-pre-line leading-relaxed">
-                기억하기 쉬운 대표번호로
-                홍보까지 간편하게 하세요
-                전국 어디서나 지역번호 없이 8자리 전화번호를 우리 회사 대표번호로 이용할 수 있는 서비스입니다.
-                외우기가 쉬워 주로 고객센터에서 많이 이용하며,
-                상황에 따라 전화를 알아서 분배해 줍니다.
-                ARS(자동응답시스템), 채팅상담 등으로 고객 관리도 할 수 있습니다.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={scrollToCTA}>
-                  상담 신청
-                </Button>
-                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10" onClick={() => {
-                  const pricingElement = document.getElementById("pricing");
-                  if (pricingElement) {
-                    pricingElement.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}>
-                  이용요금 보기
-                </Button>
+      {/* 배경 이미지 위에 텍스트 오버레이 */}
+      <section 
+        className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/images/대표번호_히어로.png')`
+        }}
+      >
+        {/* 어두운 오버레이 */}
+        <div className="absolute inset-0 bg-black/35 z-0"></div>
+        
+        {/* 텍스트 컨텐츠 */}
+        <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6 w-full">
+          <div className="max-w-3xl text-center md:text-left">
+            {/* 1️⃣ 메인 헤드라인 */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight whitespace-nowrap">
+              하나의 번호로, 전국을 연결하다
+            </h1>
+            
+            {/* 2️⃣ 서브 헤드라인 */}
+            <h2 className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 text-white/95 leading-relaxed">
+              <span className="block mb-2 tracking-wide font-semibold">
+                1544 · 1644 · 1661 · 1800 · 1833 · 1522
+              </span>
+              <span className="block">
+                고객이 가장 쉽게 기억하는 대표번호
+              </span>
+            </h2>
+            
+            {/* 3️⃣ 핵심 혜택 */}
+            <div className="mb-6 md:mb-8 space-y-2 md:space-y-3">
+              <div className="inline-block px-4 py-2 md:px-5 md:py-2.5 bg-purple-600/90 backdrop-blur-sm rounded-lg text-white text-sm md:text-base font-semibold mr-3 mb-2">
+                가입 시 최대 30% 요금 할인
+              </div>
+              <div className="inline-block px-4 py-2 md:px-5 md:py-2.5 bg-purple-600/90 backdrop-blur-sm rounded-lg text-white text-sm md:text-base font-semibold">
+                번호이동 시 기존 요금 그대로 이용
               </div>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-sm">
-              <div className="absolute inset-0 bg-black/20 z-10"></div>
-              <img 
-                src="/images/placeholders/nationalnumber-hero.jpg" 
-                alt="전국대표번호 히어로 이미지" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+            
+            {/* 4️⃣ 신뢰 포인트 */}
+            <p className="text-sm md:text-base text-white/80 font-medium">
+              대표번호 보유 최대 · 가장 빠른 개통 일정
+            </p>
           </div>
         </div>
       </section>
