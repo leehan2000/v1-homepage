@@ -129,7 +129,7 @@ const NationalNumber = () => {
         <title>전국대표번호 | 브이원정보통신</title>
         <meta name="description" content="고객이 기억하기 쉬운 단 하나의 대표번호로 전국에 위치한 지점과 고객센터 전화번호를 통합할 수 있습니다." />
       </Helmet>
-
+      
       {/* Section: Hero */}
       {/* 이미지 비율: aspect-[4/3] (히어로 이미지, 오버레이 적용) */}
       <section className="bg-gradient-to-br from-primary-50 to-primary-100 py-16 md:py-24">
@@ -236,8 +236,8 @@ const NationalNumber = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-        </div>
+                  </div>
+                  </div>
       </section>
 
       {/* Section: 추천 고객 */}
@@ -363,17 +363,17 @@ const NationalNumber = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div>
+                      <div>
                     <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900">
                       {mainFeatures[activeTab].name}
                     </h3>
                     <p className="text-sm md:text-base text-gray-600 whitespace-pre-line leading-relaxed">
                       {mainFeatures[activeTab].description}
                     </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
           </div>
         </div>
       </section>
@@ -428,10 +428,6 @@ const NationalNumber = () => {
                     <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold border-r-2">정액형</th>
                   </tr>
                   <tr className="bg-gray-50">
-                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">번호등급</th>
-                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-semibold border-r-2">번호등급</th>
-                  </tr>
-                  <tr className="bg-gray-50">
                     {["0등급", "1등급", "2등급", "3등급", "4등급", "5등급"].map((grade, index) => (
                       <th key={grade} className={`border border-gray-300 p-2 md:p-3 text-center font-semibold ${index === 5 ? 'border-r-2' : ''}`}>
                         {grade}
@@ -447,14 +443,17 @@ const NationalNumber = () => {
                 <tbody>
                   <tr className="bg-pink-50">
                     <td className="border border-gray-300 p-2 md:p-3 font-semibold bg-pink-600 text-white rounded-l-2xl">최소 가입 전화 개수</td>
-                    {[...Array(2)].map((_, i) => (
-                      <Fragment key={i}>
-                        {[500, 30, 15, 10, 5, 2].map((count, index) => (
-                          <td key={count} className={`border border-gray-300 p-2 md:p-3 text-center font-medium ${i === 1 && index === 5 ? 'border-r-2' : ''}`}>
-                            {count}개
-                          </td>
-                        ))}
-                      </Fragment>
+                    {/* 기본형, 분리과금형: 0등급(500개), 1등급(30개), 2등급(15개), 3등급(10개), 4등급(5개), 5등급(2개) */}
+                    {[500, 30, 15, 10, 5, 2].map((count, index) => (
+                      <td key={count} className={`border border-gray-300 p-2 md:p-3 text-center font-medium ${index === 5 ? 'border-r-2' : ''}`}>
+                        {count}개
+                      </td>
+                    ))}
+                    {/* 정액형: 0등급(500개), 1등급(30개), 2등급(15개), 3등급(10개), 4등급(5개), 5등급(2개) */}
+                    {[500, 30, 15, 10, 5, 2].map((count, index) => (
+                      <td key={count} className={`border border-gray-300 p-2 md:p-3 text-center font-medium ${index === 5 ? 'border-r-2' : ''}`}>
+                        {count}개
+                      </td>
                     ))}
                   </tr>
                   <tr>
@@ -727,7 +726,7 @@ const NationalNumber = () => {
                       <tr>
                         <td className="border border-gray-300 p-2 md:p-3 font-semibold">신용카드 수수료</td>
                         <td colSpan={2} className="border border-gray-300 p-2 md:p-3">3.5%</td>
-                      </tr>
+                        </tr>
                     </tbody>
                   </table>
                 </div>
@@ -786,7 +785,7 @@ const NationalNumber = () => {
                           <div className="space-y-1">
                             <div>시내, 30Km 이내 거리의 시외 3분당 49.5원</div>
                             <div>30km 이상 거리의 시외 10초당 15.51원</div>
-                          </div>
+              </div>
                         </td>
                       </tr>
                       <tr>
@@ -800,7 +799,7 @@ const NationalNumber = () => {
                             <div><strong>표준</strong> 10초당 17.193원</div>
                             <div><strong>할인 시간대</strong> 월요일~토요일 오전 6시 ~ 오전 8시 일요일, 공휴일 10초당 16.291원</div>
                             <div><strong>심야</strong> 평일 0시 ~ 오전 6시 10초당 15.389원</div>
-                          </div>
+            </div>
                         </td>
                       </tr>
                       <tr>
@@ -813,7 +812,7 @@ const NationalNumber = () => {
                       </tr>
                     </tbody>
                   </table>
-                </div>
+          </div>
                 <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600">
                   부가세가 포함된 금액입니다.
                 </p>
@@ -843,8 +842,8 @@ const NationalNumber = () => {
                 <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600">
                   부가세가 포함된 금액입니다.
                 </p>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
 
             {/* 10-10: 수신자 부담 1433 서비스 요금 할인 */}
             <Card className="rounded-2xl border border-gray-200 shadow-sm">
@@ -905,8 +904,8 @@ const NationalNumber = () => {
                   예시) 이용요금이 100,000원일 때 납부해야 할 금액 = 55,000원+(45,000원*0.95) = 97,750원
                   1433 번호는 홈페이지에서 가입할 수 없습니다. 가입하는 방법은 LG유플러스 고객센터 1544-0001로 문의해 주세요.
                 </p>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
           </div>
         </div>
       </section>
@@ -936,8 +935,8 @@ const NationalNumber = () => {
                   <li>업무 시간과 업무 외 시간을 구분하여 다른 멘트 송출 기능 제공(요일별/휴일 및 기간별)</li>
                   <li>5분단위, 일단위, 월단위로 인입 콜 수 통계 제공</li>
                 </ol>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
           </div>
         </div>
       </section>
@@ -984,10 +983,10 @@ const NationalNumber = () => {
             <Card className="rounded-2xl border border-gray-200 shadow-sm">
               <CardContent className="p-6 md:p-8 text-center text-gray-500">
                 FAQ 내용은 추후 제공 예정입니다.
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </div>
           </div>
-        </div>
       </section>
 
       {/* Section: 하단 CTA */}
@@ -1009,7 +1008,7 @@ const NationalNumber = () => {
               </Link>
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 rounded-lg">
                 전화 문의
-              </Button>
+                </Button>
             </div>
           </div>
         </div>
