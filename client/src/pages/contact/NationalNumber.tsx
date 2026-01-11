@@ -250,8 +250,8 @@ const NationalNumber = () => {
                 </CardContent>
               </Card>
             ))}
-                  </div>
-                  </div>
+        </div>
+      </div>
       </section>
 
       {/* Section: 추천 고객 */}
@@ -365,12 +365,12 @@ const NationalNumber = () => {
                     <p className="text-sm md:text-base text-gray-600 whitespace-pre-line leading-relaxed">
                       {mainFeatures[activeTab].description}
                     </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
-        </div>
       </section>
 
       {/* Section: 서비스 구성도 */}
@@ -383,21 +383,78 @@ const NationalNumber = () => {
           <p className="text-base md:text-lg text-center text-gray-600 mb-6 md:mb-8">
             전국대표번호의 제공방식을 구성도로 확인해 보세요.
           </p>
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <p className="text-center text-sm md:text-base text-gray-700 mb-6 md:mb-8 leading-relaxed">
               전국대표번호를 이용하면 가상번호로 고객에게 노출 됩니다. 고객이 업체에 전화를 할 때는 가상번호로 발신하게 되고, 업체의 번호가 노출 되지 않습니다.
             </p>
-            <div className="bg-gray-100 rounded-2xl p-4 md:p-8 shadow-sm">
-              <div className="aspect-[16/9] overflow-hidden rounded-xl">
-                <img 
-                  src="/images/placeholders/diagram.jpg"
-                  alt="전국대표번호 서비스 구성도"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            <div className="bg-gray-50 rounded-2xl p-6 md:p-8 shadow-sm">
+              {/* 서비스 구성도 다이어그램 */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-center">
+                {/* 왼쪽: 고객이 전화를 거는 번호 */}
+                <div className="text-center">
+                  <h3 className="text-sm md:text-base font-semibold text-gray-900 mb-3 md:mb-4 pb-2 border-b border-gray-300">
+                    고객이 전화를 거는 번호
+                  </h3>
+                  <div className="bg-white rounded-lg p-4 md:p-6 shadow-sm mb-3 md:mb-4">
+                    <div className="flex justify-center items-center gap-4 md:gap-6">
+                      {/* 유선전화 아이콘 */}
+                      <svg className="w-12 h-12 md:w-16 md:h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      {/* 스마트폰 아이콘 */}
+                      <svg className="w-12 h-12 md:w-16 md:h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
+                      </div>
+                    </div>
+                  <p className="text-xs md:text-sm text-gray-700 font-medium">
+                    예시) 1588 - 1234
+                  </p>
+                </div>
+
+                {/* 가운데: U+ 전국대표번호 서비스 */}
+                <div className="text-center">
+                  <div className="bg-white rounded-lg p-4 md:p-6 shadow-md border-2 border-primary/20">
+                    <p className="text-base md:text-lg font-bold text-primary mb-2">
+                      U+ 전국대표번호 서비스
+                    </p>
+                    <p className="text-xs md:text-sm text-gray-600">
+                      가상 전화번호 이용
+                    </p>
+                  </div>
+                  {/* 화살표 */}
+                  <div className="hidden md:flex justify-center items-center my-4">
+                    <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
             </div>
           </div>
-        </div>
+
+                {/* 오른쪽: 실제 전화를 받는 번호 */}
+                <div className="text-center">
+                  <h3 className="text-sm md:text-base font-semibold text-gray-900 mb-3 md:mb-4 pb-2 border-b border-gray-300">
+                    실제 전화를 받는 번호
+                  </h3>
+                  <div className="bg-white rounded-lg p-4 md:p-6 shadow-sm mb-3 md:mb-4">
+                    <div className="flex justify-center items-center gap-4 md:gap-6">
+                      {/* 유선전화 아이콘 */}
+                      <svg className="w-12 h-12 md:w-16 md:h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      {/* 스마트폰 아이콘 */}
+                      <svg className="w-12 h-12 md:w-16 md:h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="text-xs md:text-sm text-gray-700 font-medium">
+                    예시) 02 - 123 - 4567
+                  </p>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
       </section>
 
       {/* Section: 전국대표번호 이용요금 */}
@@ -413,11 +470,11 @@ const NationalNumber = () => {
             전국대표번호 이용요금
           </p>
           
-          <div className="overflow-x-auto">
+                <div className="overflow-x-auto">
             <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 md:p-8 min-w-[1000px]">
               <table className="w-full border-collapse text-xs md:text-sm">
-                <thead>
-                  <tr className="bg-gray-100">
+                    <thead>
+                      <tr className="bg-gray-100">
                     <th rowSpan={2} className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
                     <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold">기본형, 분리과금형</th>
                     <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold border-r-2">정액형</th>
@@ -433,9 +490,9 @@ const NationalNumber = () => {
                         {grade}
                       </th>
                     ))}
-                  </tr>
-                </thead>
-                <tbody>
+                      </tr>
+                    </thead>
+                    <tbody>
                   <tr className="bg-pink-50">
                     <td className="border border-gray-300 p-2 md:p-3 font-semibold bg-pink-600 text-white rounded-l-2xl">최소 가입 전화 개수</td>
                     {/* 기본형, 분리과금형: 0등급(500개), 1등급(30개), 2등급(15개), 3등급(10개), 4등급(5개), 5등급(2개) */}
@@ -495,9 +552,9 @@ const NationalNumber = () => {
                         </div>
                       </div>
                     </td>
-                  </tr>
-                </tbody>
-              </table>
+                        </tr>
+                    </tbody>
+                  </table>
               
               <div className="mt-4 md:mt-6 p-3 md:p-4 bg-pink-50 rounded-lg border border-pink-200">
                 <ul className="list-disc list-inside space-y-1 text-xs md:text-sm text-gray-700 leading-relaxed">
@@ -511,10 +568,10 @@ const NationalNumber = () => {
                   <li>약정, 기간이 끝나기 전 해지하면 할인반환금이 발생합니다.</li>
                   <li>클라우드 고객센터, 스마트컨택, 채팅상담솔루션, 클라우드레코딩, 모바일컨택, 비주얼컨택 이용 고객은 전국 대표번호 기본료를 50%를 할인받을 수 있습니다.</li>
                 </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Section: 부가서비스 상세 */}
