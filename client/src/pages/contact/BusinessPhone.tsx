@@ -158,88 +158,59 @@ const BusinessPhone = () => {
         <meta name="description" content="LG U+ 기업전화 서비스를 통해 효율적인 기업 통신 환경을 구축하세요. 최신 키폰 무료 제공, 초기비용 0원, 통화료 절감으로 업무 효율성을 높입니다." />
       </Helmet>
       
-      {/* 히어로 섹션 - LG유플러스 공식 페이지 스타일 */}
-      <section className="relative w-full bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: "radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%)"
-          }}></div>
-        </div>
-        <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <div className="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-semibold mb-6">
-                LG U+ 기업전화
+      {/* 히어로 섹션 - 기업 인터넷전화 전용 */}
+      <section 
+        className="relative w-full min-h-[600px] md:min-h-[700px] flex items-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/images/internetphon.png')`
+        }}
+      >
+        {/* 어두운 오버레이 */}
+        <div className="absolute inset-0 bg-black/45 z-0"></div>
+        
+        {/* 텍스트 컨텐츠 */}
+        <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6 w-full">
+          <div className="max-w-2xl text-center md:text-left">
+            {/* 메인 헤드라인 */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight">
+              흔들리지 않는 기업 통신<br />
+              업무의 중심에 서는 인터넷전화
+            </h1>
+            
+            {/* 서브 헤드라인 */}
+            <p className="text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-white/90 leading-relaxed">
+              교체는 간단하게, 통화 품질은 더 선명하게<br />
+              기업을 위한 안정적인 인터넷전화 솔루션
+            </p>
+            
+            {/* 핵심 포인트 배지 3개 */}
+            <div className="mb-8 md:mb-10 space-y-3 md:space-y-4">
+              <div className="flex items-center gap-3 bg-white/20 backdrop-blur-sm px-4 py-3 md:px-5 md:py-3.5 rounded-lg border border-white/30">
+                <Phone className="w-5 h-5 md:w-6 md:h-6 text-white flex-shrink-0" />
+                <span className="text-sm md:text-base font-semibold text-white">최신 키폰 무료 제공</span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                최신 키폰 시스템 무료 제공<br />
-                초기 비용 0원
-              </h1>
-              <p className="text-xl md:text-2xl leading-relaxed opacity-90 mb-8 max-w-3xl mx-auto">
-                사무실 키폰 구축 비용 없이 최신 디지털 키폰 기능을 무료로 이용할 수 있습니다.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 mb-10">
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-3 rounded-lg border border-white/30">
-                  <Gift className="w-5 h-5" />
-                  <span className="font-semibold">초기비용 0원</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-3 rounded-lg border border-white/30">
-                  <Phone className="w-5 h-5" />
-                  <span className="font-semibold">키폰 무료 제공</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-5 py-3 rounded-lg border border-white/30">
-                  <TrendingDown className="w-5 h-5" />
-                  <span className="font-semibold">통화료 45% 절감</span>
-                </div>
+              <div className="flex items-center gap-3 bg-white/20 backdrop-blur-sm px-4 py-3 md:px-5 md:py-3.5 rounded-lg border border-white/30">
+                <Gift className="w-5 h-5 md:w-6 md:h-6 text-white flex-shrink-0" />
+                <span className="text-sm md:text-base font-semibold text-white">초기비용 부담 최소화</span>
               </div>
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link href="/contact/ConsultationForm">
-                  <Button size="lg" className="bg-white text-primary hover:bg-gray-100 px-10 py-7 text-lg font-semibold shadow-xl">
-                    무료 상담 신청하기
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </Link>
-                <Link href="/cases/clients">
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-10 py-7 text-lg font-semibold">
-                    도입 사례 보기
-                  </Button>
-                </Link>
+              <div className="flex items-center gap-3 bg-white/20 backdrop-blur-sm px-4 py-3 md:px-5 md:py-3.5 rounded-lg border border-white/30">
+                <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-white flex-shrink-0" />
+                <span className="text-sm md:text-base font-semibold text-white">번호이동 가능</span>
               </div>
             </div>
             
-            {/* 히어로 이미지 */}
-            <div className="relative mt-12">
-              <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20">
-                <img
-                  src="/images/business-phone-hero.png"
-                  alt="LG U+ 기업전화 - 최신 키폰 시스템 무료 제공"
-                  className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-500"
-                  style={{ 
-                    display: imageError ? "none" : "block",
-                    objectFit: "cover",
-                    objectPosition: "center",
-                  }}
-                  loading="eager"
-                  decoding="async"
-                  onClick={() => setIsPreviewOpen(true)}
-                  onLoad={(e) => {
-                    setImageLoaded(true);
-                    setImageError(false);
-                  }}
-                  onError={(e) => {
-                    setImageError(true);
-                  }}
-                />
-                {imageError && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center">
-                    <div className="text-center text-white p-8">
-                      <PhoneCall className="w-24 h-24 mx-auto mb-6 opacity-80" />
-                      <h2 className="text-3xl font-bold mb-4">기업전화</h2>
-                      <p className="text-lg opacity-90">최신 키폰 시스템 무료 제공</p>
-                    </div>
-                  </div>
-                )}
-              </div>
+            {/* CTA 버튼 */}
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+              <Link href="/contact/ConsultationForm">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto">
+                  무료 상담 신청하기
+                </Button>
+              </Link>
+              <Link href="/cases/clients">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto">
+                  도입 사례 보기
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
