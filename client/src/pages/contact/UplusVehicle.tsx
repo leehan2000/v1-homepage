@@ -117,59 +117,78 @@ const UplusVehicle = () => {
       </div>
 
       {/* Hero 섹션 */}
-      <section id="product-info" className="relative bg-gradient-to-br from-primary-50 to-primary-100 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div>
-              <div className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-                U+커넥트
+      <section 
+        id="product-info"
+        className="relative w-full overflow-hidden min-h-[70vh] md:min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/images/U+connect.png')`
+        }}
+      >
+        {/* 어두운 블루 그라디언트 오버레이 */}
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(30, 58, 138, 0.65), rgba(30, 58, 138, 0.45))'
+          }}
+        ></div>
+        
+        {/* 텍스트 컨텐츠 */}
+        <div className="relative z-10 container mx-auto px-4 max-w-6xl w-full py-12 md:py-16">
+          <div className="max-w-3xl text-left">
+            {/* 상단 라벨 */}
+            <div className="inline-block bg-white/20 backdrop-blur-sm border border-white/20 px-4 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6 text-white">
+              U+커넥트 차량관제
+            </div>
+            
+            {/* 메인 헤드라인 (2줄) */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight">
+              차량 관리비는 줄이고<br />
+              업무는 더 빠르게
+            </h1>
+            
+            {/* 서브 설명 */}
+            <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 text-white/90 leading-relaxed">
+              실시간 차량 관제와 자동 운행일지로<br />
+              전국 어디서든 차량 운행을 한눈에 관리하세요.
+            </p>
+            
+            {/* 유플러스 톤 히어로 문구 4종 (칩/배지) */}
+            <div className="flex flex-wrap gap-3 md:gap-4 mb-8 md:mb-10">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2.5 md:px-5 md:py-3 rounded-lg">
+                <MapPin className="w-4 h-4 md:w-5 md:h-5 text-white flex-shrink-0" />
+                <span className="text-sm md:text-base font-medium text-white">실시간 위치 관제</span>
               </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900 leading-tight">
-                U+ 커넥트로 "차량 관리비는 줄이고 업무는 빠르게"
-              </h1>
-              <p className="text-base md:text-lg text-gray-700 mb-6 md:mb-8 leading-relaxed">
-                실시간 관제와 자동 운행일지로 업무 효율은 높이고, 통합 비용 관리로 차량 운영 비용을 줄일 수 있어요.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  홈페이지 이동
-                </Button>
-                <Button size="lg" variant="outline" onClick={scrollToConsultation}>
-                  전문가에게 상담받기
-                </Button>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2.5 md:px-5 md:py-3 rounded-lg">
+                <FileText className="w-4 h-4 md:w-5 md:h-5 text-white flex-shrink-0" />
+                <span className="text-sm md:text-base font-medium text-white">운행일지 자동 생성</span>
               </div>
-              <div className="flex flex-wrap gap-3">
-                <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">실시간 위치 확인</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
-                  <FileText className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">운행일지 자동 생성</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
-                  <DollarSign className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">통합 비용 관리</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
-                  <Shield className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">안전운전 관리</span>
-                </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2.5 md:px-5 md:py-3 rounded-lg">
+                <DollarSign className="w-4 h-4 md:w-5 md:h-5 text-white flex-shrink-0" />
+                <span className="text-sm md:text-base font-medium text-white">통합 비용 관리</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2.5 md:px-5 md:py-3 rounded-lg">
+                <Shield className="w-4 h-4 md:w-5 md:h-5 text-white flex-shrink-0" />
+                <span className="text-sm md:text-base font-medium text-white">안전 운전 분석</span>
               </div>
             </div>
-            <div className="relative">
-              {!imageErrors.hero ? (
-                <img
-                  src={IMG.hero}
-                  alt="차량관제 시스템"
-                  className="w-full h-[400px] md:h-[500px] object-cover rounded-2xl shadow-xl"
-                  onError={() => handleImageError("hero")}
-                />
-              ) : (
-                <div className="w-full h-[400px] md:h-[500px] bg-gradient-to-br from-primary-200 to-primary-300 rounded-2xl flex items-center justify-center">
-                  <MapPin className="w-24 h-24 text-primary/50" />
-                </div>
-              )}
+            
+            {/* CTA 버튼 2개 */}
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+              <Button 
+                size="lg" 
+                onClick={scrollToConsultation}
+                className="bg-white text-primary hover:bg-white/90 px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto"
+              >
+                전문가 상담받기
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={() => scrollToSection("features")}
+                className="border-2 border-white/40 text-white hover:bg-white/10 px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto"
+              >
+                서비스 구성 살펴보기
+              </Button>
             </div>
           </div>
         </div>
