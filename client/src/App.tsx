@@ -41,6 +41,7 @@ import ContactConsultationForm from "@/pages/contact/ConsultationForm";
 import BusinessPhone from "@/pages/contact/BusinessPhone";
 import BusinessInternet from "@/pages/contact/BusinessInternet";
 import NationalNumber from "@/pages/contact/NationalNumber";
+import UplusVehicle from "@/pages/contact/UplusVehicle";
 // import ContactFAQ from "@/pages/contact/FAQ";
 // import ContactDirections from "@/pages/contact/Directions";
 import ThankYouAlert from "@/components/common/ThankYouAlert";
@@ -97,6 +98,7 @@ function Router() {
       <Route path="/contact/business-phone" component={BusinessPhone} />
       <Route path="/contact/business-internet" component={BusinessInternet} />
       <Route path="/contact/national-number" component={NationalNumber} />
+      <Route path="/contact/uplus-vehicle" component={UplusVehicle} />
       <Route path="/contact" component={ContactConsultationForm} />
 
       {/* 서비스 섹션 - 추후 업데이트 예정 */}
