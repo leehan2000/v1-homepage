@@ -1,282 +1,1012 @@
+import { useState, Fragment } from "react";
 import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 
 const NationalNumber = () => {
-  // 히어로 섹션 주요 메시지
-  const heroMessages = [
+  // 주요 기능 탭 상태 관리
+  const [activeTab, setActiveTab] = useState(0);
+
+  // 하단 CTA로 스크롤 이동 함수
+  const scrollToCTA = () => {
+    const ctaElement = document.getElementById("bottom-cta");
+    if (ctaElement) {
+      ctaElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // 특장점 데이터
+  const features = [
     {
-      title: "번호 하나로 기업 신뢰도 상승",
-      subtitle: "전화번호만 대표번호로 바꿔도 기업신뢰도 UP!",
-      description: "전국 어디서나 쉬운 4자리 번호로 전화걸면 자동 연결",
-      highlight: "신뢰도 상승"
+      icon: "/images/placeholders/icon-01.svg",
+      title: "보유 전화번호 수 1위",
+      description: "업계에서 가장 많은 53,000개의 전화번호 중 자유롭게 선택"
     },
     {
-      title: "간결한 4자리 번호",
-      subtitle: "1544, 1644, 1661, 1800, 1833, 1522",
-      description: "일반 번호를 통합하여 사용, 고객에게 쉽게 기억",
-      highlight: "4자리 번호"
+      icon: "/images/placeholders/icon-02.svg",
+      title: "대표번호 번호이동 가입자 수 1위"
     },
     {
-      title: "평생 사용 가능",
-      subtitle: "타지역 이전해도 대표번호는 그대로",
-      description: "일반 번호가 바뀌어도 전국 어디서나 같은 번호 사용",
-      highlight: "평생 사용"
+      icon: "/images/placeholders/icon-03.svg",
+      title: "다양한 맞춤 부가서비스",
+      description: "인사말 설정, 착신전환 등 다양한 부가서비스를 기업에 맞게 선택"
+    },
+    {
+      icon: "/images/placeholders/icon-04.svg",
+      title: "완벽한 이중화 시스템",
+      description: "모든 장비와 통신국사1) 를 이중화하여 장애가 발생해도 중단 없이 이용\n1) 국사 : 서비스 장비가 있는 장소"
+    },
+    {
+      icon: "/images/placeholders/icon-05.svg",
+      title: "간편한 ARS 설정 가능 (*ARS부가서비스 가입시)",
+      description: "TTS(Text to speech)기능 제공으로 성우녹음 없이도 인사말 설정 가능"
     }
   ];
 
-  // 전국대표번호 장점
-  const advantages = [
+  // 기대효과 데이터
+  const expectedEffects = [
     {
-      number: "01",
-      title: "기업신뢰도 상승",
-      description: "회사 전화번호를 회사 이미지와 맞는 번호로 설정 가능하고, 고급스럽고 큰 규모의 기업으로 연출 가능"
+      title: "쉬운 전화번호로 고객 인지도 향상",
+      description: "기업명이나 판매 상품을 연상하게 하는 전화번호를 써서 고객이 쉽게 기억"
     },
     {
-      number: "02",
-      title: "홍보효과 극대화",
-      description: "간결한 4자리 번호로 일반 번호를 통합하여 사용. 고객에게 쉽게 기억되어 홍보효과 극대화"
+      title: "구축, 홍보 등 비용 절감",
+      description: "별도 구축 없이 고객 상담 솔루션 이용\n수많은 지점을 번호 하나로 홍보"
     },
     {
-      number: "03",
-      title: "평생 사용가능",
-      description: "타지역으로 이전하더라도, 일반 번호가 바뀌어도, 전국 어디서나 대표번호는 평생 그대로 같은 번호 사용 가능"
+      title: "맞춤형 서비스로 고객만족도 향상",
+      description: "ARS(자동응답시스템), 신용카드 안전결제, 채팅상담 등 편의 기능 이용"
     },
     {
-      number: "04",
-      title: "업무효율 극대화",
-      description: "전국 대리점을 하나의 번호로 통합관리 가능. 대표번호와 ARS 사용으로 각 부서로 편리하게 자동연결"
+      title: "평생 동일한 번호",
+      description: "사업장 변경, 통신사 변경시에도 전화번호 변경없이 동일한 번호를 평생 사용 가능"
     }
   ];
 
-  // 필요한 기업 타겟팅
-  const targetCustomers = [
+  // 추천 고객 데이터
+  const recommendedCustomers = [
     {
-      name: "기업 신뢰도 향상이 필요한 기업",
-      description: "고급스럽고 큰 규모의 기업 이미지를 원하는 기업에 최적화된 솔루션"
+      title: "금융/보험",
+      description: "전국에 지점을 두고 있는 고객"
     },
     {
-      name: "홍보 효과를 극대화하고 싶은 기업",
-      description: "간결한 번호로 고객에게 쉽게 기억되길 원하는 기업"
+      title: "백화점/마트",
+      description: "ARS(자동응답시스템)과 같은 다양한 부가서비스를 이용하고 싶은 고객"
     },
     {
-      name: "전국 대리점을 통합 관리하는 기업",
-      description: "여러 지점을 하나의 번호로 통합 관리하고 싶은 기업"
+      title: "공공/협회/복지",
+      description: "하나의 번호를 사용하여 홍보 비용을 줄이고 싶은 고객"
     }
   ];
 
-  // 요금제 정보
-  const pricingPlans = [
-    { grade: "5등급", monthlyFee: "20,000원", callRate: "전국단일 : 65원/3분" },
-    { grade: "4등급", monthlyFee: "50,000원", callRate: "전국단일 : 65원/3분" },
-    { grade: "3등급", monthlyFee: "100,000원", callRate: "전국단일 : 65원/3분" },
-    { grade: "2등급", monthlyFee: "150,000원", callRate: "전국단일 : 65원/3분" },
-    { grade: "1등급", monthlyFee: "300,000원", callRate: "전국단일 : 65원/3분" }
+  // 주요 기능 탭 데이터
+  const mainFeatures = [
+    {
+      name: "상담사 연결 설정",
+      image: "/images/placeholders/feature-01.jpg",
+      description: "전국대표번호의 상담사 연결 설정 화면\n지역별, 시간별, 비율별 등 걸려오는 전화 상황에 따라 상담사 연결 방법을 선택할 수 있습니다.\n\n발신지역별 설정: 걸려 온 전화의 지역번호를 구분하여 상담사를 연결\n시간별 설정: 걸려 온 시간에 따라 전화를 구분하여 상담사를 연결\n자동 분배: 걸려 온 전화를 미리 정한 비율에 따라 나눈 상담사를 연결\n자동 전환: 통화 중으로 전화를 받지 못할 때 전화를 받을 수 있는 상담사를 연결"
+    },
+    {
+      name: "ARS(자동응답시스템)",
+      image: "/images/placeholders/feature-01.jpg",
+      description: "ARS(자동응답시스템) 기능 설명"
+    },
+    {
+      name: "위치기반 서비스",
+      image: "/images/placeholders/feature-01.jpg",
+      description: "위치기반 서비스 기능 설명"
+    },
+    {
+      name: "비주얼링 서비스",
+      image: "/images/placeholders/feature-01.jpg",
+      description: "비주얼링 서비스 기능 설명"
+    }
+  ];
+
+  // 같이 선택한 상품 데이터
+  const relatedProducts = [
+    {
+      image: "/images/placeholders/related-01.jpg",
+      title: "U+tv",
+      description: "TV 뿐만 아니라 유튜브 등 다양한 콘텐츠를 감상할 수 있는 IPTV서비스"
+    },
+    {
+      image: "/images/placeholders/related-02.jpg",
+      title: "오피스넷",
+      description: "저렴한 요금으로 사용할 수 있는 기업 전용 인터넷 서비스"
+    },
+    {
+      image: "/images/placeholders/related-03.jpg",
+      title: "기업 인터넷전화 일반형",
+      description: "가장 저렴한 요금으로 이용할 수 있는 전화 서비스"
+    }
   ];
 
   return (
     <>
       <Helmet>
         <title>전국대표번호 | 브이원정보통신</title>
-        <meta name="description" content="LG U+ 전국대표번호 서비스로 기업 신뢰도를 높이세요. 간결한 4자리 번호로 홍보 효과를 극대화하고 전국 어디서나 같은 번호를 평생 사용할 수 있습니다." />
+        <meta name="description" content="고객이 기억하기 쉬운 단 하나의 대표번호로 전국에 위치한 지점과 고객센터 전화번호를 통합할 수 있습니다." />
       </Helmet>
-      
-      {/* 히어로 섹션 */}
-      <div className="bg-gradient-to-br from-primary-50 to-primary-100 py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-12">LG U+ 전국대표번호</h1>
-          <p className="text-lg md:text-xl text-center max-w-3xl mx-auto text-gray-700 mb-12">
-            1544, 1644, 1661, 1800, 1833, 1522와 같이
-            <br />
-            전국 어디서나 쉬운 4자리 번호로 전화걸면 자동 연결되는 서비스
+
+      {/* Section: Hero */}
+      {/* 이미지 비율: aspect-[4/3] (히어로 이미지, 오버레이 적용) */}
+      <section className="bg-gradient-to-br from-primary-50 to-primary-100 py-16 md:py-24">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-gray-900">
+                전국대표번호
+              </h1>
+              <p className="text-base md:text-lg lg:text-xl text-gray-700 mb-4 md:mb-6 leading-relaxed">
+                고객이 기억하기 쉬운 단 하나의 대표번호로 전국에 위치한 지점과
+                고객센터 전화번호를 통합할 수 있습니다.
+              </p>
+              <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-6 md:mb-8 whitespace-pre-line leading-relaxed">
+                기억하기 쉬운 대표번호로
+                홍보까지 간편하게 하세요
+                전국 어디서나 지역번호 없이 8자리 전화번호를 우리 회사 대표번호로 이용할 수 있는 서비스입니다.
+                외우기가 쉬워 주로 고객센터에서 많이 이용하며,
+                상황에 따라 전화를 알아서 분배해 줍니다.
+                ARS(자동응답시스템), 채팅상담 등으로 고객 관리도 할 수 있습니다.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+                <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={scrollToCTA}>
+                  상담 신청
+                </Button>
+                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10" onClick={() => {
+                  const pricingElement = document.getElementById("pricing");
+                  if (pricingElement) {
+                    pricingElement.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}>
+                  이용요금 보기
+                </Button>
+              </div>
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-sm">
+              <div className="absolute inset-0 bg-black/20 z-10"></div>
+              <img 
+                src="/images/placeholders/nationalnumber-hero.jpg" 
+                alt="전국대표번호 히어로 이미지" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: 특장점 */}
+      {/* 이미지 비율: 아이콘 (object-contain, 고정 크기 w-12 h-12) */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
+            특장점
+          </h2>
+          <p className="text-base md:text-lg text-center text-gray-600 mb-8 md:mb-12">
+            전국대표번호가 특별한 이유를 확인해 보세요.
           </p>
-          
-          {/* 주요 메시지 카드 */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {heroMessages.map((message, index) => (
-              <Card key={index} className="bg-white hover:shadow-lg transition-shadow duration-300 border-2 border-primary/20">
-                <CardContent className="p-6 text-center">
-                  <div className="text-sm font-semibold text-primary mb-2">{message.highlight}</div>
-                  <h2 className="text-xl font-bold mb-3 text-gray-900">{message.title}</h2>
-                  <p className="text-lg font-semibold text-primary mb-2">{message.subtitle}</p>
-                  <p className="text-gray-600">{message.description}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {features.map((feature, index) => (
+              <Card key={index} className="rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-5 md:p-6">
+                  <div className="mb-4">
+                    <img 
+                      src={feature.icon} 
+                      alt={feature.title}
+                      className="w-12 h-12 object-contain"
+                    />
+                  </div>
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">
+                    {feature.title}
+                  </h3>
+                  {feature.description && (
+                    <p className="text-sm md:text-base text-gray-600 whitespace-pre-line leading-relaxed">
+                      {feature.description}
+                    </p>
+                  )}
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
-      </div>
-      
-      <div className="py-16">
-        <div className="container mx-auto px-4">
-          {/* 전국대표번호 왜 필요할까요? */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-center">전국대표번호 왜 필요할까요?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-10">
-              <Card className="border-2 border-gray-300">
-                <CardContent className="p-8 text-center">
-                  <h3 className="text-xl font-bold mb-4 text-gray-700">기존 대표번호</h3>
-                  <div className="space-y-3 text-gray-600">
-                    <p>• 지역별로 다른 번호 사용</p>
-                    <p>• 번호가 길고 복잡함</p>
-                    <p>• 이전 시 번호 변경 필요</p>
-                    <p>• 홍보 효과 제한적</p>
-                  </div>
-                </CardContent>
-              </Card>
-              <Card className="border-2 border-primary">
-                <CardContent className="p-8 text-center">
-                  <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold rounded-bl-lg">
-                    추천
-                  </div>
-                  <h3 className="text-xl font-bold mb-4 text-primary">전국대표번호</h3>
-                  <div className="space-y-3 text-gray-700">
-                    <p>• 전국 어디서나 같은 번호</p>
-                    <p>• 간결한 4자리 번호</p>
-                    <p>• 평생 같은 번호 사용</p>
-                    <p>• 홍보 효과 극대화</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
+      </section>
 
-          {/* 전국대표번호 장점 */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-10 text-center">전국대표번호 장점</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {advantages.map((advantage, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-start">
-                      <div className="text-2xl font-bold text-primary mr-4 flex-shrink-0">{advantage.number}</div>
-                      <div>
-                        <h3 className="text-xl font-bold mb-2 text-gray-900">{advantage.title}</h3>
-                        <p className="text-gray-600">{advantage.description}</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* 이런 고객에게 필요한 서비스입니다 */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-center">전국대표번호가 필요한 기업</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {targetCustomers.map((customer, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6 text-center">
-                    <h3 className="text-xl font-bold mb-3 text-gray-900">{customer.name}</h3>
-                    <p className="text-gray-600">{customer.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* 요금/상품 구성 */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-4 text-center">요금안내</h2>
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="p-8">
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="bg-gray-100">
-                        <th className="border border-gray-300 p-4 text-left font-bold">등급</th>
-                        <th className="border border-gray-300 p-4 text-center font-bold">요금(월)</th>
-                        <th className="border border-gray-300 p-4 text-center font-bold bg-primary/10">통화료</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {pricingPlans.map((plan, index) => (
-                        <tr key={index} className="hover:bg-gray-50">
-                          <td className="border border-gray-300 p-4 font-semibold">{plan.grade}</td>
-                          <td className="border border-gray-300 p-4 text-center">{plan.monthlyFee}</td>
-                          <td className="border border-gray-300 p-4 text-center font-bold text-primary bg-primary/5">{plan.callRate}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="mt-6 p-4 bg-primary/5 rounded-lg">
-                  <p className="text-sm text-gray-600">
-                    ※ 이동전화 발신 통화료는 해당 이통사 요금제를 적용 받게 되며, 공중전화 발신 통화료는 이용자가 KT 공중전화 이용약관 시내통화료를 부담하고, 서비스 계약자가 부담액과의 차액분을 부담하게 됩니다.
-                    <br />
-                    ※ 휴대폰 착신호전환 서비스 이용 시 계약자가 전화된 호에 대해 "13원/10초"의 통화요금이 부과됩니다.
+      {/* Section: 기대효과 */}
+      {/* 이미지 비율: 이미지 없음 (텍스트 카드만) */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
+            기대효과
+          </h2>
+          <p className="text-base md:text-lg text-center text-gray-600 mb-8 md:mb-12">
+            전국대표번호를 도입하면 이런 효과를 얻을 수 있어요.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {expectedEffects.map((effect, index) => (
+              <Card key={index} className="rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-5 md:p-6">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">
+                    {effect.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-gray-600 whitespace-pre-line leading-relaxed">
+                    {effect.description}
                   </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section: 추천 고객 */}
+      {/* 이미지 비율: 이미지 없음 (텍스트 카드만) */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
+            추천 고객
+          </h2>
+          <p className="text-base md:text-lg text-center text-gray-600 mb-8 md:mb-12">
+            이런 분들께 전국대표번호를 더욱 추천드려요.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            {recommendedCustomers.map((customer, index) => (
+              <Card key={index} className="rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-5 md:p-6 text-center">
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">
+                    {customer.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                    {customer.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section: 대표 고객 */}
+      {/* 이미지 비율: 로고 (object-contain, 고정 높이 h-12 md:h-16) */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
+            대표 고객
+          </h2>
+          <p className="text-base md:text-lg text-center text-gray-600 mb-8 md:mb-12">
+            전국대표번호를 이미 사용중인 고객들이에요.
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+            {["우리은행", "우리카드", "신한은행", "쿠팡"].map((client, index) => (
+              <div key={index} className="flex items-center justify-center">
+                <img 
+                  src={`/images/placeholders/logo-0${index + 1}.png`}
+                  alt={client}
+                  className="h-12 md:h-16 object-contain opacity-70 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section: 서비스 소개영상 */}
+      {/* 이미지 비율: aspect-video (16:9) */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
+            서비스 소개영상
+          </h2>
+          <p className="text-base md:text-lg text-center text-gray-600 mb-8 md:mb-12">
+            더 자세한 내용은 영상으로 확인해 보세요.
+          </p>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-sm cursor-pointer group">
+              <img 
+                src="/images/placeholders/video-thumb.jpg"
+                alt="전국대표번호 영상 썸네일"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                <div className="bg-white/90 rounded-full p-4 md:p-6">
+                  <svg className="w-12 h-12 md:w-16 md:h-16 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* 유의사항 또는 FAQ */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-10 text-center">자주 묻는 질문</h2>
-            <div className="space-y-4">
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-bold mb-2 text-gray-900">Q. 전국대표번호란 무엇인가요?</h3>
-                  <p className="text-gray-600">1544, 1644, 1661, 1800, 1833, 1522와 같이 전국 어디서나 쉬운 4자리 번호로 전화걸면 자동 연결되는 서비스입니다. 일반 번호를 통합하여 사용할 수 있어 홍보 효과를 극대화할 수 있습니다.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-bold mb-2 text-gray-900">Q. 기존 전화번호를 그대로 사용할 수 있나요?</h3>
-                  <p className="text-gray-600">네, 기존 전화번호를 전국대표번호로 연결하여 사용할 수 있습니다. 기존 번호는 그대로 유지하면서 대표번호로 통합 관리할 수 있습니다.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-bold mb-2 text-gray-900">Q. 사무실을 이전해도 번호를 계속 사용할 수 있나요?</h3>
-                  <p className="text-gray-600">네, 전국대표번호는 타지역으로 이전하더라도, 일반 번호가 바뀌어도 전국 어디서나 평생 그대로 같은 번호를 사용할 수 있습니다.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-bold mb-2 text-gray-900">Q. ARS 기능을 사용할 수 있나요?</h3>
-                  <p className="text-gray-600">네, 전국대표번호와 ARS를 함께 사용하면 각 부서로 편리하게 자동연결할 수 있어 업무 효율을 극대화할 수 있습니다.</p>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-bold mb-2 text-gray-900">Q. 전국대표번호 신청에 소요되는 기간은 얼마나 되나요?</h3>
-                  <p className="text-gray-600">일반적으로 1~2주 정도 소요됩니다. 상담을 통해 정확한 일정과 필요한 등급을 안내해 드립니다.</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-          
-          {/* CTA 섹션 */}
-          <div className="text-center bg-primary-50 rounded-lg p-8">
-            <h2 className="text-2xl font-bold mb-4">기업통신 맞춤 설계 제안</h2>
-            <p className="text-lg text-gray-700 mb-6">
-              브이원정보통신의 전문가가 고객의 환경에 맞는 최적의 전국대표번호 솔루션을 제안해 드립니다.
-              <br />
-              상담을 통해 맞춤형 등급과 서비스를 안내해 드립니다.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/contact">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  무료 상담 신청하기
-                </Button>
-              </Link>
-              <Link href="/cases/clients">
-                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                  도입 사례 보기
-                </Button>
-              </Link>
+            <div className="text-center mt-4 md:mt-6">
+              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 rounded-lg">
+                전국대표번호 영상 재생
+              </Button>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Section: 주요 기능 */}
+      {/* 이미지 비율: aspect-[4/3] (기능 설명 이미지) */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
+            주요 기능
+          </h2>
+          <p className="text-base md:text-lg text-center text-gray-600 mb-8 md:mb-12">
+            전국대표번호가 제공하는 주요 기능들을 알려드릴게요.
+          </p>
+          <div className="max-w-6xl mx-auto">
+            {/* 탭 버튼 */}
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8">
+              {mainFeatures.map((feature, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveTab(index)}
+                  className={`px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold text-sm md:text-base transition-colors ${
+                    activeTab === index
+                      ? "bg-primary text-white"
+                      : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                  }`}
+                >
+                  {feature.name}
+                </button>
+              ))}
+            </div>
+            {/* 탭 내용 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm bg-white">
+              <CardContent className="p-6 md:p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+                  <div className="aspect-[4/3] overflow-hidden rounded-xl">
+                    <img 
+                      src={mainFeatures[activeTab].image}
+                      alt={mainFeatures[activeTab].name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900">
+                      {mainFeatures[activeTab].name}
+                    </h3>
+                    <p className="text-sm md:text-base text-gray-600 whitespace-pre-line leading-relaxed">
+                      {mainFeatures[activeTab].description}
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: 서비스 구성도 */}
+      {/* 이미지 비율: aspect-[16/9] (구성도 이미지) */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
+            서비스 구성도
+          </h2>
+          <p className="text-base md:text-lg text-center text-gray-600 mb-6 md:mb-8">
+            전국대표번호의 제공방식을 구성도로 확인해 보세요.
+          </p>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-center text-sm md:text-base text-gray-700 mb-6 md:mb-8 leading-relaxed">
+              전국대표번호를 이용하면 가상번호로 고객에게 노출 됩니다. 고객이 업체에 전화를 할 때는 가상번호로 발신하게 되고, 업체의 번호가 노출 되지 않습니다.
+            </p>
+            <div className="bg-gray-100 rounded-2xl p-4 md:p-8 shadow-sm">
+              <div className="aspect-[16/9] overflow-hidden rounded-xl">
+                <img 
+                  src="/images/placeholders/diagram.jpg"
+                  alt="전국대표번호 서비스 구성도"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: 이용요금 */}
+      {/* 이미지 비율: 이미지 없음 (표만) */}
+      <section id="pricing" className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
+            이용요금
+          </h2>
+          <p className="text-base md:text-lg text-center text-gray-600 mb-2 md:mb-4">
+            전국대표번호의 이용요금을 확인해 보세요.
+          </p>
+          <p className="text-base md:text-lg text-center font-semibold mb-8 md:mb-12 text-gray-900">
+            전국대표번호 이용요금
+          </p>
+          
+          <div className="overflow-x-auto">
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 md:p-8 min-w-[1000px]">
+              <table className="w-full border-collapse text-xs md:text-sm">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th rowSpan={2} className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
+                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold">기본형</th>
+                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold">분리과금형</th>
+                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold">정액형</th>
+                  </tr>
+                  <tr className="bg-gray-50">
+                    {[...Array(3)].map((_, i) => (
+                      <Fragment key={i}>
+                        <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">등급</th>
+                      </Fragment>
+                    ))}
+                  </tr>
+                  <tr className="bg-gray-50">
+                    {[...Array(3)].map((_, i) => (
+                      <Fragment key={i}>
+                        {["0등급", "1등급", "2등급", "3등급", "4등급", "5등급"].map((grade) => (
+                          <th key={grade} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">
+                            {grade}
+                          </th>
+                        ))}
+                      </Fragment>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="border border-gray-300 p-2 md:p-3 font-semibold bg-pink-100">최소 가입 전화 개수</td>
+                    {[...Array(3)].map((_, i) => (
+                      <Fragment key={i}>
+                        {[500, 30, 15, 10, 5, 2].map((count) => (
+                          <td key={count} className="border border-gray-300 p-2 md:p-3 text-center">
+                            {count}개
+                          </td>
+                        ))}
+                      </Fragment>
+                    ))}
+                  </tr>
+                  <tr>
+                    <td rowSpan={2} className="border border-gray-300 p-2 md:p-3 font-semibold align-middle">기본료 (월)</td>
+                    {/* 기본형 */}
+                    {[...Array(6)].map((_, j) => (
+                      <td key={j} className="border border-gray-300 p-2 md:p-3 text-center">
+                        전화 1개당 11,000원
+                      </td>
+                    ))}
+                    {/* 분리과금형 */}
+                    {[...Array(6)].map((_, j) => (
+                      <td key={j} className="border border-gray-300 p-2 md:p-3 text-center">
+                        전화 1개당 11,000원
+                      </td>
+                    ))}
+                    {/* 정액형 유선전화 */}
+                    {[55000, 33000, 22000, 16500, 11000, 5500].map((price) => (
+                      <td key={price} className="border border-gray-300 p-2 md:p-3 text-center">
+                        {price.toLocaleString()}원
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    {/* 정액형 인터넷전화 */}
+                    {[...Array(12)].map((_, i) => (
+                      <td key={i} className="border border-gray-300 p-2 md:p-3"></td>
+                    ))}
+                    {[33000, 22000, 16500, 11000, 5500, 3300].map((price) => (
+                      <td key={price} className="border border-gray-300 p-2 md:p-3 text-center">
+                        {price.toLocaleString()}원
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+              
+              <div className="mt-4 md:mt-6 p-3 md:p-4 bg-primary/5 rounded-lg">
+                <p className="text-xs md:text-sm text-gray-700 whitespace-pre-line leading-relaxed">
+                  대표번호는 발신자에게 통화료가 부과되는 유료서비스입니다.
+                  부가세 포함 금액입니다.
+                  기본형은 시외전화요금을 고객이 부담하는 요금제입니다. 고객이 전화를 걸면 "시외로 연결됩니다"라는 안내가 나옵니다.
+                  분리 과금형은 시외전화 요금을 기업이 부담하는 요금제 입니다.
+                  정액형은 시외전화 요금이 발생해도 추가요금이 발생하지 않는 요금제입니다.
+                  최소 가입 전화 개수보다 적게 가입하더라도 최소 가입 전화 개수만큼의 요금을 내야 합니다.
+                  약정 가입 시, 1년은 10%, 2년은 20%, 3년은 30%, 4년은 40% 요금 할인을 받을 수 있습니다.
+                  약정, 기간이 끝나기 전 해지하면 할인반환금이 발생합니다.
+                  클라우드 고객센터, 스마트컨택, 채팅상담솔루션, 클라우드레코딩, 모바일컨택, 비주얼컨택 이용 고객은 전국 대표번호 기본료를 50%를 할인받을 수 있습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: 부가서비스 상세 */}
+      {/* 이미지 비율: 이미지 없음 (표만) */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-900">
+            부가서비스 상세
+          </h2>
+          
+          <div className="space-y-6 md:space-y-8 max-w-5xl mx-auto">
+            {/* 10-1: ARS 부가서비스 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">ARS(자동응답시스템) 부가서비스</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-xs md:text-sm min-w-[500px]">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">표준형 ARS</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">심플 ARS</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">기본료</td>
+                        <td className="border border-gray-300 p-2 md:p-3">전화 1개당 11,000원</td>
+                        <td className="border border-gray-300 p-2 md:p-3">전화 1개당 1,650원</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">멘트작성</td>
+                        <td className="border border-gray-300 p-2 md:p-3">기계음(TTS) 횟수제한 없이 무료</td>
+                        <td className="border border-gray-300 p-2 md:p-3">-</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">실제 성우 녹음</td>
+                        <td className="border border-gray-300 p-2 md:p-3">별도 협의 필요</td>
+                        <td className="border border-gray-300 p-2 md:p-3">-</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600 leading-relaxed">
+                  부가세가 포함된 금액입니다.
+                  표준형 ARS는 분리과금형, 정액형 요금제 이용 고객만 가입할 수 있습니다.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* 10-2: 위치기반서비스 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">위치기반서비스</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-xs md:text-sm min-w-[400px]">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">이용요금</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">기본료</td>
+                        <td className="border border-gray-300 p-2 md:p-3">무료</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">발신자 휴대폰 위치 정보 조회료</td>
+                        <td className="border border-gray-300 p-2 md:p-3">
+                          <div className="space-y-1">
+                            <div>LG U+ 1건당 55원</div>
+                            <div>SKT 1건당 88원</div>
+                            <div>KT 1건당 13.2원</div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600">
+                  부가세가 포함된 금액입니다.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* 10-3: 채팅상담 부가서비스 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">채팅상담 부가서비스</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-xs md:text-sm min-w-[500px]">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">제공기능</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">월정액</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">채팅상담 스탠다드</td>
+                        <td className="border border-gray-300 p-2 md:p-3">채팅상담</td>
+                        <td className="border border-gray-300 p-2 md:p-3">55,000원/상담원</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">채팅상담 프리미엄</td>
+                        <td className="border border-gray-300 p-2 md:p-3">채팅상담 + 채팅 상담 관리 전용 페이지 제공</td>
+                        <td className="border border-gray-300 p-2 md:p-3">88,000원/상담원</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600">
+                  부가세가 포함된 금액입니다.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* 10-4: 비주얼링 부가서비스 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">비주얼링 부가서비스</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-xs md:text-sm min-w-[400px]">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">이용료(월/회선당)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">비주얼링 Basic</td>
+                        <td className="border border-gray-300 p-2 md:p-3">전화 1개당 3,300원</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">비주얼링 기업홍보서비스</td>
+                        <td className="border border-gray-300 p-2 md:p-3">전화 1개당 27,500원</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600">
+                  부가세가 포함된 금액입니다.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* 10-5: 매니지드컨택 부가서비스 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">매니지드컨택 부가서비스</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-xs md:text-sm min-w-[400px]">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">시내 및 시외 통화료</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">통화료</td>
+                        <td className="border border-gray-300 p-2 md:p-3">3분당 22원</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600">
+                  부가세가 포함된 금액입니다.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* 10-6: 신용카드 안전결제 부가서비스 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">신용카드 안전결제 부가서비스</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-xs md:text-sm min-w-[600px]">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">일반형</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">호 전환형</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">제공서비스</td>
+                        <td className="border border-gray-300 p-2 md:p-3">ARS(자동응답시스템) 안내에 따라 신용카드 결제 가능</td>
+                        <td className="border border-gray-300 p-2 md:p-3">먼저 상담원 연결 후 ARS(자동응답시스템) 안내에 따라 신용카드 결제 가능</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">이용요금</td>
+                        <td className="border border-gray-300 p-2 md:p-3">전화 1개당 16,500원</td>
+                        <td className="border border-gray-300 p-2 md:p-3">전화 1개당 27,500원</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">전국대표번호 이용요금</td>
+                        <td colSpan={2} className="border border-gray-300 p-2 md:p-3">19,800원</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">신용카드 수수료</td>
+                        <td colSpan={2} className="border border-gray-300 p-2 md:p-3">3.5%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600 leading-relaxed">
+                  부가세가 포함된 금액입니다.
+                  별도 시스템 구축 없이 이용할 수 있습니다.
+                  전국대표번호 이용요금은 기본형, 분리과금형 요금제 가입 시 요금입니다.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* 10-7: 문자메시지 부가서비스 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">문자메시지 부가서비스</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-xs md:text-sm min-w-[500px]">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">기본료</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">단문메세지</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">멀티메세지</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">수신(월/회선)</td>
+                        <td className="border border-gray-300 p-2 md:p-3">월 27,500원</td>
+                        <td className="border border-gray-300 p-2 md:p-3">월 550,000원</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600">
+                  부가세가 포함된 금액입니다.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* 10-8: 수신자 부담 1433 통화료 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">수신자 부담 1433 통화료</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-xs md:text-sm min-w-[500px]">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">고객 발신 유형</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">이용요금</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">시내외 전화</td>
+                        <td className="border border-gray-300 p-2 md:p-3">
+                          <div className="space-y-1">
+                            <div>시내, 30Km 이내 거리의 시외 3분당 49.5원</div>
+                            <div>30km 이상 거리의 시외 10초당 15.51원</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">공중전화</td>
+                        <td className="border border-gray-300 p-2 md:p-3">시내/외 기본 통화료 + 1분당 33원</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">휴대폰</td>
+                        <td className="border border-gray-300 p-2 md:p-3">
+                          <div className="space-y-1">
+                            <div><strong>표준</strong> 10초당 17.193원</div>
+                            <div><strong>할인 시간대</strong> 월요일~토요일 오전 6시 ~ 오전 8시 일요일, 공휴일 10초당 16.291원</div>
+                            <div><strong>심야</strong> 평일 0시 ~ 오전 6시 10초당 15.389원</div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">위성전화를 포함한 주파수 공용 무선 통신(TRS)</td>
+                        <td className="border border-gray-300 p-2 md:p-3">10초당 20.9원</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">인터넷 전화</td>
+                        <td className="border border-gray-300 p-2 md:p-3">3분당 71.5원</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600">
+                  부가세가 포함된 금액입니다.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* 10-9: 수신자 부담 1433 서비스 이용료 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">수신자 부담 1433 서비스 이용료</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-xs md:text-sm min-w-[400px]">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">기본료</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">요금</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3 font-semibold">전화 1개당</td>
+                        <td className="border border-gray-300 p-2 md:p-3">5,500원</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600">
+                  부가세가 포함된 금액입니다.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* 10-10: 수신자 부담 1433 서비스 요금 할인 */}
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-gray-900">수신자 부담 1433 서비스 요금 할인</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-xs md:text-sm min-w-[600px]">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">실사용금액 (기본료 +수신 통화료)</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">할인율</th>
+                        <th className="border border-gray-300 p-2 md:p-3 text-left font-bold">납부액</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3">0~55,000원</td>
+                        <td className="border border-gray-300 p-2 md:p-3">실사용액</td>
+                        <td className="border border-gray-300 p-2 md:p-3">-</td>
+                        <td className="border border-gray-300 p-2 md:p-3">실사용액</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3">55,000 ~ 110,000원</td>
+                        <td className="border border-gray-300 p-2 md:p-3">55,000원 초과액의 5%</td>
+                        <td className="border border-gray-300 p-2 md:p-3">5%</td>
+                        <td className="border border-gray-300 p-2 md:p-3">55,000원 + (초과액 × 0.95)</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3">110,000 ~ 330,000원</td>
+                        <td className="border border-gray-300 p-2 md:p-3">107,250원 초과액의 10%</td>
+                        <td className="border border-gray-300 p-2 md:p-3">10%</td>
+                        <td className="border border-gray-300 p-2 md:p-3">107,250원 + (초과액 × 0.9)</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3">330,000 ~ 1,100,000원</td>
+                        <td className="border border-gray-300 p-2 md:p-3">305,250원 초과액의 15%</td>
+                        <td className="border border-gray-300 p-2 md:p-3">15%</td>
+                        <td className="border border-gray-300 p-2 md:p-3">305,250원 + (초과액 × 0.85)</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3">1,100,000 ~ 5,500,000원</td>
+                        <td className="border border-gray-300 p-2 md:p-3">959,750원 초과액의 20%</td>
+                        <td className="border border-gray-300 p-2 md:p-3">20%</td>
+                        <td className="border border-gray-300 p-2 md:p-3">959,750원 + (초과액 × 0.8)</td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 p-2 md:p-3">5,500,000원 초과</td>
+                        <td className="border border-gray-300 p-2 md:p-3">4,479,750원 초과액의 25%</td>
+                        <td className="border border-gray-300 p-2 md:p-3">25%</td>
+                        <td className="border border-gray-300 p-2 md:p-3">4,479,750원 + (초과액 × 0.75)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 md:mt-4 text-xs md:text-sm text-gray-600 whitespace-pre-line leading-relaxed">
+                  부가세가 포함된 금액입니다.
+                  예시) 이용요금이 100,000원일 때 납부해야 할 금액 = 55,000원+(45,000원*0.95) = 97,750원
+                  1433 번호는 홈페이지에서 가입할 수 없습니다. 가입하는 방법은 LG유플러스 고객센터 1544-0001로 문의해 주세요.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: Simple ARS 안내 */}
+      {/* 이미지 비율: 이미지 없음 (텍스트만) */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto">
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-6 md:p-8">
+                <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-gray-900">Simple ARS 홈페이지</h2>
+                <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-6 leading-relaxed">
+                  우측의 홈페이지 버튼을 클릭하여 Simple ARS 홈페이지로 이동하실 수 있습니다.
+                </p>
+                <div className="mb-6 md:mb-8">
+                  <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 rounded-lg">
+                    홈페이지
+                  </Button>
+                </div>
+                
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-900">Simple ARS 도입 후 기대효과</h3>
+                
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 mt-6 md:mt-8 text-gray-900">Simple ARS 제공 기능</h3>
+                <ol className="list-decimal list-inside space-y-2 text-sm md:text-base text-gray-700 leading-relaxed">
+                  <li>멘트 등록 및 수정 무제한(글자로 쓰면 음성멘트가 생성되는 TTS 기능 제공)</li>
+                  <li>업무 시간과 업무 외 시간을 구분하여 다른 멘트 송출 기능 제공(요일별/휴일 및 기간별)</li>
+                  <li>5분단위, 일단위, 월단위로 인입 콜 수 통계 제공</li>
+                </ol>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: 같이 선택한 상품들 */}
+      {/* 이미지 비율: aspect-video (16:9) */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-900">
+            다른 고객님들이 같이 선택하신 상품들
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            {relatedProducts.map((product, index) => (
+              <Card key={index} className="rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-5 md:p-6">
+                  <div className="aspect-video overflow-hidden rounded-xl mb-4">
+                    <img 
+                      src={product.image}
+                      alt={product.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-gray-900">
+                    {product.title}
+                  </h3>
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                    {product.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section: FAQ */}
+      {/* 이미지 비율: 이미지 없음 (텍스트만) */}
+      <section className="py-16 md:py-24 bg-gray-50">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12 text-gray-900">
+            자주 묻는 질문
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <Card className="rounded-2xl border border-gray-200 shadow-sm">
+              <CardContent className="p-6 md:p-8 text-center text-gray-500">
+                FAQ 내용은 추후 제공 예정입니다.
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: 하단 CTA */}
+      {/* 이미지 비율: 이미지 없음 (텍스트 + 버튼만) */}
+      <section id="bottom-cta" className="py-16 md:py-24 bg-primary text-white">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">
+              전국대표번호 상담을 도와드릴게요
+            </h2>
+            <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 text-primary-100">
+              우리 회사에 맞는 대표번호 구성/부가서비스/요금제까지 한 번에 안내드립니다.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
+              <Link href="/contact">
+                <Button size="lg" className="bg-white text-primary hover:bg-gray-100 rounded-lg">
+                  상담 신청
+                </Button>
+              </Link>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 rounded-lg">
+                전화 문의
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };
 
 export default NationalNumber;
-
-

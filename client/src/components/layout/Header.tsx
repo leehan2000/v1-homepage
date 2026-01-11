@@ -239,9 +239,8 @@ const Header = () => {
                         </NavigationMenuLink>
                       </li>
                       <li>
-                        <NavigationMenuLink asChild className={applySubMenuStyle("#", false)}>
-                          <Link href="#">전국대표번호</Link>
-                          {/* TODO: 실제 라우트 연결 */}
+                        <NavigationMenuLink asChild className={applySubMenuStyle("/contact/national-number", isActive("/contact/national-number"))}>
+                          <Link href="/contact/national-number">전국대표번호</Link>
                         </NavigationMenuLink>
                       </li>
                       <li>
