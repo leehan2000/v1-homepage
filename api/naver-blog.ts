@@ -1,5 +1,6 @@
 import axios from 'axios';
 import xml2js from 'xml2js';
+import * as cheerio from 'cheerio';
 
 // Vercel 서버리스 함수 타입 (없으면 any로 처리)
 type VercelRequest = any;
@@ -57,11 +58,39 @@ export default async function handler(
         // HTML 태그 제거하고 설명에서 텍스트만 추출
         const description = originalDescription.replace(/<\/?[^>]+(>|$)/g, "") || "";
         
-        // RSS description 내 첫 이미지 추출
+        // 1) RSS description 내 첫 이미지 우선
         let thumbnail = "";
         const descImgMatch = originalDescription.match(/<img[^>]+src=["']([^"']+)["']/i);
         if (descImgMatch && descImgMatch[1]) {
           thumbnail = descImgMatch[1];
+        }
+        
+        // 2) og:image 추출 (RSS에 이미지가 없을 경우)
+        if (!thumbnail) {
+          const linkMatch = item.link.match(/blog\.naver\.com\/([^/]+)\/(\d+)/);
+          if (linkMatch) {
+            const [, blogId, logNo] = linkMatch;
+            try {
+              // 네이버 블로그 모바일 페이지 URL
+              const mobileUrl = `https://m.blog.naver.com/PostView.naver?blogId=${blogId}&logNo=${logNo}`;
+              
+              const metaResponse = await axios.get(mobileUrl, {
+                headers: {
+                  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+                },
+                timeout: 10000
+              });
+              
+              const $ = cheerio.load(metaResponse.data);
+              const ogImage = $('meta[property="og:image"]').attr('content') || '';
+              
+              if (ogImage) {
+                thumbnail = ogImage;
+              }
+            } catch (err) {
+              console.error(`og:image 추출 실패 (${item.link}):`, err);
+            }
+          }
         }
         
         // URL 정규화
