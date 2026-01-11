@@ -425,32 +425,32 @@ const NationalNumber = () => {
                   <tr className="bg-gray-100">
                     <th rowSpan={2} className="border border-gray-300 p-2 md:p-3 text-left font-bold">구분</th>
                     <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold">기본형, 분리과금형</th>
-                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold">정액형</th>
+                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-bold border-r-2">정액형</th>
                   </tr>
                   <tr className="bg-gray-50">
                     <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">번호등급</th>
-                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">번호등급</th>
+                    <th colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center font-semibold border-r-2">번호등급</th>
                   </tr>
                   <tr className="bg-gray-50">
-                    {["0등급", "1등급", "2등급", "3등급", "4등급", "5등급"].map((grade) => (
-                      <th key={grade} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">
+                    {["0등급", "1등급", "2등급", "3등급", "4등급", "5등급"].map((grade, index) => (
+                      <th key={grade} className={`border border-gray-300 p-2 md:p-3 text-center font-semibold ${index === 5 ? 'border-r-2' : ''}`}>
                         {grade}
                       </th>
                     ))}
-                    {["0등급", "1등급", "2등급", "3등급", "4등급", "5등급"].map((grade) => (
-                      <th key={grade} className="border border-gray-300 p-2 md:p-3 text-center font-semibold">
+                    {["0등급", "1등급", "2등급", "3등급", "4등급", "5등급"].map((grade, index) => (
+                      <th key={grade} className={`border border-gray-300 p-2 md:p-3 text-center font-semibold ${index === 5 ? 'border-r-2' : ''}`}>
                         {grade}
                       </th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="border border-gray-300 p-2 md:p-3 font-semibold bg-pink-100">최소 가입 전화 개수</td>
+                  <tr className="bg-pink-50">
+                    <td className="border border-gray-300 p-2 md:p-3 font-semibold bg-pink-600 text-white rounded-l-2xl">최소 가입 전화 개수</td>
                     {[...Array(2)].map((_, i) => (
                       <Fragment key={i}>
-                        {[500, 30, 15, 10, 5, 2].map((count) => (
-                          <td key={count} className="border border-gray-300 p-2 md:p-3 text-center">
+                        {[500, 30, 15, 10, 5, 2].map((count, index) => (
+                          <td key={count} className={`border border-gray-300 p-2 md:p-3 text-center font-medium ${i === 1 && index === 5 ? 'border-r-2' : ''}`}>
                             {count}개
                           </td>
                         ))}
@@ -458,13 +458,13 @@ const NationalNumber = () => {
                     ))}
                   </tr>
                   <tr>
-                    <td rowSpan={2} className="border border-gray-300 p-2 md:p-3 font-semibold align-middle">기본료</td>
+                    <td className="border border-gray-300 p-2 md:p-3 font-semibold align-middle">기본료</td>
                     {/* 기본형, 분리과금형 - 병합 셀 */}
                     <td colSpan={6} className="border border-gray-300 p-2 md:p-3 text-center">
                       전화 1개당 11,000원
                     </td>
                     {/* 정액형 - 유선전화 리스트 */}
-                    <td colSpan={6} className="border border-gray-300 p-2 md:p-3">
+                    <td colSpan={6} className="border border-gray-300 p-2 md:p-3 border-r-2">
                       <div className="space-y-1 text-left">
                         <div className="font-semibold mb-2">유선전화</div>
                         <ul className="list-disc list-inside space-y-1 text-xs">
@@ -482,16 +482,6 @@ const NationalNumber = () => {
                     </td>
                   </tr>
                   <tr>
-                    {/* 기본형, 분리과금형 빈 셀 */}
-                    {[...Array(6)].map((_, i) => (
-                      <td key={i} className="border border-gray-300 p-2 md:p-3"></td>
-                    ))}
-                    {/* 정액형 빈 셀 */}
-                    {[...Array(6)].map((_, i) => (
-                      <td key={i} className="border border-gray-300 p-2 md:p-3"></td>
-                    ))}
-                  </tr>
-                  <tr>
                     <td className="border border-gray-300 p-2 md:p-3 font-semibold">부가 이용료</td>
                     <td colSpan={6} className="border border-gray-300 p-2 md:p-3">
                       <div className="text-left">
@@ -502,7 +492,7 @@ const NationalNumber = () => {
                         </div>
                       </div>
                     </td>
-                    <td colSpan={6} className="border border-gray-300 p-2 md:p-3">
+                    <td colSpan={6} className="border border-gray-300 p-2 md:p-3 border-r-2">
                       <div className="text-left">
                         <div className="font-semibold mb-1">유선, 070 착신</div>
                         <div className="text-xs">
