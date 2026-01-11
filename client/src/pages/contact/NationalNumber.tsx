@@ -325,7 +325,6 @@ const NationalNumber = () => {
       </section>
 
       {/* Section: 서비스 소개영상 */}
-      {/* 이미지 비율: aspect-video (16:9) */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
@@ -334,26 +333,23 @@ const NationalNumber = () => {
           <p className="text-base md:text-lg text-center text-gray-600 mb-8 md:mb-12">
             더 자세한 내용은 영상으로 확인해 보세요.
           </p>
-          <div className="max-w-4xl mx-auto">
-            <div className="relative aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-sm cursor-pointer group">
-              <img 
-                src="/images/placeholders/video-thumb.jpg"
-                alt="전국대표번호 영상 썸네일"
-                className="w-full h-full object-cover"
+          <div className="max-w-[900px] mx-auto">
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg bg-gray-900">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.lguplus.com/biz/support/archive/promotional-videos/detail?keyword=&pageNo=1&rowSize=12&rownum=7&titleTab=%EC%A0%84%EA%B5%AD%EB%8C%80%ED%91%9C%EB%B2%88%ED%98%B8&urcEntpProdVdoNo=6709&utm_source=chatgpt.com"
+                title="전국대표번호 서비스 영상"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                <div className="bg-white/90 rounded-full p-4 md:p-6">
-                  <svg className="w-12 h-12 md:w-16 md:h-16 text-primary" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </div>
-              </div>
             </div>
-            <div className="text-center mt-4 md:mt-6">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary/10 rounded-lg">
-                전국대표번호 영상 재생
-              </Button>
-            </div>
+            <p className="text-center text-sm text-gray-500 mt-4">
+              영상이 표시되지 않을 경우, <a href="https://www.lguplus.com/biz/support/archive/promotional-videos/detail?keyword=&pageNo=1&rowSize=12&rownum=7&titleTab=%EC%A0%84%EA%B5%AD%EB%8C%80%ED%91%9C%EB%B2%88%ED%98%B8&urcEntpProdVdoNo=6709&utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">LG U+ 공식 페이지</a>에서 직접 확인해 주세요.
+            </p>
           </div>
         </div>
       </section>
