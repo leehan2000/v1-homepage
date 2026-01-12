@@ -36,6 +36,27 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // 하위 메뉴 링크 클릭 시 메뉴 닫기
+  useEffect(() => {
+    setOpenMenu(null);
+  }, [location]);
+
+  // 메뉴 밖 클릭 시 메뉴 닫기
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      // NavigationMenu 내부가 아닌 곳을 클릭했을 때
+      if (openMenu && !target.closest('[role="menubar"]') && !target.closest('[role="menu"]')) {
+        setOpenMenu(null);
+      }
+    };
+
+    if (openMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [openMenu]);
+
   const isActive = (path: string) =>
     location === path || location.startsWith(`${path}/`);
 
@@ -63,15 +84,14 @@ const Header = () => {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-1 animate-slideInTop" style={{ animationDelay: "0.3s" }}>
-            <NavigationMenu value={openMenu || undefined} onValueChange={(value) => {
-              // 클릭 시 메뉴가 열린 상태로 유지되도록 처리
-              if (value) {
-                setOpenMenu(value);
-              } else {
-                // 메뉴 밖을 클릭하거나 다른 메뉴로 이동할 때만 닫기
-                setOpenMenu(null);
-              }
-            }}>
+            <NavigationMenu 
+              value={openMenu || undefined} 
+              onValueChange={(value) => {
+                // Radix UI의 내부 상태 변경을 우리 상태와 동기화
+                // onClick에서 preventDefault를 호출하므로 이 함수는 메뉴 밖 클릭 등에만 호출됨
+                setOpenMenu(value || null);
+              }}
+            >
               <NavigationMenuList>
                 {/* 브이원의 이야기 */}
                 <NavigationMenuItem value="about">
@@ -79,9 +99,10 @@ const Header = () => {
                     className={isActive("/about") ? "bg-accent/50" : ""} 
                     style={menuTriggerStyle}
                     onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       // 같은 메뉴를 다시 클릭하면 토글
                       if (openMenu === "about") {
-                        e.preventDefault();
                         setOpenMenu(null);
                       } else {
                         setOpenMenu("about");
@@ -127,8 +148,9 @@ const Header = () => {
                     className={isActive("/people") ? "bg-accent/50" : ""} 
                     style={menuTriggerStyle}
                     onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       if (openMenu === "people") {
-                        e.preventDefault();
                         setOpenMenu(null);
                       } else {
                         setOpenMenu("people");
@@ -164,8 +186,9 @@ const Header = () => {
                     className={isActive("/services") ? "bg-accent/50" : ""} 
                     style={menuTriggerStyle}
                     onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       if (openMenu === "services") {
-                        e.preventDefault();
                         setOpenMenu(null);
                       } else {
                         setOpenMenu("services");
@@ -206,8 +229,9 @@ const Header = () => {
                     className={isActive("/cases") ? "bg-accent/50" : ""} 
                     style={menuTriggerStyle}
                     onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       if (openMenu === "cases") {
-                        e.preventDefault();
                         setOpenMenu(null);
                       } else {
                         setOpenMenu("cases");
@@ -238,8 +262,9 @@ const Header = () => {
                     className={isActive("/certifications") ? "bg-accent/50" : ""} 
                     style={menuTriggerStyle}
                     onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       if (openMenu === "certifications") {
-                        e.preventDefault();
                         setOpenMenu(null);
                       } else {
                         setOpenMenu("certifications");
@@ -265,8 +290,9 @@ const Header = () => {
                     className={isActive("/news") ? "bg-accent/50" : ""} 
                     style={menuTriggerStyle}
                     onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       if (openMenu === "news") {
-                        e.preventDefault();
                         setOpenMenu(null);
                       } else {
                         setOpenMenu("news");
@@ -302,8 +328,9 @@ const Header = () => {
                     )}
                     style={menuTriggerStyle}
                     onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       if (openMenu === "contact") {
-                        e.preventDefault();
                         setOpenMenu(null);
                       } else {
                         setOpenMenu("contact");

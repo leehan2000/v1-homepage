@@ -202,106 +202,113 @@ const UplusVehicle = () => {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {/* A. 실시간 위치 확인 */}
-            <Card className="rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <MapPin className="w-6 h-6 text-primary" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <MapPin className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">실시간 위치 확인</h3>
-                <p className="text-gray-600 mb-4">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">실시간 위치 확인</h3>
+                <p className="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">
                   30초 간격으로 위치를 업데이트해 차량 위치를 정확하게 확인할 수 있어요.
                 </p>
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3 inline-block">
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3 inline-block group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300">
                   오직 LG U+ 에서만! 고급형 사용 시 1초 단위 업데이트
                 </div>
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
                   멀티스크린으로 4분할로 지도 화면을 보여줘 100대 이상의 차량도 관제실처럼 한 눈에 관리할 수 있어요.
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   관제 기능을 켜고 끌 수 있어 업무 시간 외에는 사생활을 보호할 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* B. 운행경로 분석 */}
-            <Card className="rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Route className="w-6 h-6 text-primary" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Route className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">운행경로 분석</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">운행경로 분석</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   최대 2일 동안의 상세 운행경로와 급가속, 급제동 등이 발생한 위치를 시간순으로 확인해 고객 불만사항에 대해 정확히 대응할 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* C. 국세청 운행일지 자동 생성 */}
-            <Card className="rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <FileText className="w-6 h-6 text-primary" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <FileText className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">국세청 운행일지 자동 생성</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">국세청 운행일지 자동 생성</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   차량을 운행하면 자동으로 국세청 양식의 운행일지가 자동으로 생성돼요. 엑셀 파일로 바로 내려받아 세무사에 전달하면 세금 정산을 간편하게 끝낼 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* D. 통합 비용 관리 */}
-            <Card className="rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <DollarSign className="w-6 h-6 text-primary" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <DollarSign className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">통합 비용 관리</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">통합 비용 관리</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   유류비, 보험료, 과태료, 하이패스, 정비비 등 차량 운영에 드는 모든 비용을 한눈에 확인하고, 안전/경제운전 지수를 기반으로 보험료와 유류비까지 줄일 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* E. 안전운전 관리 */}
-            <Card className="rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Shield className="w-6 h-6 text-primary" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Shield className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">안전운전 관리</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">안전운전 관리</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   급가속, 급출발, 공회전 등 위험한 운전 습관을 실시간으로 확인하고, 운전 점수를 통해 위험 운전자를 미리 확인해 사고를 예방할 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* F. 임원/VIP 차량 관리 */}
-            <Card className="rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <User className="w-6 h-6 text-primary" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <User className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3 inline-block">
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3 inline-block group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300">
                   오직 LG U+ 에서만!
                 </div>
-                <h3 className="text-xl font-bold mb-3">임원/VIP 차량 관리</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">임원/VIP 차량 관리</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   임원 차량, 외부 노출이 꺼려지는 차량은 위치 노출 없이 운행일지만 생성되어 사생활을 지키면서 관리와 보고는 확실히 할 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* G. 운행정보 자동 전송 */}
-            <Card className="rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Send className="w-6 h-6 text-primary" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Send className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">운행정보 자동 전송</h3>
-                <p className="text-gray-600 mb-2">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">운행정보 자동 전송</h3>
+                <p className="text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
                   디지털 운행 기록계(DTG)에 저장된 운행 정보는 eTAS에, 폐기물 수거 차량 운행 정보는 올바로로 자동 전송해요.
                 </p>
-                <div className="text-xs text-gray-500 mt-3 space-y-1">
+                <div className="text-xs text-gray-500 mt-3 space-y-1 group-hover:text-gray-600 transition-colors duration-300">
                   <p>- eTAS : 교통안전공단 운행기록분석시스템</p>
                   <p>- 올바로 : 한국환경공단 폐기물적법처리시스템</p>
                 </div>
@@ -309,32 +316,34 @@ const UplusVehicle = () => {
             </Card>
 
             {/* H. 거점 관리 및 알림 */}
-            <Card className="rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Map className="w-6 h-6 text-primary" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Map className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">거점 관리 및 알림</h3>
-                <p className="text-gray-600 mb-2">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">거점 관리 및 알림</h3>
+                <p className="text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
                   자주 방문하는 장소를 등록하면 도착했을 때 지정한 담당자에게 알림을 보내 시설 관리나 정기 점검, 건설 안전 관리 등 업무 효율을 높일 수 있어요.
                 </p>
-                <p className="text-xs text-gray-500 mb-2">
+                <p className="text-xs text-gray-500 mb-2 group-hover:text-gray-600 transition-colors duration-300">
                   - 관제 문자메시지 알림 부가서비스 가입 고객 대상
                 </p>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   정시 도착 여부 및 입문/출문 시간도 확인할 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* I. 디지털키 */}
-            <Card className="rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Key className="w-6 h-6 text-primary" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <Key className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">디지털키</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">디지털키</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   스마트폰 앱으로 차량 문을 열고 닫을 수 있어 실물 키 분실 걱정이 없고, 직원끼리 차량 공유도 간편하게 할 수 있어요.
                 </p>
               </CardContent>
@@ -350,60 +359,64 @@ const UplusVehicle = () => {
             U+ 커넥트 도입으로 얻을 수 있는 비용 절감 효과
           </h2>
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            <Card className="rounded-2xl shadow-lg">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <TrendingDown className="w-6 h-6 text-green-600" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-green-200 bg-gradient-to-br from-white to-green-50/50 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-green-50/0 to-green-50/0 group-hover:from-green-50/50 group-hover:to-green-100/30 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-50 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <TrendingDown className="w-6 h-6 text-green-600 group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">운영 비용/시간 절약</h3>
-                <p className="text-gray-600 mb-2">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-green-700 transition-colors duration-300">운영 비용/시간 절약</h3>
+                <p className="text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
                   객관적인 운행 정보를 통해 최적의 차량 배치로 운영 비용을 줄일 수 있어요.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   국세청 양식 운행일지 자동 생성으로 운행일지를 따로 작성하지 않아도 돼요.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="rounded-2xl shadow-lg">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <FileText className="w-6 h-6 text-blue-600" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-blue-200 bg-gradient-to-br from-white to-blue-50/50 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50/50 group-hover:to-blue-100/30 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <FileText className="w-6 h-6 text-blue-600 group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">세무 비용 절약</h3>
-                <p className="text-gray-600 mb-2">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-blue-700 transition-colors duration-300">세무 비용 절약</h3>
+                <p className="text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
                   국세청 양식 운행일지 자동 생성으로 업무용 차량 비용을 간편하게 경비 처리 할 수 있어요.
                 </p>
-                <p className="text-sm text-gray-500 mb-1">
+                <p className="text-sm text-gray-500 mb-1 group-hover:text-gray-600 transition-colors duration-300">
                   - 유류비, 보험료, 수리비 등 연간 1,500만 원 한도 초과분도 인정
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 group-hover:text-gray-600 transition-colors duration-300">
                   - 세무 조사 대비 증빙 자료로 이용 가능
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="rounded-2xl shadow-lg">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
-                  <DollarSign className="w-6 h-6 text-yellow-600" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-yellow-200 bg-gradient-to-br from-white to-yellow-50/50 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/0 to-yellow-50/0 group-hover:from-yellow-50/50 group-hover:to-yellow-100/30 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-yellow-100 to-yellow-50 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <DollarSign className="w-6 h-6 text-yellow-600 group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">유류비 절약</h3>
-                <p className="text-gray-600 mb-2">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-yellow-700 transition-colors duration-300">유류비 절약</h3>
+                <p className="text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
                   공회전 분석과 안전 운전 관리로 연료 효율을 개선하고 유류비를 통합 관리할 수 있어요.
                 </p>
-                <p className="text-sm text-gray-500 mb-1">- 급가속, 급정거, 급출발 방지</p>
-                <p className="text-sm text-gray-500">- 공회전 시간 단축</p>
+                <p className="text-sm text-gray-500 mb-1 group-hover:text-gray-600 transition-colors duration-300">- 급가속, 급정거, 급출발 방지</p>
+                <p className="text-sm text-gray-500 group-hover:text-gray-600 transition-colors duration-300">- 공회전 시간 단축</p>
               </CardContent>
             </Card>
 
-            <Card className="rounded-2xl shadow-lg">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <CheckCircle2 className="w-6 h-6 text-purple-600" />
+            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-purple-200 bg-gradient-to-br from-white to-purple-50/50 overflow-hidden relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-50/0 to-purple-50/0 group-hover:from-purple-50/50 group-hover:to-purple-100/30 transition-all duration-300"></div>
+              <CardContent className="p-6 relative z-10">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-50 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <CheckCircle2 className="w-6 h-6 text-purple-600 group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">관리 비용 절약</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-bold mb-3 group-hover:text-purple-700 transition-colors duration-300">관리 비용 절약</h3>
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   정비비, 보험비, 과태료 등 차량 관리 비용을 통합 관리하여 업무 효율을 높일 수 있어요.
                 </p>
               </CardContent>
