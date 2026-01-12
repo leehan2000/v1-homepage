@@ -25,6 +25,14 @@ import {
   Phone,
   ArrowRight,
   Building2,
+  ClipboardList,
+  Bell,
+  Wallet,
+  ShieldCheck,
+  Bus,
+  Trash2,
+  Package,
+  Users,
 } from "lucide-react";
 
 const UplusVehicle = () => {
@@ -81,6 +89,278 @@ const UplusVehicle = () => {
     { id: "reviews", label: "고객후기" },
     { id: "faq", label: "자주하는 질문" },
     { id: "consultation", label: "가입상담" },
+  ];
+
+  // 업종/차종 탭 데이터 구조
+  const industryTabs = [
+    {
+      key: "field-service",
+      label: "현장 출동 서비스",
+      headline: "기사님은 다녀왔지만, 고객은 안왔대요.",
+      subheadline: "정확한 도착 시간을 실시간으로 안내하고, 상세한 운행경로로 분쟁을 해결하세요.",
+      applyList: [
+        "가전/렌탈서비스",
+        "건물/시설 유지보수",
+        "전문장비 유지보수",
+        "통신/물리보안",
+        "방역/에어컨/엘리베이터",
+      ],
+      features: [
+        {
+          title: "실시간 위치 공유",
+          desc: "고객에게 정확한 도착시간을 안내하실 수 있어요.",
+          detail: "관제 기능을 켜고 끌 수 있어 업무 시간 외에는 사생활 보호 가능",
+          howto: "[운행 관제] → [실시간 차량 위치]",
+          icon: MapPin,
+        },
+        {
+          title: "운행 경로 추적",
+          desc: "고객과 분쟁이 생기면 상세 운행경로를 증빙자료로 활용할 수 있어요.",
+          howto: "[운행 관제] → [운행이력/경로]",
+          icon: Route,
+        },
+        {
+          title: "거점 관리 및 알림",
+          desc: "자주 방문하는 장소를 등록하고, 도착하면 고객에게 알림을 보낼 수 있어요.",
+          howto: "[거점 관리] → [출입 알림 지역 설정]",
+          icon: Map,
+        },
+        {
+          title: "출장비/유류비 관리",
+          desc: "GPS 기반 정확한 거리, 출발/도착 시간으로 출장비를 투명하게 관리할 수 있어요.",
+          detail: "2025년 9월부터 유류비 영수증 OCR 기술로 자동 입력 가능",
+          howto: "[차량 관리] → [유류비]",
+          icon: Wallet,
+          hasOcrInfo: true,
+        },
+      ],
+    },
+    {
+      key: "logistics",
+      label: "물류·배송업",
+      headline: "배송 지연, 상품 파손은 단 한 번도 있어선 안되니까.",
+      subheadline: "문열림 · 온도센서로 물건을 안전하게 배송하고 최적 경로 설정으로 연료비는 줄이세요.",
+      applyList: [
+        "도소매/요식 관련 프랜차이즈",
+        "택배, 퀵서비스, 보관/운송/배송 등 전문 업체",
+        "업무용 렌터카/통근버스",
+      ],
+      features: [
+        {
+          title: "최적 경로 안내",
+          desc: "여러 배송지를 최적의 순서로 배치하여 연료비와 시간을 절약할 수 있어요.",
+          howto: "[운행 관리] → [배송/운송 현황]",
+          icon: Route,
+        },
+        {
+          title: "배송 완료 증빙",
+          desc: "배송 완료 후 인수증을 올려 분실이나 잘못 배송되는 것을 방지할 수 있어요.",
+          howto: "[운행관리] → [배송/운송 현황] → [인수증 확인]",
+          icon: ClipboardList,
+        },
+        {
+          title: "이상 감지 알림",
+          desc: "문열림/온도 이상을 감지하면 알림을 보내 물품 손상을 예방할 수 있어요.",
+          howto: "[운행 관리] → [이상 감지 알림]",
+          icon: Bell,
+        },
+        {
+          title: "통합 비용 관리",
+          desc: "유류비, 하이패스, 과태료 등 모든 운송 비용을 한곳에서 관리할 수 있어요.",
+          howto: "[차량 관리] → [차량비용 리포트]",
+          icon: DollarSign,
+        },
+      ],
+    },
+    {
+      key: "manufacturing",
+      label: "제조·건설업",
+      headline: "정확한 자재 배송과 납기일은 신뢰의 기본이죠.",
+      subheadline: "자재 배송부터 납품까지 체계적으로 관리하고, 국세청 양식 운행일지로 세무 혜택 받으세요.",
+      applyList: [
+        "완제품 배송",
+        "기업 간 자재 납품",
+        "건설 자재 납품",
+        "업무용 렌카/통근버스",
+      ],
+      features: [
+        {
+          title: "자재 배송 관리",
+          desc: "기업 간 자재 납품이나 배송을 체계적으로 관리하고 추적할 수 있어요.",
+          howto: "[운행 관리] → [배송/운송 현황]",
+          icon: Package,
+        },
+        {
+          title: "국세청 운행일지 자동 생성",
+          desc: "국세청 양식 운행일지를 간편하게 세무사에게 전달하고, 법인세를 절약할 수 있어요.",
+          howto: "[운행 관리] → [운행일지(국세청)]",
+          icon: FileText,
+        },
+        {
+          title: "통근버스 관리",
+          desc: "직원 통근버스 운행을 안전하고 효율적으로 관리할 수 있어요.",
+          howto: "[운행 관리] → [노선현황] 또는 [노선계획 등록]",
+          icon: Bus,
+        },
+        {
+          title: "안전운전 관리",
+          desc: "운전 점수를 통해 사고를 미리 예방하여 보험료를 절약할 수 있어요.",
+          howto: "[안전/경제운전] → [안전/경제운전 지수]",
+          icon: Shield,
+        },
+      ],
+    },
+    {
+      key: "government",
+      label: "정부·공공기관",
+      headline: "명확한 기록 관리로 공공차량 운영을 투명하게.",
+      subheadline: "모든 공무차량을 통합 관리하고, 운행 기록을 명확히 남겨 공공 신뢰를 높이세요.",
+      applyList: [
+        "공공 물품 배송",
+        "관공서/기관 공무차량",
+        "학교 통학버스",
+        "공공시설 관리",
+        "복지시설 차량",
+        "공공서비스 현장 출동",
+      ],
+      features: [
+        {
+          title: "공무차량 통합 관리",
+          desc: "모든 공무차량 운행 기록을 한곳에서 관리할 수 있어요.",
+          howto: "[차량 관리] → [차량 등록/조회/설정]",
+          icon: Building2,
+        },
+        {
+          title: "국세청 양식 운행일지 관리",
+          desc: "국세청 양식 운행일지를 간편하게 세무사에게 전달하고, 법인세를 절약할 수 있어요.",
+          howto: "[운행 관리] → [운행일지(국세청)]",
+          icon: FileText,
+        },
+        {
+          title: "공공서비스 차량 안전/경제운전 관리",
+          desc: "운전자별 안전/경제운전 지수로 공공서비스 차량을 안전하게 관리할 수 있어요.",
+          howto: "[안전/경제운전] → [운전자별 안전/경제운전 지수]",
+          icon: ShieldCheck,
+        },
+        {
+          title: "거점 관리 및 알림",
+          desc: "정기 점검하는 장소를 등록하고 도착하면 담당자에게 알림을 보내 체계적으로 관리할 수 있어요.",
+          howto: "[거점 관리] → [출입 알림 지역 설정]",
+          icon: Map,
+        },
+      ],
+    },
+    {
+      key: "corporate",
+      label: "일반 법인차량",
+      headline: "법인차량 운영 관리만 잘해도 회사 운영비가 줄어들어요.",
+      subheadline: "임원 차량은 위치 노출 없이 운행일지만 관리하고 모든 법인차량은 한곳에서 체계적으로 관리하세요.",
+      applyList: [
+        "임원 차량 / VIP 차량",
+        "영업 차량",
+        "업무용 법인차량",
+      ],
+      features: [
+        {
+          title: "국세청 운행일지 자동 생성",
+          desc: "운행만 하면 자동으로 국세청 양식 운행일지가 생성되며 엑셀 파일로 내려받을 수 있어요.",
+          howto: "[운행 관리] → [운행일지(국세청)]",
+          icon: FileText,
+        },
+        {
+          title: "차량 등록 및 관제 설정",
+          desc: "법인차량을 등록하고 VIP/임원 차량은 위치 노출 없이 운행일지만 생성되게 설정할 수 있어요.",
+          howto: "[운행관제] → [운행이력/경로]",
+          icon: MapPin,
+        },
+        {
+          title: "법인차량 비용 관리",
+          desc: "유류비, 보험료, 과태료 등 모든 법인차량 비용을 한곳에서 관리할 수 있어요.",
+          howto: "[차량 관리] → [차량비용 리포트]",
+          icon: DollarSign,
+        },
+        {
+          title: "출장 운행경로 분석",
+          desc: "출장 관련 운행경로로 개인 용도 사용 여부를 확인할 수 있어요.",
+          howto: "[운행 관리] → [운행 이력/경로]",
+          icon: Route,
+        },
+      ],
+    },
+    {
+      key: "bus",
+      label: "통학·통근 버스",
+      headline: "누가 탔는지, 어디쯤 왔는지 한눈에 확인해요.",
+      subheadline: "실시간 탑승 확인으로 학부모는 안심하고, 운행 기록으로 관리자는 손쉽게 관리할 수 있어요.",
+      applyList: [
+        "학원/학교 버스",
+        "어린이집 차량",
+        "회사 통근버스",
+        "복지시설 차량",
+      ],
+      features: [
+        {
+          title: "실시간 위치 공유",
+          desc: "버스 위치를 실시간으로 확인해 도착 시간에 맞춰 준비할 수 있어요.",
+          howto: "[운행 관제] → [실시간 차량 위치]",
+          icon: MapPin,
+        },
+        {
+          title: "탑승자 관리",
+          desc: "승/하차를 자동 확인해 보호자/관리자에게 문자메시지로 알려줘요.",
+          howto: "[운행 관리] → [탑승자 관리]",
+          icon: Users,
+        },
+        {
+          title: "노선 관리",
+          desc: "등록 노선 기준 이탈 여부를 확인해 정해진 경로대로 운행할 수 있게 도와줘요.",
+          howto: "[운행 관리] → [노선현황]",
+          icon: Route,
+        },
+        {
+          title: "안전운전 관리",
+          desc: "과속/급감속 등 위험 습관을 개선해 승객 안전을 지킬 수 있어요.",
+          howto: "[안전/경제운전] → [안전/경제운전 지수]",
+          icon: Shield,
+        },
+      ],
+    },
+    {
+      key: "waste",
+      label: "폐기물차",
+      headline: "폐기물 수거 차량 운행 정보, 일일이 쓰지 않아도 돼요.",
+      subheadline: "올바로 자동 전송으로 폐기물 법제화 의무화에 완벽히 대응할 수 있어요.",
+      applyList: [
+        "사업장 일반 폐기물",
+        "건설 폐기물",
+      ],
+      features: [
+        {
+          title: "올바로 자동 전송",
+          desc: "폐기물 수거 차량 운행 정보를 올바로에 자동 전송해 의무화에 대응할 수 있어요.",
+          howto: "[운행 관리] → [올바로 전송이력]",
+          icon: Send,
+        },
+        {
+          title: "실시간 위치 확인",
+          desc: "차량 위치와 진행 상황을 실시간으로 확인할 수 있어요.",
+          howto: "[운행 관리] → [실시간 차량 위치]",
+          icon: MapPin,
+        },
+        {
+          title: "폐기물 수거 증빙",
+          desc: "GPS 기반 수거 시간/위치가 자동 기록되어 증빙자료로 활용 가능해요.",
+          howto: "[운행 관제] → [운행 이력/경로] → [기간별 운행경로]",
+          icon: ClipboardList,
+        },
+        {
+          title: "최적 경로 설정",
+          desc: "여러 수거지를 최적 순서로 배치해 연료비를 줄일 수 있어요.",
+          howto: "[운행 관리] → [배송/운송 현황]",
+          icon: Route,
+        },
+      ],
+    },
   ];
 
   return (
@@ -439,20 +719,12 @@ const UplusVehicle = () => {
 
           <div className="mb-8">
             <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
-              {[
-                { id: "field-service", label: "현장 출동 서비스" },
-                { id: "logistics", label: "물류·배송업" },
-                { id: "manufacturing", label: "제조·건설업" },
-                { id: "government", label: "정부·공공기관" },
-                { id: "corporate", label: "일반 법인차량" },
-                { id: "bus", label: "통학·통근 버스" },
-                { id: "waste", label: "폐기물차" },
-              ].map((tab) => (
+              {industryTabs.map((tab) => (
                 <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                    activeTab === tab.id
+                    activeTab === tab.key
                       ? "bg-primary text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                   }`}
@@ -464,95 +736,88 @@ const UplusVehicle = () => {
           </div>
 
           <div className="bg-gray-50 rounded-2xl p-6 md:p-8">
-            {activeTab === "field-service" ? (
-              <div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
-                  기사님은 다녀왔지만, 고객은 안왔대요.
-                </h3>
-                <p className="text-lg text-gray-700 mb-8">
-                  정확한 도착 시간을 실시간으로 안내하고, 상세한 운행경로로 분쟁을 해결하세요.
-                </p>
+            {(() => {
+              const currentTab = industryTabs.find((tab) => tab.key === activeTab);
+              if (!currentTab) return null;
 
-                <div className="mb-6">
-                  <h4 className="font-semibold mb-2 text-gray-900">적용 업종 및 용도</h4>
-                  <p className="text-gray-600">
-                    가전/렌탈서비스, 건물/시설 유지보수, 전문장비 유지보수, 통신/물리보안, 방역/에어컨/엘리베이터
+              return (
+                <div>
+                  {/* [A] 상단 카피 블록 */}
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+                    {currentTab.headline}
+                  </h3>
+                  <p className="text-lg text-gray-700 mb-8">
+                    {currentTab.subheadline}
                   </p>
+
+                  {/* [B] 적용 업종 및 용도 카드 */}
+                  <Card className="mb-8 bg-white border-gray-200">
+                    <CardContent className="p-6">
+                      <h4 className="font-semibold mb-3 text-gray-900">적용 업종 및 용도</h4>
+                      <ul className="space-y-2">
+                        {currentTab.applyList.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-gray-600">
+                            <span className="text-primary mt-1">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  {/* [C] 추천 기능 카드 */}
+                  <div className="mb-8">
+                    <h4 className="font-semibold mb-4 text-gray-900">추천 기능</h4>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {currentTab.features.map((feature, idx) => {
+                        const IconComponent = feature.icon;
+                        return (
+                          <Card
+                            key={idx}
+                            className="bg-white border-gray-200 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                          >
+                            <CardContent className="p-6">
+                              <div className="flex items-start gap-4">
+                                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                  <IconComponent className="w-5 h-5 text-primary" />
+                                </div>
+                                <div className="flex-1">
+                                  <h4 className="font-bold mb-2 text-gray-900">{feature.title}</h4>
+                                  <p className="text-gray-600 mb-2 text-sm leading-relaxed">
+                                    {feature.desc}
+                                  </p>
+                                  {feature.detail && (
+                                    <p className="text-xs text-gray-500 mb-2">{feature.detail}</p>
+                                  )}
+                                  <p className="text-xs text-gray-400 mt-3">
+                                    이용 방법 : {feature.howto}
+                                  </p>
+                                  {feature.hasOcrInfo && (
+                                    <div className="bg-blue-50 p-3 rounded-lg text-xs text-gray-600 mt-3">
+                                      <p className="font-semibold mb-1">OCR 기술이란?</p>
+                                      <p>
+                                        사진 속 글자를 인식해 텍스트로 바꿔주는 기술로 유류비 영수증을 휴대폰 카메라로 찍으면 자동으로 정보가 입력돼요.
+                                      </p>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* CTA 버튼 */}
+                  <div className="text-center">
+                    <Button size="lg" onClick={scrollToConsultation}>
+                      전문가에게 상담받기
+                    </Button>
+                  </div>
                 </div>
-
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  <Card>
-                    <CardContent className="p-6">
-                      <h4 className="font-bold mb-3">실시간 위치 공유</h4>
-                      <p className="text-gray-600 mb-2">
-                        고객에게 정확한 도착시간을 안내하실 수 있어요.
-                      </p>
-                      <p className="text-sm text-gray-500 mb-3">
-                        관제 기능을 켜고 끌 수 있어 업무 시간 외에는 사생활 보호 가능
-                      </p>
-                      <p className="text-xs text-gray-400">
-                        이용 방법 : [운행 관제] → [실시간 차량 위치]
-                      </p>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardContent className="p-6">
-                      <h4 className="font-bold mb-3">운행 경로 추적</h4>
-                      <p className="text-gray-600 mb-3">
-                        고객과 분쟁이 생기면 상세 운행경로를 증빙자료로 활용할 수 있어요.
-                      </p>
-                      <p className="text-xs text-gray-400">
-                        이용 방법 : [운행 관제] → [운행이력/경로]
-                      </p>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardContent className="p-6">
-                      <h4 className="font-bold mb-3">거점 관리 및 알림</h4>
-                      <p className="text-gray-600 mb-3">
-                        자주 방문하는 장소를 등록하고, 도착하면 고객에게 알림을 보낼 수 있어요.
-                      </p>
-                      <p className="text-xs text-gray-400">
-                        이용 방법 : [거점 관리] → [출입 알림 지역 설정]
-                      </p>
-                    </CardContent>
-                  </Card>
-
-                  <Card>
-                    <CardContent className="p-6">
-                      <h4 className="font-bold mb-3">출장비/유류비 관리</h4>
-                      <p className="text-gray-600 mb-2">
-                        GPS 기반 정확한 거리, 출발/도착 시간으로 출장비를 투명하게 관리할 수 있어요.
-                      </p>
-                      <p className="text-xs text-gray-500 mb-2">
-                        - 2025년 9월부터 유류비 영수증 OCR 기술로 자동 입력 가능
-                      </p>
-                      <p className="text-xs text-gray-400 mb-3">
-                        이용 방법: [차량 관리] → [유류비]
-                      </p>
-                      <div className="bg-blue-50 p-3 rounded-lg text-xs text-gray-600">
-                        <p className="font-semibold mb-1">OCR 기술이란?</p>
-                        <p>
-                          사진 속 글자를 인식해 텍스트로 바꿔주는 기술로 유류비 영수증을 휴대폰 카메라로 찍으면 자동으로 정보가 입력돼요.
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                <div className="text-center">
-                  <Button size="lg" onClick={scrollToConsultation}>
-                    전문가에게 상담받기
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-gray-500">내용 추가 예정</p>
-              </div>
-            )}
+              );
+            })()}
           </div>
         </div>
       </section>
