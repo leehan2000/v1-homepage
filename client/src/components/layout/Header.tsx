@@ -18,6 +18,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [location] = useLocation();
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   const menuTriggerStyle = { fontSize: "1.05rem" };
   const subMenuUlStyle = "flex flex-row space-x-5 p-2 min-w-[749px] justify-center";
@@ -62,11 +63,31 @@ const Header = () => {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-1 animate-slideInTop" style={{ animationDelay: "0.3s" }}>
-            <NavigationMenu>
+            <NavigationMenu value={openMenu || undefined} onValueChange={(value) => {
+              // 클릭 시 메뉴가 열린 상태로 유지되도록 처리
+              if (value) {
+                setOpenMenu(value);
+              } else {
+                // 메뉴 밖을 클릭하거나 다른 메뉴로 이동할 때만 닫기
+                setOpenMenu(null);
+              }
+            }}>
               <NavigationMenuList>
                 {/* 브이원의 이야기 */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/about") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
+                <NavigationMenuItem value="about">
+                  <NavigationMenuTrigger 
+                    className={isActive("/about") ? "bg-accent/50" : ""} 
+                    style={menuTriggerStyle}
+                    onClick={(e) => {
+                      // 같은 메뉴를 다시 클릭하면 토글
+                      if (openMenu === "about") {
+                        e.preventDefault();
+                        setOpenMenu(null);
+                      } else {
+                        setOpenMenu("about");
+                      }
+                    }}
+                  >
                     브이원의 이야기
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -101,8 +122,19 @@ const Header = () => {
                 </NavigationMenuItem>
 
                 {/* 사람들 */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/people") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
+                <NavigationMenuItem value="people">
+                  <NavigationMenuTrigger 
+                    className={isActive("/people") ? "bg-accent/50" : ""} 
+                    style={menuTriggerStyle}
+                    onClick={(e) => {
+                      if (openMenu === "people") {
+                        e.preventDefault();
+                        setOpenMenu(null);
+                      } else {
+                        setOpenMenu("people");
+                      }
+                    }}
+                  >
                     사람들
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -127,8 +159,19 @@ const Header = () => {
                 </NavigationMenuItem>
 
                 {/* 사업분야 */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/services") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
+                <NavigationMenuItem value="services">
+                  <NavigationMenuTrigger 
+                    className={isActive("/services") ? "bg-accent/50" : ""} 
+                    style={menuTriggerStyle}
+                    onClick={(e) => {
+                      if (openMenu === "services") {
+                        e.preventDefault();
+                        setOpenMenu(null);
+                      } else {
+                        setOpenMenu("services");
+                      }
+                    }}
+                  >
                     사업분야
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -158,8 +201,19 @@ const Header = () => {
                 </NavigationMenuItem>
 
                 {/* 진행 사례 */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/cases") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
+                <NavigationMenuItem value="cases">
+                  <NavigationMenuTrigger 
+                    className={isActive("/cases") ? "bg-accent/50" : ""} 
+                    style={menuTriggerStyle}
+                    onClick={(e) => {
+                      if (openMenu === "cases") {
+                        e.preventDefault();
+                        setOpenMenu(null);
+                      } else {
+                        setOpenMenu("cases");
+                      }
+                    }}
+                  >
                     진행 사례
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -179,8 +233,19 @@ const Header = () => {
                 </NavigationMenuItem>
 
                 {/* 공식 인증 / 수상 - 파트너 인증 제거됨 */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/certifications") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
+                <NavigationMenuItem value="certifications">
+                  <NavigationMenuTrigger 
+                    className={isActive("/certifications") ? "bg-accent/50" : ""} 
+                    style={menuTriggerStyle}
+                    onClick={(e) => {
+                      if (openMenu === "certifications") {
+                        e.preventDefault();
+                        setOpenMenu(null);
+                      } else {
+                        setOpenMenu("certifications");
+                      }
+                    }}
+                  >
                     공식 인증 / 수상
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -195,8 +260,19 @@ const Header = () => {
                 </NavigationMenuItem>
 
                 {/* 소식 & 블로그 */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className={isActive("/news") ? "bg-accent/50" : ""} style={menuTriggerStyle}>
+                <NavigationMenuItem value="news">
+                  <NavigationMenuTrigger 
+                    className={isActive("/news") ? "bg-accent/50" : ""} 
+                    style={menuTriggerStyle}
+                    onClick={(e) => {
+                      if (openMenu === "news") {
+                        e.preventDefault();
+                        setOpenMenu(null);
+                      } else {
+                        setOpenMenu("news");
+                      }
+                    }}
+                  >
                     소식 & 블로그
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -216,13 +292,23 @@ const Header = () => {
                 </NavigationMenuItem>
 
                 {/* 통신상품 문의·신청 */}
-                <NavigationMenuItem>
+                <NavigationMenuItem value="contact">
                   <NavigationMenuTrigger 
                     className={cn(
-                      isActive("/contact") ? "bg-accent/50" : "",
-                      "bg-primary text-white hover:bg-primary-600 hover:text-white hover:shadow-md transition-all duration-300 hover:translate-y-[-2px] relative overflow-hidden before:absolute before:w-12 before:h-full before:top-0 before:-left-10 before:transform before:skew-x-[30deg] before:bg-white/10 hover:before:animate-shine"
+                      isActive("/contact") 
+                        ? "bg-blue-500 text-white hover:bg-blue-600" 
+                        : "bg-primary text-white hover:bg-primary-600 hover:text-white",
+                      "hover:shadow-md transition-all duration-300 hover:translate-y-[-2px] relative overflow-hidden before:absolute before:w-12 before:h-full before:top-0 before:-left-10 before:transform before:skew-x-[30deg] before:bg-white/10 hover:before:animate-shine"
                     )}
                     style={menuTriggerStyle}
+                    onClick={(e) => {
+                      if (openMenu === "contact") {
+                        e.preventDefault();
+                        setOpenMenu(null);
+                      } else {
+                        setOpenMenu("contact");
+                      }
+                    }}
                   >
                     통신상품 문의·신청
                   </NavigationMenuTrigger>
