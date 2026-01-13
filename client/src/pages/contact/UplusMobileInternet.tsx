@@ -46,7 +46,7 @@ const UplusMobileInternet = () => {
 
   // 이미지 URL 상수
   const IMG = {
-    hero: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+    hero: "/images/mobileinternet.png",
     pain: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
     solution: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80",
     why: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
@@ -390,73 +390,62 @@ const UplusMobileInternet = () => {
       {/* Hero 섹션 */}
       <section
         id="product-overview"
-        className="relative w-full overflow-hidden min-h-[70vh] md:min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat"
+        className="relative w-full overflow-hidden min-h-[420px] md:min-h-[600px] flex items-center"
         style={{
           backgroundImage: `url('${IMG.hero}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
         }}
       >
-        {/* 어두운 블루 그라디언트 오버레이 */}
+        {/* 그라디언트 오버레이 - 텍스트 가독성 확보 (좌측에서 우측으로) */}
         <div
           className="absolute inset-0 z-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(30, 58, 138, 0.65), rgba(30, 58, 138, 0.45))",
+            background: "linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%)",
           }}
         ></div>
 
         {/* 텍스트 컨텐츠 */}
-        <div className="relative z-10 container mx-auto px-4 max-w-6xl w-full py-12 md:py-16">
-          <div className="max-w-3xl text-left">
+        <div className="relative z-10 container mx-auto px-4 md:px-6 max-w-7xl w-full py-12 md:py-16">
+          <div className="max-w-xl md:max-w-2xl text-center md:text-left">
             {/* 상단 라벨 */}
-            <div className="inline-block bg-white/20 backdrop-blur-sm border border-white/20 px-4 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6 text-white">
-              U+모바일인터넷
+            <div className="inline-block bg-white/20 backdrop-blur-sm border border-white/30 px-4 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6 text-white tracking-wide">
+              U+ 모바일인터넷
             </div>
-
-            {/* 서브 설명 */}
-            <p className="text-base md:text-lg lg:text-xl mb-4 md:mb-6 text-white/90 leading-relaxed">
-              유선 인터넷 설치가 어려운 곳에서 라우터 전원만 켜면 무선으로 인터넷을 이용할 수 있는 서비스
-            </p>
 
             {/* 메인 헤드라인 */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight">
-              U+모바일인터넷, 개인도 기업도 누구나 가입할 수 있어요.
+              유선 설치 없이,
+              <br />
+              어디서나 바로 연결되는
+              <br />
+              기업용 무선인터넷
             </h1>
 
-            {/* 보조문구 */}
-            <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
-              <p className="text-base md:text-lg lg:text-xl text-white/90 leading-relaxed">
-                LTE/5G 라우터 단말기 하나로 언제 어디서나 무선인터넷을 연결할 수 있어요.
-              </p>
-              <p className="text-base md:text-lg lg:text-xl text-white/90 leading-relaxed">
-                공사 현장부터 사무실, 차량, 매장 등 다양한 곳에서 무선 인터넷을 이용하고, 키오스크, 자판기 등을 편리하게 원격으로 관리할 수 있어요.
-              </p>
-            </div>
+            {/* 서브 카피 */}
+            <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 text-white/95 leading-relaxed max-w-xl">
+              공사 현장, 이동 중 차량, 매장, 임시 사무실까지
+              <br />
+              LTE/5G 라우터 하나로 끊김 없는 업무 환경을 제공합니다.
+            </p>
 
             {/* CTA 버튼 2개 */}
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <Button
                 size="lg"
                 onClick={() => scrollToSection("consultation")}
-                className="bg-white text-primary hover:bg-white/90 px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto"
+                className="bg-primary hover:bg-primary/90 text-white px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 전문가 상담 신청
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                onClick={handleCopyUrl}
-                className="border-2 border-white/40 text-white hover:bg-white/10 px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto"
+                onClick={() => scrollToSection("pricing")}
+                className="border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto transition-all duration-300"
               >
-                {urlCopied ? (
-                  <>
-                    <CheckCircle2 className="mr-2 w-5 h-5" />
-                    복사 완료
-                  </>
-                ) : (
-                  <>
-                    <Copy className="mr-2 w-5 h-5" />
-                    URL 복사하기
-                  </>
-                )}
+                요금제 살펴보기
               </Button>
             </div>
           </div>
