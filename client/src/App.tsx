@@ -75,18 +75,21 @@ function ContactFloatingCTA() {
         {/* 전화문의 버튼 */}
         <a
           href={`tel:${CTA.phoneTel}`}
-          className="bg-primary hover:bg-primary/90 text-white px-6 py-4 rounded-2xl shadow-lg border border-primary/20 transition-all duration-300 hover:opacity-90 hover:-translate-y-1 flex items-center justify-center gap-2 font-semibold text-base min-w-[140px]"
+          className="bg-primary hover:bg-primary/90 text-white px-6 py-4 rounded-2xl shadow-lg border border-primary/20 transition-all duration-300 hover:opacity-90 hover:-translate-y-1 flex flex-col items-center justify-center gap-1 font-semibold text-base min-w-[140px]"
         >
-          <span>☎</span>
-          <span>전화문의</span>
+          <div className="flex items-center gap-2">
+            <span>☎</span>
+            <span>전화문의</span>
+          </div>
+          <span className="text-sm font-normal">{CTA.phoneDisplay}</span>
         </a>
-        {/* 상담요청 버튼 */}
+        {/* 상담예약 버튼 */}
         <button
           onClick={handleConsultClick}
           className="bg-white hover:bg-gray-50 text-primary border-2 border-primary px-6 py-4 rounded-2xl shadow-lg transition-all duration-300 hover:opacity-90 hover:-translate-y-1 flex items-center justify-center gap-2 font-semibold text-base min-w-[140px]"
         >
           <span>💬</span>
-          <span>상담요청</span>
+          <span>상담예약</span>
         </button>
       </div>
 
@@ -96,18 +99,21 @@ function ContactFloatingCTA() {
           {/* 전화문의 버튼 */}
           <a
             href={`tel:${CTA.phoneTel}`}
-            className="bg-primary hover:bg-primary/90 text-white px-4 py-4 flex items-center justify-center gap-2 font-semibold text-sm transition-opacity active:opacity-80"
+            className="bg-primary hover:bg-primary/90 text-white px-4 py-4 flex flex-col items-center justify-center gap-1 font-semibold text-sm transition-opacity active:opacity-80"
           >
-            <span>☎</span>
-            <span>전화문의</span>
+            <div className="flex items-center gap-2">
+              <span>☎</span>
+              <span>전화문의</span>
+            </div>
+            <span className="text-xs font-normal">{CTA.phoneDisplay}</span>
           </a>
-          {/* 상담요청 버튼 */}
+          {/* 상담예약 버튼 */}
           <button
             onClick={handleConsultClick}
             className="bg-white hover:bg-gray-50 text-primary border-l border-gray-200 px-4 py-4 flex items-center justify-center gap-2 font-semibold text-sm transition-colors active:bg-gray-100"
           >
             <span>💬</span>
-            <span>상담요청</span>
+            <span>상담예약</span>
           </button>
         </div>
       </div>
