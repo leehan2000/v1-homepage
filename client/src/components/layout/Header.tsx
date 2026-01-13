@@ -368,9 +368,8 @@ const Header = () => {
                         </NavigationMenuLink>
                       </li>
                       <li>
-                        <NavigationMenuLink asChild className={applySubMenuStyle("#", false)}>
-                          <Link href="#">무선인터넷</Link>
-                          {/* TODO: 실제 라우트 연결 */}
+                        <NavigationMenuLink asChild className={applySubMenuStyle("/contact/uplus-mobile-internet", isActive("/contact/uplus-mobile-internet"))}>
+                          <Link href="/contact/uplus-mobile-internet">무선인터넷</Link>
                         </NavigationMenuLink>
                       </li>
                     </ul>
