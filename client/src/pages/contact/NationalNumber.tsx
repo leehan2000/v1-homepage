@@ -1,4 +1,4 @@
-import { useState, Fragment } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,6 +7,25 @@ import { Link } from "wouter";
 const NationalNumber = () => {
   // 주요 기능 탭 상태 관리
   const [activeTab, setActiveTab] = useState(0);
+  // Sticky 네비게이션 상태
+  const [isSticky, setIsSticky] = useState(false);
+
+  // Sticky 네비게이션 스크롤 감지
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // 섹션으로 스크롤 이동 함수
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   // 하단 CTA로 스크롤 이동 함수
   const scrollToCTA = () => {
@@ -15,6 +34,16 @@ const NationalNumber = () => {
       ctaElement.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  // 네비게이션 항목 정의
+  const navItems = [
+    { id: "features", label: "특장점" },
+    { id: "expected-effects", label: "기대효과" },
+    { id: "recommended-customers", label: "추천 고객" },
+    { id: "main-features", label: "주요 기능" },
+    { id: "service-diagram", label: "서비스 구성도" },
+    { id: "pricing", label: "이용요금" },
+  ];
 
   // 특장점 데이터
   const features = [
@@ -136,6 +165,29 @@ const NationalNumber = () => {
         <title>전국대표번호 | 브이원정보통신</title>
         <meta name="description" content="고객이 기억하기 쉬운 단 하나의 대표번호로 전국에 위치한 지점과 고객센터 전화번호를 통합할 수 있습니다." />
       </Helmet>
+
+      {/* Sticky 상단 서브내비 */}
+      <div
+        className={`sticky top-[88px] z-40 bg-white border-b border-gray-200 transition-all ${
+          isSticky ? "shadow-md" : ""
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="flex space-x-1 md:space-x-2 py-3 min-w-max md:min-w-0">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="px-3 md:px-4 py-2 text-sm md:text-base whitespace-nowrap rounded-lg hover:bg-primary/10 hover:text-primary transition-colors font-medium"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
       
       {/* Section: Hero */}
       {/* 배경 이미지 위에 텍스트 오버레이 */}
@@ -186,7 +238,7 @@ const NationalNumber = () => {
 
       {/* Section: 특장점 */}
       {/* 이미지 비율: 아이콘 (object-contain, 고정 크기 w-12 h-12) */}
-      <section className="py-16 md:py-24 bg-white">
+      <section id="features" className="py-16 md:py-24 bg-white">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
             특장점
@@ -222,7 +274,7 @@ const NationalNumber = () => {
 
       {/* Section: 기대효과 */}
       {/* 이미지 비율: 이미지 없음 (텍스트 카드만) */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section id="expected-effects" className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
             기대효과
@@ -256,7 +308,7 @@ const NationalNumber = () => {
 
       {/* Section: 추천 고객 */}
       {/* 이미지 비율: 원형 이미지 (aspect-square, object-cover) - Unsplash 무료 이미지 사용 */}
-      <section className="py-16 md:py-24 bg-white">
+      <section id="recommended-customers" className="py-16 md:py-24 bg-white">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
             추천 고객
@@ -322,7 +374,7 @@ const NationalNumber = () => {
 
       {/* Section: 주요 기능 */}
       {/* 이미지 비율: aspect-[4/3] (기능 설명 이미지) */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section id="main-features" className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
             주요 기능
@@ -375,7 +427,7 @@ const NationalNumber = () => {
 
       {/* Section: 서비스 구성도 */}
       {/* 이미지 비율: aspect-[16/9] (구성도 이미지) */}
-      <section className="py-16 md:py-24 bg-white">
+      <section id="service-diagram" className="py-16 md:py-24 bg-white">
         <div className="max-w-[1200px] mx-auto px-4 md:px-6">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 text-gray-900">
             서비스 구성도

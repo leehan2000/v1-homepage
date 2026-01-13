@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "wouter";
@@ -31,6 +31,35 @@ const BusinessPhone = () => {
   const [imageError, setImageError] = useState(false);
   // 이미지 미리보기 모달 상태
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+  // Sticky 네비게이션 상태
+  const [isSticky, setIsSticky] = useState(false);
+
+  // Sticky 네비게이션 스크롤 감지
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // 섹션으로 스크롤 이동 함수
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  // 네비게이션 항목 정의
+  const navItems = [
+    { id: "main-features", label: "주요 특징" },
+    { id: "smart-phone", label: "스마트 키폰 기능" },
+    { id: "phone-lineup", label: "전화기 라인업" },
+    { id: "free-call-plans", label: "자유통화요금제" },
+    { id: "additional-benefits", label: "추가 혜택" },
+    { id: "faq", label: "자주 묻는 질문" },
+  ];
 
   // LG유플러스 공식 페이지 기준 - 주요 특징
   const mainFeatures = [
@@ -157,6 +186,29 @@ const BusinessPhone = () => {
         <title>기업전화 | 브이원정보통신</title>
         <meta name="description" content="LG U+ 기업전화 서비스를 통해 효율적인 기업 통신 환경을 구축하세요. 최신 키폰 무료 제공, 초기비용 0원, 통화료 절감으로 업무 효율성을 높입니다." />
       </Helmet>
+
+      {/* Sticky 상단 서브내비 */}
+      <div
+        className={`sticky top-[88px] z-40 bg-white border-b border-gray-200 transition-all ${
+          isSticky ? "shadow-md" : ""
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="flex space-x-1 md:space-x-2 py-3 min-w-max md:min-w-0">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="px-3 md:px-4 py-2 text-sm md:text-base whitespace-nowrap rounded-lg hover:bg-primary/10 hover:text-primary transition-colors font-medium"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
       
       {/* 히어로 섹션 - 기업 인터넷전화 전용 */}
       <section 
@@ -230,7 +282,7 @@ const BusinessPhone = () => {
       </Dialog>
       
       {/* 주요 특징 섹션 */}
-      <section className="py-20 md:py-24 bg-white">
+      <section id="main-features" className="py-20 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <header className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -274,7 +326,7 @@ const BusinessPhone = () => {
       </section>
 
       {/* 스마트 키폰 기능 섹션 */}
-      <section className="py-20 md:py-24 bg-gray-50">
+      <section id="smart-phone" className="py-20 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <header className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -310,7 +362,7 @@ const BusinessPhone = () => {
       </section>
 
       {/* 전화기 라인업 섹션 */}
-      <section className="py-20 md:py-24 bg-white">
+      <section id="phone-lineup" className="py-20 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <header className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -342,7 +394,7 @@ const BusinessPhone = () => {
       </section>
 
       {/* 자유통화요금제 섹션 */}
-      <section className="py-20 md:py-24 bg-gray-50">
+      <section id="free-call-plans" className="py-20 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <header className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -392,7 +444,7 @@ const BusinessPhone = () => {
       </section>
 
       {/* 추가 혜택 섹션 */}
-      <section className="py-20 md:py-24 bg-white">
+      <section id="additional-benefits" className="py-20 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <header className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
@@ -437,7 +489,7 @@ const BusinessPhone = () => {
       </section>
 
       {/* FAQ 섹션 */}
-      <section className="py-20 md:py-24 bg-gray-50">
+      <section id="faq" className="py-20 md:py-24 bg-gray-50">
         <div className="container mx-auto px-4">
           <header className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">

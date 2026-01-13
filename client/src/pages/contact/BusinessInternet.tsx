@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -39,6 +39,34 @@ const BusinessInternet = () => {
   // 요금 시뮬레이션 상태
   const [pcCount, setPcCount] = useState<number>(10);
   const [currentMonthlyFee, setCurrentMonthlyFee] = useState<number>(115000);
+  // Sticky 네비게이션 상태
+  const [isSticky, setIsSticky] = useState(false);
+
+  // Sticky 네비게이션 스크롤 감지
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSticky(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // 섹션으로 스크롤 이동 함수
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  // 네비게이션 항목 정의
+  const navItems = [
+    { id: "overview", label: "기업인터넷이란" },
+    { id: "advantages", label: "기업인터넷 장점" },
+    { id: "network-comparison", label: "광랜 독점 비교" },
+    { id: "terminal-fee", label: "추가단말요금 비교" },
+    { id: "fee-simulation", label: "요금시뮬레이션" },
+  ];
 
   // 요금 시뮬레이션 계산
   const calculateSavings = () => {
@@ -200,6 +228,29 @@ const BusinessInternet = () => {
         />
       </Helmet>
 
+      {/* Sticky 상단 서브내비 */}
+      <div
+        className={`sticky top-[88px] z-40 bg-white border-b border-gray-200 transition-all ${
+          isSticky ? "shadow-md" : ""
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="flex space-x-1 md:space-x-2 py-3 min-w-max md:min-w-0">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="px-3 md:px-4 py-2 text-sm md:text-base whitespace-nowrap rounded-lg hover:bg-primary/10 hover:text-primary transition-colors font-medium"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* 히어로 섹션 */}
       <section 
         className="relative w-full min-h-[420px] md:min-h-[600px] lg:min-h-[700px] flex items-center bg-cover bg-center bg-no-repeat"
@@ -269,7 +320,7 @@ const BusinessInternet = () => {
       <div className="py-16">
         <div className="container mx-auto px-4">
           {/* 기업인터넷이란? */}
-          <div className="mb-16">
+          <div id="overview" className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">LG U+ 기업인터넷이란?</h2>
             <p className="text-lg text-center text-gray-600 mb-10 max-w-3xl mx-auto">
               PC방급 기업전용 광케이블을, 고객사 사무실까지 직접 구성하여
@@ -279,7 +330,7 @@ const BusinessInternet = () => {
           </div>
 
           {/* 기업인터넷 장점 */}
-          <div className="mb-16">
+          <div id="advantages" className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">기업인터넷 장점</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {advantages.map((advantage, index) => {
@@ -307,7 +358,7 @@ const BusinessInternet = () => {
           </div>
 
           {/* 광랜 독점 비교 */}
-          <div className="mb-16 bg-gray-50 rounded-lg p-8">
+          <div id="network-comparison" className="mb-16 bg-gray-50 rounded-lg p-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">LG U+ 기업인터넷 광랜 독점</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {networkComparison.map((item, index) => {
@@ -336,7 +387,7 @@ const BusinessInternet = () => {
           </div>
 
           {/* 추가단말요금 비교 */}
-          <div className="mb-16">
+          <div id="terminal-fee" className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">추가단말요금 0원</h2>
             <p className="text-center text-gray-600 mb-8">
               추가 단말요금제란? SK/KT 인터넷공유기 제한정책 (인증수 제한 정책)
@@ -446,7 +497,7 @@ const BusinessInternet = () => {
           </div>
 
           {/* 요금시뮬레이션 */}
-          <div className="mb-16">
+          <div id="fee-simulation" className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">기업인터넷 요금시뮬레이션</h2>
             <p className="text-center text-gray-600 mb-8">
               현재 회사 인터넷요금을 입력해보세요! 예상절감액을 확인하실 수 있습니다.
