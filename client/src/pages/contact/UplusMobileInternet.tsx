@@ -42,6 +42,7 @@ const UplusMobileInternet = () => {
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const [isSticky, setIsSticky] = useState(false);
   const [urlCopied, setUrlCopied] = useState(false);
+  const [faqPage, setFaqPage] = useState(1);
 
   // 이미지 URL 상수
   const IMG = {
@@ -87,21 +88,254 @@ const UplusMobileInternet = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // FAQ 데이터 배열
+  const faqItems = [
+    {
+      id: "q1",
+      question: "[U+모바일인터넷] 유동 IP를 쓰고 있는데, 고정IP로 바꿀 수 있나요?",
+      answer: "아니요. 기존 유동 IP를 사용하신다면 고정 IP로 변경할 수 없습니다. 반대로 고정 IP를 쓰다가 유동 IP로 변경할 수 없어요. 고정IP를 쓸 수 있는 라우터를 새로 개통해야 해요.",
+    },
+    {
+      id: "q2",
+      question: "[U+모바일인터넷] 기본 제공 데이터를 다 쓰면 추가 요금이 발생하나요?",
+      answer: "네. 데이터 안심 옵션 부가서비스에 가입하지 않았다면 0.5KB당 0.00825원 추가 요금이 발생해요.",
+    },
+    {
+      id: "q3",
+      question: "[U+모바일인터넷] 기본 제공 데이터를 다 쓰면 100Kbps, 500Kbps, 1Mbps 등으로 속도가 제한된다는데, 어느 정도의 속도인가요?",
+      answer: (
+        <>
+          동시 접속하는 기기 수, 이용 환경에 따라 달라질 수 있지만 속도별로 아래와 같은 업무를 할 수 있어요.
+          <div className="mt-4 space-y-3">
+            <div>
+              <p className="font-semibold mb-2">▶ 100Kbps</p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>텍스트 중심 웹서핑, 이메일/메신저 사용</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold mb-2">▶ 500kbps</p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>인터넷 웹서핑, 128Kbps 음악 재생, 240p 저화질 영상 시청</li>
+                <li>파일 올리기/내려받기, 블로그/인스타그램/페이스북 등 SNS</li>
+                <li>240p~360p 저화질 화상통화, 문서 작업</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold mb-2">▶ 1Mbps</p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>유튜브 SD 360p 저화질 영상 시청</li>
+                <li>파일 올리기/내려받기</li>
+                <li>480p 화질의 화상통화</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold mb-2">▶ 2Mbps</p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>이미지가 많은 웹사이트 끊김 없이 접속</li>
+                <li>이메일/메신저 대용량 파일 첨부 가능</li>
+                <li>160kbps 고음질 음악 재생</li>
+                <li>480p 화질의 영상 시청</li>
+                <li>100MB 이하 파일 올리기/내리기</li>
+                <li>720p 화질의 실시간 영상 재생</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold mb-2">▶ 4Mbps</p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>320Kbps 고음질 음악 재생</li>
+                <li>720p 화질의 고화질 영상 시청</li>
+                <li>500MB 이하 파일 올리기/내려받기</li>
+                <li>1080p 고화질의 실시간 영상 재생</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold mb-2">▶ 5Mbps</p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>모든 웹사이트 끊김 없이 접속</li>
+                <li>320kbps 이상 고음질 음악 재생</li>
+                <li>720p~1080p 고화질 영상 시청</li>
+                <li>500MB~1GB 파일 올리기/내려받기</li>
+                <li>1080p 고화질의 실시간 영상 재생/올리기</li>
+                <li>문서 작업/대용량 문서 파일 올리기</li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold mb-2">▶ 10Mbps</p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li>1080p 고화질 영상 시청</li>
+                <li>1GB 파일 올리기/내리기</li>
+                <li>문서 작업/공동 문서 작업</li>
+              </ul>
+            </div>
+          </div>
+        </>
+      ),
+    },
+    {
+      id: "q4",
+      question: "[U+모바일인터넷] 서비스 신청시 설치는 어떻게 되나요?",
+      answer: (
+        <>
+          일반 라우터는 유플러스 매장에서 개통한 다음 고객님께 택배로 보내드려요. 받은 라우터를 전원과 랜선을 연결해서 사용해 주세요.
+          <br /><br />
+          다만, VPN신청시 설치에 대한 방법은 서비스를 신청하신 대리점이나 고객센터에 문의해 주세요.
+        </>
+      ),
+    },
+    {
+      id: "q5",
+      question: "[U+모바일인터넷] 5G 라우터를 가지고 다닐 수 있나요?",
+      answer: "내용 추가 예정",
+    },
+    {
+      id: "q6",
+      question: "[U+모바일인터넷] 기기가 고장나면 어디로 문의해야 하나요?",
+      answer: "기기 제조사 또는 가입한 대리점으로 문의해 주세요.",
+    },
+    {
+      id: "q7",
+      question: "[U+모바일인터넷] 인터넷 접속이 안되면 어떻게 해야하나요?",
+      answer: (
+        <>
+          먼저 라우터 뒤쪽 전원선을 뽑았다가 다시 꽂아주세요. 이때 기기 앞쪽 LED 불빛을 확인해 주세요.
+          <br /><br />
+          전원이 연결되면 전원 램프에 빨간색 불빛이, 랜선이 연결되면 LAN 램프에 파란색 불빛이, 인터넷에 연결되면 LTE 램프에 초록색이나 파란색 불빛이 나타나요.
+          <br /><br />
+          만약 LTE 램프 불빛이 계속 빨간색이면 유플러스 장애접수 센터 1644-7003(유료)로 A/S 신청해 주세요.
+        </>
+      ),
+    },
+    {
+      id: "q8",
+      question: "[U+모바일인터넷] 요금제를 변경하고 싶어요.",
+      answer: "가입한 LG유플러스 매장이나 고객센터 1544-2500(유료)로 문의해 주세요.",
+    },
+    {
+      id: "q9",
+      question: "[U+모바일인터넷] 070 전화와 결합할인 받을 수 있나요?",
+      answer: "아니요. 모바일오피스넷과 070 인터넷 전화 결합은 전기통신번호관리세칙에 따라 제공 불가하고 결합할인도 받을 수 없어요.",
+    },
+    {
+      id: "q10",
+      question: "[U+모바일인터넷] VPN 기능을 이용할 수 있나요?",
+      answer: "네. VPN(기업전용 사설망) 기능이 장착된 전용 라우터를 이용하면 돼요. 모바일오피스넷 월정액에 부가세 포함 월 11,000원 요금이 추가돼요.",
+    },
+    {
+      id: "q11",
+      question: "[U+모바일인터넷] 5G 네트워크에 연결할 수 없는 지역에서도 서비스를 이용할 수 있나요?",
+      answer: "네. 5G 네트워크를 연결할 수 없는 지역에서는 자동으로 LTE-CA 또는 LTE 네트워크로 연결돼요.",
+    },
+    {
+      id: "q12",
+      question: "[U+모바일인터넷] 서비스 신청시 라우터를 구매해야 하나요?",
+      answer: (
+        <>
+          네, 라우터를 구매해야 해요.
+          <br /><br />
+          다만, 2년 이상 약정하면 무료로 사용할 수 있으며, 약정기간 안에 해지하면 할인반환금을 내야 해요.
+        </>
+      ),
+    },
+    {
+      id: "q13",
+      question: "[U+모바일인터넷] 5G 네트워크의 특징은 무엇인가요?",
+      answer: "5G 네트워크는 LTE 대비 사용할 수 있는 주파수 대역이 넓고, 주파수 사용 효율을 높여 대용량 파일도 빠르게 주고받을 수 있어요.",
+    },
+    {
+      id: "q14",
+      question: "[U+모바일인터넷] PC, 휴대폰 등 기기는 몇 대까지 연결할 수 있나요?",
+      answer: (
+        <>
+          가입한 요금제의 기본 제공 데이터에 따라 달라져요.
+          <br /><br />
+          자세한 내용은 U+고객센터 1544-2500(유료)로 문의해 주세요.
+        </>
+      ),
+    },
+    {
+      id: "q15",
+      question: "[U+모바일인터넷] 인터넷은 정상적으로 되는데, 결제가 안 돼요.",
+      answer: "가입시 계약한 결제대행사에 문의해 주세요.",
+    },
+    {
+      id: "q16",
+      question: "[U+모바일인터넷] 데이터를 무제한으로 사용할 수 있나요?",
+      answer: "네. 데이터 안심 옵션 부가서비스에 가입하면 기본 제공 데이터를 다 써도 제한된 속도로 데이터를 무제한으로 사용할 수 있어요.",
+    },
+    {
+      id: "q17",
+      question: "[U+모바일인터넷] 고정 IP를 이용할 수 있나요?",
+      answer: "네. 부가세 포함 11,000원의 부가서비스로, 5G 요금제 이용 고객만 가입할 수 있어요.",
+    },
+    {
+      id: "q18",
+      question: "[U+모바일인터넷] 5G 요금제는 어떤 용도로 주로 사용하나요?",
+      answer: "선 공사가 어려운 건설 현장 사무실, 인테리어 공사가 자주 필요한 매장 또는 임시 사무실, 실시간 이동형 방송 중계차, 서빙/배송 로봇 이용 매장, 유선 인터넷 장애에 빠르게 대처하고 싶은 고객이 사용하고 있어요.",
+    },
+    {
+      id: "q19",
+      question: "[U+모바일인터넷] VPN은 어떤 방식으로 데이터 보안을 유지하나요?",
+      answer: "VPN(기업전용 사설망)은 본사와 지점에 전용 라우터를 설치하여 암호화된 보안 터널을 통해 데이터를 안전하게 주고 받는 방식이에요. 본사에 유선 VPN센터 장비를 설치하고, 지점에는 VPN 라우터를 개통해요.",
+    },
+    {
+      id: "q20",
+      question: "[U+모바일인터넷] 가입이 제한될 수도 있나요?",
+      answer: (
+        <>
+          네. CCTV 등 실시간으로 영상을 전송하기 위한 용도라면 가입이 어려울 수 있어요.
+          <br /><br />
+          많은 데이터가 한꺼번에 몰리면서 다른 고객이 인터넷을 사용하는데 영향을 줄 수 있기 때문이에요.
+          <br /><br />
+          다만, 이벤트가 발생할 때 확인하거나 CCTV에 저장장치를 연결해서 나중에 확인하는 용도로는 가입할 수 있어요.
+        </>
+      ),
+    },
+    {
+      id: "q21",
+      question: "[U+모바일인터넷] VPN 라우터는 어떨 때 사용하나요?",
+      answer: (
+        <>
+          VPN(기업전용 사설망)은 본사와 지점에 전용 라우터를 설치하여 암호화된 보안 터널을 통해 데이터를 안전하게 주고 받는 방식이에요. 데이터 보안을 유지해야 하는 고객이 주로 사용해요.
+          <br /><br />
+          <span className="font-semibold">- 주요 사용 업종</span>
+          <br />
+          지자체/공공기관, 태양광발전, 광고/키오스크, 정보서비스, 영상/방송통신 등
+        </>
+      ),
+    },
+    {
+      id: "q22",
+      question: "[U+모바일인터넷] 고정IP는 언제 사용하나요?",
+      answer: (
+        <>
+          PC/키오스크/디지털 광고판 등의 기기, 비닐하우스 같은 시설물을 원격으로 관리할 때 사용해요.
+          <br /><br />
+          단, 보안 문제가 있거나 네트워크에 과부하가 걸리면 서비스를 이용하지 못할 수 있어요.
+          <br /><br />
+          이용 요금은 부가세 포함 11,000원으로 5G 요금제 이용 고객만 가입할 수 있어요.
+        </>
+      ),
+    },
+  ];
+
+  // 페이지네이션 설정
+  const itemsPerPage = 7;
+  const totalPages = Math.ceil(faqItems.length / itemsPerPage);
+  const startIndex = (faqPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentFaqItems = faqItems.slice(startIndex, endIndex);
+
   const navItems = [
-    { id: "consultation", label: "전문가 상담 신청" },
     { id: "product-overview", label: "상품개요" },
     { id: "advantages", label: "특장점" },
     { id: "recommended-customers", label: "추천 고객" },
     { id: "features", label: "주요기능" },
     { id: "service-diagram", label: "서비스구성도" },
-    { id: "devices", label: "기기 소개" },
     { id: "customer-cases", label: "고객사례" },
     { id: "pricing", label: "이용요금" },
-    { id: "signup-guide", label: "가입/개통 안내" },
-    { id: "insights", label: "인사이트" },
     { id: "recommended-products", label: "추천상품" },
     { id: "faq", label: "자주하는 질문" },
-    { id: "downloads", label: "자료 다운로드" },
   ];
 
   // 업종/사용처 데이터
@@ -1032,51 +1266,53 @@ const UplusMobileInternet = () => {
           </h2>
 
           <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="q1" className="border rounded-lg px-4">
-              <AccordionTrigger className="font-semibold">
-                [U+모바일인터넷] 유동 IP를 쓰고 있는데, 고정IP로 바꿀 수 있나요?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600">
-                아니요. 기존 유동 IP를 사용하신다면 고정 IP로 변경할 수 없습니다. 반대로 고정 IP를 쓰다가 유동 IP로 변경할 수 없어요. 고정IP를 쓸 수 있는 라우터를 새로 개통해야 해요.
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="q2" className="border rounded-lg px-4">
-              <AccordionTrigger className="font-semibold">
-                [U+모바일인터넷] 5G 라우터를 가지고 다닐 수 있나요?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600">
-                내용 추가 예정
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="q3" className="border rounded-lg px-4">
-              <AccordionTrigger className="font-semibold">
-                [U+모바일인터넷] 기본 제공 데이터를 다 쓰면 추가 요금이 발생하나요?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600">
-                내용 추가 예정
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="q4" className="border rounded-lg px-4">
-              <AccordionTrigger className="font-semibold">
-                [U+모바일인터넷] 기본 제공 데이터를 다 쓰면 100Kbps, 500Kbps, 1Mbps 등으로 속도가 제한된다는데, 어느 정도의 속도인가요?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600">
-                내용 추가 예정
-              </AccordionContent>
-            </AccordionItem>
-
-            <AccordionItem value="q5" className="border rounded-lg px-4">
-              <AccordionTrigger className="font-semibold">
-                [U+모바일인터넷] 서비스 신청시 설치는 어떻게 되나요?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-600">
-                내용 추가 예정
-              </AccordionContent>
-            </AccordionItem>
+            {currentFaqItems.map((item) => (
+              <AccordionItem key={item.id} value={item.id} className="border rounded-lg px-4">
+                <AccordionTrigger className="font-semibold">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-600">
+                  {typeof item.answer === 'string' ? item.answer : item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
           </Accordion>
+
+          {/* 페이지네이션 컨트롤 */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-2 mt-8">
+              <Button
+                variant="outline"
+                onClick={() => setFaqPage((prev) => Math.max(1, prev - 1))}
+                disabled={faqPage === 1}
+                className="px-4 py-2"
+              >
+                이전
+              </Button>
+              
+              <div className="flex gap-1">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <Button
+                    key={page}
+                    variant={faqPage === page ? "default" : "outline"}
+                    onClick={() => setFaqPage(page)}
+                    className="px-3 py-2 min-w-[40px]"
+                  >
+                    {page}
+                  </Button>
+                ))}
+              </div>
+
+              <Button
+                variant="outline"
+                onClick={() => setFaqPage((prev) => Math.min(totalPages, prev + 1))}
+                disabled={faqPage === totalPages}
+                className="px-4 py-2"
+              >
+                다음
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
