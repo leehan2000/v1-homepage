@@ -48,8 +48,76 @@ import UplusMobileInternet from "@/pages/contact/UplusMobileInternet";
 import ThankYouAlert from "@/components/common/ThankYouAlert";
 import { ThankYouProvider } from "@/components/common/ThankYouAlert";
 
+// CTA 상수
+const CTA = {
+  phoneDisplay: "02-6951-1156",
+  phoneTel: "0269511156",
+  consultId: "consult",
+};
+
+// 플로팅 CTA 컴포넌트
+function ContactFloatingCTA() {
+  const handleConsultClick = () => {
+    // 현재 페이지에서 consult 섹션 찾기
+    const consultElement = document.getElementById(CTA.consultId);
+    if (consultElement) {
+      consultElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      // consult 섹션이 없으면 /contact로 이동
+      window.location.href = "/contact";
+    }
+  };
+
+  return (
+    <>
+      {/* Desktop: 우측 하단 플로팅 버튼 */}
+      <div className="hidden md:flex fixed bottom-6 right-6 z-50 flex-col gap-3">
+        {/* 전화문의 버튼 */}
+        <a
+          href={`tel:${CTA.phoneTel}`}
+          className="bg-primary hover:bg-primary/90 text-white px-6 py-4 rounded-2xl shadow-lg border border-primary/20 transition-all duration-300 hover:opacity-90 hover:-translate-y-1 flex items-center justify-center gap-2 font-semibold text-base min-w-[140px]"
+        >
+          <span>☎</span>
+          <span>전화문의</span>
+        </a>
+        {/* 상담요청 버튼 */}
+        <button
+          onClick={handleConsultClick}
+          className="bg-white hover:bg-gray-50 text-primary border-2 border-primary px-6 py-4 rounded-2xl shadow-lg transition-all duration-300 hover:opacity-90 hover:-translate-y-1 flex items-center justify-center gap-2 font-semibold text-base min-w-[140px]"
+        >
+          <span>💬</span>
+          <span>상담요청</span>
+        </button>
+      </div>
+
+      {/* Mobile: 하단 고정 바 */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg pb-[env(safe-area-inset-bottom)]">
+        <div className="grid grid-cols-2 gap-0">
+          {/* 전화문의 버튼 */}
+          <a
+            href={`tel:${CTA.phoneTel}`}
+            className="bg-primary hover:bg-primary/90 text-white px-4 py-4 flex items-center justify-center gap-2 font-semibold text-sm transition-opacity active:opacity-80"
+          >
+            <span>☎</span>
+            <span>전화문의</span>
+          </a>
+          {/* 상담요청 버튼 */}
+          <button
+            onClick={handleConsultClick}
+            className="bg-white hover:bg-gray-50 text-primary border-l border-gray-200 px-4 py-4 flex items-center justify-center gap-2 font-semibold text-sm transition-colors active:bg-gray-100"
+          >
+            <span>💬</span>
+            <span>상담요청</span>
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}
+
 function Router() {
   const [location] = useLocation();
+  const isContact = location.startsWith("/contact");
   
   // 페이지 이동 시 상단으로 스크롤
   useEffect(() => {
@@ -57,7 +125,8 @@ function Router() {
   }, [location]);
   
   return (
-    <Switch>
+    <>
+      <Switch>
       {/* Home */}
       <Route path="/" component={HomePage} />
 
@@ -107,7 +176,11 @@ function Router() {
       
       {/* Fallback to 404 */}
       <Route component={NotFound} />
-    </Switch>
+      </Switch>
+      
+      {/* /contact 경로에서만 플로팅 CTA 표시 */}
+      {isContact && <ContactFloatingCTA />}
+    </>
   );
 }
 
