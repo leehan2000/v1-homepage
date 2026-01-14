@@ -23,7 +23,7 @@ const UplusSohoInternet = () => {
 
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
-    hero: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80",
+    hero: "/images/soho_hero.png",
     // 문제 인식 이미지
     problem1: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80", // 결제/포스
     problem2: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80", // 가게 구조
@@ -69,9 +69,13 @@ const UplusSohoInternet = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Hero 애니메이션 (페이지 로드 시 즉시)
+  // Hero 애니메이션 (마운트 후 1프레임 뒤에 실행)
   useEffect(() => {
-    setHeroVisible(true);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setHeroVisible(true);
+      });
+    });
   }, []);
 
   // Intersection Observer로 섹션 진입 감지 (stagger 애니메이션용)
@@ -203,114 +207,72 @@ const UplusSohoInternet = () => {
         </div>
       </div>
 
-      {/* Hero 섹션 - 영상처럼 느껴지는 히어로 */}
-      <section id="intro" className="relative w-full overflow-hidden min-h-[800px] md:min-h-[900px] flex items-center py-32">
+      {/* Hero 섹션 - business-phone과 동일한 구조 */}
+      <section 
+        id="intro"
+        className="relative w-full min-h-[600px] md:min-h-[700px] flex items-center bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(${IMG.hero})`
+        }}
+      >
         <style>{`
-          @keyframes heroZoom {
+          /* 배경 이미지 미세 줌 - 선택적, 매우 약하게 */
+          @keyframes heroSubtleZoom {
             from {
               transform: scale(1);
             }
             to {
-              transform: scale(1.06);
+              transform: scale(1.03);
             }
           }
-          @keyframes lightMove {
-            0%, 100% {
-              background-position: 0% 50%;
-            }
-            50% {
-              background-position: 100% 50%;
-            }
-          }
-          .hero-bg-zoom {
-            animation: heroZoom 20s ease-in-out infinite alternate;
-          }
-          .hero-light-layer {
-            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 60%, rgba(255,255,255,0.03) 0%, transparent 50%);
-            animation: lightMove 25s ease-in-out infinite;
-            background-size: 200% 200%;
+          .hero-bg-subtle {
+            animation: heroSubtleZoom 10s ease-in-out infinite alternate;
           }
         `}</style>
-        <div className="absolute inset-0 z-0">
-          {/* 배경 이미지 - zoom 효과 */}
-          {!imageErrors.hero ? (
-            <div
-              className="w-full h-full hero-bg-zoom"
-              style={{
-                backgroundImage: `url(${IMG.hero})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundAttachment: "fixed",
-              }}
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-primary/20 via-primary/10 to-gray-100" />
-          )}
-          
-          {/* 오버레이 레이어 1 - 어두운 블루 그라데이션 */}
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-800/60 to-transparent" />
-          
-          {/* 오버레이 레이어 2 - 좌우 그라데이션 */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/35" />
-          
-          {/* 미세한 움직임 레이어 - 라이트 효과 */}
-          <div className="absolute inset-0 hero-light-layer opacity-[0.06]" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-2xl">
-            {/* 메인 카피 - 순차 등장 + scale 효과 */}
-            <h1
-              className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-white leading-tight transition-all duration-700 ${
-                heroVisible
-                  ? "opacity-100 translate-y-0 scale-100"
-                  : "opacity-0 translate-y-8 scale-[0.98]"
-              }`}
-              style={{ transitionDelay: "0ms" }}
-            >
+        <div className="absolute inset-0 z-0 hero-bg-subtle" style={{
+          backgroundImage: `url(${IMG.hero})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}></div>
+        
+        {/* 어두운 오버레이 */}
+        <div className="absolute inset-0 bg-black/45 z-0"></div>
+        
+        {/* 텍스트 컨텐츠 */}
+        <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6 w-full">
+          <div className="max-w-2xl text-center md:text-left">
+            {/* 메인 헤드라인 */}
+            <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:transform-none ${
+              heroVisible 
+                ? "opacity-100 translate-y-0 motion-reduce:opacity-100" 
+                : "opacity-0 translate-y-3"
+            }`}>
               안정적인 인터넷,
               <br />
               그 다음은 사장님께 돌아오는 가치입니다
             </h1>
-
-            {/* 연결 문장 - 순차 등장 */}
-            <p
-              className={`text-xl md:text-2xl text-white/95 mb-6 leading-relaxed transition-all duration-700 ${
-                heroVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: "150ms" }}
-            >
+            
+            {/* 서브 헤드라인 */}
+            <p className={`text-lg md:text-xl lg:text-2xl mb-6 md:mb-8 text-white/90 leading-relaxed transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:transform-none ${
+              heroVisible 
+                ? "opacity-100 translate-y-0 motion-reduce:opacity-100" 
+                : "opacity-0 translate-y-3"
+            }`} style={{ transitionDelay: "100ms" }}>
               인터넷은 이제 '잘 되는지'보다 '어떻게 운영되는지'가 더 중요해졌습니다.
-            </p>
-
-            {/* 서브 카피 - 순차 등장 */}
-            <p
-              className={`text-lg md:text-xl text-white/90 mb-10 transition-all duration-700 ${
-                heroVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: "300ms" }}
-            >
+              <br />
               카페·식당·매장·학원까지 … LG U+ 우리가게패키지(소호인터넷)
             </p>
-
-            {/* CTA 버튼 2개 - 순차 등장 + scale 효과 */}
-            <div
-              className={`flex flex-col sm:flex-row gap-4 mb-12 transition-all duration-700 ${
-                heroVisible
-                  ? "opacity-100 translate-y-0 scale-100"
-                  : "opacity-0 translate-y-8 scale-[0.95]"
-              }`}
-              style={{ transitionDelay: "450ms" }}
-            >
+            
+            {/* CTA 버튼 */}
+            <div className={`flex flex-col sm:flex-row gap-3 md:gap-4 transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:transform-none ${
+              heroVisible 
+                ? "opacity-100 translate-y-0 scale-100 motion-reduce:opacity-100 motion-reduce:scale-100" 
+                : "opacity-0 translate-y-3 scale-[0.98]"
+            }`} style={{ transitionDelay: "150ms" }}>
               <Button
                 size="lg"
                 onClick={() => window.location.href = "tel:0269511156"}
-                className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto"
                 aria-label="전화 상담: 02-6951-1156"
               >
                 <Phone className="mr-2 w-5 h-5" />
@@ -320,59 +282,13 @@ const UplusSohoInternet = () => {
                 size="lg"
                 variant="outline"
                 onClick={() => scrollToSection("consult")}
-                className="border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105"
+                className="border-2 border-white text-white hover:bg-white/10 px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto"
                 aria-label="상담 신청"
               >
                 상담 신청
               </Button>
             </div>
-
-            {/* 선언 문장 - 순차 등장 */}
-            <p
-              className={`text-sm md:text-base text-white/80 font-medium mb-6 transition-all duration-700 ${
-                heroVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: "600ms" }}
-            >
-              운영 환경을 기준으로 설계하는 가게 인터넷
-            </p>
-
-            {/* 핵심 배지 4개 - hover 효과 추가 */}
-            <div
-              className={`flex flex-wrap gap-3 transition-all duration-700 ${
-                heroVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: "750ms" }}
-            >
-              <span className="px-4 py-2 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/40 hover:border-white/60 hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-default">
-                결제 안정
-              </span>
-              <span className="px-4 py-2 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/40 hover:border-white/60 hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-default">
-                가게 맞춤 설계
-              </span>
-              <span className="px-4 py-2 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/40 hover:border-white/60 hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-default">
-                전담 상담
-              </span>
-              <span className="px-4 py-2 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/40 hover:border-white/60 hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-default">
-                조건 안내
-              </span>
-            </div>
           </div>
-        </div>
-        
-        {/* Hero 하단 스크롤 유도 선언 문장 */}
-        <div className="absolute bottom-8 left-0 right-0 z-20 text-center">
-          <p
-            className={`text-sm md:text-base text-white/60 font-medium transition-all duration-1000 ${
-              scrollY > 50 ? "opacity-100" : "opacity-40"
-            }`}
-          >
-            가게 인터넷도, 이제는 설계의 문제입니다.
-          </p>
         </div>
       </section>
 
