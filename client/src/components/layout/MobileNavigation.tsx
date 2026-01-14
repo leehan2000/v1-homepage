@@ -129,6 +129,29 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({ isOpen, onClose }) 
               </div>
             </AccordionContent>
           </AccordionItem>
+          
+          {/* 통신상품 문의·신청 */}
+          <AccordionItem value="contact">
+            <AccordionTrigger className="px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10">
+              통신상품 문의·신청
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="pl-4 space-y-1">
+                <Link href="/contact/business-phone" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={handleLinkClick}>기업전화</Link>
+                <Link href="/contact/business-internet" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={handleLinkClick}>기업인터넷</Link>
+                <Link href="/contact/national-number" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={handleLinkClick}>전국대표번호</Link>
+                <Link href="/contact/uplus-vehicle" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={handleLinkClick}>차량관제</Link>
+                <Link href="/contact/uplus-soho-internet" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={handleLinkClick}>소호인터넷</Link>
+                <Link href="/contact/uplus-mobile-internet" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/10" 
+                     onClick={handleLinkClick}>무선인터넷</Link>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
         </Accordion>
         
         <Link href="/contact/consultation" asChild>
