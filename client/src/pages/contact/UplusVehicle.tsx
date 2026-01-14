@@ -10,6 +10,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  Phone,
+  ArrowRight,
+  CheckCircle2,
   MapPin,
   Route,
   FileText,
@@ -19,36 +22,65 @@ import {
   Send,
   Map,
   Key,
-  TrendingDown,
-  CheckCircle2,
-  AlertCircle,
-  Phone,
-  ArrowRight,
-  Building2,
   ClipboardList,
   Bell,
   Wallet,
   ShieldCheck,
   Bus,
-  Trash2,
   Package,
   Users,
+  Building2,
 } from "lucide-react";
 
+/**
+ * U+커넥트 차량관제 랜딩페이지 컴포넌트
+ * 
+ * Hero는 깔끔하게 유지하고, 아래 섹션은 이미지 중심 카드로 역동적으로 구성
+ */
 const UplusVehicle = () => {
   const [activeTab, setActiveTab] = useState("field-service");
   const [serviceType, setServiceType] = useState("terminal");
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [isSticky, setIsSticky] = useState(false);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [heroVisible, setHeroVisible] = useState(false);
 
-  // 이미지 URL 상수
+  // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
-    hero: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
-    feature1: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    feature2: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80",
-    feature3: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    feature4: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80",
+    hero: "/images/U+connect.png",
+    // 주요 기능 이미지 - 차량관제/지도/관제 대시보드
+    feature1: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 실시간 위치 확인
+    feature2: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80", // 운행경로 분석
+    feature3: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80", // 운행일지 자동 생성
+    feature4: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&q=80", // 통합 비용 관리
+    feature5: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 안전운전 관리
+    feature6: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80", // 임원/VIP 차량 관리
+    feature7: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80", // 운행정보 자동 전송
+    feature8: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&q=80", // 거점 관리 및 알림
+    feature9: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 디지털키
+    // 비용 절감 효과 이미지
+    saving1: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80", // 운영 비용/시간 절약
+    saving2: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80", // 세무 비용 절약
+    saving3: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 유류비 절약
+    saving4: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&q=80", // 관리 비용 절약
+    // 특별 혜택 이미지
+    benefit1: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80", // 기기 구입비 0원
+    benefit2: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80", // 설치비 0원
+    benefit3: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // A/S 무료
+    // 업종별 기능 이미지
+    industryFeature1: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800&q=80",
+    industryFeature2: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    industryFeature3: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+    industryFeature4: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80",
+    // 기기 소개 이미지
     device1: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
     device2: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+    device3: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80",
+    device4: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80",
+    device5: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=600&q=80",
+    device6: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+    device7: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80",
+    // 고객후기 이미지
     review1: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&q=80",
     review2: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
     review3: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80",
@@ -71,13 +103,42 @@ const UplusVehicle = () => {
   };
 
   // Sticky 네비게이션 스크롤 감지
-  const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 100);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Hero 애니메이션 (마운트 후 1프레임 뒤에 실행)
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setHeroVisible(true);
+      });
+    });
+  }, []);
+
+  // Intersection Observer로 섹션 진입 감지 (stagger 애니메이션용)
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections((prev) => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "-50px" }
+    );
+
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
   }, []);
 
   const navItems = [
@@ -399,7 +460,7 @@ const UplusVehicle = () => {
       {/* Hero 섹션 */}
       <section 
         id="product-info"
-        className="relative w-full overflow-hidden min-h-[70vh] md:min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat"
+        className="relative w-full overflow-hidden min-h-[70vh] md:min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat pb-24"
         style={{
           backgroundImage: `url('/images/U+connect.png')`
         }}
@@ -416,44 +477,65 @@ const UplusVehicle = () => {
         <div className="relative z-10 container mx-auto px-4 max-w-6xl w-full py-12 md:py-16">
           <div className="max-w-3xl text-left">
             {/* 상단 라벨 */}
-            <div className="inline-block bg-white/20 backdrop-blur-sm border border-white/20 px-4 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6 text-white">
+            <div 
+              className={`inline-block bg-white/20 backdrop-blur-sm border border-white/20 px-4 py-1.5 md:px-5 md:py-2 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6 text-white transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 ${
+                heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+              }`}
+              style={{ transitionDelay: "0ms" }}
+            >
               U+커넥트 차량관제
             </div>
             
             {/* 메인 헤드라인 (2줄) */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight">
+            <h1 
+              className={`text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 md:mb-6 text-white leading-tight transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 ${
+                heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+              }`}
+              style={{ transitionDelay: "0ms" }}
+            >
               차량 관리비는 줄이고<br />
               업무는 더 빠르게
             </h1>
             
             {/* 서브 설명 */}
-            <p className="text-base md:text-lg lg:text-xl mb-6 md:mb-8 text-white/90 leading-relaxed">
+            <p 
+              className={`text-base md:text-lg lg:text-xl mb-6 md:mb-8 text-white/90 leading-relaxed transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 ${
+                heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+              }`}
+              style={{ transitionDelay: "120ms" }}
+            >
               실시간 차량 관제와 자동 운행일지로<br />
               전국 어디서든 차량 운행을 한눈에 관리하세요.
             </p>
             
             {/* 유플러스 톤 히어로 문구 4종 (칩/배지) */}
-            <div className="flex flex-wrap gap-3 md:gap-4 mb-8 md:mb-10">
+            <div 
+              className={`flex flex-wrap gap-3 md:gap-4 mb-8 md:mb-10 transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 ${
+                heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2.5 md:px-5 md:py-3 rounded-lg">
-                <MapPin className="w-4 h-4 md:w-5 md:h-5 text-white flex-shrink-0" />
                 <span className="text-sm md:text-base font-medium text-white">실시간 위치 관제</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2.5 md:px-5 md:py-3 rounded-lg">
-                <FileText className="w-4 h-4 md:w-5 md:h-5 text-white flex-shrink-0" />
                 <span className="text-sm md:text-base font-medium text-white">운행일지 자동 생성</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2.5 md:px-5 md:py-3 rounded-lg">
-                <DollarSign className="w-4 h-4 md:w-5 md:h-5 text-white flex-shrink-0" />
                 <span className="text-sm md:text-base font-medium text-white">통합 비용 관리</span>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2.5 md:px-5 md:py-3 rounded-lg">
-                <Shield className="w-4 h-4 md:w-5 md:h-5 text-white flex-shrink-0" />
                 <span className="text-sm md:text-base font-medium text-white">안전 운전 분석</span>
               </div>
             </div>
             
             {/* CTA 버튼 2개 */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+            <div 
+              className={`flex flex-col sm:flex-row gap-3 md:gap-4 transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 ${
+                heroVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-3 scale-[0.98]"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
               <Button 
                 size="lg" 
                 onClick={scrollToConsultation}
@@ -475,120 +557,229 @@ const UplusVehicle = () => {
       </section>
 
       {/* 주요 기능 */}
-      <section id="features" className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-gray-900">
+      <section id="features" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 
+            className={`text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-gray-900 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 ${
+              visibleSections.has("features") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             주요 기능
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {/* A. 실시간 위치 확인 */}
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <MapPin className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">실시간 위치 확인</h3>
-                <p className="text-gray-600 mb-4 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("features") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "0ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.feature1 ? (
+                  <img
+                    src={IMG.feature1}
+                    alt="실시간 위치 확인"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("feature1")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">실시간 위치 확인</h3>
+                <p className="text-gray-600 mb-4">
                   30초 간격으로 위치를 업데이트해 차량 위치를 정확하게 확인할 수 있어요.
                 </p>
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3 inline-block group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300">
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3 inline-block">
                   오직 LG U+ 에서만! 고급형 사용 시 1초 단위 업데이트
                 </div>
-                <p className="text-sm text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-sm text-gray-600 mb-2">
                   멀티스크린으로 4분할로 지도 화면을 보여줘 100대 이상의 차량도 관제실처럼 한 눈에 관리할 수 있어요.
                 </p>
-                <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-sm text-gray-600">
                   관제 기능을 켜고 끌 수 있어 업무 시간 외에는 사생활을 보호할 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* B. 운행경로 분석 */}
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <Route className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">운행경로 분석</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("features") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "100ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.feature2 ? (
+                  <img
+                    src={IMG.feature2}
+                    alt="운행경로 분석"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("feature2")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">운행경로 분석</h3>
+                <p className="text-gray-600">
                   최대 2일 동안의 상세 운행경로와 급가속, 급제동 등이 발생한 위치를 시간순으로 확인해 고객 불만사항에 대해 정확히 대응할 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* C. 국세청 운행일지 자동 생성 */}
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <FileText className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">국세청 운행일지 자동 생성</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("features") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.feature3 ? (
+                  <img
+                    src={IMG.feature3}
+                    alt="국세청 운행일지 자동 생성"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("feature3")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">국세청 운행일지 자동 생성</h3>
+                <p className="text-gray-600">
                   차량을 운행하면 자동으로 국세청 양식의 운행일지가 자동으로 생성돼요. 엑셀 파일로 바로 내려받아 세무사에 전달하면 세금 정산을 간편하게 끝낼 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* D. 통합 비용 관리 */}
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <DollarSign className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">통합 비용 관리</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("features") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.feature4 ? (
+                  <img
+                    src={IMG.feature4}
+                    alt="통합 비용 관리"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("feature4")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">통합 비용 관리</h3>
+                <p className="text-gray-600">
                   유류비, 보험료, 과태료, 하이패스, 정비비 등 차량 운영에 드는 모든 비용을 한눈에 확인하고, 안전/경제운전 지수를 기반으로 보험료와 유류비까지 줄일 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* E. 안전운전 관리 */}
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <Shield className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">안전운전 관리</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("features") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.feature5 ? (
+                  <img
+                    src={IMG.feature5}
+                    alt="안전운전 관리"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("feature5")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">안전운전 관리</h3>
+                <p className="text-gray-600">
                   급가속, 급출발, 공회전 등 위험한 운전 습관을 실시간으로 확인하고, 운전 점수를 통해 위험 운전자를 미리 확인해 사고를 예방할 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* F. 임원/VIP 차량 관리 */}
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <User className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3 inline-block group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("features") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "500ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.feature6 ? (
+                  <img
+                    src={IMG.feature6}
+                    alt="임원/VIP 차량 관리"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("feature6")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-3 inline-block">
                   오직 LG U+ 에서만!
                 </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">임원/VIP 차량 관리</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">임원/VIP 차량 관리</h3>
+                <p className="text-gray-600">
                   임원 차량, 외부 노출이 꺼려지는 차량은 위치 노출 없이 운행일지만 생성되어 사생활을 지키면서 관리와 보고는 확실히 할 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* G. 운행정보 자동 전송 */}
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <Send className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">운행정보 자동 전송</h3>
-                <p className="text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("features") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "600ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.feature7 ? (
+                  <img
+                    src={IMG.feature7}
+                    alt="운행정보 자동 전송"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("feature7")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">운행정보 자동 전송</h3>
+                <p className="text-gray-600 mb-2">
                   디지털 운행 기록계(DTG)에 저장된 운행 정보는 eTAS에, 폐기물 수거 차량 운행 정보는 올바로로 자동 전송해요.
                 </p>
-                <div className="text-xs text-gray-500 mt-3 space-y-1 group-hover:text-gray-600 transition-colors duration-300">
+                <div className="text-xs text-gray-500 mt-3 space-y-1">
                   <p>- eTAS : 교통안전공단 운행기록분석시스템</p>
                   <p>- 올바로 : 한국환경공단 폐기물적법처리시스템</p>
                 </div>
@@ -596,34 +787,64 @@ const UplusVehicle = () => {
             </Card>
 
             {/* H. 거점 관리 및 알림 */}
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <Map className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">거점 관리 및 알림</h3>
-                <p className="text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("features") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "700ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.feature8 ? (
+                  <img
+                    src={IMG.feature8}
+                    alt="거점 관리 및 알림"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("feature8")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">거점 관리 및 알림</h3>
+                <p className="text-gray-600 mb-2">
                   자주 방문하는 장소를 등록하면 도착했을 때 지정한 담당자에게 알림을 보내 시설 관리나 정기 점검, 건설 안전 관리 등 업무 효율을 높일 수 있어요.
                 </p>
-                <p className="text-xs text-gray-500 mb-2 group-hover:text-gray-600 transition-colors duration-300">
+                <p className="text-xs text-gray-500 mb-2">
                   - 관제 문자메시지 알림 부가서비스 가입 고객 대상
                 </p>
-                <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-sm text-gray-600">
                   정시 도착 여부 및 입문/출문 시간도 확인할 수 있어요.
                 </p>
               </CardContent>
             </Card>
 
             {/* I. 디지털키 */}
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-primary/20 bg-gradient-to-br from-white to-primary/5 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <Key className="w-6 h-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">디지털키</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("features") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "800ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.feature9 ? (
+                  <img
+                    src={IMG.feature9}
+                    alt="디지털키"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("feature9")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">디지털키</h3>
+                <p className="text-gray-600">
                   스마트폰 앱으로 차량 문을 열고 닫을 수 있어 실물 키 분실 걱정이 없고, 직원끼리 차량 공유도 간편하게 할 수 있어요.
                 </p>
               </CardContent>
@@ -633,70 +854,134 @@ const UplusVehicle = () => {
       </section>
 
       {/* 비용 절감 효과 */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-gray-900">
+      <section id="cost-saving" className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 
+            className={`text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-gray-900 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 ${
+              visibleSections.has("cost-saving") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             U+ 커넥트 도입으로 얻을 수 있는 비용 절감 효과
           </h2>
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-green-200 bg-gradient-to-br from-white to-green-50/50 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-green-50/0 to-green-50/0 group-hover:from-green-50/50 group-hover:to-green-100/30 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-50 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <TrendingDown className="w-6 h-6 text-green-600 group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-green-700 transition-colors duration-300">운영 비용/시간 절약</h3>
-                <p className="text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("cost-saving") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "0ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.saving1 ? (
+                  <img
+                    src={IMG.saving1}
+                    alt="운영 비용/시간 절약"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("saving1")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">운영 비용/시간 절약</h3>
+                <p className="text-gray-600 mb-2">
                   객관적인 운행 정보를 통해 최적의 차량 배치로 운영 비용을 줄일 수 있어요.
                 </p>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                <p className="text-gray-600">
                   국세청 양식 운행일지 자동 생성으로 운행일지를 따로 작성하지 않아도 돼요.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-blue-200 bg-gradient-to-br from-white to-blue-50/50 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-blue-50/0 group-hover:from-blue-50/50 group-hover:to-blue-100/30 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <FileText className="w-6 h-6 text-blue-600 group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-blue-700 transition-colors duration-300">세무 비용 절약</h3>
-                <p className="text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("cost-saving") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "100ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.saving2 ? (
+                  <img
+                    src={IMG.saving2}
+                    alt="세무 비용 절약"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("saving2")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">세무 비용 절약</h3>
+                <p className="text-gray-600 mb-2">
                   국세청 양식 운행일지 자동 생성으로 업무용 차량 비용을 간편하게 경비 처리 할 수 있어요.
                 </p>
-                <p className="text-sm text-gray-500 mb-1 group-hover:text-gray-600 transition-colors duration-300">
+                <p className="text-sm text-gray-500 mb-1">
                   - 유류비, 보험료, 수리비 등 연간 1,500만 원 한도 초과분도 인정
                 </p>
-                <p className="text-sm text-gray-500 group-hover:text-gray-600 transition-colors duration-300">
+                <p className="text-sm text-gray-500">
                   - 세무 조사 대비 증빙 자료로 이용 가능
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-yellow-200 bg-gradient-to-br from-white to-yellow-50/50 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-50/0 to-yellow-50/0 group-hover:from-yellow-50/50 group-hover:to-yellow-100/30 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-yellow-100 to-yellow-50 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <DollarSign className="w-6 h-6 text-yellow-600 group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-yellow-700 transition-colors duration-300">유류비 절약</h3>
-                <p className="text-gray-600 mb-2 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("cost-saving") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.saving3 ? (
+                  <img
+                    src={IMG.saving3}
+                    alt="유류비 절약"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("saving3")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">유류비 절약</h3>
+                <p className="text-gray-600 mb-2">
                   공회전 분석과 안전 운전 관리로 연료 효율을 개선하고 유류비를 통합 관리할 수 있어요.
                 </p>
-                <p className="text-sm text-gray-500 mb-1 group-hover:text-gray-600 transition-colors duration-300">- 급가속, 급정거, 급출발 방지</p>
-                <p className="text-sm text-gray-500 group-hover:text-gray-600 transition-colors duration-300">- 공회전 시간 단축</p>
+                <p className="text-sm text-gray-500 mb-1">- 급가속, 급정거, 급출발 방지</p>
+                <p className="text-sm text-gray-500">- 공회전 시간 단축</p>
               </CardContent>
             </Card>
 
-            <Card className="group rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] border border-transparent hover:border-purple-200 bg-gradient-to-br from-white to-purple-50/50 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-50/0 to-purple-50/0 group-hover:from-purple-50/50 group-hover:to-purple-100/30 transition-all duration-300"></div>
-              <CardContent className="p-6 relative z-10">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-50 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                  <CheckCircle2 className="w-6 h-6 text-purple-600 group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-purple-700 transition-colors duration-300">관리 비용 절약</h3>
-                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden ${
+                visibleSections.has("cost-saving") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.saving4 ? (
+                  <img
+                    src={IMG.saving4}
+                    alt="관리 비용 절약"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("saving4")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <Phone className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">관리 비용 절약</h3>
+                <p className="text-gray-600">
                   정비비, 보험비, 과태료 등 차량 관리 비용을 통합 관리하여 업무 효율을 높일 수 있어요.
                 </p>
               </CardContent>
@@ -706,8 +991,8 @@ const UplusVehicle = () => {
       </section>
 
       {/* 업종/차종 탭 섹션 */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-12">
             <p className="text-lg md:text-xl text-gray-700 mb-2">
               업무마다 차종마다, 필요한 기능은 달라요.
@@ -823,8 +1108,8 @@ const UplusVehicle = () => {
       </section>
 
       {/* 서비스 구성 */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
             어떤 방식으로 이용하나요?
           </h2>
@@ -898,8 +1183,8 @@ const UplusVehicle = () => {
       </section>
 
       {/* 이용요금 */}
-      <section id="pricing" className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <section id="pricing" className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
             이용요금
           </h2>
@@ -1008,12 +1293,21 @@ const UplusVehicle = () => {
       </section>
 
       {/* 특별 혜택 */}
-      <section id="benefits" className="py-16 md:py-24 bg-primary/5">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900">
+      <section id="benefits" className="py-28 bg-primary/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 
+            className={`text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 ${
+              visibleSections.has("benefits") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
             특별 혜택
           </h2>
-          <div className="bg-white rounded-2xl p-6 md:p-8 mb-8 text-center">
+          <div 
+            className={`bg-white rounded-2xl p-6 md:p-8 mb-8 text-center transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none motion-reduce:opacity-100 ${
+              visibleSections.has("benefits") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+            style={{ transitionDelay: "100ms" }}
+          >
             <p className="text-lg md:text-xl font-semibold text-gray-900 mb-2">
               기기 구입비, 설치비 없이 월 이용 요금만 내면 되니깐 도입 비용 완전 무료!
             </p>
@@ -1023,24 +1317,56 @@ const UplusVehicle = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-            <Card className="rounded-2xl shadow-lg text-center">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden text-center ${
+                visibleSections.has("benefits") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "200ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.benefit1 ? (
+                  <img
+                    src={IMG.benefit1}
+                    alt="기기 구입비 0원"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("benefit1")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <CheckCircle2 className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle2 className="w-8 h-8 text-green-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">기기 구입비 0원</h3>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">기기 구입비 0원</h3>
                 <p className="text-gray-600">
                   차량관제 기기를 구입할 필요 없이 월 이용 요금만 내면 돼요.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="rounded-2xl shadow-lg text-center">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden text-center ${
+                visibleSections.has("benefits") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "300ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.benefit2 ? (
+                  <img
+                    src={IMG.benefit2}
+                    alt="설치비 0원"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("benefit2")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <CheckCircle2 className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle2 className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">설치비 0원</h3>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">설치비 0원</h3>
                 <p className="text-gray-600 mb-2">
                   기본 기기 설치비는 무료예요.
                 </p>
@@ -1050,12 +1376,28 @@ const UplusVehicle = () => {
               </CardContent>
             </Card>
 
-            <Card className="rounded-2xl shadow-lg text-center">
+            <Card 
+              className={`group rounded-2xl border shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white overflow-hidden text-center ${
+                visibleSections.has("benefits") ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: "400ms" }}
+            >
+              <div className="relative h-56 overflow-hidden rounded-t-2xl">
+                {!imageErrors.benefit3 ? (
+                  <img
+                    src={IMG.benefit3}
+                    alt="3년 동안 A/S 무료"
+                    className="w-full h-full object-cover group-hover:scale-[1.05] transition-transform duration-300"
+                    onError={() => handleImageError("benefit3")}
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                    <CheckCircle2 className="w-16 h-16 text-gray-400" />
+                  </div>
+                )}
+              </div>
               <CardContent className="p-6">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle2 className="w-8 h-8 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">3년 동안 A/S 무료</h3>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">3년 동안 A/S 무료</h3>
                 <p className="text-gray-600">
                   3년 약정 기간 동안 기기 A/S를 무료로 받을 수 있어요.
                 </p>
@@ -1069,8 +1411,8 @@ const UplusVehicle = () => {
       </section>
 
       {/* 부가 서비스 */}
-      <section id="addon-services" className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <section id="addon-services" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
             부가 서비스
           </h2>
@@ -1113,8 +1455,8 @@ const UplusVehicle = () => {
       </section>
 
       {/* 기기 소개 */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             기기 소개
           </h2>
@@ -1218,8 +1560,8 @@ const UplusVehicle = () => {
       </section>
 
       {/* 고객후기 */}
-      <section id="reviews" className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <section id="reviews" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             먼저 사용해 본 고객님의 생생한 후기
           </h2>
@@ -1295,8 +1637,8 @@ const UplusVehicle = () => {
       </section>
 
       {/* 기기 설치 과정 */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             기기 설치 과정
           </h2>
@@ -1343,8 +1685,8 @@ const UplusVehicle = () => {
       </section>
 
       {/* 자주하는 질문 */}
-      <section id="faq" className="py-16 md:py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 md:px-6">
+      <section id="faq" className="py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             자주하는 질문
           </h2>
@@ -1444,20 +1786,34 @@ const UplusVehicle = () => {
       </section>
 
       {/* 가입상담 */}
-      <section id="consultation" className="py-16 md:py-24 bg-gradient-to-br from-primary-600 to-primary-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
+      <section id="consultation" className="py-32 bg-gradient-to-br from-primary-600 to-primary-700 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             U+커넥트 차량관제 서비스 상담
           </h2>
           <p className="text-lg md:text-xl mb-8 opacity-90">
             전문 상담사가 고객님의 업종과 차량에 맞는 최적의 솔루션을 제안해 드립니다.
           </p>
-          <Link href="/contact/consultation">
-            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-6">
-              상담 신청하기
-              <ArrowRight className="ml-2 w-5 h-5" />
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              size="lg" 
+              className="bg-white text-primary hover:bg-white/90 px-8 py-6 text-lg font-semibold"
+              onClick={() => window.location.href = "tel:0269511156"}
+            >
+              <Phone className="mr-2 w-5 h-5" />
+              전화 상담
             </Button>
-          </Link>
+            <Link href="/contact/consultation">
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-2 border-white/40 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold"
+              >
+                상담 신청하기
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </>
