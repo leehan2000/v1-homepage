@@ -8,6 +8,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
+import { preferWebp, WebpPreloader } from "@/lib/image-utils";
 
 /**
  * 전국대표번호 랜딩페이지 컴포넌트
@@ -22,6 +23,8 @@ const NationalNumber = () => {
   const [firstSectionVisible, setFirstSectionVisible] = useState(false);
   // 주요 기능 탭 상태 관리
   const [activeTab, setActiveTab] = useState(0);
+  // WebP 우선 로딩 + fallback
+  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
 
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
@@ -295,9 +298,15 @@ const NationalNumber = () => {
       <section 
         className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[700px] flex items-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${IMG.hero})`
+          backgroundImage: `url(${heroBgSrc})`
         }}
       >
+        {/* WebP 우선 로딩 + fallback 감지 */}
+        <WebpPreloader
+          webpSrc={preferWebp(IMG.hero)}
+          fallbackSrc={IMG.hero}
+          onError={() => setHeroBgSrc(IMG.hero)}
+        />
         {/* 어두운 오버레이 */}
         <div className="absolute inset-0 bg-black/35 z-0"></div>
         

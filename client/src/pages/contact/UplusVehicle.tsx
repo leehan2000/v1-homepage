@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
+import { preferWebp, WebpPreloader } from "@/lib/image-utils";
 import {
   Accordion,
   AccordionContent,
@@ -44,6 +45,8 @@ const UplusVehicle = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [heroVisible, setHeroVisible] = useState(false);
+  // WebP 우선 로딩 + fallback
+  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
 
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
@@ -462,9 +465,15 @@ const UplusVehicle = () => {
         id="product-info"
         className="relative w-full overflow-hidden min-h-[70vh] md:min-h-[80vh] flex items-center bg-cover bg-center bg-no-repeat pb-24"
         style={{
-          backgroundImage: `url('/images/U+connect.png')`
+          backgroundImage: `url('${heroBgSrc}')`
         }}
       >
+        {/* WebP 우선 로딩 + fallback 감지 */}
+        <WebpPreloader
+          webpSrc={preferWebp(IMG.hero)}
+          fallbackSrc={IMG.hero}
+          onError={() => setHeroBgSrc(IMG.hero)}
+        />
         {/* 어두운 블루 그라디언트 오버레이 */}
         <div 
           className="absolute inset-0 z-0"

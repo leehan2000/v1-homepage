@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "wouter";
+import { preferWebp, WebpPreloader } from "@/lib/image-utils";
 import {
   ChartContainer,
   ChartTooltip,
@@ -41,6 +42,8 @@ const BusinessInternet = () => {
   // 요금 시뮬레이션 상태
   const [pcCount, setPcCount] = useState<number>(10);
   const [currentMonthlyFee, setCurrentMonthlyFee] = useState<number>(115000);
+  // WebP 우선 로딩 + fallback
+  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
 
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
@@ -314,9 +317,15 @@ const BusinessInternet = () => {
       <section 
         className="relative w-full min-h-[420px] md:min-h-[600px] lg:min-h-[700px] flex items-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${IMG.hero})`
+          backgroundImage: `url(${heroBgSrc})`
         }}
       >
+        {/* WebP 우선 로딩 + fallback 감지 */}
+        <WebpPreloader
+          webpSrc={preferWebp(IMG.hero)}
+          fallbackSrc={IMG.hero}
+          onError={() => setHeroBgSrc(IMG.hero)}
+        />
         {/* 어두운 그라데이션 오버레이 */}
         <div 
           className="absolute inset-0 z-0"

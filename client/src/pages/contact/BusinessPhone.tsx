@@ -21,6 +21,8 @@ const BusinessPhone = () => {
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [heroVisible, setHeroVisible] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  // WebP 우선 로딩 + fallback
+  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
 
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
@@ -275,9 +277,15 @@ const BusinessPhone = () => {
       <section 
         className="relative w-full min-h-[600px] md:min-h-[700px] flex items-center bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${IMG.hero})`
+          backgroundImage: `url(${heroBgSrc})`
         }}
       >
+        {/* WebP 우선 로딩 + fallback 감지 */}
+        <WebpPreloader
+          webpSrc={preferWebp(IMG.hero)}
+          fallbackSrc={IMG.hero}
+          onError={() => setHeroBgSrc(IMG.hero)}
+        />
         <style>{`
           /* 배경 이미지 미세 줌 - 선택적, 매우 약하게 */
           @keyframes heroSubtleZoom {
@@ -293,7 +301,7 @@ const BusinessPhone = () => {
           }
         `}</style>
         <div className="absolute inset-0 z-0 hero-bg-subtle" style={{
-          backgroundImage: `url(${IMG.hero})`,
+          backgroundImage: `url(${heroBgSrc})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}></div>

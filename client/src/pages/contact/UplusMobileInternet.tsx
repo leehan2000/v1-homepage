@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
+import { preferWebp, WebpPreloader } from "@/lib/image-utils";
 import {
   Accordion,
   AccordionContent,
@@ -45,6 +46,8 @@ const UplusMobileInternet = () => {
   const [faqPage, setFaqPage] = useState(1);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const [heroVisible, setHeroVisible] = useState(false);
+  // WebP 우선 로딩 + fallback
+  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
 
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
@@ -449,12 +452,18 @@ const UplusMobileInternet = () => {
         id="product-overview"
         className="relative w-full overflow-hidden min-h-[420px] md:min-h-[600px] flex items-center"
         style={{
-          backgroundImage: `url('${IMG.hero}')`,
+          backgroundImage: `url('${heroBgSrc}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}
       >
+        {/* WebP 우선 로딩 + fallback 감지 */}
+        <WebpPreloader
+          webpSrc={preferWebp(IMG.hero)}
+          fallbackSrc={IMG.hero}
+          onError={() => setHeroBgSrc(IMG.hero)}
+        />
         {/* 그라디언트 오버레이 - 텍스트 가독성 확보 (좌측에서 우측으로) */}
         <div
           className="absolute inset-0 z-0"
