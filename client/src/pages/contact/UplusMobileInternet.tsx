@@ -48,41 +48,41 @@ const UplusMobileInternet = () => {
 
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
-    hero: "/images/mobileinternet.png",
+    hero: "/images/mobileinternet.png", // 로컬 이미지 유지
     // Pain/Solution 섹션 이미지
-    pain: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    solution: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80",
+    pain: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80", // 공사 현장, 유선 설치 불가능한 환경
+    solution: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", // 라우터로 해결되는 무선 인터넷 - 라우터 기기, 무선 연결
     // Why U+ 섹션 이미지
-    why1: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80", // 전문가가 함께
-    why2: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80", // 맞춤형 요금제
-    why3: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 원스톱 관리
+    why1: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80", // 전문가가 끝까지 함께합니다 - 비즈니스 상담, 전문가 팀워크, 신뢰
+    why2: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80", // 전문 상담사가 제안하는 맞춤형 요금제 - 요금제, 가격표, 플랜, 요금 비교
+    why3: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80", // 가입부터 장애 대응 원스톱 관리 - 허브실, 서버실, 네트워크 장비, 허브/공유기 복잡하게 얽힌 구조
     // 업종별 이미지
-    industry1: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=600&q=80", // 건설업
-    industry2: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", // 광고·미디어
-    industry3: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80", // 유통업
-    industry4: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80", // 제조업
-    industry5: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=600&q=80", // 서비스·금융
-    industry6: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", // IT
-    industry7: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80", // 태양광
-    industry8: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80", // 농막
-    industry9: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=600&q=80", // 캠핑
-    industry10: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", // 차량
-    industry11: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80", // 기숙사
-    industry12: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80", // 주택/가정집
+    industry1: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80", // 건설업 - 공사 현장, 임시 컨테이너 근무
+    industry2: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80", // 광고·미디어 - 디지털 광고판, 키오스크 원격 관리
+    industry3: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80", // 유통업 - 자판기, 포스기, 키오스크 결제
+    industry4: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80", // 제조업 - 장치, 배터리 원격 관리, 데이터 수집
+    industry5: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80", // 서비스·금융 - 외근, 출장, 이동 중 업무
+    industry6: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80", // IT - 임시 사무실 등 단기간 업무 - 사무실, 오피스 환경
+    industry7: "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=600&q=80", // 태양광 - 태양광 현장, 태양광 패널 현장, 발전량 원격 모니터링
+    industry8: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=600&q=80", // 농막 - CCTV 운영, 관리, 감시 카메라
+    industry9: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80", // 캠핑 - 캠핑장, 캠핑카 내 영화, 유튜브
+    industry10: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80", // 차량 - 차량 내부, 네비게이션 연결, 패드/노트북 작업
+    industry11: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=600&q=80", // 기숙사 - 기숙사, 노트북 강의 시청, 태블릿 작업
+    industry12: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80", // 주택/가정집 - 부모님댁 CCTV, 휴대폰 와이파이 연결
     // 서비스 구성도
-    diagram: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80",
+    diagram: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80", // 네트워크 다이어그램, 연결 구조 - LTE/5G망으로 다양한 기기 연결
     // 기기 소개 이미지
-    devices: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+    devices: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80", // 라우터, 무선 인터넷 기기 - LTE/5G 라우터, 휴대용 와이파이, USB 라우터
     // 고객후기 이미지
-    reviews: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&q=80",
+    reviews: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80", // 테크 인플루언서, 리뷰, 후기 - 생생한 후기
     // 고객사례 이미지
-    cases: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
+    cases: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80", // 비즈니스 성공 사례, 고객 만족 - LG U+의 기업상품과 함께한 성공 사례
     // 인사이트 이미지
-    etc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    etc: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 기술 인사이트, 비즈니스 정보 - U+의 최신 기술과 비즈니스 인사이트
     // 자료 다운로드 이미지
-    download1: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80",
-    download2: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80",
-    download3: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+    download1: "https://images.unsplash.com/photo-1532619675605-1ede6c9ed2d6?w=600&q=80", // 상품 소개서 다운로드 - 문서, PDF
+    download2: "https://images.unsplash.com/photo-1532619675605-1ede6c9ed2d6?w=600&q=80", // 요금제 안내서 다운로드 - 문서, PDF
+    download3: "https://images.unsplash.com/photo-1532619675605-1ede6c9ed2d6?w=600&q=80", // 가입 서류 안내 다운로드 - 문서, PDF
   };
 
   const handleImageError = (key: string) => {
