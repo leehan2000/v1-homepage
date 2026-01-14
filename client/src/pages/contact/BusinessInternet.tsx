@@ -35,16 +35,6 @@ import {
  * Hero는 깔끔하게 유지하고, 아래 섹션은 이미지 중심 카드로 역동적으로 구성
  */
 const BusinessInternet = () => {
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
-  const [isSticky, setIsSticky] = useState(false);
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  const [heroVisible, setHeroVisible] = useState(false);
-  // 요금 시뮬레이션 상태
-  const [pcCount, setPcCount] = useState<number>(10);
-  const [currentMonthlyFee, setCurrentMonthlyFee] = useState<number>(115000);
-  // WebP 우선 로딩 + fallback
-  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
-
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
     hero: "/images/internet.png",
@@ -60,6 +50,16 @@ const BusinessInternet = () => {
     review1: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&q=80", // 학원
     review2: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 건설
   };
+
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [isSticky, setIsSticky] = useState(false);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [heroVisible, setHeroVisible] = useState(false);
+  // 요금 시뮬레이션 상태
+  const [pcCount, setPcCount] = useState<number>(10);
+  const [currentMonthlyFee, setCurrentMonthlyFee] = useState<number>(115000);
+  // WebP 우선 로딩 + fallback
+  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
 
   const handleImageError = (key: string) => {
     setImageErrors((prev) => ({ ...prev, [key]: true }));

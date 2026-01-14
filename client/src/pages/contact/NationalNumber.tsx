@@ -16,16 +16,6 @@ import { preferWebp, WebpPreloader } from "@/lib/image-utils";
  * Hero는 깔끔하게 유지하고, 아래 섹션은 이미지 중심 카드로 역동적으로 구성
  */
 const NationalNumber = () => {
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
-  const [isSticky, setIsSticky] = useState(false);
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  const [heroVisible, setHeroVisible] = useState(false);
-  const [firstSectionVisible, setFirstSectionVisible] = useState(false);
-  // 주요 기능 탭 상태 관리
-  const [activeTab, setActiveTab] = useState(0);
-  // WebP 우선 로딩 + fallback
-  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
-
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
     hero: "/images/대표번호_히어로.png",
@@ -46,6 +36,16 @@ const NationalNumber = () => {
     mainFeature3: "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=600&fit=crop&auto=format",
     mainFeature4: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800&h=600&fit=crop&auto=format",
   };
+
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [isSticky, setIsSticky] = useState(false);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [firstSectionVisible, setFirstSectionVisible] = useState(false);
+  // 주요 기능 탭 상태 관리
+  const [activeTab, setActiveTab] = useState(0);
+  // WebP 우선 로딩 + fallback
+  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
 
   const handleImageError = (key: string) => {
     setImageErrors((prev) => ({ ...prev, [key]: true }));

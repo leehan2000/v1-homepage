@@ -40,15 +40,6 @@ import {
  * Hero는 깔끔하게 유지하고, 아래 섹션은 이미지 중심 카드로 역동적으로 구성
  */
 const UplusMobileInternet = () => {
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
-  const [isSticky, setIsSticky] = useState(false);
-  const [urlCopied, setUrlCopied] = useState(false);
-  const [faqPage, setFaqPage] = useState(1);
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  const [heroVisible, setHeroVisible] = useState(false);
-  // WebP 우선 로딩 + fallback
-  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
-
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
     hero: "/images/mobileinternet.png", // 로컬 이미지 유지
@@ -87,6 +78,15 @@ const UplusMobileInternet = () => {
     download2: "https://images.unsplash.com/photo-1532619675605-1ede6c9ed2d6?w=600&q=80", // 요금제 안내서 다운로드 - 문서, PDF
     download3: "https://images.unsplash.com/photo-1532619675605-1ede6c9ed2d6?w=600&q=80", // 가입 서류 안내 다운로드 - 문서, PDF
   };
+
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [isSticky, setIsSticky] = useState(false);
+  const [urlCopied, setUrlCopied] = useState(false);
+  const [faqPage, setFaqPage] = useState(1);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [heroVisible, setHeroVisible] = useState(false);
+  // WebP 우선 로딩 + fallback
+  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
 
   const handleImageError = (key: string) => {
     setImageErrors((prev) => ({ ...prev, [key]: true }));

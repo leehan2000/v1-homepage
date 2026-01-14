@@ -1,3 +1,5 @@
+import React from 'react';
+
 /**
  * 이미지 최적화 유틸리티 함수
  * WebP 우선 로딩 + fallback 지원

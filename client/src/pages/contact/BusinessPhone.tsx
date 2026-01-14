@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   ArrowRight,
 } from "lucide-react";
+import { preferWebp, WebpPreloader } from "@/lib/image-utils";
 
 /**
  * 기업 인터넷전화 랜딩페이지 컴포넌트
@@ -16,14 +17,6 @@ import {
  * 이미지 중심의 시각적 리듬으로 구성
  */
 const BusinessPhone = () => {
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
-  const [isSticky, setIsSticky] = useState(false);
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  const [heroVisible, setHeroVisible] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-  // WebP 우선 로딩 + fallback
-  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
-
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
     hero: "/images/internetphon.png",
@@ -44,6 +37,14 @@ const BusinessPhone = () => {
     benefit1: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80", // 무료 통화
     benefit2: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", // 국제전화
   };
+
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [isSticky, setIsSticky] = useState(false);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  // WebP 우선 로딩 + fallback
+  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
 
   const handleImageError = (key: string) => {
     setImageErrors((prev) => ({ ...prev, [key]: true }));

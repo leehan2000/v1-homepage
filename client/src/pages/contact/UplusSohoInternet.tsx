@@ -15,15 +15,6 @@ import { preferWebp, WebpPreloader } from "@/lib/image-utils";
  * 이미지 중심의 시각적 리듬으로 구성
  */
 const UplusSohoInternet = () => {
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
-  const [isSticky, setIsSticky] = useState(false);
-  const [openFaq, setOpenFaq] = useState<string | null>(null);
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  const [heroVisible, setHeroVisible] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-  // WebP 우선 로딩 + fallback
-  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
-
   // 이미지 URL 상수 (Unsplash 무료 이미지 사용)
   const IMG = {
     hero: "/images/soho_hero.png",
@@ -47,6 +38,15 @@ const UplusSohoInternet = () => {
     plaza3: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80", // 전용 서비스
     plaza4: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", // 가이드
   };
+
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [isSticky, setIsSticky] = useState(false);
+  const [openFaq, setOpenFaq] = useState<string | null>(null);
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const [heroVisible, setHeroVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  // WebP 우선 로딩 + fallback
+  const [heroBgSrc, setHeroBgSrc] = useState(preferWebp(IMG.hero));
 
   const handleImageError = (key: string) => {
     setImageErrors((prev) => ({ ...prev, [key]: true }));
