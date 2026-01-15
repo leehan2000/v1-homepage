@@ -365,7 +365,7 @@ const BusinessPhone = () => {
                 </Button>
               </Link>
               <Link href="/cases/clients">
-                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white bg-black/30 backdrop-blur-sm hover:bg-black/50 shadow-lg px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto">
                   도입 사례 보기
                 </Button>
               </Link>

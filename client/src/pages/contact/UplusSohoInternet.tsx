@@ -291,7 +291,7 @@ const UplusSohoInternet = () => {
                 size="lg"
                 variant="outline"
                 onClick={() => scrollToSection("consult")}
-                className="border-2 border-white text-white hover:bg-white/10 px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto"
+                className="border-2 border-white text-white bg-black/30 backdrop-blur-sm hover:bg-black/50 shadow-lg px-6 md:px-8 py-6 text-base md:text-lg font-semibold w-full sm:w-auto"
                 aria-label="상담 신청"
               >
                 상담 신청
